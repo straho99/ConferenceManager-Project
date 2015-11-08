@@ -1,0 +1,65 @@
+User Scenarios:
+
+1. Conference Owner
+- User Registers
+- User creates conference
+	- sets title, description, start date, end date and venue
+	- system sends VenueRequest to venue owner
+- User adds Lectures
+	- sets title, description, start date, end date, breaks (optional), hall, speaker
+	- system sends SpeakerRequest to the respective user
+- User changes start date / end date:
+	- system sends notification to all participants in the conference
+- User changes venue:
+	- system sends VenueRequest to new venue owner
+	- system removes conference from old venue's conference list
+	- system sends notification to all speakers in the conference
+	- system sends notification to all participants in the conference
+	- system deletes old Halls from conference lectures
+- User edits lecture
+	- system sends notification to all lecture participants
+- User deletes lecture
+	- system sends notification to all participants
+	- system deletes participants
+	- system removes lecture from conference
+	- system deletes SpeakerInvitation
+	- system removes lecture from conference
+	- system deletes lecture
+- User adds breaks to lecture
+	- system adds breaks to lecture
+
+2. Simple User
+- User Registers
+- User checks conferences ('All conferences')
+- User signs for conference
+	- system sends notification that user is included
+		- system checks if user participates in another conference in the same time and includes warning message if yes
+	- system adds him/her to participants
+- User signs for lecture
+	- system checks is lecture hall has available places
+		- if yes, continue process
+		- if no, cancels process, sends user notice
+	- system checks if user is attending other lectures at the same time
+	- system sends user notification
+	- system adds user to list of participants
+- User unsigns from lecture
+	- system removes him/her
+- User unsigns from conference
+	- system removes him/her
+- User gets My Conferences
+	- system presents list of conferences
+- User gets conference details
+	- sees conference summary
+	- sees list of lectures and their details + Attend / Unattend buttons
+	- sees 'Propose schedule' button
+
+3. Venue Owner
+- User registers
+- User can see the list of conferences for the venue
+- User can see the availability of halls for monthly or weekly intervals
+	- a table where the columns are the halls and rows are the days from the interval
+		- free days are colored green, busy days are colored red
+- User can see venue requests
+	- user can check if VenueRequest conflicts with other conferences
+	- user can approve VenueRequest if there are no conflicts
+	- user can reject VenueRequest
