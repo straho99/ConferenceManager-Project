@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class User
     {
@@ -36,14 +37,19 @@
             this.recievedMessages = new HashSet<Message>();
         }
 
-        [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
         public string Username { get; set; }
 
         [Required]
         public string Email { get; set; }
+
+        [Required]
+        public string PasswordHash { get; set; }
+
+        public string FullName { get; set; }
 
         public string Telephone { get; set; }
 

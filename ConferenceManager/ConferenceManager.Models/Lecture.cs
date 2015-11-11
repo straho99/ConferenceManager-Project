@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Lecture
     {
@@ -19,8 +20,8 @@
             this.speakerInvitations = new HashSet<SpeakerInvitation>();
         }
 
-        [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -33,21 +34,12 @@
         [Required]
         public DateTime EndDate { get; set; }
 
-        [Required]
-        public int LecturerId { get; set; }
-
-        public virtual User Lecturer { get; set; }
-
-        public int SpeakerId { get; set; }
-
         public virtual User Speaker { get; set; }
-
-        public int HallId { get; set; }
 
         public virtual Hall Hall { get; set; }
 
         [Required]
-        public int ConferenceId { get; set; }
+        public long ConferenceId { get; set; }
 
         public virtual Conference Conference { get; set; }
 

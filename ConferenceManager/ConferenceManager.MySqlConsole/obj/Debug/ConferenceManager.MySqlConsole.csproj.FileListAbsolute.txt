@@ -1,0 +1,16 @@
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.MySqlConsole.exe.config
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.MySqlConsole.exe
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.MySqlConsole.pdb
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.Models.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.MySqlData.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\EntityFramework.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\EntityFramework.SqlServer.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\MySql.Data.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\MySql.Data.Entity.EF6.dll
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.Models.pdb
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\ConferenceManager.MySqlData.pdb
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\EntityFramework.xml
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\bin\Debug\EntityFramework.SqlServer.xml
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\obj\Debug\ConferenceManager.MySqlConsole.csprojResolveAssemblyReference.cache
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\obj\Debug\ConferenceManager.MySqlConsole.exe
+\\psf\Home\Desktop\ConferenceManager Project\ConferenceManager-Project\ConferenceManager\ConferenceManager.MySqlConsole\obj\Debug\ConferenceManager.MySqlConsole.pdb

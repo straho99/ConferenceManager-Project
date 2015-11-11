@@ -1,11 +1,12 @@
 ﻿namespace ConferenceManager.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Hall
     {
-        [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -14,7 +15,7 @@
         public int Capacity { get; set; }
 
         [Required]
-        public int VenueId { get; set; }
+        public long VenueId { get; set; }
 
         public Venue Venue { get; set; }
     }

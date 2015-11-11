@@ -1,19 +1,20 @@
 ﻿namespace ConferenceManager.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class SpeakerInvitation
     {
-        [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
-        public int LectureId { get; set; }
+        public long LectureId { get; set; }
 
         public Lecture Lecture { get; set; }
 
         [Required]
-        public int SpeakerId { get; set; }
+        public long SpeakerId { get; set; }
 
         public User Speaker { get; set; }
 

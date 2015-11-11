@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Venue
     {
@@ -18,8 +19,8 @@
             this.reservationRequests = new HashSet<VenueReservationRequest>();
         }
 
-        [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -31,7 +32,7 @@
         public string Address { get; set; }
 
         [Required]
-        public int OwnerId { get; set; }
+        public long OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
 

@@ -1,19 +1,20 @@
 ﻿namespace ConferenceManager.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Message
     {
-        [Key]
-        public int Key { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [Required]
-        public int SenderId { get; set; }
+        public long SenderId { get; set; }
 
         public User Sender { get; set; }
 
         [Required]
-        public int RecipientId { get; set; }
+        public long RecipientId { get; set; }
 
         public User Recipient { get; set; }
 
