@@ -48,11 +48,15 @@
     <Compile Include="Message.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="RequestStatus.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="SpeakerInvitation.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Venue.cs" />
     <Compile Include="VenueReservationRequest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConferenceManager Diagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

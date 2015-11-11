@@ -7,11 +7,16 @@
     public class Lecture
     {
         private ICollection<Break> breaks;
-        private ICollection<Break> participants;
+        private ICollection<User> participants;
+
+        private ICollection<SpeakerInvitation> speakerInvitations;
 
         public Lecture()
         {
             this.breaks = new HashSet<Break>();
+            this.participants = new HashSet<User>();
+
+            this.speakerInvitations = new HashSet<SpeakerInvitation>();
         }
 
         [Key]
@@ -35,9 +40,8 @@
 
         public int SpeakerId { get; set; }
 
-        public SpeakerInvitation Speaker { get; set; }
+        public virtual User Speaker { get; set; }
 
-        [Required]
         public int HallId { get; set; }
 
         public virtual Hall Hall { get; set; }
@@ -47,7 +51,7 @@
 
         public virtual Conference Conference { get; set; }
 
-        public ICollection<Break> Breaks
+        public virtual ICollection<Break> Breaks
         {
             get
             {
@@ -57,6 +61,32 @@
             set
             {
                 this.breaks = value;
+            }
+        }
+
+        public virtual ICollection<User> Participants
+        {
+            get
+            {
+                return this.participants;
+            }
+
+            set
+            {
+                this.participants = value;
+            }
+        }
+
+        public virtual ICollection<SpeakerInvitation> SpeakerInvitations
+        {
+            get
+            {
+                return this.speakerInvitations;
+            }
+
+            set
+            {
+                this.speakerInvitations = value;
             }
         }
     }

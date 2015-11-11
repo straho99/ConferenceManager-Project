@@ -8,10 +8,14 @@
         private ICollection<Hall> halls;
         private ICollection<Conference> conferences;
 
+        private ICollection<VenueReservationRequest> reservationRequests;
+
         public Venue()
         {
             this.halls = new HashSet<Hall>();
             this.conferences = new HashSet<Conference>();
+
+            this.reservationRequests = new HashSet<VenueReservationRequest>();
         }
 
         [Key]
@@ -54,6 +58,19 @@
             set
             {
                 this.conferences = value;
+            }
+        }
+
+        public virtual ICollection<VenueReservationRequest> ReservationRequests
+        {
+            get
+            {
+                return this.reservationRequests;
+            }
+
+            set
+            {
+                this.reservationRequests = value;
             }
         }
     }

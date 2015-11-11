@@ -12,5 +12,10 @@
 
         [Required]
         public int Capacity { get; set; }
+
+        [Required]
+        public int VenueId { get; set; }
+
+        public Venue Venue { get; set; }
     }
 }

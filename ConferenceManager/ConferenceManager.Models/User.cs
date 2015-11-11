@@ -10,8 +10,14 @@
 
         private ICollection<Lecture> myLectures;
         private ICollection<Lecture> attendingLectures;
+        private ICollection<SpeakerInvitation> mySpeakerInvitations;
 
         private ICollection<Venue> myVenues;
+
+        private ICollection<Notification> notifications;
+
+        private ICollection<Message> sentMessages;
+        private ICollection<Message> recievedMessages;
 
         public User()
         {
@@ -20,8 +26,14 @@
 
             this.myLectures = new HashSet<Lecture>();
             this.attendingLectures = new HashSet<Lecture>();
+            this.mySpeakerInvitations = new HashSet<SpeakerInvitation>();
 
             this.myVenues = new HashSet<Venue>();
+
+            this.notifications = new HashSet<Notification>();
+
+            this.sentMessages = new HashSet<Message>();
+            this.recievedMessages = new HashSet<Message>();
         }
 
         [Key]
@@ -34,6 +46,8 @@
         public string Email { get; set; }
 
         public string Telephone { get; set; }
+
+        public virtual Role Role { get; set; }
 
         public virtual ICollection<Conference> MyConferences
         {
@@ -87,6 +101,19 @@
             }
         }
 
+        public virtual ICollection<SpeakerInvitation> MySpeakerInvitations
+        {
+            get
+            {
+                return this.mySpeakerInvitations;
+            }
+
+            set
+            {
+                this.mySpeakerInvitations = value;
+            }
+        }
+
         public virtual ICollection<Venue> MyVenues
         {
             get
@@ -97,6 +124,45 @@
             set
             {
                 this.myVenues = value;
+            }
+        }
+
+        public virtual ICollection<Notification> Notifications
+        {
+            get
+            {
+                return this.notifications;
+            }
+
+            set
+            {
+                this.notifications = value;
+            }
+        }
+
+        public virtual ICollection<Message> SentMessages
+        {
+            get
+            {
+                return this.sentMessages;
+            }
+
+            set
+            {
+                this.sentMessages = value;
+            }
+        }
+
+        public virtual ICollection<Message> RecievedMessages
+        {
+            get
+            {
+                return this.recievedMessages;
+            }
+
+            set
+            {
+                this.recievedMessages = value;
             }
         }
     }
