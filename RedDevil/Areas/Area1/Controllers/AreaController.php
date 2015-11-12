@@ -22,7 +22,6 @@ class AreaController {
 
     /**
      * @Method('GET', 'POST')
-     * @Role('Admin')
      */
     public function doSomethingElse()
     {

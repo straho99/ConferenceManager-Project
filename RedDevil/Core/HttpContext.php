@@ -102,6 +102,11 @@ class HttpContext {
         return $default;
     }
 
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
     /**
      *
      * @return bool

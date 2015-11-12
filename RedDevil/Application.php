@@ -5,11 +5,16 @@ namespace RedDevil;
 use RedDevil\Config\AppConfig;
 use RedDevil\Core\HttpContext;
 use RedDevil\Core\RouteConfigurator;
+use RedDevil\Core\Annotations;
 use RedDevil\Models\UserModel;
 
 class Application {
     private $route;
     private $controller;
+    /**
+     * @var \RedDevil\Core\Annotations\Annotation[]
+     */
+    private $annotationFilters = [];
 
     const CONTROLLERS_NAMESPACE = "RedDevil\\Controllers\\";
 
@@ -24,6 +29,8 @@ class Application {
             $this->route['action'] = AppConfig::$DEFAULT_ACTIONS[$this->route['controller']];
             $this->route['annotations'] = [];
         }
+
+        $this->createAnnotationFilters($this->route);
     }
 
     public function start()
@@ -45,39 +52,8 @@ class Application {
             $this->route['parameters'] = array_merge($bindingModels, $this->route['parameters']);
         }
 
-        // First, check if the route needs user authorization (logged-in user)
-        if (array_key_exists('authorize', $this->route['annotations'])) {
-            if (!isset($_SESSION['userId'])) {
-                header('HTTP/1.1 401 Unauthorized', true, 401);
-                die ('Unauthorized.');
-            }
-        }
-
-        // Second, check if the route needs to be called on specific request method
-        if (array_key_exists('method', $this->route['annotations'])) {
-            $requiredMethod = $this->route['annotations']['method'];
-
-            if ($requiredMethod != strtolower($_SERVER['REQUEST_METHOD'])) {
-                header('HTTP/1.1 404 Not Found', true, 404);
-                die ('Not Found.');
-            }
-        }
-
-        // Third, check if the route needs the user to be have a certain (minimum) role
-        if (array_key_exists('role', $this->route['annotations'])) {
-            if (!isset($_SESSION['userId'])) {
-                header('HTTP/1.1 401 Unauthorized', true, 401);
-                die ('Unauthorized.');
-            }
-
-            $user =new \RedDevil\Models\UserModel();
-            $userRoleId = $user->getRoleIdForUser($_SESSION['userId']);
-            $requiredRoleId = $user->getRoleIdForTitle($this->route['annotations']['role']);
-
-            if ($userRoleId < $requiredRoleId) {
-                header('HTTP/1.1 401 Unauthorized', true, 401);
-                die ('Unauthorized.');
-            }
+        foreach ($this->annotationFilters as $filter) {
+            $filter->onBeforeExecute();
         }
 
         $this->initController();
@@ -89,11 +65,48 @@ class Application {
             ],
             $this->route['parameters']
         );
+
+        foreach ($this->annotationFilters as $filter) {
+            $filter->onAfterExecute();
+        }
     }
 
     private function initController()
     {
         $controllerClassName = $this->route['controller'];
         $this->controller = new $controllerClassName();
+    }
+
+    private function createAnnotationFilters($route)
+    {
+        $availableAnnotations = [];
+
+        $dirHandle = opendir('Core' . DIRECTORY_SEPARATOR . 'Annotations');
+        $file = readdir($dirHandle);
+        while ($file) {
+            if ($file[0] == '.') {
+                $file = readdir($dirHandle);
+                continue;
+            }
+
+            if ($file == 'Annotation.php') {
+                $file = readdir($dirHandle);
+                continue;
+            }
+
+            $annotationClassName = explode('.', $file)[0];
+            $availableAnnotations[] = $annotationClassName;
+            $file = readdir($dirHandle);
+        }
+
+        foreach ($route['annotations'] as $key => $value) {
+            $annotationName = ucfirst($key) . 'Annotation';
+            if (!in_array($annotationName, $availableAnnotations)) {
+                throw new \Exception("Unrecognized annotation class.", 501);
+            }
+
+            $annotationName = '\\RedDevil\\Core\\Annotations\\' . $annotationName;
+            $this->annotationFilters[] = new $annotationName($value);
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-12 10:15:52';
+	 public static $dateOfLastCheck = '2015-11-12 13:15:04';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -27,8 +27,7 @@ class RoutesConfig {
 			 'action' => 'doSomethingElse',
 			 'route' => 'area1/area/doSomethingElse',
 			 'annotations' => [
-				'method' => 'get', 'post',
-				'role' => 'admin',
+				'method' => ['get', 'post'],
 			 ]
 		 ], 
 		 [ 

@@ -220,7 +220,12 @@ class RouteConfigurator {
 
             $annotationText = "\t\t\t 'annotations' => [\n";
             foreach ($route['annotations'] as $key => $value) {
-                $annotationText .= "\t\t\t\t'" . $key . "' => '" . $value . "',\n";
+                $valuesArray = explode(", ", $value);
+                if (count($valuesArray) > 1) {
+                    $annotationText .= "\t\t\t\t'" . $key . "' => ['" . implode(", ", $valuesArray) . "'],\n";
+                } else {
+                    $annotationText .= "\t\t\t\t'" . $key . "' => '" . $value . "',\n";
+                }
             }
             $annotationText .= "\t\t\t ]\n";
 
