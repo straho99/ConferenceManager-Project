@@ -39,6 +39,6 @@ class ExperimentController extends BaseController {
     {
         $dbContext = new DatabaseContext(TodosRepository::create(), UsersRepository::create());
         $todos = $dbContext->getTodosRepository()->findAll();
-        return new View('experiment', 'displayalltodos', $todos);
+        return new View('experiment', 'displayalltodos', $todos, 'Default', null, true);
     }
 }

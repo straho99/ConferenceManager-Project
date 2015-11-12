@@ -112,7 +112,8 @@ class View {
 
                     foreach ($properties as &$property) {
                         $property->setAccessible(true);
-                        $property->setValue($value, $this->escapeModel($property->getValue($value)));
+                        $theValue = $property->getValue($value);
+                        $property->setValue($value, $this->escapeModel($theValue));
                     }
                 } else if(is_array($value)) {
                     $this->escapeModel($value);
