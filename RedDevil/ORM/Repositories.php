@@ -2,6 +2,9 @@
 
 namespace RedDevil\ORM;
 
+/**
+ * @Credits: the basics of this class are developed by Ivan Yonkov - a.k.a. 'RoYal'.
+ */
 class Repositories {
     public static function create($repositoryName, $model, $tableName, $columns)
     {
@@ -178,7 +181,7 @@ $columnFilters
      */
     public function findAll()
     {
-        \$db = Database::getInstance('app');
+        \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         \$this->query = "SELECT * FROM $tableName" . \$this->where . \$this->order;
         \$result = \$db->prepare(\$this->query);
@@ -201,7 +204,7 @@ $columnFilters
      */
     public function findOne()
     {
-        \$db = Database::getInstance('app');
+        \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         \$this->query = "SELECT * FROM $tableName" . \$this->where . \$this->order . " LIMIT 1";
         \$result = \$db->prepare(\$this->query);
@@ -220,7 +223,7 @@ $columnFilters
      */
     public function delete()
     {
-        \$db = Database::getInstance('app');
+        \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         \$this->query = "DELETE FROM $tableName" . \$this->where;
         \$result = \$db->prepare(\$this->query);
@@ -253,7 +256,7 @@ $columnFilters
 
     private static function update($model \$model)
     {
-        \$db = Database::getInstance('app');
+        \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         \$query = "UPDATE $tableName SET $columnsWithPlaceHoldersText WHERE id = :id";
         \$result = \$db->prepare(\$query);
@@ -266,7 +269,7 @@ $columnFilters
 
     private static function insert($model \$model)
     {
-        \$db = Database::getInstance('app');
+        \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         \$query = "INSERT INTO users ($columnsImploded) VALUES ($onlyPlaceHolders);";
         \$result = \$db->prepare(\$query);

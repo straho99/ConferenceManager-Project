@@ -59,12 +59,12 @@ class OrmManager {
     private static function generateClassInfo($model) {
         $output = "";
         $output = <<<KUF
-        <?php
+<?php
 
-        namespace SoftUni\Models;
+namespace RedDevil\Models;
 
-        class $model
-        {
+class $model
+{
 KUF;
 
         return $output;

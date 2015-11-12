@@ -1,9 +1,9 @@
-        <?php
+<?php
 
-        namespace SoftUni\Models;
+namespace RedDevil\Models;
 
-        class Role
-        {
+class Role
+{
 	const COL_ID = 'id';
 	const COL_TITLE = 'title';
 

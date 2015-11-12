@@ -146,7 +146,7 @@ class RolesRepository
      */
     public function findAll()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM roles" . $this->where . $this->order;
         $result = $db->prepare($this->query);
@@ -170,7 +170,7 @@ $entityInfo['id']);
      */
     public function findOne()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM roles" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
@@ -190,7 +190,7 @@ $entityInfo['id']);
      */
     public function delete()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "DELETE FROM roles" . $this->where;
         $result = $db->prepare($this->query);
@@ -223,7 +223,7 @@ $entityInfo['id']);
 
     private static function update(Role $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "UPDATE roles SET title= :title WHERE id = :id";
         $result = $db->prepare($query);
@@ -237,7 +237,7 @@ $entityInfo['id']);
 
     private static function insert(Role $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "INSERT INTO users (title) VALUES (:title);";
         $result = $db->prepare($query);

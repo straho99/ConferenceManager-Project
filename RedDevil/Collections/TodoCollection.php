@@ -1,8 +1,8 @@
 <?php
 
-namespace SoftUni\Collections;
+namespace RedDevil\Collections;
 
-use SoftUni\Models\Todo;
+use RedDevil\Models\Todo;
 
 class TodoCollection
 {

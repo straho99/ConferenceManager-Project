@@ -1,8 +1,8 @@
 <?php
 
-namespace SoftUni\Collections;
+namespace RedDevil\Collections;
 
-use SoftUni\Models\Role;
+use RedDevil\Models\Role;
 
 class RoleCollection
 {

@@ -1,9 +1,9 @@
-        <?php
+<?php
 
-        namespace SoftUni\Models;
+namespace RedDevil\Models;
 
-        class Todo
-        {
+class Todo
+{
 	const COL_ID = 'id';
 	const COL_USER_ID = 'user_id';
 	const COL_TEXT = 'text';

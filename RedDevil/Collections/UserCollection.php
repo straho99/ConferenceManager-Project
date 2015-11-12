@@ -1,8 +1,8 @@
 <?php
 
-namespace SoftUni\Collections;
+namespace RedDevil\Collections;
 
-use SoftUni\Models\User;
+use RedDevil\Models\User;
 
 class UserCollection
 {

@@ -157,7 +157,7 @@ class TodosRepository
      */
     public function findAll()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM todos" . $this->where . $this->order;
         $result = $db->prepare($this->query);
@@ -182,7 +182,7 @@ $entityInfo['id']);
      */
     public function findOne()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM todos" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
@@ -203,7 +203,7 @@ $entityInfo['id']);
      */
     public function delete()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "DELETE FROM todos" . $this->where;
         $result = $db->prepare($this->query);
@@ -236,7 +236,7 @@ $entityInfo['id']);
 
     private static function update(Todo $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "UPDATE todos SET user_id= :user_id, text= :text WHERE id = :id";
         $result = $db->prepare($query);
@@ -251,7 +251,7 @@ $entityInfo['id']);
 
     private static function insert(Todo $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "INSERT INTO users (user_id,text) VALUES (:user_id, :text);";
         $result = $db->prepare($query);

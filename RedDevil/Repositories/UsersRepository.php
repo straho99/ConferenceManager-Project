@@ -168,7 +168,7 @@ class UsersRepository
      */
     public function findAll()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM users" . $this->where . $this->order;
         $result = $db->prepare($this->query);
@@ -194,7 +194,7 @@ $entityInfo['id']);
      */
     public function findOne()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "SELECT * FROM users" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
@@ -216,7 +216,7 @@ $entityInfo['id']);
      */
     public function delete()
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $this->query = "DELETE FROM users" . $this->where;
         $result = $db->prepare($this->query);
@@ -249,7 +249,7 @@ $entityInfo['id']);
 
     private static function update(User $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "UPDATE users SET username= :username, password= :password, role_id= :role_id WHERE id = :id";
         $result = $db->prepare($query);
@@ -265,7 +265,7 @@ $entityInfo['id']);
 
     private static function insert(User $model)
     {
-        $db = Database::getInstance('app');
+        $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "INSERT INTO users (username,password,role_id) VALUES (:username, :password, :role_id);";
         $result = $db->prepare($query);

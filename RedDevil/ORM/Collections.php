@@ -2,6 +2,9 @@
 
 namespace RedDevil\ORM;
 
+/**
+ * @Credits: the basics of this class are developed by Ivan Yonkov - a.k.a. 'RoYal'.
+ */
 class Collections {
     
     public static function create($model)
@@ -11,9 +14,9 @@ class Collections {
         return <<<KUF
 <?php
 
-namespace SoftUni\Collections;
+namespace RedDevil\Collections;
 
-use SoftUni\Models\\$model;
+use RedDevil\Models\\$model;
 
 class $modelCollection
 {

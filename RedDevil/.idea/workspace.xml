@@ -25,34 +25,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application.php">
+      <file leaf-file-name="DatabaseContext.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.0" vertical-offset="262" max-vertical-offset="1958">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-              <folding>
-                <element signature="e#28#58#0#PHP" expanded="true" />
-                <element signature="e#2401#3502#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrmManager.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47572815" vertical-offset="102" max-vertical-offset="2376">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#183#238#0#PHP" expanded="false" />
-                <element signature="e#2497#2594#0#PHP" expanded="false" />
-                <element signature="e#2769#2911#0#PHP" expanded="false" />
-                <element signature="e#2813#2901#0#PHP" expanded="false" />
-                <element signature="e#3047#3178#0#PHP" expanded="false" />
-                <element signature="e#3339#3500#0#PHP" expanded="false" />
-                <element signature="e#3531#4437#0#PHP" expanded="false" />
-                <element signature="e#4625#4757#0#PHP" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-22.415094" vertical-offset="0" max-vertical-offset="1694">
+              <caret line="54" column="10" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,17 +38,75 @@
       <file leaf-file-name="Repositories.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.307693" vertical-offset="0" max-vertical-offset="6578">
-              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+            <state vertical-scroll-proportion="-18.76923" vertical-offset="3912" max-vertical-offset="6644">
+              <caret line="200" column="7" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseData.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/DatabaseData.php">
+      <file leaf-file-name="DatabaseConfig.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Config/DatabaseConfig.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="40.53846" vertical-offset="1054" max-vertical-offset="1936">
+            <state vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="374">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TodosRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Repositories/TodosRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-116.76923" vertical-offset="352" max-vertical-offset="6094">
+              <caret line="156" column="7" selection-start-line="156" selection-start-column="7" selection-end-line="156" selection-end-column="7" />
+              <folding>
+                <marker date="1447346309000" expanded="true" signature="3433:3452" placeholder="SELECT * FRO..todos$..." />
+                <marker date="1447346309000" expanded="true" signature="4121:4183" placeholder="SELECT * FRO..todos$..." />
+                <marker date="1447346309000" expanded="true" signature="4700:4717" placeholder="DELETE FROM ..." />
+                <marker date="1447346309000" expanded="true" signature="5511:5573" placeholder="UPDATE todos..." />
+                <marker date="1447346309000" expanded="true" signature="5955:6012" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TodoCollection.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Collections/TodoCollection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="726">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExperimentController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/ExperimentController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-34.692307" vertical-offset="0" max-vertical-offset="1078">
+              <caret line="41" column="54" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+              <folding>
+                <element signature="e#40#83#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="displayalltodos.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/experiment/displayalltodos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24405706" vertical-offset="0" max-vertical-offset="631">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Todo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/Todo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="48.23077" vertical-offset="1254" max-vertical-offset="1892">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -82,11 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ViewHelpers/DropDown.php" />
-        <option value="$PROJECT_DIR$/ViewHelpers/Form.php" />
-        <option value="$PROJECT_DIR$/ViewHelpers/BaseViewHelper.php" />
-        <option value="$PROJECT_DIR$/ViewHelpers/TextField.php" />
-        <option value="$PROJECT_DIR$/ViewHelpers/Label.php" />
         <option value="$PROJECT_DIR$/Views/Layouts/Default/footer.php" />
         <option value="$PROJECT_DIR$/ViewHelpers/Button.php" />
         <option value="$PROJECT_DIR$/ViewHelpers/AjaxForm.php" />
@@ -113,7 +144,6 @@
         <option value="$PROJECT_DIR$/ViewHelpers/LiViewHelper.php" />
         <option value="$PROJECT_DIR$/Views/experiment/index.php" />
         <option value="$PROJECT_DIR$/Views/Layouts/Default/header.php" />
-        <option value="$PROJECT_DIR$/Controllers/ExperimentController.php" />
         <option value="$PROJECT_DIR$/Controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/Core/Validation.php" />
@@ -129,10 +159,16 @@
         <option value="$PROJECT_DIR$/Core/Annotations/MethodAnnotation.php" />
         <option value="$PROJECT_DIR$/Areas/Area1/Controllers/AreaController.php" />
         <option value="$PROJECT_DIR$/Config/OrmConfig.php" />
-        <option value="$PROJECT_DIR$/ORM/Repositories.php" />
-        <option value="$PROJECT_DIR$/ORM/Collections.php" />
         <option value="$PROJECT_DIR$/Application.php" />
+        <option value="$PROJECT_DIR$/ORM/Collections.php" />
+        <option value="$PROJECT_DIR$/Repositories/RolesRepository.php" />
+        <option value="$PROJECT_DIR$/Models/Role.php" />
         <option value="$PROJECT_DIR$/ORM/OrmManager.php" />
+        <option value="$PROJECT_DIR$/EntityManager/DatabaseContext.php" />
+        <option value="$PROJECT_DIR$/ORM/Repositories.php" />
+        <option value="$PROJECT_DIR$/Repositories/TodosRepository.php" />
+        <option value="$PROJECT_DIR$/Controllers/ExperimentController.php" />
+        <option value="$PROJECT_DIR$/Views/experiment/displayalltodos.php" />
       </list>
     </option>
   </component>
@@ -202,6 +238,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="experiment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Repositories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -244,6 +312,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="EntityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -258,7 +340,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RedDevil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Collections" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -391,7 +501,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="112" />
+      <option name="time" value="115" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -400,69 +510,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/RadioButton.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37914693" vertical-offset="0" max-vertical-offset="633">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/DropDown.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="297" max-vertical-offset="930">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/Button.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="570">
-          <caret line="18" column="9" selection-start-line="16" selection-start-column="8" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/AjaxForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60645163" vertical-offset="134" max-vertical-offset="1380">
-          <caret line="70" column="72" selection-start-line="70" selection-start-column="72" selection-end-line="70" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/CSFRToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43548387" vertical-offset="75" max-vertical-offset="705">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewHelpers/BaseViewHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625" vertical-offset="210" max-vertical-offset="945">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Areas/Area2/Controllers/AnotherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="375">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Autoloader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="300">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/ParameterRoute.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="1500">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Areas/Area1/Models/BindingModels/TestBindingModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87677723" vertical-offset="0" max-vertical-offset="660">
@@ -591,36 +638,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/experiment/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17432646" vertical-offset="0" max-vertical-offset="631">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5229794" vertical-offset="0" max-vertical-offset="1782">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/ExperimentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4183835" vertical-offset="88" max-vertical-offset="792">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5384614" vertical-offset="0" max-vertical-offset="3146">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -766,14 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/BaseModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6153846" vertical-offset="0" max-vertical-offset="374">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Config/AppConfig.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="836">
@@ -808,41 +821,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/DatabaseData.php">
+    <entry file="file://$PROJECT_DIR$/Core/Validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="40.53846" vertical-offset="1054" max-vertical-offset="1936">
+        <state vertical-scroll-proportion="0.07119741" vertical-offset="44" max-vertical-offset="3146">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/BaseModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31378764" vertical-offset="0" max-vertical-offset="631">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7654517" vertical-offset="1745" max-vertical-offset="2398">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/DatabaseConfig.php">
+    <entry file="file://$PROJECT_DIR$/Models/Role.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5384614" vertical-offset="0" max-vertical-offset="374">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.27892235" vertical-offset="0" max-vertical-offset="1386">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ORM/Collections.php">
+    <entry file="file://$PROJECT_DIR$/Views/experiment/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48811412" vertical-offset="0" max-vertical-offset="1034">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
+    <entry file="file://$PROJECT_DIR$/Collections/TodoCollection.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.307693" vertical-offset="0" max-vertical-offset="6578">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/RolesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14239483" vertical-offset="0" max-vertical-offset="5808">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <marker date="1447346309000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
+            <marker date="1447346309000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
+            <marker date="1447346309000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1447346309000" expanded="true" signature="-1:-1" placeholder="UPDATE roles..." />
+            <marker date="1447346309000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Collections/RoleCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="726">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.0" vertical-offset="262" max-vertical-offset="1958">
+        <state vertical-scroll-proportion="1.1779935" vertical-offset="262" max-vertical-offset="1958">
           <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
           <folding>
             <element signature="e#28#58#0#PHP" expanded="true" />
@@ -851,20 +902,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Core/DatabaseData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5695793" vertical-offset="0" max-vertical-offset="1936">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47572815" vertical-offset="102" max-vertical-offset="2376">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="199" max-vertical-offset="2420">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="26" />
           <folding>
+            <element signature="e#32#40#0#PHP" expanded="true" />
             <element signature="e#183#238#0#PHP" expanded="false" />
-            <element signature="e#2497#2594#0#PHP" expanded="false" />
-            <element signature="e#2769#2911#0#PHP" expanded="false" />
-            <element signature="e#2813#2901#0#PHP" expanded="false" />
-            <element signature="e#3047#3178#0#PHP" expanded="false" />
-            <element signature="e#3339#3500#0#PHP" expanded="false" />
-            <element signature="e#3531#4437#0#PHP" expanded="false" />
-            <element signature="e#4625#4757#0#PHP" expanded="false" />
+            <element signature="e#2466#2563#0#PHP" expanded="false" />
+            <element signature="e#2738#2880#0#PHP" expanded="false" />
+            <element signature="e#2782#2870#0#PHP" expanded="false" />
+            <element signature="e#3016#3147#0#PHP" expanded="false" />
+            <element signature="e#3308#3469#0#PHP" expanded="false" />
+            <element signature="e#3500#4406#0#PHP" expanded="false" />
+            <element signature="e#4594#4726#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/Collections.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33278146" vertical-offset="151" max-vertical-offset="1100">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.415094" vertical-offset="0" max-vertical-offset="1694">
+          <caret line="54" column="10" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/DatabaseConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="374">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.76923" vertical-offset="3912" max-vertical-offset="6644">
+          <caret line="200" column="7" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/TodosRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-116.76923" vertical-offset="352" max-vertical-offset="6094">
+          <caret line="156" column="7" selection-start-line="156" selection-start-column="7" selection-end-line="156" selection-end-column="7" />
+          <folding>
+            <marker date="1447346309000" expanded="true" signature="3433:3452" placeholder="SELECT * FRO..todos$..." />
+            <marker date="1447346309000" expanded="true" signature="4121:4183" placeholder="SELECT * FRO..todos$..." />
+            <marker date="1447346309000" expanded="true" signature="4700:4717" placeholder="DELETE FROM ..." />
+            <marker date="1447346309000" expanded="true" signature="5511:5573" placeholder="UPDATE todos..." />
+            <marker date="1447346309000" expanded="true" signature="5955:6012" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/ExperimentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-34.692307" vertical-offset="0" max-vertical-offset="1078">
+          <caret line="41" column="54" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
+          <folding>
+            <element signature="e#40#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Todo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="48.23077" vertical-offset="1254" max-vertical-offset="1892">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/experiment/displayalltodos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24405706" vertical-offset="0" max-vertical-offset="631">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,9 +1,9 @@
-        <?php
+<?php
 
-        namespace SoftUni\Models;
+namespace RedDevil\Models;
 
-        class User
-        {
+class User
+{
 	const COL_ID = 'id';
 	const COL_USERNAME = 'username';
 	const COL_PASSWORD = 'password';
