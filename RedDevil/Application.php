@@ -7,6 +7,7 @@ use RedDevil\Core\HttpContext;
 use RedDevil\Core\RouteConfigurator;
 use RedDevil\Core\Annotations;
 use RedDevil\Models\UserModel;
+use RedDevil\ORM\OrmManager;
 
 class Application {
     private $route;
@@ -41,6 +42,8 @@ class Application {
         $context->setCookies($_COOKIE);
         $context->setSession($_SESSION);
         $context->setMethod(strtolower($_SERVER['REQUEST_METHOD']));
+
+        OrmManager::update();
 
         $this->initController();
 
