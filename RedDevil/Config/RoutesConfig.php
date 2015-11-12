@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-10-08 18:24:59';
+	 public static $dateOfLastCheck = '2015-11-12 10:15:52';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -10,6 +10,7 @@ class RoutesConfig {
 			 'route' => 'annotationroute/{string username}/posts/{boolean logged}',
 			 'annotations' => [
 				'route' => 'annotationroute/{string username}/posts/{boolean logged}',
+				'role' => 'venueowner',
 			 ]
 		 ], 
 		 [ 
@@ -18,6 +19,7 @@ class RoutesConfig {
 			 'route' => 'area1/area/doSomething',
 			 'annotations' => [
 				'route' => 'annotationroute/{string username}/posts/{boolean logged}',
+				'role' => 'venueowner',
 			 ]
 		 ], 
 		 [ 
@@ -25,6 +27,8 @@ class RoutesConfig {
 			 'action' => 'doSomethingElse',
 			 'route' => 'area1/area/doSomethingElse',
 			 'annotations' => [
+				'method' => 'get', 'post',
+				'role' => 'admin',
 			 ]
 		 ], 
 		 [ 

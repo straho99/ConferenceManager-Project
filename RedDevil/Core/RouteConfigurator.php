@@ -1,6 +1,7 @@
 <?php
 
 namespace RedDevil\Core;
+use RedDevil\Config\AppConfig;
 use ReflectionClass as ReflectionClass;
 use ReflectionMethod as ReflectionMethod;
 
@@ -10,9 +11,11 @@ class RouteConfigurator {
 
     public static function configRoutes()
     {
-//        if (!self::isItTime()) {
-//            return;
-//        }
+        if (AppConfig::OPERATION_MODE == 'production') {
+            if (!self::isItTime()) {
+                return;
+            }
+        }
 
         $allRoutes = [];
         $areaRoutes = self::findRoutesAreas();

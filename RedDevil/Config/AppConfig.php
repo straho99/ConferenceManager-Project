@@ -5,6 +5,8 @@ namespace RedDevil\Config;
 class AppConfig {
     const BASE_PROJECT_FOLDER = "RedDevil";
 
+    const OPERATION_MODE = 'development';
+
     const DEFAULT_CONTROLLER = 'RedDevil\\Controllers\\ExperimentController';
 
     public static $DEFAULT_ACTIONS = array(

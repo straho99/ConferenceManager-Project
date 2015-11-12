@@ -3,6 +3,7 @@
 namespace RedDevil;
 
 use RedDevil\Config\AppConfig;
+use RedDevil\Core\HttpContext;
 use RedDevil\Core\RouteConfigurator;
 use RedDevil\Models\UserModel;
 
@@ -23,11 +24,17 @@ class Application {
             $this->route['action'] = AppConfig::$DEFAULT_ACTIONS[$this->route['controller']];
             $this->route['annotations'] = [];
         }
-
     }
 
     public function start()
     {
+        $context = HttpContext::getInstance();
+        $context->setGet($_GET);
+        $context->setPost($_POST);
+        $context->setCookies($_COOKIE);
+        $context->setSession($_SESSION);
+        $context->setMethod(strtolower($_SERVER['REQUEST_METHOD']));
+
         $this->initController();
 
         $bindingModels = \RedDevil\Core\BindingModelMapper::mapBindingModels($this->controller, $this->route['action']);
