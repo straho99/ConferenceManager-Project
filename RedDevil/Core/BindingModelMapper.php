@@ -30,6 +30,7 @@ class BindingModelMapper {
                     }
                 }
 
+                $bindingModelInstance->validate();
                 $generatedBindingModels[] = $bindingModelInstance;
             }
         }

@@ -1,5 +1,4 @@
 Todos:
-- BaseInputModel
 - Identity
 - Registration view
 - Login view
@@ -7,6 +6,7 @@ Todos:
 	- Include Bootstrap
 	- Include jQuery
 - HomeController
+	- Index View
 - AccountController
 	- Register action
 	- Login action
@@ -14,3 +14,4 @@ Todos:
 - HomePage
 - Notification system (from Nakov)
 - Update the Form ViewHelper
+- Delete old files when updating the orm classes

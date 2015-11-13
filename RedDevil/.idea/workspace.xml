@@ -25,12 +25,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaseInputModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseInputModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InputModels/BaseInputModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1743264" vertical-offset="139" max-vertical-offset="1122">
+            <state vertical-scroll-proportion="-28.5" vertical-offset="139" max-vertical-offset="1122">
               <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BindingModelMapper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/BindingModelMapper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.769231" vertical-offset="240" max-vertical-offset="990">
+              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrmManager.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5695793" vertical-offset="0" max-vertical-offset="880">
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+              <folding>
+                <element signature="e#183#238#0#PHP" expanded="false" />
+                <element signature="e#529#636#0#PHP" expanded="false" />
+                <element signature="e#647#2233#0#PHP" expanded="false" />
+                <element signature="e#720#860#0#PHP" expanded="false" />
+                <element signature="e#939#1094#0#PHP" expanded="false" />
+                <element signature="e#2245#2429#0#PHP" expanded="false" />
+                <element signature="e#2337#2397#0#PHP" expanded="false" />
+                <element signature="e#2435#2671#0#PHP" expanded="false" />
+                <element signature="e#2536#2633#0#PHP" expanded="false" />
+                <element signature="e#2677#3282#0#PHP" expanded="false" />
+                <element signature="e#2808#2950#0#PHP" expanded="false" />
+                <element signature="e#2852#2940#0#PHP" expanded="false" />
+                <element signature="e#3086#3217#0#PHP" expanded="false" />
+                <element signature="e#3288#4507#0#PHP" expanded="false" />
+                <element signature="e#3378#3539#0#PHP" expanded="false" />
+                <element signature="e#3570#4476#0#PHP" expanded="false" />
+                <element signature="e#4513#4833#0#PHP" expanded="false" />
+                <element signature="e#4664#4796#0#PHP" expanded="false" />
+                <element signature="e#4843#5385#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,7 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Core/BindingModelMapper.php" />
         <option value="$PROJECT_DIR$/ViewModels/SomeRandomViewModel.php" />
         <option value="$PROJECT_DIR$/Models/UserModel.php" />
         <option value="$PROJECT_DIR$/Views/experiment/routes.php" />
@@ -93,7 +132,6 @@
         <option value="$PROJECT_DIR$/EntityManager/DatabaseContextTest.php" />
         <option value="$PROJECT_DIR$/EntityManager/Templates/DatabaseContextTemplate.txt" />
         <option value="$PROJECT_DIR$/ORM/EntityManager.php" />
-        <option value="$PROJECT_DIR$/ORM/OrmManager.php" />
         <option value="$PROJECT_DIR$/Repositories/TodosRepository.php" />
         <option value="$PROJECT_DIR$/ORM/Repositories.php" />
         <option value="$PROJECT_DIR$/Controllers/ErrorController.php" />
@@ -113,6 +151,8 @@
         <option value="$PROJECT_DIR$/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/InputModels/ExampleInputModel.php" />
         <option value="$PROJECT_DIR$/InputModels/BaseInputModel.php" />
+        <option value="$PROJECT_DIR$/Core/BindingModelMapper.php" />
+        <option value="$PROJECT_DIR$/ORM/OrmManager.php" />
       </list>
     </option>
   </component>
@@ -228,21 +268,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="InputModels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
+              <option name="myItemId" value="Collections" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -477,14 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/BindingModelMapper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.307693" vertical-offset="350" max-vertical-offset="968">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.076923" vertical-offset="0" max-vertical-offset="330">
@@ -497,14 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7654517" vertical-offset="1745" max-vertical-offset="2398">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27892235" vertical-offset="0" max-vertical-offset="1386">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -530,11 +540,11 @@
         <state vertical-scroll-proportion="0.14239483" vertical-offset="0" max-vertical-offset="5808">
           <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding>
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="UPDATE roles..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..roles$..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="UPDATE roles..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -606,34 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3846154" vertical-offset="0" max-vertical-offset="550">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-          <folding>
-            <element signature="e#137#2206#0#PHP" expanded="false" />
-            <element signature="e#183#238#0#PHP" expanded="false" />
-            <element signature="e#496#603#0#PHP" expanded="false" />
-            <element signature="e#614#2200#0#PHP" expanded="false" />
-            <element signature="e#687#827#0#PHP" expanded="false" />
-            <element signature="e#906#1061#0#PHP" expanded="false" />
-            <element signature="e#2212#2396#0#PHP" expanded="false" />
-            <element signature="e#2304#2364#0#PHP" expanded="false" />
-            <element signature="e#2402#2638#0#PHP" expanded="false" />
-            <element signature="e#2503#2600#0#PHP" expanded="false" />
-            <element signature="e#2644#3249#0#PHP" expanded="false" />
-            <element signature="e#2775#2917#0#PHP" expanded="false" />
-            <element signature="e#2819#2907#0#PHP" expanded="false" />
-            <element signature="e#3053#3184#0#PHP" expanded="false" />
-            <element signature="e#3255#4474#0#PHP" expanded="false" />
-            <element signature="e#3345#3506#0#PHP" expanded="false" />
-            <element signature="e#3537#4443#0#PHP" expanded="false" />
-            <element signature="e#4480#4800#0#PHP" expanded="false" />
-            <element signature="e#4631#4763#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ORM/EntityManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.275081" vertical-offset="0" max-vertical-offset="2706">
@@ -656,11 +638,11 @@
           <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
           <folding>
             <element signature="e#40#71#0#PHP" expanded="true" />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..todos$..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..todos$..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="UPDATE todos..." />
-            <marker date="1447433864000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..todos$..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..todos$..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="UPDATE todos..." />
+            <marker date="1447434475000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -803,32 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/UserModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44849446" vertical-offset="179" max-vertical-offset="1210">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="e#76#844#0#PHP" expanded="false" />
-            <element signature="e#137#258#0#PHP" expanded="false" />
-            <element signature="e#268#389#0#PHP" expanded="false" />
-            <element signature="e#399#496#0#PHP" expanded="false" />
-            <element signature="e#600#707#0#PHP" expanded="false" />
-            <element signature="e#617#706#1#PHP" expanded="false" />
-            <element signature="e#718#783#0#PHP" expanded="false" />
-            <element signature="e#1028#1122#0#PHP" expanded="false" />
-            <element signature="e#1170#1367#0#PHP" expanded="false" />
-            <element signature="e#1245#1356#0#PHP" expanded="false" />
-            <element signature="e#1429#1517#0#PHP" expanded="false" />
-            <element signature="e#1523#1729#0#PHP" expanded="false" />
-            <marker date="1444290640000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1444290640000" expanded="true" signature="-1:-1" placeholder="select * fro..users..." />
-            <marker date="1444290640000" expanded="true" signature="-1:-1" placeholder="select id fr..users..." />
-            <marker date="1444290640000" expanded="true" signature="-1:-1" placeholder="select role_..users..." />
-            <marker date="1444290640000" expanded="true" signature="-1:-1" placeholder="select id fr..roles..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/Validation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3773584" vertical-offset="155" max-vertical-offset="3146">
@@ -876,9 +832,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InputModels/BaseInputModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1743264" vertical-offset="139" max-vertical-offset="1122">
+        <state vertical-scroll-proportion="-28.5" vertical-offset="139" max-vertical-offset="1122">
           <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/BindingModelMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.769231" vertical-offset="240" max-vertical-offset="990">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27892235" vertical-offset="0" max-vertical-offset="1386">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5695793" vertical-offset="0" max-vertical-offset="880">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="e#183#238#0#PHP" expanded="false" />
+            <element signature="e#529#636#0#PHP" expanded="false" />
+            <element signature="e#647#2233#0#PHP" expanded="false" />
+            <element signature="e#720#860#0#PHP" expanded="false" />
+            <element signature="e#939#1094#0#PHP" expanded="false" />
+            <element signature="e#2245#2429#0#PHP" expanded="false" />
+            <element signature="e#2337#2397#0#PHP" expanded="false" />
+            <element signature="e#2435#2671#0#PHP" expanded="false" />
+            <element signature="e#2536#2633#0#PHP" expanded="false" />
+            <element signature="e#2677#3282#0#PHP" expanded="false" />
+            <element signature="e#2808#2950#0#PHP" expanded="false" />
+            <element signature="e#2852#2940#0#PHP" expanded="false" />
+            <element signature="e#3086#3217#0#PHP" expanded="false" />
+            <element signature="e#3288#4507#0#PHP" expanded="false" />
+            <element signature="e#3378#3539#0#PHP" expanded="false" />
+            <element signature="e#3570#4476#0#PHP" expanded="false" />
+            <element signature="e#4513#4833#0#PHP" expanded="false" />
+            <element signature="e#4664#4796#0#PHP" expanded="false" />
+            <element signature="e#4843#5385#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

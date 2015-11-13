@@ -18,6 +18,8 @@ class OrmManager {
              DatabaseConfig::DB_NAME;
         $pdo = new PDO($connectionString, DatabaseConfig::DB_USER, DatabaseConfig::DB_PASS);
 
+        self::deleteOldFiles();
+
         $tables= array_map(function($t) { return $t[0]; },
             $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_NUM));
 
@@ -142,5 +144,26 @@ KUF;
             $output .= "\n\tconst COL_" . strtoupper($column) . ' = \'' . $column . '\';';
         }
         return $output . "\n";
+    }
+    
+    private static function deleteOldFiles()
+    {
+        $files = glob('Models/*'); // get all file names
+        foreach($files as $file){ // iterate files
+            if(is_file($file))
+                unlink($file); // delete file
+        }
+
+        $files = glob('Repositories/*');
+        foreach($files as $file){
+            if(is_file($file))
+                unlink($file);
+        }
+
+        $files = glob('Collections/*');
+        foreach($files as $file){
+            if(is_file($file))
+                unlink($file);
+        }
     }
 }
