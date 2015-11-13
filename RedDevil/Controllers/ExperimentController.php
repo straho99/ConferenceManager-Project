@@ -13,12 +13,12 @@ class ExperimentController extends BaseController {
 
     public function index()
     {
-        return new View('experiment', 'index');
+        return new View('Experiment', 'index');
     }
 
     public function ajax()
     {
-        return new View('experiment', 'ajaxForm');
+        return new View('Experiment', 'ajaxForm');
     }
 
     public function processAjaxRequest()
@@ -29,7 +29,7 @@ class ExperimentController extends BaseController {
     public function routes()
     {
         $model = new \RedDevil\ViewModels\SomeRandomViewModel();
-        return new View('experiment', 'routes', $model);
+        return new View('Experiment', 'routes', $model);
     }
 
     /**
@@ -39,8 +39,8 @@ class ExperimentController extends BaseController {
     {
         $todos = $this->dbContext->getTodosRepository()
             ->filterById(">= 7")
-            ->filterById(" <= 12")
+            ->filterById("<= 12")
             ->findAll();
-        return new View('experiment', 'displayalltodos', $todos, 'Default', null, true);
+        return new View('Experiment', 'displayalltodos', $todos, 'Default', null, true);
     }
 }

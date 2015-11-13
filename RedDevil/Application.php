@@ -21,6 +21,8 @@ class Application {
 
     public function __construct($route)
     {
+        set_exception_handler(array($this, '_exceptionHandler'));
+
         RouteConfigurator::configRoutes();
         $this->route = \RedDevil\Core\RouteMapper::mapRoute($route);
 
@@ -80,6 +82,28 @@ class Application {
             \RedDevil\Repositories\TodosRepository::create(),
             \RedDevil\Repositories\UsersRepository::create()
         ));
+    }
+
+    public function _exceptionHandler(\Exception $ex) {
+        if (AppConfig::DISPLAY_ERRORS == true) {
+            echo '<pre>' . print_r($ex, true) . '</pre>';
+        } else {
+            $this->displayError($ex);
+        }
+    }
+
+    public function displayError($ex) {
+        try {
+            $errorModel = [
+                'code' => $ex->getCode(),
+                'message' => $ex->getMessage()
+            ];
+            return new View('Errors', 'Error', $errorModel);
+        } catch (\Exception $exc) {
+            \RedDevil\Core\Common::headerStatus($ex->getCode());
+            echo '<h1>' . $ex . '</h1>';
+            exit;
+        }
     }
 
     private function createAnnotationFilters($route)

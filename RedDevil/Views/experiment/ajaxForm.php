@@ -24,7 +24,7 @@ $people = [
 
 $ajaxForm = new \RedDevil\ViewHelpers\AjaxForm(
     'test-form',
-    '/experiment/processAjaxRequest',
+    '/Experiment/processAjaxRequest',
     '#result-container');
 
 $ajaxForm->addTextField(\RedDevil\ViewHelpers\TextField::create()

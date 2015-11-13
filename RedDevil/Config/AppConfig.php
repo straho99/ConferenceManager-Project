@@ -9,6 +9,8 @@ class AppConfig {
 
     const DEFAULT_CONTROLLER = 'RedDevil\\Controllers\\ExperimentController';
 
+    const DISPLAY_ERRORS = true;
+
     public static $DEFAULT_ACTIONS = array(
         'RedDevil\\Controllers\\UserController' => 'register',
         'RedDevil\\Controllers\\ExperimentController' => 'index'

@@ -37,11 +37,11 @@ class UserController extends BaseController {
                 $this->redirectToUrl('todos/all');
             } catch(\Exception $ex) {
                 $this->addErrorMessage($ex->getMessage());
-                $this->redirectToUrl('/user');
+                $this->redirectToUrl('/User');
             }
         } else {
             \RedDevil\View::$viewBag['title'] = 'Register';
-            return new \RedDevil\View('user', 'register');
+            return new \RedDevil\View('User', 'register');
         }
     }
 
@@ -57,11 +57,11 @@ class UserController extends BaseController {
                 $this->redirectToUrl('/todos/all');
             } catch (\Exception $ex) {
                 $this->addErrorMessage($ex->getMessage());
-                $this->redirectToUrl('/user/login');
+                $this->redirectToUrl('/User/login');
             }
         } else {
             \RedDevil\View::$viewBag['title'] = 'Login';
-            return new \RedDevil\View('user', 'login');
+            return new \RedDevil\View('User', 'login');
         }
     }
 

@@ -1,0 +1,14 @@
+Todos:
+- BaseInputModel
+- Identity
+- Registration view
+- Login view
+- Change the layout
+	- Include Bootstrap
+	- Include jQuery
+- HomeController
+- AccountController
+	- Register action
+	- Login action
+	- Logaout action
+- HomePage
