@@ -6,7 +6,7 @@ use RedDevil\Config\AppConfig;
 use RedDevil\Core\HttpContext;
 use RedDevil\Core\RouteConfigurator;
 use RedDevil\Core\Annotations;
-use RedDevil\Models\UserModel;
+use RedDevil\EntityManager\DatabaseContext;
 use RedDevil\ORM\OrmManager;
 
 class Application {
@@ -59,8 +59,6 @@ class Application {
             $filter->onBeforeExecute();
         }
 
-        $this->initController();
-
         call_user_func_array(
             [
                 $this->controller,
@@ -77,7 +75,11 @@ class Application {
     private function initController()
     {
         $controllerClassName = $this->route['controller'];
-        $this->controller = new $controllerClassName();
+        $this->controller = new $controllerClassName(new DatabaseContext(
+            \RedDevil\Repositories\RolesRepository::create(),
+            \RedDevil\Repositories\TodosRepository::create(),
+            \RedDevil\Repositories\UsersRepository::create()
+        ));
     }
 
     private function createAnnotationFilters($route)

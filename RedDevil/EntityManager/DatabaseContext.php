@@ -4,26 +4,36 @@ namespace RedDevil\EntityManager;
 
 class DatabaseContext
 {
-    private $todosRepository;
-
-    private $usersRepository;
+    private $rolesRepository;
+	private $todosRepository;
+	private $usersRepository;
 
     private $repositories = [];
 
     /**
      * DatabaseContext constructor.
-     * @param $buildingsRepository
-     * @param $usersRepository
+     * @param $rolesRepository
+	* @param $todosRepository
+	* @param $usersRepository
      */
-    public function __construct($todosRepository, $usersRepository)
+    public function __construct($rolesRepository, $todosRepository, $usersRepository)
     {
-        $this->todosRepository = $todosRepository;
-        $this->usersRepository = $usersRepository;
+        $this->rolesRepository = $rolesRepository;
+		$this->todosRepository = $todosRepository;
+		$this->usersRepository = $usersRepository;
 
-        $this->repositories[] = $this->todosRepository;
-        $this->repositories[] = $this->usersRepository;
+        $this->repositories[] = $this->rolesRepository;
+		$this->repositories[] = $this->todosRepository;
+		$this->repositories[] = $this->usersRepository;
     }
 
+    /**
+     * @return \RedDevil\Repositories\RolesRepository
+     */
+    public function getRolesRepository()
+    {
+        return $this->rolesRepository;
+    }
 
     /**
      * @return \RedDevil\Repositories\TodosRepository
@@ -34,6 +44,24 @@ class DatabaseContext
     }
 
     /**
+     * @return \RedDevil\Repositories\UsersRepository
+     */
+    public function getUsersRepository()
+    {
+        return $this->usersRepository;
+    }
+
+    /**
+     * @param mixed $rolesRepository
+     * @return $this
+     */
+    public function setRolesRepository($rolesRepository)
+    {
+        $this->rolesRepository = $rolesRepository;
+        return $this;
+    }
+
+    /**
      * @param mixed $todosRepository
      * @return $this
      */
@@ -41,14 +69,6 @@ class DatabaseContext
     {
         $this->todosRepository = $todosRepository;
         return $this;
-    }
-
-    /**
-     * @return \RedDevil\Repositories\UsersRepository
-     */
-    public function getUsersRepository()
-    {
-        return $this->usersRepository;
     }
 
     /**
@@ -68,5 +88,4 @@ class DatabaseContext
             $repositoryName::save();
         }
     }
-
 }

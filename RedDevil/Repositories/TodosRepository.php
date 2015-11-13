@@ -43,7 +43,7 @@ class TodosRepository
      */
     public function filterById($id)
     {
-        $this->where .= " AND id = ?";
+        $this->where .= " AND id $id";
         $this->placeholders[] = $id;
 
         return $this;
@@ -54,7 +54,7 @@ class TodosRepository
      */
     public function filterByUser_id($user_id)
     {
-        $this->where .= " AND user_id = ?";
+        $this->where .= " AND user_id $user_id";
         $this->placeholders[] = $user_id;
 
         return $this;
@@ -65,7 +65,7 @@ class TodosRepository
      */
     public function filterByText($text)
     {
-        $this->where .= " AND text = ?";
+        $this->where .= " AND text $text";
         $this->placeholders[] = $text;
 
         return $this;
@@ -161,7 +161,7 @@ class TodosRepository
 
         $this->query = "SELECT * FROM todos" . $this->where . $this->order;
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
@@ -186,7 +186,7 @@ $entityInfo['id']);
 
         $this->query = "SELECT * FROM todos" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new Todo($entityInfo['user_id'],
 $entityInfo['text'],

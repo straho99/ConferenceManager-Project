@@ -36,7 +36,7 @@ class Repositories {
      */
     public function filterBy$columnCapitalized(\$$column)
     {
-        \$this->where .= " AND $column = ?";
+        \$this->where .= " AND $column \$$column";
         \$this->placeholders[] = \$$column;
 
         return \$this;
@@ -185,7 +185,7 @@ $columnFilters
 
         \$this->query = "SELECT * FROM $tableName" . \$this->where . \$this->order;
         \$result = \$db->prepare(\$this->query);
-        \$result->execute(\$this->placeholders);
+        \$result->execute([]);
 
         \$collection = [];
         foreach (\$result->fetchAll() as \$entityInfo) {
@@ -208,7 +208,7 @@ $columnFilters
 
         \$this->query = "SELECT * FROM $tableName" . \$this->where . \$this->order . " LIMIT 1";
         \$result = \$db->prepare(\$this->query);
-        \$result->execute(\$this->placeholders);
+        \$result->execute([]);
         \$entityInfo = \$result->fetch();
         \$entity = new $model($columnEntityText);
 

@@ -2,11 +2,15 @@
 
 namespace RedDevil\Controllers;
 
+use RedDevil\EntityManager\DatabaseContext;
+
 abstract class BaseController {
     protected $isPost = false;
+    protected $dbContext;
 
-    public function __construct()
+    public function __construct(DatabaseContext $dbContext)
     {
+        $this->dbContext = $dbContext;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->isPost = true;
         }

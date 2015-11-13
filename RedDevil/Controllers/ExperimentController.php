@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\EntityManager\DatabaseContext;
+use RedDevil\Repositories\RolesRepository;
 use RedDevil\Repositories\TodosRepository;
 use RedDevil\Repositories\UsersRepository;
 use RedDevil\View;
@@ -28,7 +29,6 @@ class ExperimentController extends BaseController {
     public function routes()
     {
         $model = new \RedDevil\ViewModels\SomeRandomViewModel();
-//        $model = 12;
         return new View('experiment', 'routes', $model);
     }
 
@@ -37,8 +37,10 @@ class ExperimentController extends BaseController {
      */
     public function displayalltodos()
     {
-        $dbContext = new DatabaseContext(TodosRepository::create(), UsersRepository::create());
-        $todos = $dbContext->getTodosRepository()->findAll();
+        $todos = $this->dbContext->getTodosRepository()
+            ->filterById(">= 7")
+            ->filterById(" <= 12")
+            ->findAll();
         return new View('experiment', 'displayalltodos', $todos, 'Default', null, true);
     }
 }

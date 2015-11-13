@@ -43,7 +43,7 @@ class RolesRepository
      */
     public function filterById($id)
     {
-        $this->where .= " AND id = ?";
+        $this->where .= " AND id $id";
         $this->placeholders[] = $id;
 
         return $this;
@@ -54,7 +54,7 @@ class RolesRepository
      */
     public function filterByTitle($title)
     {
-        $this->where .= " AND title = ?";
+        $this->where .= " AND title $title";
         $this->placeholders[] = $title;
 
         return $this;
@@ -150,7 +150,7 @@ class RolesRepository
 
         $this->query = "SELECT * FROM roles" . $this->where . $this->order;
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
@@ -174,7 +174,7 @@ $entityInfo['id']);
 
         $this->query = "SELECT * FROM roles" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new Role($entityInfo['title'],
 $entityInfo['id']);

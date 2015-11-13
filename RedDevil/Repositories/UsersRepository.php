@@ -43,7 +43,7 @@ class UsersRepository
      */
     public function filterById($id)
     {
-        $this->where .= " AND id = ?";
+        $this->where .= " AND id $id";
         $this->placeholders[] = $id;
 
         return $this;
@@ -54,7 +54,7 @@ class UsersRepository
      */
     public function filterByUsername($username)
     {
-        $this->where .= " AND username = ?";
+        $this->where .= " AND username $username";
         $this->placeholders[] = $username;
 
         return $this;
@@ -65,7 +65,7 @@ class UsersRepository
      */
     public function filterByPassword($password)
     {
-        $this->where .= " AND password = ?";
+        $this->where .= " AND password $password";
         $this->placeholders[] = $password;
 
         return $this;
@@ -76,7 +76,7 @@ class UsersRepository
      */
     public function filterByRole_id($role_id)
     {
-        $this->where .= " AND role_id = ?";
+        $this->where .= " AND role_id $role_id";
         $this->placeholders[] = $role_id;
 
         return $this;
@@ -172,7 +172,7 @@ class UsersRepository
 
         $this->query = "SELECT * FROM users" . $this->where . $this->order;
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
@@ -198,7 +198,7 @@ $entityInfo['id']);
 
         $this->query = "SELECT * FROM users" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
-        $result->execute($this->placeholders);
+        $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new User($entityInfo['username'],
 $entityInfo['password'],

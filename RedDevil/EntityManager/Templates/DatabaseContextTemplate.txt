@@ -1,0 +1,33 @@
+<?php
+
+namespace RedDevil\EntityManager;
+
+class DatabaseContext
+{
+    {{privateRepositoryFields}}
+
+    private $repositories = [];
+
+    /**
+     * DatabaseContext constructor.
+     {{docConstructorParameters}}
+     */
+    public function __construct({{constructorParametersList}})
+    {
+        {{settingPrivateRepositoryFields}}
+
+        {{addRepositoriesToInternalCollection}}
+    }
+
+{{repositoryGetters}}
+
+{{repositorySetters}}
+
+    public function saveChanges()
+    {
+        foreach ($this->repositories as $repository) {
+            $repositoryName = get_class($repository);
+            $repositoryName::save();
+        }
+    }
+}

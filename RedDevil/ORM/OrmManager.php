@@ -52,8 +52,9 @@ class OrmManager {
             $collectionsOutput = Collections::create($model);
             $collectionFile = fopen('Collections/' . $model . 'Collection.php', 'w');
             fwrite($collectionFile, $collectionsOutput);
-        }
 
+            EntityManager::create();
+        }
     }
 
     private static function generateClassInfo($model) {
