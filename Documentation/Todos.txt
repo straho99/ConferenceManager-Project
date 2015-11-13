@@ -10,6 +10,7 @@ Todos:
 - AccountController
 	- Register action
 	- Login action
-	- Logaout action
+	- Logout action
 - HomePage
 - Notification system (from Nakov)
+- Update the Form ViewHelper

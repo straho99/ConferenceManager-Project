@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 
+use RedDevil\InputModels\ExampleInputModel;
 use RedDevil\View;
 
 class HomeController extends BaseController {
