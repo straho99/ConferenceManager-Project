@@ -1,7 +1,5 @@
 Todos:
 - Identity
-- Registration view
-- Login view
 - Change the layout
 	- Include Bootstrap
 	- Include jQuery
@@ -11,7 +9,8 @@ Todos:
 	- Register action
 	- Login action
 	- Logout action
+- Registration view
+- Login view
 - HomePage
 - Notification system (from Nakov)
 - Update the Form ViewHelper
-- Delete old files when updating the orm classes

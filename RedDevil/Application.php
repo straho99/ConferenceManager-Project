@@ -4,6 +4,7 @@ namespace RedDevil;
 
 use RedDevil\Config\AppConfig;
 use RedDevil\Core\HttpContext;
+use RedDevil\Core\Identity\IdentityManager;
 use RedDevil\Core\RouteConfigurator;
 use RedDevil\Core\Annotations;
 use RedDevil\EntityManager\DatabaseContext;
@@ -45,6 +46,7 @@ class Application {
         $context->setSession($_SESSION);
         $context->setMethod(strtolower($_SERVER['REQUEST_METHOD']));
 
+        IdentityManager::updateIdentity();
         OrmManager::update();
 
         $this->initController();
