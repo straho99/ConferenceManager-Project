@@ -31,10 +31,10 @@ abstract class BaseController {
     }
 
     public function redirectToUrl($url) {
-        $baseRoute = $this->baseUrl();
-        $fullUrl = $baseRoute . '/'. $url;
-        header("Location: " . $fullUrl);
-        die;
+//        $baseRoute = $this->baseUrl();
+//        $fullUrl = $baseRoute . '/'. $url;
+        header("Location: " . $url);
+        exit;
     }
 
     public function redirect($controllerName, $actionName = null, $params = null) {

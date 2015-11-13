@@ -4,15 +4,14 @@ namespace RedDevil\Config;
 
 class AppConfig {
     const BASE_PROJECT_FOLDER = "RedDevil";
-
     const OPERATION_MODE = 'development';
-
-    const DEFAULT_CONTROLLER = 'RedDevil\\Controllers\\ExperimentController';
-
+    const DEFAULT_CONTROLLER = 'RedDevil\\Controllers\\HomeController';
     const DISPLAY_ERRORS = true;
 
     public static $DEFAULT_ACTIONS = array(
         'RedDevil\\Controllers\\UserController' => 'register',
+        'RedDevil\\Controllers\\HomeController' => 'index',
+        'RedDevil\\Controllers\\AccountController' => 'register',
         'RedDevil\\Controllers\\ExperimentController' => 'index'
     );
 
@@ -28,8 +27,6 @@ class AppConfig {
 
     const VIEW_FOLDER = 'Views';
     const VIEW_EXTENSION = '.php';
-
     const DEFAULT_LAYOUT = 'Default';
-
     const ROUTES_CONFIG = 'Config/RoutesConfig.php';
 }

@@ -3,6 +3,16 @@
 namespace RedDevil\Controllers;
 
 
-class HomeController {
+use RedDevil\View;
 
+class HomeController extends BaseController {
+
+    /**
+     * @return \RedDevil\View
+     * @Method('GET')
+     */
+    public function index()
+    {
+        return new View("home", "index");
+    }
 }

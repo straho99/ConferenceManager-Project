@@ -12,3 +12,4 @@ Todos:
 	- Login action
 	- Logaout action
 - HomePage
+- Notification system (from Nakov)
