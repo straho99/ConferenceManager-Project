@@ -58,7 +58,6 @@ TAG;
         $statement = $this->db->prepare($query);
         $statement->execute($this->getUserId());
         $userRoles = $statement->fetchAll();
-        var_dump($userRoles);
         return array_key_exists($role, $userRoles);
     }
 

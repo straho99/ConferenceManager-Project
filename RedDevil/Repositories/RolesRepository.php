@@ -246,12 +246,12 @@ $entityInfo['id']);
                 ':title' => $model->getTitle()
             ]
         );
-        $model->setId($db->lastId());
+        $model->setId($db->lastInsertId());
     }
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Role');
+        $refc = new \ReflectionClass('\RedDevil\Models\Role');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

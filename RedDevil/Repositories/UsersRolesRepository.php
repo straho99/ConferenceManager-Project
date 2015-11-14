@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\User;
-use RedDevil\Collections\UserCollection;
+use RedDevil\Models\UsersRole;
+use RedDevil\Collections\UsersRoleCollection;
 
-class UsersRepository
+class UsersRolesRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class UsersRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var UsersRepository
+     * @var UsersRolesRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return UsersRepository
+     * @return UsersRolesRepository
      */
     public static function create()
     {
@@ -49,35 +49,24 @@ class UsersRepository
         return $this;
     }
     /**
-     * @param $username
+     * @param $user_id
      * @return $this
      */
-    public function filterByUsername($username)
+    public function filterByUser_id($user_id)
     {
-        $this->where .= " AND username $username";
-        $this->placeholders[] = $username;
+        $this->where .= " AND user_id $user_id";
+        $this->placeholders[] = $user_id;
 
         return $this;
     }
     /**
-     * @param $password
+     * @param $role_id
      * @return $this
      */
-    public function filterByPassword($password)
+    public function filterByRole_id($role_id)
     {
-        $this->where .= " AND password $password";
-        $this->placeholders[] = $password;
-
-        return $this;
-    }
-    /**
-     * @param $email
-     * @return $this
-     */
-    public function filterByEmail($email)
-    {
-        $this->where .= " AND email $email";
-        $this->placeholders[] = $email;
+        $this->where .= " AND role_id $role_id";
+        $this->placeholders[] = $role_id;
 
         return $this;
     }
@@ -163,46 +152,44 @@ class UsersRepository
     }
 
     /**
-     * @return UserCollection
+     * @return UsersRoleCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users" . $this->where . $this->order;
+        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new User($entityInfo['username'],
-$entityInfo['password'],
-$entityInfo['email'],
+            $entity = new UsersRole($entityInfo['user_id'],
+$entityInfo['role_id'],
 $entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
         }
 
-        return new UserCollection($collection);
+        return new UsersRoleCollection($collection);
     }
 
     /**
-     * @return User
+     * @return UsersRole
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new User($entityInfo['username'],
-$entityInfo['password'],
-$entityInfo['email'],
+        $entity = new UsersRole($entityInfo['user_id'],
+$entityInfo['role_id'],
 $entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
@@ -218,14 +205,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM users" . $this->where;
+        $this->query = "DELETE FROM users_roles" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(User $model)
+    public static function add(UsersRole $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -247,33 +234,31 @@ $entityInfo['id']);
         return true;
     }
 
-    private static function update(User $model)
+    private static function update(UsersRole $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE users SET username= :username, password= :password, email= :email WHERE id = :id";
+        $query = "UPDATE users_roles SET user_id= :user_id, role_id= :role_id WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
-':username' => $model->getUsername(),
-':password' => $model->getPassword(),
-':email' => $model->getEmail()
+':user_id' => $model->getUser_id(),
+':role_id' => $model->getRole_id()
             ]
         );
     }
 
-    private static function insert(User $model)
+    private static function insert(UsersRole $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (username,password,email) VALUES (:username, :password, :email);";
+        $query = "INSERT INTO users (user_id,role_id) VALUES (:user_id, :role_id);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':username' => $model->getUsername(),
-':password' => $model->getPassword(),
-':email' => $model->getEmail()
+                ':user_id' => $model->getUser_id(),
+':role_id' => $model->getRole_id()
             ]
         );
         $model->setId($db->lastInsertId());
@@ -281,7 +266,7 @@ $entityInfo['id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\User');
+        $refc = new \ReflectionClass('\RedDevil\Models\UsersRole');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

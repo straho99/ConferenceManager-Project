@@ -1,6 +1,11 @@
-<footer>
-    <h3>(c) RedDevil Productions, 2015</h3>
-</footer>
+</div>
+
+<hr/>
+<div class="row">
+    <footer>
+        <h5>(c) Conference Manager by Strahil Ruychev, 2015</h5>
+    </footer>
+</div>
 
 </body>
 

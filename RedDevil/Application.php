@@ -80,11 +80,7 @@ class Application {
     private function initController()
     {
         $controllerClassName = $this->route['controller'];
-        $this->controller = new $controllerClassName(new DatabaseContext(
-            \RedDevil\Repositories\RolesRepository::create(),
-            \RedDevil\Repositories\TodosRepository::create(),
-            \RedDevil\Repositories\UsersRepository::create()
-        ));
+        $this->controller = new $controllerClassName(new DatabaseContext());
     }
 
     public function _exceptionHandler(\Exception $ex) {

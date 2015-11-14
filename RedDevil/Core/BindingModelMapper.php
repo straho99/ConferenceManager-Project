@@ -6,6 +6,7 @@ class BindingModelMapper {
 
     public static function mapBindingModels($controller, $action)
     {
+
         $generatedBindingModels = [];
 
         $class = new \ReflectionClass($controller);
@@ -18,15 +19,19 @@ class BindingModelMapper {
                 $bmClassName = $property->getClass()->name;
                 $bindingModelInstance = new $bmClassName();
 
+                if (!HttpContext::getInstance()->isPost()) {
+                    $generatedBindingModels[] = $bindingModelInstance;
+                    continue;
+                }
+
                 $methods = $bindingModelClass->getMethods();
                 foreach ($methods as $bmMethod) {
                     if (strpos($bmMethod->name, 'set') === 0) {
-                        $propertyName = strtolower(substr($bmMethod->name, 3, strlen($bmMethod->name)));
-                        if (!isset($_POST[$propertyName])) {
-                            throw new \Exception('Invalid binding model supplied to ' . $class->name . '.');
+                        $propertyName = lcfirst(substr($bmMethod->name, 3, strlen($bmMethod->name)));
+                        if (isset($_POST[$propertyName])) {
+                            $method = $bmMethod->name;
+                            $bindingModelInstance->$method($_POST[$propertyName]);
                         }
-                        $method = $bmMethod->name;
-                        $bindingModelInstance->$method($_POST[$propertyName]);
                     }
                 }
 

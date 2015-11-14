@@ -14,21 +14,22 @@ class EntityManager {
         $privateRepositoryFields = rtrim($privateRepositoryFields, "\n");
 
         $docConstructorParameters = '';
-        foreach ($repositoryNames as $name) {
-            $docConstructorParameters .= "\t* @param $" . $name . "\n";
-        }
-        $docConstructorParameters = ltrim($docConstructorParameters, "\t");
-        $docConstructorParameters = rtrim($docConstructorParameters, "\n");
+//        foreach ($repositoryNames as $name) {
+//            $docConstructorParameters .= "\t* @param $" . $name . "\n";
+//        }
+//        $docConstructorParameters = ltrim($docConstructorParameters, "\t");
+//        $docConstructorParameters = rtrim($docConstructorParameters, "\n");
 
         $constructorParametersList = '';
-        foreach ($repositoryNames as $name) {
-            $constructorParametersList .= "$$name" . ", ";
-        }
-        $constructorParametersList = rtrim($constructorParametersList, ", ");
+//        foreach ($repositoryNames as $name) {
+//            $constructorParametersList .= "$$name" . ", ";
+//        }
+//        $constructorParametersList = rtrim($constructorParametersList, ", ");
 
         $settingPrivateRepositoryFields = '';
         foreach ($repositoryNames as $name) {
-            $settingPrivateRepositoryFields .= "\t\t\$this->$name = $$name;\n";
+            $repoClassName = ucfirst($name);
+            $settingPrivateRepositoryFields .= "\t\t\$this->$name = \RedDevil\Repositories\\$repoClassName::create();\n";
         }
         $settingPrivateRepositoryFields = ltrim($settingPrivateRepositoryFields, "\t");
         $settingPrivateRepositoryFields = rtrim($settingPrivateRepositoryFields, "\n");

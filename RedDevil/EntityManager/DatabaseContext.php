@@ -7,24 +7,25 @@ class DatabaseContext
     private $rolesRepository;
 	private $todosRepository;
 	private $usersRepository;
+	private $usersRolesRepository;
 
     private $repositories = [];
 
     /**
      * DatabaseContext constructor.
-     * @param $rolesRepository
-	* @param $todosRepository
-	* @param $usersRepository
+     
      */
-    public function __construct($rolesRepository, $todosRepository, $usersRepository)
+    public function __construct()
     {
-        $this->rolesRepository = $rolesRepository;
-		$this->todosRepository = $todosRepository;
-		$this->usersRepository = $usersRepository;
+        $this->rolesRepository = \RedDevil\Repositories\RolesRepository::create();
+		$this->todosRepository = \RedDevil\Repositories\TodosRepository::create();
+		$this->usersRepository = \RedDevil\Repositories\UsersRepository::create();
+		$this->usersRolesRepository = \RedDevil\Repositories\UsersRolesRepository::create();
 
         $this->repositories[] = $this->rolesRepository;
 		$this->repositories[] = $this->todosRepository;
 		$this->repositories[] = $this->usersRepository;
+		$this->repositories[] = $this->usersRolesRepository;
     }
 
     /**
@@ -49,6 +50,14 @@ class DatabaseContext
     public function getUsersRepository()
     {
         return $this->usersRepository;
+    }
+
+    /**
+     * @return \RedDevil\Repositories\UsersRolesRepository
+     */
+    public function getUsersRolesRepository()
+    {
+        return $this->usersRolesRepository;
     }
 
     /**
@@ -78,6 +87,16 @@ class DatabaseContext
     public function setUsersRepository($usersRepository)
     {
         $this->usersRepository = $usersRepository;
+        return $this;
+    }
+
+    /**
+     * @param mixed $usersRolesRepository
+     * @return $this
+     */
+    public function setUsersRolesRepository($usersRolesRepository)
+    {
+        $this->usersRolesRepository = $usersRolesRepository;
         return $this;
     }
 

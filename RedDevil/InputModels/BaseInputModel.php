@@ -19,7 +19,7 @@ class BaseInputModel {
      */
     public function isValid()
     {
-        return count($this->errors) > 0;
+        return count($this->errors)== 0;
     }
 
     public function getErrors() {

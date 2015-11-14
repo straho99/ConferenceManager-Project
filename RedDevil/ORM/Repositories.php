@@ -278,12 +278,12 @@ $columnFilters
                 $columnsInsert
             ]
         );
-        \$model->setId(\$db->lastId());
+        \$model->setId(\$db->lastInsertId());
     }
 
     private function isColumnAllowed(\$column)
     {
-        \$refc = new \ReflectionClass('\RedDevil\\$model');
+        \$refc = new \ReflectionClass('\RedDevil\Models\\$model');
         \$consts = \$refc->getConstants();
 
         return in_array(\$column, \$consts);

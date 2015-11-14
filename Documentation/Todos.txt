@@ -1,16 +1,6 @@
 Todos:
-- Identity
-- Change the layout
-	- Include Bootstrap
-	- Include jQuery
-- HomeController
-	- Index View
 - AccountController
 	- Register action
 	- Login action
 	- Logout action
-- Registration view
-- Login view
-- HomePage
-- Notification system (from Nakov)
-- Update the Form ViewHelper
+- Make the Db Context with parameterless constructor

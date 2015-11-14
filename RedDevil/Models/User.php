@@ -7,19 +7,19 @@ class User
 	const COL_ID = 'id';
 	const COL_USERNAME = 'username';
 	const COL_PASSWORD = 'password';
-	const COL_ROLE_ID = 'role_id';
+	const COL_EMAIL = 'email';
 
 	private $id;
 	private $username;
 	private $password;
-	private $role_id;
+	private $email;
 
-	public function __construct($username, $password, $role_id, $id = null)
+	public function __construct($username, $password, $email, $id = null)
 	{
 		$this->setId($id);
 		$this->setUsername($username);
 		$this->setPassword($password);
-		$this->setRole_id($role_id);
+		$this->setEmail($email);
 	}
 
 	/**
@@ -85,18 +85,18 @@ class User
 	/**
 	* @return mixed
 	*/
-	public function getRole_id()
+	public function getEmail()
 	{
-		return $this->role_id;
+		return $this->email;
 	}
 
 	/**
-	* @param $role_id
+	* @param $email
 	* @return $this
 	*/
-	public function setRole_id($role_id)
+	public function setEmail($email)
 	{
-		$this->role_id = $role_id;
+		$this->email = $email;
 		
 		return $this;
 	}
