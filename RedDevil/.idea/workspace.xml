@@ -28,8 +28,8 @@
       <file leaf-file-name="IdentityManager.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Core/Identity/IdentityManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.384615" vertical-offset="42" max-vertical-offset="660">
-              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state vertical-scroll-proportion="-12.769231" vertical-offset="42" max-vertical-offset="660">
+              <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
               <folding>
                 <element signature="e#42#77#0#PHP" expanded="true" />
                 <element signature="e#271#2231#0#PHP" expanded="false" />
@@ -46,8 +46,8 @@
       <file leaf-file-name="Application.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8076925" vertical-offset="853" max-vertical-offset="2596">
-              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+            <state vertical-scroll-proportion="-33.0" vertical-offset="0" max-vertical-offset="2596">
+              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
               <folding>
                 <element signature="e#28#58#0#PHP" expanded="true" />
                 <element signature="e#3451#4552#0#PHP" expanded="false" />
@@ -56,23 +56,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IdentityUser.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Core/Identity/IdentityUser.php">
+      <file leaf-file-name="HttpContext.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/HttpContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16323297" vertical-offset="51" max-vertical-offset="1078">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="-15.230769" vertical-offset="264" max-vertical-offset="3454">
+              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableCrudOps.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Identity/Statements/TableCrudOps.php">
+      <file leaf-file-name="Identity.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Core/Identity/Identity.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.192307" vertical-offset="1745" max-vertical-offset="3102">
-              <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+            <state vertical-scroll-proportion="-15.230769" vertical-offset="946" max-vertical-offset="1760">
+              <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
               <folding>
-                <element signature="e#53#88#0#PHP" expanded="true" />
+                <element signature="e#42#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.59270996" vertical-offset="0" max-vertical-offset="631">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="e#41#71#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,13 +95,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ViewHelpers/LiViewHelper.php" />
         <option value="$PROJECT_DIR$/Views/experiment/index.php" />
         <option value="$PROJECT_DIR$/Views/Layouts/Default/header.php" />
         <option value="$PROJECT_DIR$/Core/Validation.php" />
         <option value="$PROJECT_DIR$/Core/Common.php" />
         <option value="$PROJECT_DIR$/Core/Annotations/Annotation.php" />
-        <option value="$PROJECT_DIR$/Core/HttpContext.php" />
         <option value="$PROJECT_DIR$/Core/Annotations/AuthorizeAnnotation.php" />
         <option value="$PROJECT_DIR$/Core/Annotations/RoleAnnotation.php" />
         <option value="$PROJECT_DIR$/Core/Annotations/RouteAnnotation.php" />
@@ -121,19 +131,21 @@
         <option value="$PROJECT_DIR$/Controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/InputModels/PropertyError.php" />
         <option value="$PROJECT_DIR$/InputModels/TestInputModel.php" />
-        <option value="$PROJECT_DIR$/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/InputModels/ExampleInputModel.php" />
         <option value="$PROJECT_DIR$/InputModels/BaseInputModel.php" />
         <option value="$PROJECT_DIR$/Core/BindingModelMapper.php" />
         <option value="$PROJECT_DIR$/ORM/OrmManager.php" />
-        <option value="$PROJECT_DIR$/Core/Identity/Identity.php" />
         <option value="$PROJECT_DIR$/Core/Identity/IdentityUserTable.php" />
-        <option value="$PROJECT_DIR$/Config/IdentityConfig.php" />
         <option value="$PROJECT_DIR$/Config/OrmConfig.php" />
         <option value="$PROJECT_DIR$/Core/Identity/Statements/TableCrudOps.php" />
         <option value="$PROJECT_DIR$/Core/Identity/IdentityManager.php" />
         <option value="$PROJECT_DIR$/Application.php" />
         <option value="$PROJECT_DIR$/Core/Identity/IdentityUser.php" />
+        <option value="$PROJECT_DIR$/Core/Identity/TestUser.php" />
+        <option value="$PROJECT_DIR$/Config/IdentityConfig.php" />
+        <option value="$PROJECT_DIR$/Core/Identity/Identity.php" />
+        <option value="$PROJECT_DIR$/Core/HttpContext.php" />
+        <option value="$PROJECT_DIR$/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -250,28 +262,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Identity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Identity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Statements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -475,25 +465,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Core/Annotations/RoleAnnotation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.461538" vertical-offset="22" max-vertical-offset="836">
-          <caret line="24" column="54" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6923077" vertical-offset="854" max-vertical-offset="1804">
-          <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
-          <folding>
-            <element signature="e#184#1030#0#PHP" expanded="false" />
-            <element signature="e#1155#3375#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/Annotations/RouteAnnotation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34865293" vertical-offset="0" max-vertical-offset="631">
@@ -749,16 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="528">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#84#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/Role.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27892235" vertical-offset="0" max-vertical-offset="1386">
@@ -787,14 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1743264" vertical-offset="139" max-vertical-offset="1122">
           <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Identity/Identity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20919175" vertical-offset="0" max-vertical-offset="631">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -890,14 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/IdentityConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48811412" vertical-offset="0" max-vertical-offset="631">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26782885" vertical-offset="227" max-vertical-offset="1782">
@@ -932,10 +877,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Core/Identity/TestUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.192307" vertical-offset="29" max-vertical-offset="660">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/IdentityConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27892235" vertical-offset="0" max-vertical-offset="631">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/Identity/IdentityUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34865293" vertical-offset="0" max-vertical-offset="1078">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Core/Identity/IdentityManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.384615" vertical-offset="42" max-vertical-offset="660">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        <state vertical-scroll-proportion="-12.769231" vertical-offset="42" max-vertical-offset="660">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
           <folding>
             <element signature="e#42#77#0#PHP" expanded="true" />
             <element signature="e#271#2231#0#PHP" expanded="false" />
@@ -948,10 +917,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Core/Identity/Identity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.230769" vertical-offset="946" max-vertical-offset="1760">
+          <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
+          <folding>
+            <element signature="e#42#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8076925" vertical-offset="853" max-vertical-offset="2596">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+        <state vertical-scroll-proportion="-33.0" vertical-offset="0" max-vertical-offset="2596">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
           <folding>
             <element signature="e#28#58#0#PHP" expanded="true" />
             <element signature="e#3451#4552#0#PHP" expanded="false" />
@@ -959,11 +938,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Identity/IdentityUser.php">
+    <entry file="file://$PROJECT_DIR$/Core/HttpContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16323297" vertical-offset="51" max-vertical-offset="1078">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="-15.230769" vertical-offset="264" max-vertical-offset="3454">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59270996" vertical-offset="0" max-vertical-offset="631">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#41#71#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,6 +1,7 @@
 <?php
 
 namespace RedDevil\Core;
+use RedDevil\Core\Identity\Identity;
 
 /**
  * @Credits: the basics of this class are developed by Ivan Vankov - a.k.a. 'gatakka'.
@@ -12,9 +13,22 @@ class HttpContext {
     private $_cookies = array();
     private $_session = array();
     private $method = 'get';
+    private $identity;
 
-    private function __construct() {
+    private function __construct()
+    {
         $this->_cookies = $_COOKIE;
+        $this->identity = Identity::getInstance();
+    }
+
+    public function setIdentity($identity)
+    {
+        $this->identity = $identity;
+    }
+
+    public function getIdentity()
+    {
+        return $this->identity;
     }
 
     public function setPost($ar) {
