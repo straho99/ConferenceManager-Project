@@ -46,6 +46,7 @@ class Application {
         $context->setSession($_SESSION);
         $context->setMethod(strtolower($_SERVER['REQUEST_METHOD']));
 
+        IdentityManager::createIdentity();
         IdentityManager::updateIdentity();
         OrmManager::update();
 
