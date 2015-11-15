@@ -2,6 +2,8 @@
 
 namespace RedDevil\Services;
 
+use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Account\ChangePasswordInputModel;
 use RedDevil\InputModels\Account\LoginInputModel;
 use RedDevil\InputModels\Account\RegisterInputModel;
 use RedDevil\Models\User;
@@ -47,6 +49,20 @@ class AccountService extends BaseService {
         }
 
         return new ServiceResponse(1, 'Wrong password.');
+    }
+
+    public function changePassword(ChangePasswordInputModel $model)
+    {
+        $user = $this->dbContext->getUsersRepository()
+            ->filterByUsername(' = "' . HttpContext::getInstance()->getIdentity()->getUsername() . '"')
+            ->findOne();
+        if (!password_verify($model->getCurrentPassword(), $user->getPassword())) {
+            return new ServiceResponse(1, 'Wrong current password.');
+        }
+
+        $user->setPassword(password_hash($model->getNewPassword(), PASSWORD_DEFAULT));
+        $this->dbContext->saveChanges();
+        return new ServiceResponse(null, 'Password changed successfully.');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Account\ChangePasswordInputModel;
 use RedDevil\InputModels\Account\LoginInputModel;
 use RedDevil\InputModels\Account\RegisterInputModel;
 use RedDevil\Services\AccountService;
@@ -68,5 +69,35 @@ class AccountController extends BaseController {
         $service->logout();
         $this->addInfoMessage('Logout successful.');
         $this->redirectToUrl('/');
+    }
+
+    /**
+     * @param ChangePasswordInputModel $model
+     * @return mixed
+     * @throws \Exception
+     */
+    public function changePassword(ChangePasswordInputModel $model)
+    {
+        if (!HttpContext::getInstance()->getIdentity()->isAuthorised()) {
+            throw new \Exception('Unauthorised', 401);
+        }
+
+        if (!$model->isValid()) {
+            return new View('account', 'changePassword', $model);
+        }
+
+        $service = new AccountService($this->dbContext);
+        if (HttpContext::getInstance()->isPost()) {
+            $result = $service->changepassword($model);
+            if (!$result->hasError()) {
+                $this->addInfoMessage($result->getMessage());
+                $this->redirect('home', 'index');
+            } else {
+                $this->addErrorMessage($result->getMessage());
+                $this->redirect('account', 'register');
+            }
+        } else {
+            return new View('account', 'changePassword', new ChangePasswordInputModel());
+        }
     }
 }

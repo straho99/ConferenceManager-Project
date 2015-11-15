@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-15 06:00:51';
+	 public static $dateOfLastCheck = '2015-11-15 13:26:41';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -26,6 +26,13 @@ class RoutesConfig {
 			 'route' => 'account/logout',
 			 'annotations' => [
 				'method' => 'get',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\AccountController',
+			 'action' => 'changePassword',
+			 'route' => 'account/changePassword',
+			 'annotations' => [
 			 ]
 		 ], 
 		 [ 

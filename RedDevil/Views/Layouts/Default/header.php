@@ -48,7 +48,7 @@
                 <?php use RedDevil\Core\HttpContext;
 
                 if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
-                    <li><a href="/home/index">Hello, <?php echo HttpContext::getInstance()->getIdentity()->getUsername() ?>!</a></li>
+                    <li><a href="/account/changePassword">Hello, <?php echo HttpContext::getInstance()->getIdentity()->getUsername() ?>!</a></li>
                     <li><a href="/account/logout">Logout</a></li>
                 <?php endif; ?>
                 <?php if (!HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
