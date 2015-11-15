@@ -5,7 +5,10 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <?php
-                echo $conference->getName();
+                \RedDevil\ViewHelpers\ActionLink::create()
+                    ->setAttribute('href', '/conferences/details' . $conference->getId())
+                    ->setData($conference->getName())
+                    ->render();
                 ?>
             </h3>
         </div>
@@ -14,24 +17,30 @@
                 <div class="media-body">
                     <strong>Starts on: </strong>
                     <?php
-                    echo $conference->getStartDate();
+                    $dt = new DateTime($conference->getStartDate());
+                    echo $dt->format('d/M/Y');
                     ?>
                     <br />
                     <strong>Ends on:</strong>
                     <?php
-                    echo $conference->getEndDate();
+                    $dt = new DateTime($conference->getEndDate());
+                    echo $dt->format('d/M/Y');
                     ?>
                     <br />
                     <strong>Venue:</strong>
                     <?php
-                    echo $conference->getVenue() == null ? '(not available)' : $conference->getVenue();
+                    \RedDevil\ViewHelpers\ActionLink::create()
+                        ->setAttribute('href', '/venues/details/' . $conference->getVenueId())
+                        ->setData($conference->getVenue())
+                        ->render();
                     ?>
-                    <br />
                     <strong>Organizer:</strong>
                     <?php
-                    echo $conference->getOwnerUsername();
+                    \RedDevil\ViewHelpers\ActionLink::create()
+                        ->setAttribute('href', '/users/' . $conference->getOwnerUsername())
+                        ->setData($conference->getOwnerUsername())
+                        ->render();
                     ?>
-                    <br />
                 </div>
             </div>
         </div>

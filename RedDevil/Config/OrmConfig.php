@@ -6,5 +6,5 @@ class OrmConfig {
     /**
      * @return bool
      */
-    const UPDATE = true;
+    const UPDATE = false;
 }

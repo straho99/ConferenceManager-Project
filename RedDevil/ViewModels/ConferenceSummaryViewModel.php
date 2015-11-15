@@ -10,6 +10,7 @@ class ConferenceSummaryViewModel {
     private $startDate;
     private $endDate;
     private $venue;
+    private $venueId;
     private $ownerUsername;
 
     function __construct(Conference $conference)
@@ -18,6 +19,7 @@ class ConferenceSummaryViewModel {
         $this->name = $conference->getName();
         $this->startDate = $conference->getStartDate();
         $this->endDate = $conference->getEndDate();
+        $this->venueId = $conference->getVenue_Id();
     }
 
     /**
@@ -114,5 +116,21 @@ class ConferenceSummaryViewModel {
     public function setOwnerUsername($ownerUsername)
     {
         $this->ownerUsername = $ownerUsername;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVenueId()
+    {
+        return $this->venueId;
+    }
+
+    /**
+     * @param mixed $venueId
+     */
+    public function setVenueId($venueId)
+    {
+        $this->venueId = $venueId;
     }
 }

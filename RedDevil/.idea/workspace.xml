@@ -25,63 +25,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="all.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="all.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Conferences/all.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.076923" vertical-offset="264" max-vertical-offset="990">
-              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.49838188" vertical-offset="0" max-vertical-offset="1188">
+              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
               <folding>
-                <marker date="1447609104000" expanded="true" signature="155:1328" placeholder="..." />
+                <marker date="1447613862000" expanded="true" signature="610:1252" placeholder="..." />
+                <marker date="1447613862000" expanded="true" signature="642:1252" placeholder="..." />
+                <marker date="1447613862000" expanded="true" signature="683:1252" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConferenceSummaryViewModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="2706">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConferencesService.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConferencesService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36767036" vertical-offset="142" max-vertical-offset="858">
-              <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseContext.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.730769" vertical-offset="3595" max-vertical-offset="7150">
-              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Repositories.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.23077" vertical-offset="4308" max-vertical-offset="6688">
-              <caret line="215" column="48" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrmConfig.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="330">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+            <state vertical-scroll-proportion="-17.5" vertical-offset="227" max-vertical-offset="858">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,15 +96,15 @@
         <option value="$PROJECT_DIR$/Core/BindingModelMapper.php" />
         <option value="$PROJECT_DIR$/Controllers/UsersController.php" />
         <option value="$PROJECT_DIR$/ViewModels/UserInfoModel.php" />
-        <option value="$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php" />
         <option value="$PROJECT_DIR$/ORM/Collections.php" />
         <option value="$PROJECT_DIR$/Controllers/ConferencesController.php" />
         <option value="$PROJECT_DIR$/Views/Users/users.php" />
-        <option value="$PROJECT_DIR$/Views/Conferences/all.php" />
         <option value="$PROJECT_DIR$/Services/ConferencesService.php" />
-        <option value="$PROJECT_DIR$/Config/OrmConfig.php" />
         <option value="$PROJECT_DIR$/Repositories/HallsRepository.php" />
         <option value="$PROJECT_DIR$/ORM/Repositories.php" />
+        <option value="$PROJECT_DIR$/Config/OrmConfig.php" />
+        <option value="$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php" />
+        <option value="$PROJECT_DIR$/Views/Conferences/all.php" />
       </list>
     </option>
   </component>
@@ -212,99 +174,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Conferences" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ViewModels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repositories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RedDevil" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ORM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,7 +323,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="178" />
+      <option name="time" value="179" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -462,17 +332,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83980584" vertical-offset="537" max-vertical-offset="2508">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-          <folding>
-            <element signature="e#28#58#0#PHP" expanded="false" />
-            <element signature="e#3257#4358#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/InputModels/BaseInputModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.76923" vertical-offset="0" max-vertical-offset="1122">
@@ -563,14 +422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.9255663" vertical-offset="572" max-vertical-offset="3102">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Account/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.034865294" vertical-offset="44" max-vertical-offset="946">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -721,14 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/IdentityConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20919175" vertical-offset="0" max-vertical-offset="631">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Account/changepassword.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06973059" vertical-offset="0" max-vertical-offset="1078">
@@ -830,29 +673,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="2706">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/Venue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.923077" vertical-offset="1016" max-vertical-offset="2904">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Conferences/all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.076923" vertical-offset="264" max-vertical-offset="990">
-          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-          <folding>
-            <marker date="1447609104000" expanded="true" signature="155:1328" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,14 +692,6 @@
             <marker date="1447610386000" expanded="true" signature="-1:-1" placeholder="UPDATE halls..." />
             <marker date="1447610386000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="330">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,9 +727,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36767036" vertical-offset="142" max-vertical-offset="858">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+        <state vertical-scroll-proportion="-17.5" vertical-offset="227" max-vertical-offset="858">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViewHelpers/ActionLink.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="836">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Account/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6923077" vertical-offset="110" max-vertical-offset="946">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5578447" vertical-offset="110" max-vertical-offset="3102">
+          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17432646" vertical-offset="0" max-vertical-offset="631">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/IdentityConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20919175" vertical-offset="0" max-vertical-offset="631">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Conferences/all.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49838188" vertical-offset="0" max-vertical-offset="1188">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding>
+            <marker date="1447613862000" expanded="true" signature="610:1252" placeholder="..." />
+            <marker date="1447613862000" expanded="true" signature="642:1252" placeholder="..." />
+            <marker date="1447613862000" expanded="true" signature="683:1252" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
