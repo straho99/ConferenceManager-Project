@@ -161,6 +161,7 @@ $entityInfo['Name']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new RoleCollection($collection);
     }
 
@@ -181,6 +182,7 @@ $entityInfo['Name']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

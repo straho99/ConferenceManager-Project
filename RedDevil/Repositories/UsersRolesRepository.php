@@ -172,6 +172,7 @@ $entityInfo['role_id']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new UsersRoleCollection($collection);
     }
 
@@ -192,6 +193,7 @@ $entityInfo['role_id']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

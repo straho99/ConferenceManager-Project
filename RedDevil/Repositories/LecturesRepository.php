@@ -233,6 +233,7 @@ $entityInfo['Speaker_Id']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new LectureCollection($collection);
     }
 
@@ -259,6 +260,7 @@ $entityInfo['Speaker_Id']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

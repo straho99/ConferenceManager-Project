@@ -197,6 +197,7 @@ $entityInfo['OwnerId']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new VenueCollection($collection);
     }
 
@@ -220,6 +221,7 @@ $entityInfo['OwnerId']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

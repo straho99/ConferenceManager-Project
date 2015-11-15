@@ -208,6 +208,7 @@ $entityInfo['telephone']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new UserCollection($collection);
     }
 
@@ -231,6 +232,7 @@ $entityInfo['telephone']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

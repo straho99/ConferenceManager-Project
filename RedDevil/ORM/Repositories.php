@@ -195,6 +195,7 @@ $columnFilters
             self::\$selectedObjectPool[] = \$entity;
         }
 
+        \$this->where = substr(\$this->where, 0, 8);
         return new {$model}Collection(\$collection);
     }
 
@@ -214,6 +215,7 @@ $columnFilters
 
         self::\$selectedObjectPool[] = \$entity;
 
+        \$this->where = substr(\$this->where, 0, 8);
         return \$entity;
     }
 

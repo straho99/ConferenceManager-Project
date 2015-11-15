@@ -209,6 +209,7 @@ $entityInfo['Venue_Id']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new ConferenceCollection($collection);
     }
 
@@ -233,6 +234,7 @@ $entityInfo['Venue_Id']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 

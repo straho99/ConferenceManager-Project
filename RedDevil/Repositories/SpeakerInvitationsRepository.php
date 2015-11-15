@@ -185,6 +185,7 @@ $entityInfo['Status']);
             self::$selectedObjectPool[] = $entity;
         }
 
+        $this->where = substr($this->where, 0, 8);
         return new SpeakerInvitationCollection($collection);
     }
 
@@ -207,6 +208,7 @@ $entityInfo['Status']);
 
         self::$selectedObjectPool[] = $entity;
 
+        $this->where = substr($this->where, 0, 8);
         return $entity;
     }
 
