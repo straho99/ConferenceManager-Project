@@ -1,6 +1,1 @@
 Todos:
-- AccountController
-	- Register action
-	- Login action
-	- Logout action
-- Make the Db Context with parameterless constructor

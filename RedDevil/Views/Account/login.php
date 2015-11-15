@@ -12,6 +12,7 @@ use RedDevil\ViewHelpers\TextField;
 
 $form = new Form('login-form', 'home/index');
 $form->setAttribute('method', 'post');
+$form->setAttribute('action', '/account/login');
 
 $form->addTextField(TextField::create()
     ->setAttribute('class', 'form-control')

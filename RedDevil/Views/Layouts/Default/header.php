@@ -45,8 +45,16 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
+                <?php use RedDevil\Core\HttpContext;
+
+                if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
+                    <li><a href="/home/index">Hello, <?php echo HttpContext::getInstance()->getIdentity()->getUsername() ?>!</a></li>
+                    <li><a href="/account/logout">Logout</a></li>
+                <?php endif; ?>
+                <?php if (!HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
                 <li><a href="/account/register">Register</a></li>
                 <li><a href="/account/login">Login</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

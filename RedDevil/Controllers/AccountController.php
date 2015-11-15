@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Account\LoginInputModel;
 use RedDevil\InputModels\Account\RegisterInputModel;
 use RedDevil\Services\AccountService;
 use RedDevil\View;
@@ -10,7 +11,7 @@ use RedDevil\View;
 class AccountController extends BaseController {
     /**
      * @param RegisterInputModel $model
-     * @return View
+     * @return mixed
      * @Method('GET', 'POST')
      */
     public function register(RegisterInputModel $model)
@@ -27,7 +28,7 @@ class AccountController extends BaseController {
                 $this->redirect('home', 'index');
             } else {
                 $this->addErrorMessage('Registration failed.');
-                $this->redirect('home', 'index');
+                $this->redirect('account', 'register');
             }
         } else {
             return new View('account', 'register', new RegisterInputModel());
@@ -35,15 +36,25 @@ class AccountController extends BaseController {
     }
 
     /**
-     * @return \RedDevil\View
+     * @param LoginInputModel $model
+     * @return mixed
      * @Method('GET', 'POST')
      */
-    public function login()
+    public function login(LoginInputModel $model)
     {
+        $service = new AccountService($this->dbContext);
+
         if (HttpContext::getInstance()->isPost()) {
-            //TODO: add login logic
+            $result = $service->login($model);
+            if (!$result->hasError()) {
+                $this->addInfoMessage('Login successful.');
+                $this->redirect('home', 'index');
+            } else {
+                $this->addErrorMessage($result->getMessage());
+                $this->redirect('account', 'login');
+            }
         } else {
-            return new View('account', 'login');
+            return new View('account', 'login', new LoginInputModel());
         }
     }
 
@@ -53,8 +64,9 @@ class AccountController extends BaseController {
      */
     public function logout()
     {
-//        $accountService = new AccountService();
-
+        $service = new AccountService($this->dbContext);
+        $service->logout();
+        $this->addInfoMessage('Logout successful.');
         $this->redirectToUrl('/');
     }
 }

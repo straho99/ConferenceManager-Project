@@ -3,7 +3,9 @@
 namespace RedDevil\InputModels\Account;
 
 
-class LoginInputModel {
+use RedDevil\InputModels\BaseInputModel;
+
+class LoginInputModel extends BaseInputModel {
     private $username;
     private $password;
 

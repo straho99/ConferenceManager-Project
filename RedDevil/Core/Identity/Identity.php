@@ -27,6 +27,19 @@ class Identity {
     }
 
     /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        if (array_key_exists('username', $_SESSION)) {
+            $result = $_SESSION['username'];
+            return $result;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * @return bool
      */
     public function isAuthorised()

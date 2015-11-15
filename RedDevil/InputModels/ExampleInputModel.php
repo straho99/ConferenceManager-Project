@@ -7,10 +7,8 @@ class ExampleInputModel extends BaseInputModel {
     private $name;
     private $age;
 
-    public function __construct($name, $age)
+    public function __construct()
     {
-        $this->setName($name);
-        $this->setAge($age);
         parent::__construct();
     }
 

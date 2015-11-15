@@ -21,6 +21,9 @@ class AccountService extends BaseService {
         );
         $this->dbContext->getUsersRepository()->add($user);
         $this->dbContext->saveChanges();
+        $_SESSION['userId'] = $user->getId();
+        $_SESSION['username'] = $user->getUsername();
+
         return new ServiceResponse();
     }
 
@@ -30,8 +33,20 @@ class AccountService extends BaseService {
      */
     public function login(LoginInputModel $model)
     {
+        $user = $this->dbContext->getUsersRepository()
+            ->filterByUsername(' = "' . $model->getUsername() . '"')
+            ->findOne();
+        if ($user->getUsername() == null) {
+            return new ServiceResponse(1, 'Login failed. No such user.');
+        }
 
-        return new ServiceResponse();
+        if (password_verify($model->getPassword(), $user->getPassword())) {
+            $_SESSION['userId'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
+            return new ServiceResponse(null, 'Login successful.');
+        }
+
+        return new ServiceResponse(1, 'Wrong password.');
     }
 
     /**
