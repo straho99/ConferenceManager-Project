@@ -3,6 +3,7 @@
 namespace RedDevil\Services;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\Core\Identity\CMUser;
 use RedDevil\InputModels\Account\ChangePasswordInputModel;
 use RedDevil\InputModels\Account\LoginInputModel;
 use RedDevil\InputModels\Account\RegisterInputModel;
@@ -18,8 +19,10 @@ class AccountService extends BaseService {
     {
         $user = new User(
             $model->getUsername(),
+            $model->getEmail(),
             password_hash($model->getPassword(), PASSWORD_DEFAULT),
-            $model->getEmail()
+            $model->getFullname(),
+            $model->getTelephone()
         );
         $this->dbContext->getUsersRepository()->add($user);
         $this->dbContext->saveChanges();

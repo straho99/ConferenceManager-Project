@@ -13,7 +13,9 @@ class BindingModelMapper {
         $method = $class->getMethod($action);
         $properties = $method->getParameters();
         foreach ($properties as $property) {
-            if (gettype($property) == 'object') {
+            $type = $property->getClass();
+
+            if ($type !== null) {
                 $bindingModelClass = $property->getClass();
 
                 $bmClassName = $property->getClass()->name;

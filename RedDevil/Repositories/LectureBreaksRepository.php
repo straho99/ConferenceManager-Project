@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\UsersRole;
-use RedDevil\Collections\UsersRoleCollection;
+use RedDevil\Models\LectureBreak;
+use RedDevil\Collections\LectureBreakCollection;
 
-class UsersRolesRepository
+class LectureBreaksRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class UsersRolesRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var UsersRolesRepository
+     * @var LectureBreaksRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return UsersRolesRepository
+     * @return LectureBreaksRepository
      */
     public static function create()
     {
@@ -38,35 +38,46 @@ class UsersRolesRepository
     }
 
     /**
-     * @param $id
+     * @param $Id
      * @return $this
      */
-    public function filterById($id)
+    public function filterById($Id)
     {
-        $this->where .= " AND id $id";
-        $this->placeholders[] = $id;
+        $this->where .= " AND Id $Id";
+        $this->placeholders[] = $Id;
 
         return $this;
     }
     /**
-     * @param $user_id
+     * @param $Title
      * @return $this
      */
-    public function filterByUser_id($user_id)
+    public function filterByTitle($Title)
     {
-        $this->where .= " AND user_id $user_id";
-        $this->placeholders[] = $user_id;
+        $this->where .= " AND Title $Title";
+        $this->placeholders[] = $Title;
 
         return $this;
     }
     /**
-     * @param $role_id
+     * @param $Description
      * @return $this
      */
-    public function filterByRole_id($role_id)
+    public function filterByDescription($Description)
     {
-        $this->where .= " AND role_id $role_id";
-        $this->placeholders[] = $role_id;
+        $this->where .= " AND Description $Description";
+        $this->placeholders[] = $Description;
+
+        return $this;
+    }
+    /**
+     * @param $LectureId
+     * @return $this
+     */
+    public function filterByLectureId($LectureId)
+    {
+        $this->where .= " AND LectureId $LectureId";
+        $this->placeholders[] = $LectureId;
 
         return $this;
     }
@@ -152,43 +163,47 @@ class UsersRolesRepository
     }
 
     /**
-     * @return UsersRoleCollection
+     * @return LectureBreakCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order;
+        $this->query = "SELECT * FROM lectureBreaks" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+            $entity = new LectureBreak($entityInfo['Id'],
+$entityInfo['Title'],
+$entityInfo['Description'],
+$entityInfo['LectureId']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
         }
 
-        return new UsersRoleCollection($collection);
+        return new LectureBreakCollection($collection);
     }
 
     /**
-     * @return UsersRole
+     * @return LectureBreak
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM lectureBreaks" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+        $entity = new LectureBreak($entityInfo['Id'],
+$entityInfo['Title'],
+$entityInfo['Description'],
+$entityInfo['LectureId']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -203,14 +218,14 @@ $entityInfo['role_id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM users_roles" . $this->where;
+        $this->query = "DELETE FROM lectureBreaks" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(UsersRole $model)
+    public static function add(LectureBreak $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -232,31 +247,34 @@ $entityInfo['role_id']);
         return true;
     }
 
-    private static function update(UsersRole $model)
+    private static function update(LectureBreak $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE users_roles SET user_id= :user_id, role_id= :role_id WHERE id = :id";
+        $query = "UPDATE lectureBreaks SET Id= :Id, Title= :Title, Description= :Description, LectureId= :LectureId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':id' => $model->getId(),
-':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Title' => $model->getTitle(),
+':Description' => $model->getDescription(),
+':LectureId' => $model->getLectureId()
             ]
         );
     }
 
-    private static function insert(UsersRole $model)
+    private static function insert(LectureBreak $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (user_id,role_id) VALUES (:user_id, :role_id);";
+        $query = "INSERT INTO users (Id,Title,Description,LectureId) VALUES (:Id, :Title, :Description, :LectureId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Title' => $model->getTitle(),
+':Description' => $model->getDescription(),
+':LectureId' => $model->getLectureId()
             ]
         );
         $model->setId($db->lastInsertId());
@@ -264,7 +282,7 @@ $entityInfo['role_id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\UsersRole');
+        $refc = new \ReflectionClass('\RedDevil\Models\LectureBreak');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

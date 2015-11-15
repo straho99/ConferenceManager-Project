@@ -4,9 +4,9 @@ namespace RedDevil\Config;
 
 class IdentityConfig {
 
-    const UPDATE_IDENTITY = true;
+    const UPDATE_IDENTITY = false;
 
-    const CURRENT_USER_MODEL = "\\RedDevil\\Core\\Identity\\IdentityUser";
+    const CURRENT_USER_MODEL = "\\RedDevil\\Core\\Identity\\CMUser";
 
     public static $DEFAULT_USER_ROLES = array(
         'user',

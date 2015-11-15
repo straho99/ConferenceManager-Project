@@ -17,6 +17,14 @@ class UserCollection
     }
 
     /**
+     * @return User[]
+     */
+    public function getUsers()
+    {
+        return $this->collection;
+    }
+
+    /**
      * @param callable $callback
      */
     public function each(Callable $callback)

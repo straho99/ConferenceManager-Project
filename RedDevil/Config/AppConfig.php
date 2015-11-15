@@ -12,17 +12,14 @@ class AppConfig {
         'RedDevil\\Controllers\\UserController' => 'register',
         'RedDevil\\Controllers\\HomeController' => 'index',
         'RedDevil\\Controllers\\AccountController' => 'register',
-        'RedDevil\\Controllers\\ExperimentController' => 'index'
     );
 
     public static $DEFAULT_CONTROLLERS_FOR_AREAS = array(
-        'Area1' => 'AreaController',
-        'Area2' => 'AnotherController'
+
     );
 
     public static $DEFAULT_ACTIONS_FOR_AREA_CONTROLLERS = array(
-        'AreaController' => 'doSomething',
-        'AnotherController' => 'doSomethingElse'
+
     );
 
     const VIEW_FOLDER = 'Views';

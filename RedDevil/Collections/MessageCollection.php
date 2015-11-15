@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\Role;
+use RedDevil\Models\Message;
 
-class RoleCollection
+class MessageCollection
 {
     /**
-     * @var Role[];
+     * @var Message[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class RoleCollection
     }
 
     /**
-     * @return Role[]
+     * @return Message[]
      */
-    public function getRoles()
+    public function getMessages()
     {
         return $this->collection;
     }

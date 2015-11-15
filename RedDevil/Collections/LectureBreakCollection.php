@@ -2,18 +2,26 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\Todo;
+use RedDevil\Models\LectureBreak;
 
-class TodoCollection
+class LectureBreakCollection
 {
     /**
-     * @var Todo[];
+     * @var LectureBreak[];
      */
     private $collection = [];
 
     public function __construct($models = [])
     {
         $this->collection = $models;
+    }
+
+    /**
+     * @return LectureBreak[]
+     */
+    public function getLectureBreaks()
+    {
+        return $this->collection;
     }
 
     /**

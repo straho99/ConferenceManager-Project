@@ -7,6 +7,6 @@ class DatabaseConfig {
     const DB_HOST = '127.0.0.1';
     const DB_USER = 'admin';
     const DB_PASS = 'admin';
-    const DB_NAME = 'todos';
-    const DB_INSTANCE = 'todos';
+    const DB_NAME = 'conference-manager';
+    const DB_INSTANCE = 'conference-manager';
 }

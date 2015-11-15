@@ -10,6 +10,7 @@ class Collections {
     public static function create($model)
     {
         $modelCollection = $model . 'Collection';
+        $modelName = $model . 's';
         $modelArray = $model . '[]';
         return <<<KUF
 <?php
@@ -28,6 +29,14 @@ class $modelCollection
     public function __construct(\$models = [])
     {
         \$this->collection = \$models;
+    }
+
+    /**
+     * @return $modelArray
+     */
+    public function get$modelName()
+    {
+        return \$this->collection;
     }
 
     /**

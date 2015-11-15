@@ -60,6 +60,17 @@ class UsersRepository
         return $this;
     }
     /**
+     * @param $email
+     * @return $this
+     */
+    public function filterByEmail($email)
+    {
+        $this->where .= " AND email $email";
+        $this->placeholders[] = $email;
+
+        return $this;
+    }
+    /**
      * @param $password
      * @return $this
      */
@@ -71,13 +82,24 @@ class UsersRepository
         return $this;
     }
     /**
-     * @param $email
+     * @param $fullname
      * @return $this
      */
-    public function filterByEmail($email)
+    public function filterByFullname($fullname)
     {
-        $this->where .= " AND email $email";
-        $this->placeholders[] = $email;
+        $this->where .= " AND fullname $fullname";
+        $this->placeholders[] = $fullname;
+
+        return $this;
+    }
+    /**
+     * @param $telephone
+     * @return $this
+     */
+    public function filterByTelephone($telephone)
+    {
+        $this->where .= " AND telephone $telephone";
+        $this->placeholders[] = $telephone;
 
         return $this;
     }
@@ -177,9 +199,10 @@ class UsersRepository
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
             $entity = new User($entityInfo['username'],
-$entityInfo['password'],
 $entityInfo['email'],
-$entityInfo['id']);
+$entityInfo['password'],
+$entityInfo['fullname'],
+$entityInfo['telephone']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -201,9 +224,10 @@ $entityInfo['id']);
         $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new User($entityInfo['username'],
-$entityInfo['password'],
 $entityInfo['email'],
-$entityInfo['id']);
+$entityInfo['password'],
+$entityInfo['fullname'],
+$entityInfo['telephone']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -251,14 +275,16 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE users SET username= :username, password= :password, email= :email WHERE id = :id";
+        $query = "UPDATE users SET username= :username, email= :email, password= :password, fullname= :fullname, telephone= :telephone WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
 ':username' => $model->getUsername(),
+':email' => $model->getEmail(),
 ':password' => $model->getPassword(),
-':email' => $model->getEmail()
+':fullname' => $model->getFullname(),
+':telephone' => $model->getTelephone()
             ]
         );
     }
@@ -267,13 +293,15 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (username,password,email) VALUES (:username, :password, :email);";
+        $query = "INSERT INTO users (username,email,password,fullname,telephone) VALUES (:username, :email, :password, :fullname, :telephone);";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':username' => $model->getUsername(),
+':email' => $model->getEmail(),
 ':password' => $model->getPassword(),
-':email' => $model->getEmail()
+':fullname' => $model->getFullname(),
+':telephone' => $model->getTelephone()
             ]
         );
         $model->setId($db->lastInsertId());

@@ -1,9 +1,18 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-15 13:26:41';
+	 public static $dateOfLastCheck = '2015-11-15 18:08:11';
 
 	 public static $ROUTES = [ 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'users',
+			 'route' => 'users/{string $username}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/{string $username}',
+			 ]
+		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\AccountController',
 			 'action' => 'register',
@@ -36,11 +45,27 @@ class RoutesConfig {
 			 ]
 		 ], 
 		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'all',
+			 'route' => 'conferences/all',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
 			 'controller' => 'RedDevil\Controllers\HomeController',
 			 'action' => 'index',
 			 'route' => 'home/index',
 			 'annotations' => [
 				'method' => 'get',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'users',
+			 'route' => 'users/users',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/{string $username}',
 			 ]
 		 ], 
 	 ]; 

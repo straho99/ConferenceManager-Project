@@ -25,6 +25,16 @@
             ->setAttribute('id', 'email')
             ->addLabel('Email', true)
             ->setAttribute('name', 'email'));
+        $form->addTextField(TextField::create()
+            ->setAttribute('class', 'form-control')
+            ->setAttribute('id', 'fullname')
+            ->addLabel('Full name', true)
+            ->setAttribute('name', 'fullname'));
+        $form->addTextField(TextField::create()
+            ->setAttribute('class', 'form-control')
+            ->setAttribute('id', 'telephone')
+            ->addLabel('Telephone', true)
+            ->setAttribute('name', 'telephone'));
         $form->addPasswordField(PasswordField::create()
             ->setAttribute('class', 'form-control')
             ->setAttribute('id', 'password')

@@ -8,6 +8,8 @@ class RegisterInputModel extends BaseInputModel
 {
     private $username;
     private $email;
+    private $fullname;
+    private $telephone;
     private $password;
     private $confirmPassword;
 
@@ -52,6 +54,38 @@ class RegisterInputModel extends BaseInputModel
     /**
      * @return mixed
      */
+    public function getFullname()
+    {
+        return $this->fullname;
+    }
+
+    /**
+     * @param mixed $fullname
+     */
+    public function setFullname($fullname)
+    {
+        $this->fullname = $fullname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param mixed $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
@@ -85,6 +119,12 @@ class RegisterInputModel extends BaseInputModel
     {
         $this->validator->setRule('minlength', $this->username, 3,
             'Username | Username must be at least 3 characters long.');
+
+        $this->validator->setRule('minlength', $this->fullname, 3,
+            'fullname | Full name must be at least 3 characters long.');
+
+        $this->validator->setRule('minlength', $this->telephone, 7,
+            'telephone | Telephone must be at least 3 characters long.');
 
         $this->validator->setRule('email', $this->email, "Email | Invalid email.");
 

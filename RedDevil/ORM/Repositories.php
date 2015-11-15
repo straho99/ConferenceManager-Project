@@ -44,7 +44,7 @@ class Repositories {
 KUF;
 
         }
-        $columnsInEntity[] = '$entityInfo[\'id\']';
+//        $columnsInEntity[] = '$entityInfo[\'Id\']';
 
         $columnsImploded = trim($columnNamesCommaSeparated, ",");
         $columnEntityText = implode(",\n", $columnsInEntity);

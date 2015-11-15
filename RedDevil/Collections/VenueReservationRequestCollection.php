@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\Role;
+use RedDevil\Models\VenueReservationRequest;
 
-class RoleCollection
+class VenueReservationRequestCollection
 {
     /**
-     * @var Role[];
+     * @var VenueReservationRequest[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class RoleCollection
     }
 
     /**
-     * @return Role[]
+     * @return VenueReservationRequest[]
      */
-    public function getRoles()
+    public function getVenueReservationRequests()
     {
         return $this->collection;
     }

@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\Role;
+use RedDevil\Models\Notification;
 
-class RoleCollection
+class NotificationCollection
 {
     /**
-     * @var Role[];
+     * @var Notification[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class RoleCollection
     }
 
     /**
-     * @return Role[]
+     * @return Notification[]
      */
-    public function getRoles()
+    public function getNotifications()
     {
         return $this->collection;
     }

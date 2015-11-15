@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\Role;
+use RedDevil\Models\ConferencesParticipant;
 
-class RoleCollection
+class ConferencesParticipantCollection
 {
     /**
-     * @var Role[];
+     * @var ConferencesParticipant[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class RoleCollection
     }
 
     /**
-     * @return Role[]
+     * @return ConferencesParticipant[]
      */
-    public function getRoles()
+    public function getConferencesParticipants()
     {
         return $this->collection;
     }

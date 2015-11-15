@@ -4,16 +4,16 @@ namespace RedDevil\Models;
 
 class Role
 {
-	const COL_ID = 'id';
-	const COL_TITLE = 'title';
+	const COL_ID = 'Id';
+	const COL_NAME = 'Name';
 
-	private $id;
-	private $title;
+	private $Id;
+	private $Name;
 
-	public function __construct($title, $id = null)
+	public function __construct($Id, $Name, $id = null)
 	{
-		$this->setId($id);
-		$this->setTitle($title);
+		$this->setId($Id);
+		$this->setName($Name);
 	}
 
 	/**
@@ -21,16 +21,16 @@ class Role
 	*/
 	public function getId()
 	{
-		return $this->id;
+		return $this->Id;
 	}
 
 	/**
-	* @param $id
+	* @param $Id
 	* @return $this
 	*/
-	public function setId($id)
+	public function setId($Id)
 	{
-		$this->id = $id;
+		$this->Id = $Id;
 		
 		return $this;
 	}
@@ -39,18 +39,18 @@ class Role
 	/**
 	* @return mixed
 	*/
-	public function getTitle()
+	public function getName()
 	{
-		return $this->title;
+		return $this->Name;
 	}
 
 	/**
-	* @param $title
+	* @param $Name
 	* @return $this
 	*/
-	public function setTitle($title)
+	public function setName($Name)
 	{
-		$this->title = $title;
+		$this->Name = $Name;
 		
 		return $this;
 	}

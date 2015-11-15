@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\UsersRole;
-use RedDevil\Collections\UsersRoleCollection;
+use RedDevil\Models\Venue;
+use RedDevil\Collections\VenueCollection;
 
-class UsersRolesRepository
+class VenuesRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class UsersRolesRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var UsersRolesRepository
+     * @var VenuesRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return UsersRolesRepository
+     * @return VenuesRepository
      */
     public static function create()
     {
@@ -38,35 +38,57 @@ class UsersRolesRepository
     }
 
     /**
-     * @param $id
+     * @param $Id
      * @return $this
      */
-    public function filterById($id)
+    public function filterById($Id)
     {
-        $this->where .= " AND id $id";
-        $this->placeholders[] = $id;
+        $this->where .= " AND Id $Id";
+        $this->placeholders[] = $Id;
 
         return $this;
     }
     /**
-     * @param $user_id
+     * @param $Name
      * @return $this
      */
-    public function filterByUser_id($user_id)
+    public function filterByName($Name)
     {
-        $this->where .= " AND user_id $user_id";
-        $this->placeholders[] = $user_id;
+        $this->where .= " AND Name $Name";
+        $this->placeholders[] = $Name;
 
         return $this;
     }
     /**
-     * @param $role_id
+     * @param $Description
      * @return $this
      */
-    public function filterByRole_id($role_id)
+    public function filterByDescription($Description)
     {
-        $this->where .= " AND role_id $role_id";
-        $this->placeholders[] = $role_id;
+        $this->where .= " AND Description $Description";
+        $this->placeholders[] = $Description;
+
+        return $this;
+    }
+    /**
+     * @param $Address
+     * @return $this
+     */
+    public function filterByAddress($Address)
+    {
+        $this->where .= " AND Address $Address";
+        $this->placeholders[] = $Address;
+
+        return $this;
+    }
+    /**
+     * @param $OwnerId
+     * @return $this
+     */
+    public function filterByOwnerId($OwnerId)
+    {
+        $this->where .= " AND OwnerId $OwnerId";
+        $this->placeholders[] = $OwnerId;
 
         return $this;
     }
@@ -152,43 +174,49 @@ class UsersRolesRepository
     }
 
     /**
-     * @return UsersRoleCollection
+     * @return VenueCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order;
+        $this->query = "SELECT * FROM venues" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+            $entity = new Venue($entityInfo['Id'],
+$entityInfo['Name'],
+$entityInfo['Description'],
+$entityInfo['Address'],
+$entityInfo['OwnerId']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
         }
 
-        return new UsersRoleCollection($collection);
+        return new VenueCollection($collection);
     }
 
     /**
-     * @return UsersRole
+     * @return Venue
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM venues" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+        $entity = new Venue($entityInfo['Id'],
+$entityInfo['Name'],
+$entityInfo['Description'],
+$entityInfo['Address'],
+$entityInfo['OwnerId']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -203,14 +231,14 @@ $entityInfo['role_id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM users_roles" . $this->where;
+        $this->query = "DELETE FROM venues" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(UsersRole $model)
+    public static function add(Venue $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -232,31 +260,36 @@ $entityInfo['role_id']);
         return true;
     }
 
-    private static function update(UsersRole $model)
+    private static function update(Venue $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE users_roles SET user_id= :user_id, role_id= :role_id WHERE id = :id";
+        $query = "UPDATE venues SET Id= :Id, Name= :Name, Description= :Description, Address= :Address, OwnerId= :OwnerId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':id' => $model->getId(),
-':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Name' => $model->getName(),
+':Description' => $model->getDescription(),
+':Address' => $model->getAddress(),
+':OwnerId' => $model->getOwnerId()
             ]
         );
     }
 
-    private static function insert(UsersRole $model)
+    private static function insert(Venue $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (user_id,role_id) VALUES (:user_id, :role_id);";
+        $query = "INSERT INTO users (Id,Name,Description,Address,OwnerId) VALUES (:Id, :Name, :Description, :Address, :OwnerId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Name' => $model->getName(),
+':Description' => $model->getDescription(),
+':Address' => $model->getAddress(),
+':OwnerId' => $model->getOwnerId()
             ]
         );
         $model->setId($db->lastInsertId());
@@ -264,7 +297,7 @@ $entityInfo['role_id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\UsersRole');
+        $refc = new \ReflectionClass('\RedDevil\Models\Venue');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

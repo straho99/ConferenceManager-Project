@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\UsersRole;
-use RedDevil\Collections\UsersRoleCollection;
+use RedDevil\Models\Notification;
+use RedDevil\Collections\NotificationCollection;
 
-class UsersRolesRepository
+class NotificationsRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class UsersRolesRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var UsersRolesRepository
+     * @var NotificationsRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return UsersRolesRepository
+     * @return NotificationsRepository
      */
     public static function create()
     {
@@ -38,35 +38,46 @@ class UsersRolesRepository
     }
 
     /**
-     * @param $id
+     * @param $Id
      * @return $this
      */
-    public function filterById($id)
+    public function filterById($Id)
     {
-        $this->where .= " AND id $id";
-        $this->placeholders[] = $id;
+        $this->where .= " AND Id $Id";
+        $this->placeholders[] = $Id;
 
         return $this;
     }
     /**
-     * @param $user_id
+     * @param $Content
      * @return $this
      */
-    public function filterByUser_id($user_id)
+    public function filterByContent($Content)
     {
-        $this->where .= " AND user_id $user_id";
-        $this->placeholders[] = $user_id;
+        $this->where .= " AND Content $Content";
+        $this->placeholders[] = $Content;
 
         return $this;
     }
     /**
-     * @param $role_id
+     * @param $IsRead
      * @return $this
      */
-    public function filterByRole_id($role_id)
+    public function filterByIsRead($IsRead)
     {
-        $this->where .= " AND role_id $role_id";
-        $this->placeholders[] = $role_id;
+        $this->where .= " AND IsRead $IsRead";
+        $this->placeholders[] = $IsRead;
+
+        return $this;
+    }
+    /**
+     * @param $RecipientId
+     * @return $this
+     */
+    public function filterByRecipientId($RecipientId)
+    {
+        $this->where .= " AND RecipientId $RecipientId";
+        $this->placeholders[] = $RecipientId;
 
         return $this;
     }
@@ -152,43 +163,47 @@ class UsersRolesRepository
     }
 
     /**
-     * @return UsersRoleCollection
+     * @return NotificationCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order;
+        $this->query = "SELECT * FROM notifications" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+            $entity = new Notification($entityInfo['Id'],
+$entityInfo['Content'],
+$entityInfo['IsRead'],
+$entityInfo['RecipientId']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
         }
 
-        return new UsersRoleCollection($collection);
+        return new NotificationCollection($collection);
     }
 
     /**
-     * @return UsersRole
+     * @return Notification
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM users_roles" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM notifications" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+        $entity = new Notification($entityInfo['Id'],
+$entityInfo['Content'],
+$entityInfo['IsRead'],
+$entityInfo['RecipientId']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -203,14 +218,14 @@ $entityInfo['role_id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM users_roles" . $this->where;
+        $this->query = "DELETE FROM notifications" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(UsersRole $model)
+    public static function add(Notification $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -232,31 +247,34 @@ $entityInfo['role_id']);
         return true;
     }
 
-    private static function update(UsersRole $model)
+    private static function update(Notification $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE users_roles SET user_id= :user_id, role_id= :role_id WHERE id = :id";
+        $query = "UPDATE notifications SET Id= :Id, Content= :Content, IsRead= :IsRead, RecipientId= :RecipientId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':id' => $model->getId(),
-':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Content' => $model->getContent(),
+':IsRead' => $model->getIsRead(),
+':RecipientId' => $model->getRecipientId()
             ]
         );
     }
 
-    private static function insert(UsersRole $model)
+    private static function insert(Notification $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (user_id,role_id) VALUES (:user_id, :role_id);";
+        $query = "INSERT INTO users (Id,Content,IsRead,RecipientId) VALUES (:Id, :Content, :IsRead, :RecipientId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':user_id' => $model->getUser_id(),
-':role_id' => $model->getRole_id()
+                ':Id' => $model->getId(),
+':Content' => $model->getContent(),
+':IsRead' => $model->getIsRead(),
+':RecipientId' => $model->getRecipientId()
             ]
         );
         $model->setId($db->lastInsertId());
@@ -264,7 +282,7 @@ $entityInfo['role_id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\UsersRole');
+        $refc = new \ReflectionClass('\RedDevil\Models\Notification');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

@@ -38,24 +38,24 @@ class RolesRepository
     }
 
     /**
-     * @param $id
+     * @param $Id
      * @return $this
      */
-    public function filterById($id)
+    public function filterById($Id)
     {
-        $this->where .= " AND id $id";
-        $this->placeholders[] = $id;
+        $this->where .= " AND Id $Id";
+        $this->placeholders[] = $Id;
 
         return $this;
     }
     /**
-     * @param $title
+     * @param $Name
      * @return $this
      */
-    public function filterByTitle($title)
+    public function filterByName($Name)
     {
-        $this->where .= " AND title $title";
-        $this->placeholders[] = $title;
+        $this->where .= " AND Name $Name";
+        $this->placeholders[] = $Name;
 
         return $this;
     }
@@ -154,8 +154,8 @@ class RolesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Role($entityInfo['title'],
-$entityInfo['id']);
+            $entity = new Role($entityInfo['Id'],
+$entityInfo['Name']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -176,8 +176,8 @@ $entityInfo['id']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Role($entityInfo['title'],
-$entityInfo['id']);
+        $entity = new Role($entityInfo['Id'],
+$entityInfo['Name']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -225,12 +225,12 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE roles SET title= :title WHERE id = :id";
+        $query = "UPDATE roles SET Id= :Id, Name= :Name WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':id' => $model->getId(),
-':title' => $model->getTitle()
+                ':Id' => $model->getId(),
+':Name' => $model->getName()
             ]
         );
     }
@@ -239,11 +239,12 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (title) VALUES (:title);";
+        $query = "INSERT INTO users (Id,Name) VALUES (:Id, :Name);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':title' => $model->getTitle()
+                ':Id' => $model->getId(),
+':Name' => $model->getName()
             ]
         );
         $model->setId($db->lastInsertId());

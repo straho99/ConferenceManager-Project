@@ -17,6 +17,14 @@ class UsersRoleCollection
     }
 
     /**
+     * @return UsersRole[]
+     */
+    public function getUsersRoles()
+    {
+        return $this->collection;
+    }
+
+    /**
      * @param callable $callback
      */
     public function each(Callable $callback)
