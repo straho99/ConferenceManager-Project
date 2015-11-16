@@ -1,0 +1,35 @@
+<?php /** @var \RedDevil\ViewModels\VenueSummaryViewModel[] $model */?>
+<div class="col-md-7 col-md-offset-1">
+    <?php foreach ($model as $venue) : ?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <?php
+                    \RedDevil\ViewHelpers\ActionLink::create()
+                        ->setAttribute('href', '/venues/details/' . $venue->getId())
+                        ->setData($venue->getName())
+                        ->render();
+                    ?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-body">
+                        <strong>Address: </strong>
+                        <?php
+                        echo $venue->getAddress();
+                        ?>
+                        <br />
+                        <strong>Owner:</strong>
+                        <?php
+                        \RedDevil\ViewHelpers\ActionLink::create()
+                            ->setAttribute('href', '/users/' . $venue->getOwnerUsername())
+                            ->setData($venue->getOwnerUsername())
+                            ->render();
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
