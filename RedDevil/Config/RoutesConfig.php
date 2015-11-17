@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-17 05:10:15';
+	 public static $dateOfLastCheck = '2015-11-17 05:56:03';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -97,6 +97,13 @@ class RoutesConfig {
 			 'route' => 'venues/details',
 			 'annotations' => [
 				'route' => 'venues/details/{integer $venueid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'add',
+			 'route' => 'venues/add',
+			 'annotations' => [
 			 ]
 		 ], 
 	 ]; 

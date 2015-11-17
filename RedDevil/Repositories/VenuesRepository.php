@@ -49,13 +49,13 @@ class VenuesRepository
         return $this;
     }
     /**
-     * @param $Name
+     * @param $Title
      * @return $this
      */
-    public function filterByName($Name)
+    public function filterByTitle($Title)
     {
-        $this->where .= " AND Name $Name";
-        $this->placeholders[] = $Name;
+        $this->where .= " AND Title $Title";
+        $this->placeholders[] = $Title;
 
         return $this;
     }
@@ -187,7 +187,7 @@ class VenuesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Venue($entityInfo['Name'],
+            $entity = new Venue($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['Address'],
 $entityInfo['OwnerId'],
@@ -213,7 +213,7 @@ $entityInfo['id']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Venue($entityInfo['Name'],
+        $entity = new Venue($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['Address'],
 $entityInfo['OwnerId'],
@@ -266,12 +266,12 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE venues SET Name= :Name, Description= :Description, Address= :Address, OwnerId= :OwnerId WHERE id = :id";
+        $query = "UPDATE venues SET Title= :Title, Description= :Description, Address= :Address, OwnerId= :OwnerId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
-':Name' => $model->getName(),
+':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
 ':Address' => $model->getAddress(),
 ':OwnerId' => $model->getOwnerId()
@@ -283,11 +283,11 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO venues (Name,Description,Address,OwnerId) VALUES (:Name, :Description, :Address, :OwnerId);";
+        $query = "INSERT INTO venues (Title,Description,Address,OwnerId) VALUES (:Title, :Description, :Address, :OwnerId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Name' => $model->getName(),
+                ':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
 ':Address' => $model->getAddress(),
 ':OwnerId' => $model->getOwnerId()

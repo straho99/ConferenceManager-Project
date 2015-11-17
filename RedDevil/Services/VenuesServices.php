@@ -2,6 +2,9 @@
 
 namespace RedDevil\Services;
 
+use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Venue\VenueInputModel;
+use RedDevil\Models\Venue;
 use RedDevil\ViewModels\HallViewModel;
 use RedDevil\ViewModels\VenueDetailsViewModel;
 use RedDevil\ViewModels\VenueSummaryViewModel;
@@ -12,7 +15,7 @@ class VenuesServices extends BaseService {
     {
         $venueModels = [];
         $venues = $this->dbContext->getVenuesRepository()
-            ->orderByDescending('Name')
+            ->orderByDescending('Title')
             ->findAll();
         foreach ($venues->getVenues() as $venue) {
             $model = new VenueSummaryViewModel($venue);
@@ -27,6 +30,10 @@ class VenuesServices extends BaseService {
         return $venueModels;
     }
 
+    /**
+     * @param $venueId
+     * @return VenueDetailsViewModel
+     */
     public function getVenueDetails($venueId)
     {
         $venue = $this->dbContext->getVenuesRepository()
@@ -53,5 +60,24 @@ class VenuesServices extends BaseService {
         $model->setHalls($hallModels);
 
         return $model;
+    }
+
+    /**
+     * @param VenueInputModel $model
+     * @return ServiceResponse
+     * @throws \Exception
+     */
+    public function addVenue(VenueInputModel $model)
+    {
+        $venue = new Venue(
+            $model->getTitle(),
+            $model->getDescription(),
+            $model->getAddress(),
+            HttpContext::getInstance()->getIdentity()->getUserId()
+        );
+        $this->dbContext->getVenuesRepository()
+            ->add($venue);
+        $this->dbContext->saveChanges();
+        return new ServiceResponse(null, 'Venue added successfully.');
     }
 }

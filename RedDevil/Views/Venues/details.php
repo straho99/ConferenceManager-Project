@@ -1,9 +1,10 @@
-<?php /** @var \RedDevil\ViewModels\VenueDetailsViewModel $model */?>
+<?php /** @var \RedDevil\ViewModels\VenueDetailsViewModel $model */
+use RedDevil\ViewHelpers\ActionLink; ?>
 <div class="col-md-9">
 <div class="jumbotron">
     <h1>
         <?php
-        echo $model->getName();
+        echo $model->getTitle();
         ?>
     </h1>
     <p>
@@ -19,14 +20,23 @@
     <p>
         <strong>Owner: </strong>
         <?php
-        \RedDevil\ViewHelpers\ActionLink::create()
+        ActionLink::create()
             ->setAttribute('href', '/users/' . $model->getOwnerUsername())
             ->setData($model->getOwnerUsername())
             ->render();
         ?>
     </p>
 </div>
-<h3>Halls</h3>
+<h3>
+    Halls
+    <?php
+    ActionLink::create()
+        ->setAttribute('href', '/venues/' . $model->getId() . '/addhall')
+        ->setAttribute('class', 'btn btn-success')
+        ->setData('Add Hall')
+        ->render();
+    ?>
+</h3>
 <?php foreach ($model->getHalls() as $hall) : ?>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -48,4 +58,9 @@
         </div>
     </div>
 <?php endforeach; ?>
+    <?php
+    if (count($model->getHalls()) == 0) {
+        echo 'No halls for this venue are available at the moment.';
+    }
+    ?>
 </div>

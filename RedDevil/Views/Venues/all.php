@@ -8,7 +8,7 @@
                     <?php
                     \RedDevil\ViewHelpers\ActionLink::create()
                         ->setAttribute('href', '/venues/details/' . $venue->getId())
-                        ->setData($venue->getName())
+                        ->setData($venue->getTitle())
                         ->render();
                     ?>
                 </h3>

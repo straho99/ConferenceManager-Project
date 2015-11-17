@@ -20,7 +20,7 @@ class ConferencesService extends BaseService {
             $venue = $this->dbContext->getVenuesRepository()
                 ->filterById(" = $conferenceId")
                 ->findOne()
-                ->getName();
+                ->getTitle();
             $ownerId = $conference->getOwnerId();
             $owner = $this->dbContext->getUsersRepository()
                 ->filterById(" = $ownerId")
@@ -56,6 +56,6 @@ class ConferencesService extends BaseService {
         $this->dbContext->getConferencesRepository()
             ->add($conference);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, 'Conference created successfully.');
+        return new ServiceResponse(null, 'Conference added successfully.');
     }
 }

@@ -6,14 +6,14 @@ use RedDevil\Models\Venue;
 
 class VenueSummaryViewModel {
     private $id;
-    private $name;
+    private $title;
     private $address;
     private $ownerUsername;
 
     function __construct(Venue $venue)
     {
         $this->id = $venue->getId();
-        $this->name = $venue->getName();
+        $this->title = $venue->getTitle();
         $this->address = $venue->getAddress();
     }
 
@@ -36,17 +36,17 @@ class VenueSummaryViewModel {
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $title
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**

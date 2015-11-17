@@ -49,13 +49,13 @@ class HallsRepository
         return $this;
     }
     /**
-     * @param $Name
+     * @param $Title
      * @return $this
      */
-    public function filterByName($Name)
+    public function filterByTitle($Title)
     {
-        $this->where .= " AND Name $Name";
-        $this->placeholders[] = $Name;
+        $this->where .= " AND Title $Title";
+        $this->placeholders[] = $Title;
 
         return $this;
     }
@@ -176,7 +176,7 @@ class HallsRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Hall($entityInfo['Name'],
+            $entity = new Hall($entityInfo['Title'],
 $entityInfo['Capacity'],
 $entityInfo['VenueId'],
 $entityInfo['id']);
@@ -201,7 +201,7 @@ $entityInfo['id']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Hall($entityInfo['Name'],
+        $entity = new Hall($entityInfo['Title'],
 $entityInfo['Capacity'],
 $entityInfo['VenueId'],
 $entityInfo['id']);
@@ -253,12 +253,12 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE halls SET Name= :Name, Capacity= :Capacity, VenueId= :VenueId WHERE id = :id";
+        $query = "UPDATE halls SET Title= :Title, Capacity= :Capacity, VenueId= :VenueId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
-':Name' => $model->getName(),
+':Title' => $model->getTitle(),
 ':Capacity' => $model->getCapacity(),
 ':VenueId' => $model->getVenueId()
             ]
@@ -269,11 +269,11 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO halls (Name,Capacity,VenueId) VALUES (:Name, :Capacity, :VenueId);";
+        $query = "INSERT INTO halls (Title,Capacity,VenueId) VALUES (:Title, :Capacity, :VenueId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Name' => $model->getName(),
+                ':Title' => $model->getTitle(),
 ':Capacity' => $model->getCapacity(),
 ':VenueId' => $model->getVenueId()
             ]

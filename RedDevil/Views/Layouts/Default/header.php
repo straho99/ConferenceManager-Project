@@ -72,6 +72,6 @@
             <li role="presentation"><a href="/lectures/own">Own lectures</a></li>
             <li role="presentation"><a href="/lectures/mustvisit">My schedule</a></li>
             <li role="presentation"><a href="/conferences/add">Add conference</a></li>
-            <li role="presentation"><a href="venues/add">Add venue</a></li>
+            <li role="presentation"><a href="/venues/add">Add venue</a></li>
         </ul>
     </div>
