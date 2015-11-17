@@ -1,4 +1,5 @@
 <?php /** @var \RedDevil\ViewModels\VenueDetailsViewModel $model */?>
+<div class="col-md-9">
 <div class="jumbotron">
     <h1>
         <?php
@@ -47,3 +48,4 @@
         </div>
     </div>
 <?php endforeach; ?>
+</div>

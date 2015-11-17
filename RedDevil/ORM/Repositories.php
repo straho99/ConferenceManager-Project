@@ -44,7 +44,7 @@ class Repositories {
 KUF;
 
         }
-//        $columnsInEntity[] = '$entityInfo[\'Id\']';
+        $columnsInEntity[] = '$entityInfo[\'id\']';
 
         $columnsImploded = trim($columnNamesCommaSeparated, ",");
         $columnEntityText = implode(",\n", $columnsInEntity);
@@ -273,7 +273,7 @@ $columnFilters
     {
         \$db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        \$query = "INSERT INTO users ($columnsImploded) VALUES ($onlyPlaceHolders);";
+        \$query = "INSERT INTO $tableName ($columnsImploded) VALUES ($onlyPlaceHolders);";
         \$result = \$db->prepare(\$query);
         \$result->execute(
             [

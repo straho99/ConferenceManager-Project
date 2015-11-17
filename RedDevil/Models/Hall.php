@@ -4,19 +4,19 @@ namespace RedDevil\Models;
 
 class Hall
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_NAME = 'Name';
 	const COL_CAPACITY = 'Capacity';
 	const COL_VENUEID = 'VenueId';
 
-	private $Id;
+	private $id;
 	private $Name;
 	private $Capacity;
 	private $VenueId;
 
-	public function __construct($Id, $Name, $Capacity, $VenueId, $id = null)
+	public function __construct($Name, $Capacity, $VenueId, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setName($Name);
 		$this->setCapacity($Capacity);
 		$this->setVenueId($VenueId);
@@ -27,16 +27,16 @@ class Hall
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

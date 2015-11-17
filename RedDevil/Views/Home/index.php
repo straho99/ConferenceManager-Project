@@ -1,15 +1,14 @@
 <?php /** @var \RedDevil\ViewModels\ConferenceSummaryViewModel[] $model */?>
-<div class="col-md-7 col-md-offset-1">
+<div class="col-md-9">
     <h2>Conferences</h2>
-
     <?php foreach ($model as $conference) : ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <?php
                     \RedDevil\ViewHelpers\ActionLink::create()
-                        ->setAttribute('href', '/conferences/details' . $conference->getId())
-                        ->setData($conference->getName())
+                        ->setAttribute('href', '/conferences/details/' . $conference->getId())
+                        ->setData($conference->getTitle())
                         ->render();
                     ?>
                 </h3>
@@ -31,10 +30,19 @@
                         <br />
                         <strong>Venue:</strong>
                         <?php
-                        \RedDevil\ViewHelpers\ActionLink::create()
-                            ->setAttribute('href', '/venues/details/' . $conference->getVenueId())
-                            ->setData($conference->getVenue())
-                            ->render();
+                        $venue = $conference->getVenue() == null ? '(not available)' :
+                            $conference->getVenue();
+                        if ($conference->getVenue() == null) {
+                            \RedDevil\ViewHelpers\ActionLink::create()
+                                ->setAttribute('href', '#')
+                                ->setData($venue)
+                                ->render();
+                        } else {
+                            \RedDevil\ViewHelpers\ActionLink::create()
+                                ->setAttribute('href', '/venues/details/' . $conference->getVenueId())
+                                ->setData($venue)
+                                ->render();
+                        }
                         ?>
                         <strong>Organizer:</strong>
                         <?php

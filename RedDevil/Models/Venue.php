@@ -4,21 +4,21 @@ namespace RedDevil\Models;
 
 class Venue
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_NAME = 'Name';
 	const COL_DESCRIPTION = 'Description';
 	const COL_ADDRESS = 'Address';
 	const COL_OWNERID = 'OwnerId';
 
-	private $Id;
+	private $id;
 	private $Name;
 	private $Description;
 	private $Address;
 	private $OwnerId;
 
-	public function __construct($Id, $Name, $Description, $Address, $OwnerId, $id = null)
+	public function __construct($Name, $Description, $Address, $OwnerId, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setName($Name);
 		$this->setDescription($Description);
 		$this->setAddress($Address);
@@ -30,16 +30,16 @@ class Venue
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

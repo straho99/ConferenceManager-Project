@@ -1,6 +1,5 @@
-<h2>Login</h2>
-
-<div class="row">
+<div class="col-md-9">
+    <h2>Login</h2>
     <div class="form-group">
 <?php
 use RedDevil\ViewHelpers\ActionLink;

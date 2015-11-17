@@ -4,19 +4,19 @@ namespace RedDevil\Models;
 
 class Message
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_SENDERID = 'SenderId';
 	const COL_RECIPIENTID = 'RecipientId';
 	const COL_CONTENT = 'Content';
 
-	private $Id;
+	private $id;
 	private $SenderId;
 	private $RecipientId;
 	private $Content;
 
-	public function __construct($Id, $SenderId, $RecipientId, $Content, $id = null)
+	public function __construct($SenderId, $RecipientId, $Content, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setSenderId($SenderId);
 		$this->setRecipientId($RecipientId);
 		$this->setContent($Content);
@@ -27,16 +27,16 @@ class Message
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

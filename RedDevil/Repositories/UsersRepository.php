@@ -202,7 +202,8 @@ class UsersRepository
 $entityInfo['email'],
 $entityInfo['password'],
 $entityInfo['fullname'],
-$entityInfo['telephone']);
+$entityInfo['telephone'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -228,7 +229,8 @@ $entityInfo['telephone']);
 $entityInfo['email'],
 $entityInfo['password'],
 $entityInfo['fullname'],
-$entityInfo['telephone']);
+$entityInfo['telephone'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 

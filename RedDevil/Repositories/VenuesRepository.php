@@ -38,13 +38,13 @@ class VenuesRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -187,11 +187,11 @@ class VenuesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Venue($entityInfo['Id'],
-$entityInfo['Name'],
+            $entity = new Venue($entityInfo['Name'],
 $entityInfo['Description'],
 $entityInfo['Address'],
-$entityInfo['OwnerId']);
+$entityInfo['OwnerId'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -213,11 +213,11 @@ $entityInfo['OwnerId']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Venue($entityInfo['Id'],
-$entityInfo['Name'],
+        $entity = new Venue($entityInfo['Name'],
 $entityInfo['Description'],
 $entityInfo['Address'],
-$entityInfo['OwnerId']);
+$entityInfo['OwnerId'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -266,11 +266,11 @@ $entityInfo['OwnerId']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE venues SET Id= :Id, Name= :Name, Description= :Description, Address= :Address, OwnerId= :OwnerId WHERE id = :id";
+        $query = "UPDATE venues SET Name= :Name, Description= :Description, Address= :Address, OwnerId= :OwnerId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':Name' => $model->getName(),
 ':Description' => $model->getDescription(),
 ':Address' => $model->getAddress(),
@@ -283,12 +283,11 @@ $entityInfo['OwnerId']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,Name,Description,Address,OwnerId) VALUES (:Id, :Name, :Description, :Address, :OwnerId);";
+        $query = "INSERT INTO venues (Name,Description,Address,OwnerId) VALUES (:Name, :Description, :Address, :OwnerId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Name' => $model->getName(),
+                ':Name' => $model->getName(),
 ':Description' => $model->getDescription(),
 ':Address' => $model->getAddress(),
 ':OwnerId' => $model->getOwnerId()

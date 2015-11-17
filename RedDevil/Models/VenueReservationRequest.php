@@ -4,19 +4,19 @@ namespace RedDevil\Models;
 
 class VenueReservationRequest
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_VENUEID = 'VenueId';
 	const COL_CONFERENCEID = 'ConferenceId';
 	const COL_STATUS = 'Status';
 
-	private $Id;
+	private $id;
 	private $VenueId;
 	private $ConferenceId;
 	private $Status;
 
-	public function __construct($Id, $VenueId, $ConferenceId, $Status, $id = null)
+	public function __construct($VenueId, $ConferenceId, $Status, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setVenueId($VenueId);
 		$this->setConferenceId($ConferenceId);
 		$this->setStatus($Status);
@@ -27,16 +27,16 @@ class VenueReservationRequest
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

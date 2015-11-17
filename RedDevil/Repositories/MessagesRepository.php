@@ -38,13 +38,13 @@ class MessagesRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -176,10 +176,10 @@ class MessagesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Message($entityInfo['Id'],
-$entityInfo['SenderId'],
+            $entity = new Message($entityInfo['SenderId'],
 $entityInfo['RecipientId'],
-$entityInfo['Content']);
+$entityInfo['Content'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -201,10 +201,10 @@ $entityInfo['Content']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Message($entityInfo['Id'],
-$entityInfo['SenderId'],
+        $entity = new Message($entityInfo['SenderId'],
 $entityInfo['RecipientId'],
-$entityInfo['Content']);
+$entityInfo['Content'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -253,11 +253,11 @@ $entityInfo['Content']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE messages SET Id= :Id, SenderId= :SenderId, RecipientId= :RecipientId, Content= :Content WHERE id = :id";
+        $query = "UPDATE messages SET SenderId= :SenderId, RecipientId= :RecipientId, Content= :Content WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':SenderId' => $model->getSenderId(),
 ':RecipientId' => $model->getRecipientId(),
 ':Content' => $model->getContent()
@@ -269,12 +269,11 @@ $entityInfo['Content']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,SenderId,RecipientId,Content) VALUES (:Id, :SenderId, :RecipientId, :Content);";
+        $query = "INSERT INTO messages (SenderId,RecipientId,Content) VALUES (:SenderId, :RecipientId, :Content);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':SenderId' => $model->getSenderId(),
+                ':SenderId' => $model->getSenderId(),
 ':RecipientId' => $model->getRecipientId(),
 ':Content' => $model->getContent()
             ]

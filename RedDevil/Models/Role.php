@@ -4,15 +4,15 @@ namespace RedDevil\Models;
 
 class Role
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_NAME = 'Name';
 
-	private $Id;
+	private $id;
 	private $Name;
 
-	public function __construct($Id, $Name, $id = null)
+	public function __construct($Name, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setName($Name);
 	}
 
@@ -21,16 +21,16 @@ class Role
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

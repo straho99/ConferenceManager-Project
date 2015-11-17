@@ -4,7 +4,7 @@ namespace RedDevil\Models;
 
 class Lecture
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_TITLE = 'Title';
 	const COL_DESCRIPTION = 'Description';
 	const COL_STARTDATE = 'StartDate';
@@ -13,7 +13,7 @@ class Lecture
 	const COL_HALL_ID = 'Hall_Id';
 	const COL_SPEAKER_ID = 'Speaker_Id';
 
-	private $Id;
+	private $id;
 	private $Title;
 	private $Description;
 	private $StartDate;
@@ -22,9 +22,9 @@ class Lecture
 	private $Hall_Id;
 	private $Speaker_Id;
 
-	public function __construct($Id, $Title, $Description, $StartDate, $EndDate, $ConferenceId, $Hall_Id, $Speaker_Id, $id = null)
+	public function __construct($Title, $Description, $StartDate, $EndDate, $ConferenceId, $Hall_Id, $Speaker_Id, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setTitle($Title);
 		$this->setDescription($Description);
 		$this->setStartDate($StartDate);
@@ -39,16 +39,16 @@ class Lecture
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

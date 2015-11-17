@@ -1,7 +1,6 @@
 <?php /** @var \RedDevil\InputModels\Account\RegisterInputModel $model */?>
-<h2>Register</h2>
-
-<div class="row">
+<div class="col-md-9">
+    <h2>Register</h2>
     <div class="form-group">
         <?php
         use RedDevil\ViewHelpers\ActionLink;

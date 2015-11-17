@@ -155,7 +155,8 @@ class ConferencesParticipantsRepository
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
             $entity = new ConferencesParticipant($entityInfo['ConferenceId'],
-$entityInfo['ParticipantId']);
+$entityInfo['ParticipantId'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -178,7 +179,8 @@ $entityInfo['ParticipantId']);
         $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new ConferencesParticipant($entityInfo['ConferenceId'],
-$entityInfo['ParticipantId']);
+$entityInfo['ParticipantId'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -241,7 +243,7 @@ $entityInfo['ParticipantId']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (ConferenceId,ParticipantId) VALUES (:ConferenceId, :ParticipantId);";
+        $query = "INSERT INTO conferencesParticipants (ConferenceId,ParticipantId) VALUES (:ConferenceId, :ParticipantId);";
         $result = $db->prepare($query);
         $result->execute(
             [

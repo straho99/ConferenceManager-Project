@@ -38,24 +38,24 @@ class ConferencesRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
     /**
-     * @param $Name
+     * @param $Title
      * @return $this
      */
-    public function filterByName($Name)
+    public function filterByTitle($Title)
     {
-        $this->where .= " AND Name $Name";
-        $this->placeholders[] = $Name;
+        $this->where .= " AND Title $Title";
+        $this->placeholders[] = $Title;
 
         return $this;
     }
@@ -198,12 +198,12 @@ class ConferencesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Conference($entityInfo['Id'],
-$entityInfo['Name'],
+            $entity = new Conference($entityInfo['Title'],
 $entityInfo['StartDate'],
 $entityInfo['EndDate'],
 $entityInfo['OwnerId'],
-$entityInfo['Venue_Id']);
+$entityInfo['Venue_Id'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -225,12 +225,12 @@ $entityInfo['Venue_Id']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Conference($entityInfo['Id'],
-$entityInfo['Name'],
+        $entity = new Conference($entityInfo['Title'],
 $entityInfo['StartDate'],
 $entityInfo['EndDate'],
 $entityInfo['OwnerId'],
-$entityInfo['Venue_Id']);
+$entityInfo['Venue_Id'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -279,12 +279,12 @@ $entityInfo['Venue_Id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE conferences SET Id= :Id, Name= :Name, StartDate= :StartDate, EndDate= :EndDate, OwnerId= :OwnerId, Venue_Id= :Venue_Id WHERE id = :id";
+        $query = "UPDATE conferences SET Title= :Title, StartDate= :StartDate, EndDate= :EndDate, OwnerId= :OwnerId, Venue_Id= :Venue_Id WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Name' => $model->getName(),
+                ':id' => $model->getId(),
+':Title' => $model->getTitle(),
 ':StartDate' => $model->getStartDate(),
 ':EndDate' => $model->getEndDate(),
 ':OwnerId' => $model->getOwnerId(),
@@ -297,12 +297,11 @@ $entityInfo['Venue_Id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,Name,StartDate,EndDate,OwnerId,Venue_Id) VALUES (:Id, :Name, :StartDate, :EndDate, :OwnerId, :Venue_Id);";
+        $query = "INSERT INTO conferences (Title,StartDate,EndDate,OwnerId,Venue_Id) VALUES (:Title, :StartDate, :EndDate, :OwnerId, :Venue_Id);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Name' => $model->getName(),
+                ':Title' => $model->getTitle(),
 ':StartDate' => $model->getStartDate(),
 ':EndDate' => $model->getEndDate(),
 ':OwnerId' => $model->getOwnerId(),

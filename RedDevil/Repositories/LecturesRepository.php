@@ -38,13 +38,13 @@ class LecturesRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -220,14 +220,14 @@ class LecturesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Lecture($entityInfo['Id'],
-$entityInfo['Title'],
+            $entity = new Lecture($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['StartDate'],
 $entityInfo['EndDate'],
 $entityInfo['ConferenceId'],
 $entityInfo['Hall_Id'],
-$entityInfo['Speaker_Id']);
+$entityInfo['Speaker_Id'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -249,14 +249,14 @@ $entityInfo['Speaker_Id']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Lecture($entityInfo['Id'],
-$entityInfo['Title'],
+        $entity = new Lecture($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['StartDate'],
 $entityInfo['EndDate'],
 $entityInfo['ConferenceId'],
 $entityInfo['Hall_Id'],
-$entityInfo['Speaker_Id']);
+$entityInfo['Speaker_Id'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -305,11 +305,11 @@ $entityInfo['Speaker_Id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE lectures SET Id= :Id, Title= :Title, Description= :Description, StartDate= :StartDate, EndDate= :EndDate, ConferenceId= :ConferenceId, Hall_Id= :Hall_Id, Speaker_Id= :Speaker_Id WHERE id = :id";
+        $query = "UPDATE lectures SET Title= :Title, Description= :Description, StartDate= :StartDate, EndDate= :EndDate, ConferenceId= :ConferenceId, Hall_Id= :Hall_Id, Speaker_Id= :Speaker_Id WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
 ':StartDate' => $model->getStartDate(),
@@ -325,12 +325,11 @@ $entityInfo['Speaker_Id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,Title,Description,StartDate,EndDate,ConferenceId,Hall_Id,Speaker_Id) VALUES (:Id, :Title, :Description, :StartDate, :EndDate, :ConferenceId, :Hall_Id, :Speaker_Id);";
+        $query = "INSERT INTO lectures (Title,Description,StartDate,EndDate,ConferenceId,Hall_Id,Speaker_Id) VALUES (:Title, :Description, :StartDate, :EndDate, :ConferenceId, :Hall_Id, :Speaker_Id);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Title' => $model->getTitle(),
+                ':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
 ':StartDate' => $model->getStartDate(),
 ':EndDate' => $model->getEndDate(),

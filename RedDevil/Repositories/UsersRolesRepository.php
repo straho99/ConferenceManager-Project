@@ -166,7 +166,8 @@ class UsersRolesRepository
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
             $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+$entityInfo['role_id'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -189,7 +190,8 @@ $entityInfo['role_id']);
         $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new UsersRole($entityInfo['user_id'],
-$entityInfo['role_id']);
+$entityInfo['role_id'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -253,7 +255,7 @@ $entityInfo['role_id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (user_id,role_id) VALUES (:user_id, :role_id);";
+        $query = "INSERT INTO users_roles (user_id,role_id) VALUES (:user_id, :role_id);";
         $result = $db->prepare($query);
         $result->execute(
             [

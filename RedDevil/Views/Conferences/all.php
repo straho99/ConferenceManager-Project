@@ -7,7 +7,7 @@
                 <?php
                 \RedDevil\ViewHelpers\ActionLink::create()
                     ->setAttribute('href', '/conferences/details' . $conference->getId())
-                    ->setData($conference->getName())
+                    ->setData($conference->getTitle())
                     ->render();
                 ?>
             </h3>
@@ -29,10 +29,19 @@
                     <br />
                     <strong>Venue:</strong>
                     <?php
+                    $venue = $conference->getVenue() == null ? '(not available)' :
+                        $conference->getVenue();
+                    if ($conference->getVenue() == null) {
+                        \RedDevil\ViewHelpers\ActionLink::create()
+                            ->setAttribute('href', '#')
+                            ->setData($venue)
+                            ->render();
+                    } else {
                     \RedDevil\ViewHelpers\ActionLink::create()
                         ->setAttribute('href', '/venues/details/' . $conference->getVenueId())
-                        ->setData($conference->getVenue())
+                        ->setData($venue)
                         ->render();
+                    }
                     ?>
                     <strong>Organizer:</strong>
                     <?php

@@ -6,7 +6,7 @@ use RedDevil\Models\Conference;
 
 class ConferenceSummaryViewModel {
     private $id;
-    private $name;
+    private $title;
     private $startDate;
     private $endDate;
     private $venue;
@@ -16,7 +16,7 @@ class ConferenceSummaryViewModel {
     function __construct(Conference $conference)
     {
         $this->id = $conference->getId();
-        $this->name = $conference->getName();
+        $this->title = $conference->getTitle();
         $this->startDate = $conference->getStartDate();
         $this->endDate = $conference->getEndDate();
         $this->venueId = $conference->getVenue_Id();
@@ -41,17 +41,17 @@ class ConferenceSummaryViewModel {
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $title
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**

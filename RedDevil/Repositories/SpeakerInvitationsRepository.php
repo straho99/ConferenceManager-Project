@@ -38,13 +38,13 @@ class SpeakerInvitationsRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -176,10 +176,10 @@ class SpeakerInvitationsRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new SpeakerInvitation($entityInfo['Id'],
-$entityInfo['LectureId'],
+            $entity = new SpeakerInvitation($entityInfo['LectureId'],
 $entityInfo['SpeakerId'],
-$entityInfo['Status']);
+$entityInfo['Status'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -201,10 +201,10 @@ $entityInfo['Status']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new SpeakerInvitation($entityInfo['Id'],
-$entityInfo['LectureId'],
+        $entity = new SpeakerInvitation($entityInfo['LectureId'],
 $entityInfo['SpeakerId'],
-$entityInfo['Status']);
+$entityInfo['Status'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -253,11 +253,11 @@ $entityInfo['Status']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE speakerInvitations SET Id= :Id, LectureId= :LectureId, SpeakerId= :SpeakerId, Status= :Status WHERE id = :id";
+        $query = "UPDATE speakerInvitations SET LectureId= :LectureId, SpeakerId= :SpeakerId, Status= :Status WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':LectureId' => $model->getLectureId(),
 ':SpeakerId' => $model->getSpeakerId(),
 ':Status' => $model->getStatus()
@@ -269,12 +269,11 @@ $entityInfo['Status']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,LectureId,SpeakerId,Status) VALUES (:Id, :LectureId, :SpeakerId, :Status);";
+        $query = "INSERT INTO speakerInvitations (LectureId,SpeakerId,Status) VALUES (:LectureId, :SpeakerId, :Status);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':LectureId' => $model->getLectureId(),
+                ':LectureId' => $model->getLectureId(),
 ':SpeakerId' => $model->getSpeakerId(),
 ':Status' => $model->getStatus()
             ]

@@ -4,19 +4,19 @@ namespace RedDevil\Models;
 
 class Notification
 {
-	const COL_ID = 'Id';
+	const COL_ID = 'id';
 	const COL_CONTENT = 'Content';
 	const COL_ISREAD = 'IsRead';
 	const COL_RECIPIENTID = 'RecipientId';
 
-	private $Id;
+	private $id;
 	private $Content;
 	private $IsRead;
 	private $RecipientId;
 
-	public function __construct($Id, $Content, $IsRead, $RecipientId, $id = null)
+	public function __construct($Content, $IsRead, $RecipientId, $id = null)
 	{
-		$this->setId($Id);
+		$this->setId($id);
 		$this->setContent($Content);
 		$this->setIsRead($IsRead);
 		$this->setRecipientId($RecipientId);
@@ -27,16 +27,16 @@ class Notification
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}

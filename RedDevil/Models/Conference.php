@@ -4,24 +4,24 @@ namespace RedDevil\Models;
 
 class Conference
 {
-	const COL_ID = 'Id';
-	const COL_NAME = 'Name';
+	const COL_ID = 'id';
+	const COL_TITLE = 'Title';
 	const COL_STARTDATE = 'StartDate';
 	const COL_ENDDATE = 'EndDate';
 	const COL_OWNERID = 'OwnerId';
 	const COL_VENUE_ID = 'Venue_Id';
 
-	private $Id;
-	private $Name;
+	private $id;
+	private $Title;
 	private $StartDate;
 	private $EndDate;
 	private $OwnerId;
 	private $Venue_Id;
 
-	public function __construct($Id, $Name, $StartDate, $EndDate, $OwnerId, $Venue_Id, $id = null)
+	public function __construct($Title, $StartDate, $EndDate, $OwnerId, $Venue_Id, $id = null)
 	{
-		$this->setId($Id);
-		$this->setName($Name);
+		$this->setId($id);
+		$this->setTitle($Title);
 		$this->setStartDate($StartDate);
 		$this->setEndDate($EndDate);
 		$this->setOwnerId($OwnerId);
@@ -33,16 +33,16 @@ class Conference
 	*/
 	public function getId()
 	{
-		return $this->Id;
+		return $this->id;
 	}
 
 	/**
-	* @param $Id
+	* @param $id
 	* @return $this
 	*/
-	public function setId($Id)
+	public function setId($id)
 	{
-		$this->Id = $Id;
+		$this->id = $id;
 		
 		return $this;
 	}
@@ -51,18 +51,18 @@ class Conference
 	/**
 	* @return mixed
 	*/
-	public function getName()
+	public function getTitle()
 	{
-		return $this->Name;
+		return $this->Title;
 	}
 
 	/**
-	* @param $Name
+	* @param $Title
 	* @return $this
 	*/
-	public function setName($Name)
+	public function setTitle($Title)
 	{
-		$this->Name = $Name;
+		$this->Title = $Title;
 		
 		return $this;
 	}

@@ -27,6 +27,11 @@ class Form extends \RedDevil\ViewHelpers\BaseViewHelper {
         $this->fields[] = $textField;
     }
 
+    public function addDateField(\RedDevil\ViewHelpers\DateField $dateField)
+    {
+        $this->fields[] = $dateField;
+    }
+
     public function addSubmitButton(\RedDevil\ViewHelpers\SubmitButton $submit)
     {
         $this->fields[] = $submit;

@@ -38,13 +38,13 @@ class RolesRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -154,8 +154,8 @@ class RolesRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Role($entityInfo['Id'],
-$entityInfo['Name']);
+            $entity = new Role($entityInfo['Name'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -177,8 +177,8 @@ $entityInfo['Name']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Role($entityInfo['Id'],
-$entityInfo['Name']);
+        $entity = new Role($entityInfo['Name'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -227,11 +227,11 @@ $entityInfo['Name']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE roles SET Id= :Id, Name= :Name WHERE id = :id";
+        $query = "UPDATE roles SET Name= :Name WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':Name' => $model->getName()
             ]
         );
@@ -241,12 +241,11 @@ $entityInfo['Name']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,Name) VALUES (:Id, :Name);";
+        $query = "INSERT INTO roles (Name) VALUES (:Name);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Name' => $model->getName()
+                ':Name' => $model->getName()
             ]
         );
         $model->setId($db->lastInsertId());

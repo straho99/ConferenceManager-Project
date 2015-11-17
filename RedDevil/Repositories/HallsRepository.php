@@ -38,13 +38,13 @@ class HallsRepository
     }
 
     /**
-     * @param $Id
+     * @param $id
      * @return $this
      */
-    public function filterById($Id)
+    public function filterById($id)
     {
-        $this->where .= " AND Id $Id";
-        $this->placeholders[] = $Id;
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
 
         return $this;
     }
@@ -176,10 +176,10 @@ class HallsRepository
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new Hall($entityInfo['Id'],
-$entityInfo['Name'],
+            $entity = new Hall($entityInfo['Name'],
 $entityInfo['Capacity'],
-$entityInfo['VenueId']);
+$entityInfo['VenueId'],
+$entityInfo['id']);
 
             $collection[] = $entity;
             self::$selectedObjectPool[] = $entity;
@@ -201,10 +201,10 @@ $entityInfo['VenueId']);
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new Hall($entityInfo['Id'],
-$entityInfo['Name'],
+        $entity = new Hall($entityInfo['Name'],
 $entityInfo['Capacity'],
-$entityInfo['VenueId']);
+$entityInfo['VenueId'],
+$entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
 
@@ -253,11 +253,11 @@ $entityInfo['VenueId']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE halls SET Id= :Id, Name= :Name, Capacity= :Capacity, VenueId= :VenueId WHERE id = :id";
+        $query = "UPDATE halls SET Name= :Name, Capacity= :Capacity, VenueId= :VenueId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
+                ':id' => $model->getId(),
 ':Name' => $model->getName(),
 ':Capacity' => $model->getCapacity(),
 ':VenueId' => $model->getVenueId()
@@ -269,12 +269,11 @@ $entityInfo['VenueId']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO users (Id,Name,Capacity,VenueId) VALUES (:Id, :Name, :Capacity, :VenueId);";
+        $query = "INSERT INTO halls (Name,Capacity,VenueId) VALUES (:Name, :Capacity, :VenueId);";
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':Id' => $model->getId(),
-':Name' => $model->getName(),
+                ':Name' => $model->getName(),
 ':Capacity' => $model->getCapacity(),
 ':VenueId' => $model->getVenueId()
             ]

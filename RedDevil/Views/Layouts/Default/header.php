@@ -34,10 +34,14 @@
             </a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/notifications/index">Notifications <span class="badge">7</span></a></li>
-                <li><a href="/messages/index">Messages <span class="badge">11</span></a></li>
-            </ul>
+            <?php use RedDevil\Core\HttpContext;
+            if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
+                <ul class="nav navbar-nav">
+                    <li><a href="/notifications/index">Notifications <span class="badge">7</span></a></li>
+                    <li><a href="/messages/index">Messages <span class="badge">11</span></a></li>
+                </ul>
+            <?php endif; ?>
+
             <form class="navbar-form navbar-left" role="search" action="/search/index">
                 <div class="form-group">
                     <input type="text" name="keyword" class="form-control" placeholder="Search">
@@ -45,9 +49,7 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <?php use RedDevil\Core\HttpContext;
-
-                if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
+                <?php if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
                     <li><a href="/account/changePassword">Hello, <?php echo HttpContext::getInstance()->getIdentity()->getUsername() ?>!</a></li>
                     <li><a href="/account/logout">Logout</a></li>
                 <?php endif; ?>
@@ -60,5 +62,16 @@
     </div>
 </div>
 <div class="container body-content">
-
 <?php include('messages.php'); ?>
+<div class="row">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="disabled"><a href="#"><h4>My menu</h4></a></li>
+            <li role="presentation"><a href="/conferences/own">Own conferences</a></li>
+            <li role="presentation"><a href="/venues/own">Own venues</a></li>
+            <li role="presentation"><a href="/lectures/own">Own lectures</a></li>
+            <li role="presentation"><a href="/lectures/mustvisit">My schedule</a></li>
+            <li role="presentation"><a href="/conferences/add">Add conference</a></li>
+            <li role="presentation"><a href="venues/add">Add venue</a></li>
+        </ul>
+    </div>
