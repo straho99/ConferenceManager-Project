@@ -3,7 +3,9 @@
 namespace RedDevil\Services;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Venue\HallInputModel;
 use RedDevil\InputModels\Venue\VenueInputModel;
+use RedDevil\Models\Hall;
 use RedDevil\Models\Venue;
 use RedDevil\ViewModels\HallViewModel;
 use RedDevil\ViewModels\VenueDetailsViewModel;
@@ -79,5 +81,28 @@ class VenuesServices extends BaseService {
             ->add($venue);
         $this->dbContext->saveChanges();
         return new ServiceResponse(null, 'Venue added successfully.');
+    }
+
+    public function addHall(HallInputModel $model)
+    {
+        $hall = new Hall(
+            $model->getTitle(),
+            $model->getCapacity(),
+            $model->getVenueId()
+        );
+        $this->dbContext->getHallsRepository()
+            ->add($hall);
+        $this->dbContext->saveChanges();
+        return new ServiceResponse(null, 'Hall added successfully.');
+    }
+
+    public function deleteHall($hallId)
+    {
+        $hall = $this->dbContext->getHallsRepository()
+            ->filterById(" = $hallId")
+            ->delete();
+
+        $this->dbContext->saveChanges();
+        return new ServiceResponse(null, 'Hall deleted successfully.');
     }
 }

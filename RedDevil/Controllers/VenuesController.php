@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Venue\HallInputModel;
 use RedDevil\InputModels\Venue\VenueInputModel;
 use RedDevil\Services\VenuesServices;
 use RedDevil\View;
@@ -56,6 +57,58 @@ class VenuesController extends BaseController {
             }
         } else {
             return new View('venues', 'add', new VenueInputModel());
+        }
+    }
+
+    /**
+     * @param $venueId
+     * @return View
+     * @Route('venues/{integer $venueId}/addhall')
+     */
+    public function addHall($venueId)
+    {
+        return new View('venues', 'addhall', $venueId);
+    }
+
+    /**
+     * @param HallInputModel $model
+     * @return View
+     * @Method('POST')
+     * @Route('venues/createhall')
+     */
+    public function createHall(HallInputModel $model)
+    {
+        if (!$model->isValid()) {
+            return new View('venues', 'addhall', $model->getVenueId());
+        }
+
+        $service = new VenuesServices($this->dbContext);
+        $result = $service->addHall($model);
+        if (!$result->hasError()) {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirectToUrl('/venues/details/' . $model->getVenueId());
+        } else {
+            $this->addErrorMessage($result->getMessage());
+            $this->redirectToUrl('/venues/details/' . $model->getVenueId());
+        }
+    }
+
+    /**
+     * @param $venueId
+     * @param $hallId
+     * @Method('GET')
+     * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}')
+     */
+    public function deleteHall($venueId, $hallId)
+    {
+        $service = new VenuesServices($this->dbContext);
+        $result = $service->deleteHall($hallId);
+        if (!$result->hasError()) {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirectToUrl('/venues/details/' . $venueId);
+        } else {
+            $this->addErrorMessage($result->getMessage());
+            $this->redirectToUrl('/venues/details/' . $venueId);
         }
     }
 }

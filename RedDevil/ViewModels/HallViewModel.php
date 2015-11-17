@@ -6,13 +6,13 @@ use RedDevil\Models\Hall;
 
 class HallViewModel {
     private $id;
-    private $name;
+    private $title;
     private $capacity;
 
     function __construct(Hall $hall)
     {
         $this->id = $hall->getId();
-        $this->name = $hall->getName();
+        $this->title = $hall->getTitle();
         $this->capacity = $hall->getCapacity();
     }
 
@@ -35,17 +35,17 @@ class HallViewModel {
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $title
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**

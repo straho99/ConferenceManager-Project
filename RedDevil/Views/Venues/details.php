@@ -42,7 +42,7 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         <div class="panel-heading">
             <h3 class="panel-title">
                 <?php
-                echo $hall->getName();
+                echo $hall->getTitle();
                 ?>
             </h3>
         </div>
@@ -52,6 +52,11 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                     <strong>Capacity: </strong>
                     <?php
                     echo $hall->getCapacity();
+                    ActionLink::create()
+                        ->setAttribute('href', '/venues/' . $model->getId() . '/deletehall/' . $hall->getId())
+                        ->setAttribute('class', 'btn btn-danger pull-right')
+                        ->setData('Delete')
+                        ->render();
                     ?>
                 </div>
             </div>

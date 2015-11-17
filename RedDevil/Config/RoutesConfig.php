@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-17 05:56:03';
+	 public static $dateOfLastCheck = '2015-11-17 21:56:56';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -19,6 +19,32 @@ class RoutesConfig {
 			 'route' => 'venues/details/{integer $venueId}',
 			 'annotations' => [
 				'route' => 'venues/details/{integer $venueid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'addHall',
+			 'route' => 'venues/{integer $venueId}/addhall',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/addhall',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'createHall',
+			 'route' => 'venues/createhall',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'venues/createhall',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'deleteHall',
+			 'route' => 'venues/{integer $venueId}/deletehall/{integer $hallId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
 			 ]
 		 ], 
 		 [ 
@@ -104,6 +130,32 @@ class RoutesConfig {
 			 'action' => 'add',
 			 'route' => 'venues/add',
 			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'addHall',
+			 'route' => 'venues/addHall',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/addhall',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'createHall',
+			 'route' => 'venues/createHall',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'venues/createhall',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'deleteHall',
+			 'route' => 'venues/deleteHall',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
 			 ]
 		 ], 
 	 ]; 

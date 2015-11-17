@@ -8,6 +8,8 @@ abstract class BaseController {
     protected $isPost = false;
     protected $dbContext;
 
+    public $ViewBag = [];
+
     public function __construct(DatabaseContext $dbContext)
     {
         $this->dbContext = $dbContext;

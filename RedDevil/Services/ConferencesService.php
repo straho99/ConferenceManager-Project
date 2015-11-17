@@ -16,9 +16,9 @@ class ConferencesService extends BaseService {
             ->findAll();
 
         foreach ($conferences->getConferences() as $conference) {
-            $conferenceId = $conference->getId();
+            $venueId = $conference->getVenue_Id();
             $venue = $this->dbContext->getVenuesRepository()
-                ->filterById(" = $conferenceId")
+                ->filterById(" = $venueId")
                 ->findOne()
                 ->getTitle();
             $ownerId = $conference->getOwnerId();
