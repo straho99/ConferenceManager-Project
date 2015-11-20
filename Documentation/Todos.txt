@@ -1,3 +1,41 @@
 Todos:
 - Implement ValidateToken annotation
 - Implement Table ViewHelper
+
+- Register - done
+- Login - done
+- Change password - done
+- All conferences - done
+- All venues done
+- Add venue - done
+	- Add Hall to venue - done
+	- Delete Hall from venue - done
+
+- Add conference - done
+
+- Conference details
+
+- Edit conference
+	- Add venue to conference
+	- Add speaker to conference
+	- Add lecture
+	- Add breaks to lecture
+
+- Respond to speaker invitation
+- Respond to venue request
+
+- Venue schedule
+- User schedule
+- MustSee lecture
+
+- Own conferences
+- Own lectures
+- Own venues
+
+- Send message to user
+
+- View notifications
+- View messages
+- Reply to message
+
+- Search users, conferences, venues and lectures

@@ -2,10 +2,14 @@
 
 namespace RedDevil\Services;
 
+use RedDevil\Config\AppConfig;
+use RedDevil\Config\DatabaseConfig;
+use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
 use RedDevil\Models\Conference;
 use RedDevil\ViewModels\ConferenceSummaryViewModel;
+use RedDevil\ViewModels\LectureViewModel;
 
 class ConferencesService extends BaseService {
 
@@ -57,5 +61,57 @@ class ConferencesService extends BaseService {
             ->add($conference);
         $this->dbContext->saveChanges();
         return new ServiceResponse(null, 'Conference added successfully.');
+    }
+
+    public function getConferenceDetails($conferenceId)
+    {
+        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
+        $statement = $db->prepare("select count(LectureId) from lecturesParticipants where LectureId = ?");
+
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+
+        $venueId = $conference->getVenue_Id();
+        $venue = $this->dbContext->getVenuesRepository()
+            ->filterById(" = $venueId")
+            ->findOne()
+            ->getTitle();
+        $ownerId = $conference->getOwnerId();
+        $owner = $this->dbContext->getUsersRepository()
+            ->filterById(" = $ownerId")
+            ->findOne()
+            ->getUsername();
+        $model = new ConferenceSummaryViewModel($conference);
+        $model->setVenueId($venueId);
+        $model->setVenue($venue);
+        $model->setOwnerUsername($owner);
+
+        $lectures = $this->dbContext->getLecturesRepository()
+            ->filterByConferenceId("")
+            ->findOne(" = $conferenceId");
+        $lecturesModels = [];
+        foreach ($lectures as $lecture) {
+            $lectureModel = new LectureViewModel($lecture);
+            $hallId = $lectureModel->getHallId();
+            $hall = $this->dbContext->getHallsRepository()
+                ->filterById(" = $hallId")
+                ->findOne();
+            $lectureModel->setHallTitle($hall->getTitle());
+
+            $speakerId = $lectureModel->getSpeakerId();
+            $speaker = $this->dbContext->getUsersRepository()
+                ->filterById(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerUsername($speaker->getUsername());
+
+            $lectureId = $lectureModel->getId();
+            $participants = $statement->fetch([$lectureId]);
+            $lectureModel->setParticipantsCount($participants);
+
+            $lecturesModels[] = $lectureModel;
+        }
+
+        return $lecturesModels;
     }
 }

@@ -1,9 +1,36 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-17 21:56:56';
+	 public static $dateOfLastCheck = '2015-11-20 06:40:58';
 
 	 public static $ROUTES = [ 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'edit',
+			 'route' => 'conferences/{integer $conferenceId}/edit',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'conferences/{integer $conferenceid}/edit',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'change',
+			 'route' => 'conferences/{integer $conferenceId}/change',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'conferences/{integer $conferenceid}/change',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'details',
+			 'route' => 'conferences/details/{integer $conferenceId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'conferences/details/{integer $conferenceid}',
+			 ]
+		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\UsersController',
 			 'action' => 'users',
@@ -91,6 +118,33 @@ class RoutesConfig {
 			 'route' => 'conferences/add',
 			 'annotations' => [
 				'method' => ['get', 'post'],
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'edit',
+			 'route' => 'conferences/edit',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'conferences/{integer $conferenceid}/edit',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'change',
+			 'route' => 'conferences/change',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'conferences/{integer $conferenceid}/change',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'details',
+			 'route' => 'conferences/details',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'conferences/details/{integer $conferenceid}',
 			 ]
 		 ], 
 		 [ 

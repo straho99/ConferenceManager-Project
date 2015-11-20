@@ -43,4 +43,42 @@ class ConferencesController extends BaseController {
             return new View('conferences', 'add', new ConferenceInputModel());
         }
     }
+
+    /**
+     * @Method('GET')
+     * @Route('conferences/{integer $conferenceId}/edit')
+     * @return View
+     */
+    public function edit($conferenceId)
+    {
+
+    }
+
+    /**
+     * @Method('POST')
+     * @Route('conferences/{integer $conferenceId}/change')
+     * @return View
+     */
+    public function change(ConferenceInputModel $model)
+    {
+
+    }
+
+    /**
+     * @Method('GET')
+     * @Route('conferences/details/{integer $conferenceId}')
+     * @return View
+     */
+    public function details($conferenceId)
+    {
+        $service = new ConferencesService($this->dbContext);
+        $result = $service->getConferenceDetails($conferenceId);
+        if (!$result->hasError()) {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirect('conferences', 'own');
+        } else {
+            $this->addErrorMessage($result->getMessage());
+            $this->redirect('conferences', 'own');
+        }
+    }
 }
