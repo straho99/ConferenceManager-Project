@@ -2,6 +2,9 @@
 
 namespace RedDevil\Core;
 
+use PDO;
+use PDOStatement;
+
 class DatabaseData {
     private static $instances;
     private $db;
@@ -46,12 +49,16 @@ class DatabaseData {
     {
         return $this->db->lastInsertId($name);
     }
+
+    public function getErrors() {
+        return $this->db->errorInfo();
+    }
 }
 
 class Statement {
     private $statement;
 
-    public function __construct(\PDOStatement $stmnt)
+    public function __construct(PDOStatement $stmnt)
     {
         $this->statement = $stmnt;
     }

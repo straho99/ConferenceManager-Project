@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-20 06:40:58';
+	 public static $dateOfLastCheck = '2015-11-21 13:45:51';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -29,6 +29,15 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'get',
 				'route' => 'conferences/details/{integer $conferenceid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'delete',
+			 'route' => 'lectures/{integer $lectureId}/delete',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/delete',
 			 ]
 		 ], 
 		 [ 
@@ -153,6 +162,22 @@ class RoutesConfig {
 			 'route' => 'home/index',
 			 'annotations' => [
 				'method' => 'get',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'add',
+			 'route' => 'lectures/add',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'delete',
+			 'route' => 'lectures/delete',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/delete',
 			 ]
 		 ], 
 		 [ 

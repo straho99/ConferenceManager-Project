@@ -72,13 +72,8 @@ class ConferencesController extends BaseController {
     public function details($conferenceId)
     {
         $service = new ConferencesService($this->dbContext);
-        $result = $service->getConferenceDetails($conferenceId);
-        if (!$result->hasError()) {
-            $this->addInfoMessage($result->getMessage());
-            $this->redirect('conferences', 'own');
-        } else {
-            $this->addErrorMessage($result->getMessage());
-            $this->redirect('conferences', 'own');
-        }
+        $conference =$service->getConferenceDetails($conferenceId);
+
+        return new View('Conferences', 'details', $conference);
     }
 }

@@ -81,6 +81,28 @@ class LectureBreaksRepository
 
         return $this;
     }
+    /**
+     * @param $StartDate
+     * @return $this
+     */
+    public function filterByStartDate($StartDate)
+    {
+        $this->where .= " AND StartDate $StartDate";
+        $this->placeholders[] = $StartDate;
+
+        return $this;
+    }
+    /**
+     * @param $EndDate
+     * @return $this
+     */
+    public function filterByEndDate($EndDate)
+    {
+        $this->where .= " AND EndDate $EndDate";
+        $this->placeholders[] = $EndDate;
+
+        return $this;
+    }
 
     /**
      * @param $column
@@ -179,6 +201,8 @@ class LectureBreaksRepository
             $entity = new LectureBreak($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['LectureId'],
+$entityInfo['StartDate'],
+$entityInfo['EndDate'],
 $entityInfo['id']);
 
             $collection[] = $entity;
@@ -204,6 +228,8 @@ $entityInfo['id']);
         $entity = new LectureBreak($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['LectureId'],
+$entityInfo['StartDate'],
+$entityInfo['EndDate'],
 $entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
@@ -253,14 +279,16 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE lectureBreaks SET Title= :Title, Description= :Description, LectureId= :LectureId WHERE id = :id";
+        $query = "UPDATE lectureBreaks SET Title= :Title, Description= :Description, LectureId= :LectureId, StartDate= :StartDate, EndDate= :EndDate WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
 ':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
-':LectureId' => $model->getLectureId()
+':LectureId' => $model->getLectureId(),
+':StartDate' => $model->getStartDate(),
+':EndDate' => $model->getEndDate()
             ]
         );
     }
@@ -269,13 +297,15 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO lectureBreaks (Title,Description,LectureId) VALUES (:Title, :Description, :LectureId);";
+        $query = "INSERT INTO lectureBreaks (Title,Description,LectureId,StartDate,EndDate) VALUES (:Title, :Description, :LectureId, :StartDate, :EndDate);";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':Title' => $model->getTitle(),
 ':Description' => $model->getDescription(),
-':LectureId' => $model->getLectureId()
+':LectureId' => $model->getLectureId(),
+':StartDate' => $model->getStartDate(),
+':EndDate' => $model->getEndDate()
             ]
         );
         $model->setId($db->lastInsertId());

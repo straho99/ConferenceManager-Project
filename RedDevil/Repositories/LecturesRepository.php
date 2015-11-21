@@ -1,6 +1,7 @@
 <?php
 namespace RedDevil\Repositories;
 
+use RedDevil\Config\AppConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\Models\Lecture;
 use RedDevil\Collections\LectureCollection;
@@ -326,6 +327,7 @@ $entityInfo['id']);
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
         $query = "INSERT INTO lectures (Title,Description,StartDate,EndDate,ConferenceId,Hall_Id,Speaker_Id) VALUES (:Title, :Description, :StartDate, :EndDate, :ConferenceId, :Hall_Id, :Speaker_Id);";
+
         $result = $db->prepare($query);
         $result->execute(
             [

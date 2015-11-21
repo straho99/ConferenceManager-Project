@@ -2,12 +2,12 @@
 
 namespace RedDevil\Services;
 
-use RedDevil\Config\AppConfig;
 use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
 use RedDevil\Models\Conference;
+use RedDevil\ViewModels\ConferenceDetailsViewModel;
 use RedDevil\ViewModels\ConferenceSummaryViewModel;
 use RedDevil\ViewModels\LectureViewModel;
 
@@ -82,13 +82,13 @@ class ConferencesService extends BaseService {
             ->filterById(" = $ownerId")
             ->findOne()
             ->getUsername();
-        $model = new ConferenceSummaryViewModel($conference);
+        $model = new ConferenceDetailsViewModel($conference);
         $model->setVenueId($venueId);
         $model->setVenue($venue);
         $model->setOwnerUsername($owner);
 
         $lectures = $this->dbContext->getLecturesRepository()
-            ->filterByConferenceId("")
+            ->filterByConferenceId(" = $conferenceId")
             ->findOne(" = $conferenceId");
         $lecturesModels = [];
         foreach ($lectures as $lecture) {
@@ -112,6 +112,7 @@ class ConferencesService extends BaseService {
             $lecturesModels[] = $lectureModel;
         }
 
-        return $lecturesModels;
+        $model->setLectures($lecturesModels);
+        return $model;
     }
 }
