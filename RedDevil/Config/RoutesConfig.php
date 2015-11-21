@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-21 13:45:51';
+	 public static $dateOfLastCheck = '2015-11-21 16:56:44';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -36,8 +36,71 @@ class RoutesConfig {
 			 'action' => 'delete',
 			 'route' => 'lectures/{integer $lectureId}/delete',
 			 'annotations' => [
-				'method' => ['post', 'get'],
+				'method' => 'post',
 				'route' => 'lectures/{integer $lectureid}/delete',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'invite',
+			 'route' => 'lectures/{integer $lectureId}/invite/{integer $speakerId}',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/invite/{integer $speakerid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'cancelInvitation',
+			 'route' => 'lectures/{integer $lectureId}/cancelinvitation/{integer $speakerId}',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/cancelinvitation/{integer $speakerid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addHall',
+			 'route' => 'lectures/{integer $lectureId}/addhall/{integer $hallId}',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/addhall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'deleteHall',
+			 'route' => 'lectures/{integer $lectureId}/deletehall/{integer $hallId}',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/deletehall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addBreak',
+			 'route' => 'lectures/{integer $lectureId}/addbreak',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/addbreak',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addParticipant',
+			 'route' => 'lectures/{integer $lectureId}/addparticipant/{integer $participantId}',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/addparticipant/{integer $participantid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'deleteParticipant',
+			 'route' => 'lectures/{integer $lectureId}/deleteparticipant/{integer $participantId}',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/deleteparticipant/{integer $participantid}',
 			 ]
 		 ], 
 		 [ 
@@ -176,8 +239,71 @@ class RoutesConfig {
 			 'action' => 'delete',
 			 'route' => 'lectures/delete',
 			 'annotations' => [
-				'method' => ['post', 'get'],
+				'method' => 'post',
 				'route' => 'lectures/{integer $lectureid}/delete',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'invite',
+			 'route' => 'lectures/invite',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/invite/{integer $speakerid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'cancelInvitation',
+			 'route' => 'lectures/cancelInvitation',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/cancelinvitation/{integer $speakerid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addHall',
+			 'route' => 'lectures/addHall',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/addhall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'deleteHall',
+			 'route' => 'lectures/deleteHall',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/deletehall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addBreak',
+			 'route' => 'lectures/addBreak',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/{integer $lectureid}/addbreak',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addParticipant',
+			 'route' => 'lectures/addParticipant',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/addparticipant/{integer $participantid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'deleteParticipant',
+			 'route' => 'lectures/deleteParticipant',
+			 'annotations' => [
+				'method' => ['post', 'get'],
+				'route' => 'lectures/{integer $lectureid}/deleteparticipant/{integer $participantid}',
 			 ]
 		 ], 
 		 [ 

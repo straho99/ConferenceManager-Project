@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\EntityManager\DatabaseContext;
+use RedDevil\Services\ServiceResponse;
 
 abstract class BaseController {
     protected $isPost = false;
@@ -51,7 +52,7 @@ abstract class BaseController {
         $this->redirectToUrl($url);
     }
 
-    function addMessage($msg, $type) {
+    public function addMessage($msg, $type) {
         if (!isset($_SESSION['messages'])) {
             $_SESSION['messages'] = array();
         };
@@ -59,12 +60,25 @@ abstract class BaseController {
             array('text' => $msg, 'type' => $type));
     }
 
-    function addInfoMessage($msg) {
+    public function addInfoMessage($msg) {
         $this->addMessage($msg, 'info');
     }
 
-    function addErrorMessage($msg) {
+    public function addErrorMessage($msg) {
         $this->addMessage($msg, 'error');
+    }
+
+    public function processResponse(ServiceResponse $response)
+    {
+        if ($response->hasError()) {
+            if ($response->getErrorCode() > 1) {
+                throw new \Exception($response->getMessage(), $response->getErrorCode());
+            } else {
+                $this->addErrorMessage($response->getMessage());
+            }
+        } else {
+            $this->addInfoMessage($response->getMessage());
+        }
     }
 
     protected function baseUrl()

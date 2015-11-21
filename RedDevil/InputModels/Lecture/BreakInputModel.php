@@ -16,6 +16,8 @@ class BreakInputModel extends BaseInputModel {
     {
         $this->title = $break->getTitle();
         $this->description = $break->getDescription();
+        $this->startDate = $break->getStartDate();
+        $this->endDate = $break->getEndDate();
         $this->lectureId = $break->getLectureId();
     }
 

@@ -103,6 +103,14 @@ class LecturesService extends BaseService {
         $invitation = $this->dbContext->getSpeakerInvitationsRepository()
             ->filterByLectureId(" = $lectureId")
             ->filterBySpeakerId(" = $speakerId")
+            ->findOne();
+        if ($invitation->getId() == null) {
+            return new ServiceResponse(404, "Invitation not found.");
+        }
+
+        $invitation = $this->dbContext->getSpeakerInvitationsRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->filterBySpeakerId(" = $speakerId")
             ->delete();
 
         return new ServiceResponse(null, "Invitation deleted.");
@@ -125,6 +133,19 @@ class LecturesService extends BaseService {
             return new ServiceResponse(404, "Hall not found.");
         }
 
+        $conferenceId = $lecture->getConferenceId();
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+        $venueId = $conference->getVenue_Id();
+        $testHall = $this->dbContext->getHallsRepository()
+            ->filterById(" = $hallId")
+            ->filterByVenueId(" = $venueId")
+            ->findOne();
+        if ($testHall->getId() == null) {
+            return new ServiceResponse(409, "No such hall in the conference venue.");
+        }
+
         $lectureStartDate = $lecture->getStartDate();
         $lectureEndDate = $lecture->getEndDate();
 
@@ -139,7 +160,7 @@ class LecturesService extends BaseService {
 
         $lecture->setHall_Id($hallId);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(1, "Hall added to lecture.");
+        return new ServiceResponse(null, "Hall added to lecture.");
     }
 
     public function deleteHall($lectureId)
@@ -218,9 +239,11 @@ class LecturesService extends BaseService {
             ->filterById(" = $hallId")
             ->findOne();
         $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
-        $statement = $db->prepare($this::CHECK_HALL_AVAILABILITY);
-        $statement->execute([$hallId]);
-        if ($hall->getCapacity() <= $statement->fetch()) {
+        $statement = $db->prepare($this::GET_LECTURE_PARTICIPANTS_COUNT);
+        $statement->execute([$lectureId]);
+        $participantsCount = $statement->fetch()['count'];
+        $capacity = $hall->getCapacity();
+        if ($capacity <= $participantsCount) {
             return new ServiceResponse(404, "No more places are available for this lecture.");
         }
 
@@ -275,7 +298,7 @@ where Hall_Id = ? and ((? >= StartDate and ? <= EndDate) or (? >= StartDate and 
 TAG;
 
     const GET_LECTURE_PARTICIPANTS_COUNT = <<<TAG
-select count(LectureId)
+select count(LectureId) as 'count'
 from lecturesParticipants
 where LectureId = ?
 TAG;

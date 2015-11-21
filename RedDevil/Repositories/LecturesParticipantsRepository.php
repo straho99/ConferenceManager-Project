@@ -38,6 +38,17 @@ class LecturesParticipantsRepository
     }
 
     /**
+     * @param $id
+     * @return $this
+     */
+    public function filterById($id)
+    {
+        $this->where .= " AND id $id";
+        $this->placeholders[] = $id;
+
+        return $this;
+    }
+    /**
      * @param $LectureId
      * @return $this
      */
@@ -233,7 +244,8 @@ $entityInfo['id']);
         $result = $db->prepare($query);
         $result->execute(
             [
-                ':LectureId' => $model->getLectureId(),
+                ':id' => $model->getId(),
+':LectureId' => $model->getLectureId(),
 ':ParticipantId' => $model->getParticipantId()
             ]
         );
