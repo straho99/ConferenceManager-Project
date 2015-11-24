@@ -12,13 +12,9 @@ class LectureInputModel extends BaseInputModel {
     private $endDate;
     private $conferenceId;
 
-    function __construct(Lecture $lecture)
+    function __construct()
     {
-        $this->title = $lecture->getTitle();
-        $this->description = $lecture->getDescription();
-        $this->startDate = $lecture->getStartDate();
-        $this->endDate = $lecture->getEndDate();
-        $this->conferenceId = $lecture->getConferenceId();
+        parent::__construct();
     }
 
     /**

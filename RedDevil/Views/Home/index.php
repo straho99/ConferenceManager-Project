@@ -18,14 +18,12 @@
                     <div class="media-body">
                         <strong>Starts on: </strong>
                         <?php
-                        $dt = new DateTime($conference->getStartDate());
-                        echo $dt->format('d/M/Y');
+                        echo $conference->getStartDate();
                         ?>
                         <br />
                         <strong>Ends on:</strong>
                         <?php
-                        $dt = new DateTime($conference->getEndDate());
-                        echo $dt->format('d/M/Y');
+                        echo $conference->getEndDate();
                         ?>
                         <br />
                         <strong>Venue:</strong>

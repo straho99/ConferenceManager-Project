@@ -39,3 +39,19 @@ Todos:
 - Reply to message
 
 - Search users, conferences, venues and lectures
+
+- Check all foreign keys in the database
+- Add client validation to add hall view
+- Format properly the start and end times of lectures - remove the seconds
+
+Venue Reservation
+1. Conference owner sends request for venue
+	- if request for this venue already exists, error is returned
+	- all other requests by this conference are deleted
+	- if conference has venue it is set to null
+2. Venue owner approves request
+	- conference venue is set
+	- venue request is deleted
+3. Venue owner rejects request
+	- venue request status is changed to 2
+

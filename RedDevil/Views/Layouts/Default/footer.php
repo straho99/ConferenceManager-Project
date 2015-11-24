@@ -8,6 +8,12 @@
     </footer>
 </div>
 
+<script>
+    $('#messages-container').click(function () {
+        $('#messages-container').remove();
+    });
+</script>
+
 </body>
 
 </html>

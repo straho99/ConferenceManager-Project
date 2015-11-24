@@ -35,9 +35,16 @@
         </div>
         <div class="navbar-collapse collapse">
             <?php use RedDevil\Core\HttpContext;
+            use RedDevil\Services\NotificationsService;
+
             if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
                 <ul class="nav navbar-nav">
-                    <li><a href="/notifications/index">Notifications <span class="badge">7</span></a></li>
+                    <li><a href="/notifications/all">Notifications
+                            <span class="badge">
+                                <?php
+                                echo NotificationsService::getUnreadCount(HttpContext::getInstance()->getIdentity()->getUserId());
+                                ?>
+                            </span></a></li>
                     <li><a href="/messages/index">Messages <span class="badge">11</span></a></li>
                 </ul>
             <?php endif; ?>
@@ -66,6 +73,9 @@
 <div class="row">
     <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="disabled"><a href="#"><h4>Menu</h4></a></li>
+            <li role="presentation"><a href="/conferences/all">Conferences</a></li>
+            <li role="presentation"><a href="/venues/all">Venues</a></li>
             <li role="presentation" class="disabled"><a href="#"><h4>My menu</h4></a></li>
             <li role="presentation"><a href="/conferences/own">Own conferences</a></li>
             <li role="presentation"><a href="/venues/own">Own venues</a></li>

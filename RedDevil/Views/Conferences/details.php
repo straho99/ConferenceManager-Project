@@ -1,4 +1,5 @@
 <?php /** @var \RedDevil\ViewModels\ConferenceDetailsViewModel $model */
+use RedDevil\View;
 use RedDevil\ViewHelpers\ActionLink; ?>
 <div class="col-md-9">
     <div class="jumbotron">
@@ -10,15 +11,13 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         <p>
             <strong>Starts on: </strong>
             <?php
-            $dt = new DateTime($model->getStartDate());
-            echo $dt->format('d/M/Y');
+            echo $model->getStartDate();
             ?>
         </p>
         <p>
             <strong>Ends on: </strong>
             <?php
-            $dt = new DateTime($model->getEndDate());
-            echo $dt->format('d/M/Y');
+            echo $model->getEndDate();
             ?>
         </p>
         <p>
@@ -30,6 +29,29 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                 ->render();
             ?>
         </p>
+        <p>
+            <strong>Venue: </strong>
+            <?php
+            $venue = $model->getVenue() == null ? '(not available)' :
+                $model->getVenue();
+            if ($model->getVenue() == null) {
+                \RedDevil\ViewHelpers\ActionLink::create()
+                    ->setAttribute('href', '#')
+                    ->setData($venue)
+                    ->render();
+            } else {
+                \RedDevil\ViewHelpers\ActionLink::create()
+                    ->setAttribute('href', '/venues/details/' . $model->getVenueId())
+                    ->setData($venue)
+                    ->render();
+            }
+            ?>
+        </p>
+
+        <?php
+        new View("Conferences", "_ConferenceMenu", $model, null);
+        ?>
+
     </div>
     <h3>
         Lectures
@@ -48,22 +70,38 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                     <div class="media-body">
                         <strong>Speaker: </strong>
                         <?php
-                        ActionLink::create()
-                            ->setAttribute('href', '/users/' . $lecture->getSpeakerId())
-                            ->setData($lecture->getSpeakerUsername())
-                            ->render();
+                        if ($lecture->getSpeakerId() == '') {
+                            echo $lecture->getSpeakerUsername();
+                            echo "<br/>";
+                        } else {
+                            ActionLink::create()
+                                ->setAttribute('href', '/users/' . $lecture->getSpeakerId())
+                                ->setData($lecture->getSpeakerUsername())
+                                ->render();
+                        }
                         ?>
+                        <strong>At hall: </strong>
+                        <?php
+                        echo $lecture->getHallTitle();
+                        ?>
+                        <br/>
                         <strong>Start: </strong>
                         <?php
-                        $lecture->getStartDate();
+                        echo $lecture->getStartDate();
                         ?>
+                        <br/>
                         <strong>End: </strong>
                         <?php
-                        $lecture->getEndDate();
+                        echo $lecture->getEndDate();
                         ?>
+                        <br/>
                         <strong>Participants: </strong>
                         <?php
                         echo $lecture->getParticipantsCount();
+                        ?>
+                        <br/>
+                        <?php
+                        new View("Conferences", "_LectureMenu", $lecture, null);
                         ?>
                     </div>
                 </div>

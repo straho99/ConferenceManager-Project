@@ -11,6 +11,8 @@ class ConferenceDetailsViewModel {
     private $endDate;
     private $venue;
     private $venueId;
+    private $venueRequestStatus;
+    private $ownerId;
     private $ownerUsername;
 
     private $lectures = [];
@@ -22,6 +24,7 @@ class ConferenceDetailsViewModel {
         $this->startDate = $conference->getStartDate();
         $this->endDate = $conference->getEndDate();
         $this->venueId = $conference->getVenue_Id();
+        $this->ownerId = $conference->getOwnerId();
     }
 
     /**
@@ -61,7 +64,8 @@ class ConferenceDetailsViewModel {
      */
     public function getStartDate()
     {
-        return $this->startDate;
+        $date = new \DateTime($this->startDate);
+        return $date->format('d F Y');
     }
 
     /**
@@ -77,7 +81,8 @@ class ConferenceDetailsViewModel {
      */
     public function getEndDate()
     {
-        return $this->endDate;
+        $date = new \DateTime($this->endDate);
+        return $date->format('d F Y');
     }
 
     /**
@@ -150,5 +155,37 @@ class ConferenceDetailsViewModel {
     public function setLectures($lectures)
     {
         $this->lectures = $lectures;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
+    }
+
+    /**
+     * @param mixed $ownerId
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVenueRequestStatus()
+    {
+        return $this->venueRequestStatus;
+    }
+
+    /**
+     * @param mixed $venueRequestStatus
+     */
+    public function setVenueRequestStatus($venueRequestStatus)
+    {
+        $this->venueRequestStatus = $venueRequestStatus;
     }
 }

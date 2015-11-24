@@ -81,6 +81,17 @@ class NotificationsRepository
 
         return $this;
     }
+    /**
+     * @param $CreatedOn
+     * @return $this
+     */
+    public function filterByCreatedOn($CreatedOn)
+    {
+        $this->where .= " AND CreatedOn $CreatedOn";
+        $this->placeholders[] = $CreatedOn;
+
+        return $this;
+    }
 
     /**
      * @param $column
@@ -179,6 +190,7 @@ class NotificationsRepository
             $entity = new Notification($entityInfo['Content'],
 $entityInfo['IsRead'],
 $entityInfo['RecipientId'],
+$entityInfo['CreatedOn'],
 $entityInfo['id']);
 
             $collection[] = $entity;
@@ -204,6 +216,7 @@ $entityInfo['id']);
         $entity = new Notification($entityInfo['Content'],
 $entityInfo['IsRead'],
 $entityInfo['RecipientId'],
+$entityInfo['CreatedOn'],
 $entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
@@ -253,14 +266,15 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE notifications SET Content= :Content, IsRead= :IsRead, RecipientId= :RecipientId WHERE id = :id";
+        $query = "UPDATE notifications SET Content= :Content, IsRead= :IsRead, RecipientId= :RecipientId, CreatedOn= :CreatedOn WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
 ':Content' => $model->getContent(),
 ':IsRead' => $model->getIsRead(),
-':RecipientId' => $model->getRecipientId()
+':RecipientId' => $model->getRecipientId(),
+':CreatedOn' => $model->getCreatedOn()
             ]
         );
     }
@@ -269,13 +283,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO notifications (Content,IsRead,RecipientId) VALUES (:Content, :IsRead, :RecipientId);";
+        $query = "INSERT INTO notifications (Content,IsRead,RecipientId,CreatedOn) VALUES (:Content, :IsRead, :RecipientId, :CreatedOn);";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':Content' => $model->getContent(),
 ':IsRead' => $model->getIsRead(),
-':RecipientId' => $model->getRecipientId()
+':RecipientId' => $model->getRecipientId(),
+':CreatedOn' => $model->getCreatedOn()
             ]
         );
         $model->setId($db->lastInsertId());

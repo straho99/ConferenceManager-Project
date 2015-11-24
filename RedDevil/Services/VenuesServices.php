@@ -2,6 +2,8 @@
 
 namespace RedDevil\Services;
 
+use RedDevil\Config\DatabaseConfig;
+use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Venue\HallInputModel;
 use RedDevil\InputModels\Venue\VenueInputModel;
@@ -105,4 +107,60 @@ class VenuesServices extends BaseService {
         $this->dbContext->saveChanges();
         return new ServiceResponse(null, 'Hall deleted successfully.');
     }
+    
+    public function replyToVenueRequest($confirm, $venueId, $conferenceId)
+    {
+        $venue = $this->dbContext->getVenuesRepository()
+            ->filterById(" = $venueId")
+            ->findOne();
+
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+
+        if ($venue->getId() == null) {
+            return new ServiceResponse(404, "Venue not found.");
+        }
+        if ($conference->getId() == null) {
+            return new ServiceResponse(404, "Conference not found.");
+        }
+
+        $request = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByVenueId(" = $venueId")
+            ->filterByConferenceId(" = $conferenceId")
+            ->findOne();
+        if ($request->getId() == null) {
+            return new ServiceResponse(404, "Venue request not found.");
+        }
+
+        $conferenceStartDate = $conference->getStartDate();
+        $conferenceEndDate = $conference->getEndDate();
+
+        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
+        $statement = $db->prepare($this::CHECK_VENUE_AVAILABILITY);
+
+        $statement->execute(
+            [$venueId, $conferenceStartDate, $conferenceStartDate, $conferenceEndDate, $conferenceEndDate]);
+        if ($statement->rowCount() > 0) {
+            $request->setStatus(2);
+            $this->dbContext->saveChanges();
+            return new ServiceResponse(1, "The venue is busy at this time. Request is denied.");
+        }
+
+        if ($confirm) {
+            $request->setStatus(1);
+            $this->dbContext->saveChanges();
+            return new ServiceResponse(null, "Venue request was confirmed.");
+        } else {
+            $request->setStatus(2);
+            $this->dbContext->saveChanges();
+            return new ServiceResponse(null, "Venue request was rejected.");
+        }
+    }
+
+    const CHECK_VENUE_AVAILABILITY = <<<TAG
+select LectureId
+from `lectures`
+where venueId = ? and ((? >= StartDate and ? <= EndDate) or (? >= StartDate and ? <= EndDate))
+TAG;
 }

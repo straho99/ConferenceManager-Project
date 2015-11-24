@@ -5,11 +5,13 @@ namespace RedDevil\Services;
 class ServiceResponse {
     private $message;
     private $errorCode;
+    private $model;
 
-    function __construct($errorCode = null, $message = null)
+    function __construct($errorCode = null, $message = null, $model = null)
     {
         $this->errorCode = $errorCode;
         $this->message = $message;
+        $this->model = $model;
     }
 
     /**
@@ -50,5 +52,21 @@ class ServiceResponse {
     public function setErrorCode($errorCode)
     {
         $this->errorCode = $errorCode;
+    }
+
+    /**
+     * @return null
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param null $model
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
     }
 }

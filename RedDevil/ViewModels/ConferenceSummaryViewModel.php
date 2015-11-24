@@ -59,7 +59,8 @@ class ConferenceSummaryViewModel {
      */
     public function getStartDate()
     {
-        return $this->startDate;
+        $date = new \DateTime($this->startDate);
+        return $date->format('d F Y');
     }
 
     /**
@@ -75,7 +76,8 @@ class ConferenceSummaryViewModel {
      */
     public function getEndDate()
     {
-        return $this->endDate;
+        $date = new \DateTime($this->endDate);
+        return $date->format('d F Y');
     }
 
     /**

@@ -2,28 +2,46 @@
 
 namespace RedDevil\Controllers;
 
+use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
-use RedDevil\Models\Lecture;
+use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
 use RedDevil\Models\LectureBreak;
 use RedDevil\Services\LecturesService;
+use RedDevil\View;
+use RedDevil\ViewModels\SpeakerInvitationViewModel;
 
 class LecturesController extends BaseController {
-    
-    public function add()
-    {
-        $lecture = new Lecture(
-            "Title",
-            "Description",
-            "2015-01-01 18:15:02",
-            "2015-01-01 20:15:02",
-            1,
-            null,
-            null
-        );
 
-        $model = new LectureInputModel($lecture);
+    /**
+     * @Method('GET', 'POST')
+     * @Route('lectures/add/{integer $conferenceId}')
+     * @param LectureInputModel $model
+     * @param $conferenceId
+     * @return View
+     */
+    public function add(LectureInputModel $model, $conferenceId)
+    {
+        if (!$model->isValid()) {
+            return new View('lectures', 'add', $model);
+        }
+
         $service = new LecturesService($this->dbContext);
+
+        if (HttpContext::getInstance()->isPost()) {
+            $result = $service->addLecture($model);
+            if (!$result->hasError()) {
+                $this->addInfoMessage($result->getMessage());
+                $this->redirectToUrl('/conferences/details/' . $conferenceId);
+            } else {
+                $this->addErrorMessage($result->getMessage());
+                $this->redirectToUrl('/conferences/details/' . $conferenceId);
+            }
+        } else {
+            $model = new LectureInputModel();
+            $model->setConferenceId($conferenceId);
+            return new View('lectures', 'add', $model);
+        }
 
         $result = $service->addLecture($model);
         $this->processResponse($result);
@@ -44,17 +62,55 @@ class LecturesController extends BaseController {
     }
 
     /**
+     * @Method('GET')
+     * @Route('conferences/{integer $conferenceId}/lectures/{integer $lectureId}/invite')
+     * @param $conferenceId
      * @param $lectureId
-     * @Method('POST')
-     * @Route('lectures/{integer $lectureId}/invite/{integer $speakerId}')
-     * @param $speakerId
+     * @return View
+     * @throws \Exception
      */
-    public function invite($lectureId, $speakerId)
+    public function invite($conferenceId, $lectureId)
     {
         $service = new LecturesService($this->dbContext);
-        $result = $service->inviteSpeaker($lectureId, $speakerId);
-        $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+
+        $users = $this->dbContext->getUsersRepository()
+            ->orderBy('username')
+            ->findAll()
+            ->getUsers();
+        $invitationModels = [];
+        foreach ($users as $user) {
+            $model = new SpeakerInvitationViewModel(
+                $user->getId(),
+                $lectureId,
+                $conferenceId,
+                $user->getUsername()
+            );
+            $invitationModels[] = $model;
+        }
+
+        return new View('lectures', 'invite', $invitationModels);
+    }
+
+    /**
+     * Method('POST')
+     * @Route('lectures/sendinvitation')
+     * @param SpeakerInvitationInputModel $model
+     */
+    public function sendInvitation(SpeakerInvitationInputModel $model)
+    {
+        if (!$model->isValid()) {
+            $this->redirect('Conferences', 'all');
+        }
+
+        $service = new LecturesService($this->dbContext);
+        $result = $service->inviteSpeaker($model);
+        if (!$result->hasError()) {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
+        } else {
+            $this->addErrorMessage($result->getMessage());
+            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
+        }
     }
 
     /**
@@ -107,7 +163,7 @@ class LecturesController extends BaseController {
      * @Method('POST')
      * @Route('lectures/{integer $lectureId}/addbreak')
      */
-    public function addBreak()
+    public function createBreak()
     {
         $break = new LectureBreak(
             "Title",

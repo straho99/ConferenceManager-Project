@@ -6,6 +6,7 @@ use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
+use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
 use RedDevil\Models\Lecture;
 use RedDevil\Models\LectureBreak;
 use RedDevil\Models\LecturesParticipant;
@@ -48,8 +49,10 @@ class LecturesService extends BaseService {
         return new ServiceResponse(null, "Lecture deleted successfully.");
     }
     
-    public function inviteSpeaker($lectureId, $speakerId)
+    public function inviteSpeaker(SpeakerInvitationInputModel $model)
     {
+        $lectureId = $model->getLectureId();
+        $speakerId = $model->getSpeakerId();
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->findOne();

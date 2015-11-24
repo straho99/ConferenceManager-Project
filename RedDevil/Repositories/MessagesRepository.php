@@ -81,6 +81,17 @@ class MessagesRepository
 
         return $this;
     }
+    /**
+     * @param $CreatedOn
+     * @return $this
+     */
+    public function filterByCreatedOn($CreatedOn)
+    {
+        $this->where .= " AND CreatedOn $CreatedOn";
+        $this->placeholders[] = $CreatedOn;
+
+        return $this;
+    }
 
     /**
      * @param $column
@@ -179,6 +190,7 @@ class MessagesRepository
             $entity = new Message($entityInfo['SenderId'],
 $entityInfo['RecipientId'],
 $entityInfo['Content'],
+$entityInfo['CreatedOn'],
 $entityInfo['id']);
 
             $collection[] = $entity;
@@ -204,6 +216,7 @@ $entityInfo['id']);
         $entity = new Message($entityInfo['SenderId'],
 $entityInfo['RecipientId'],
 $entityInfo['Content'],
+$entityInfo['CreatedOn'],
 $entityInfo['id']);
 
         self::$selectedObjectPool[] = $entity;
@@ -253,14 +266,15 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE messages SET SenderId= :SenderId, RecipientId= :RecipientId, Content= :Content WHERE id = :id";
+        $query = "UPDATE messages SET SenderId= :SenderId, RecipientId= :RecipientId, Content= :Content, CreatedOn= :CreatedOn WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
 ':SenderId' => $model->getSenderId(),
 ':RecipientId' => $model->getRecipientId(),
-':Content' => $model->getContent()
+':Content' => $model->getContent(),
+':CreatedOn' => $model->getCreatedOn()
             ]
         );
     }
@@ -269,13 +283,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO messages (SenderId,RecipientId,Content) VALUES (:SenderId, :RecipientId, :Content);";
+        $query = "INSERT INTO messages (SenderId,RecipientId,Content,CreatedOn) VALUES (:SenderId, :RecipientId, :Content, :CreatedOn);";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':SenderId' => $model->getSenderId(),
 ':RecipientId' => $model->getRecipientId(),
-':Content' => $model->getContent()
+':Content' => $model->getContent(),
+':CreatedOn' => $model->getCreatedOn()
             ]
         );
         $model->setId($db->lastInsertId());

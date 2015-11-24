@@ -4,8 +4,11 @@ namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
+use RedDevil\InputModels\Venue\VenueRequestInputModel;
 use RedDevil\Services\ConferencesService;
 use RedDevil\View;
+use RedDevil\ViewModels\VenueRequestViewModel;
+use RedDevil\ViewModels\VenueSummaryViewModel;
 
 class ConferencesController extends BaseController {
     
@@ -46,26 +49,6 @@ class ConferencesController extends BaseController {
 
     /**
      * @Method('GET')
-     * @Route('conferences/{integer $conferenceId}/edit')
-     * @return View
-     */
-    public function edit($conferenceId)
-    {
-
-    }
-
-    /**
-     * @Method('POST')
-     * @Route('conferences/{integer $conferenceId}/change')
-     * @return View
-     */
-    public function change(ConferenceInputModel $model)
-    {
-
-    }
-
-    /**
-     * @Method('GET')
      * @Route('conferences/details/{integer $conferenceId}')
      * @return View
      */
@@ -75,5 +58,54 @@ class ConferencesController extends BaseController {
         $conference =$service->getConferenceDetails($conferenceId);
 
         return new View('Conferences', 'details', $conference);
+    }
+
+    /**
+     * @Method('GET')
+     * @Route('conferences/{integer $conferenceId}/requestvenue')
+     * @param $conferenceId
+     * @return View
+     */
+    public function requestVenue($conferenceId)
+    {
+        $service = new ConferencesService($this->dbContext);
+
+        $venues = $this->dbContext->getVenuesRepository()
+            ->orderBy('Title')
+            ->findAll()
+            ->getVenues();
+        $venueModels = [];
+        foreach ($venues as $venue) {
+            $model = new VenueRequestViewModel(
+                $venue->getId(),
+                $conferenceId,
+                $venue->getTitle()
+            );
+            $venueModels[] = $model;
+        }
+
+        return new View('conferences', 'requestVenue', $venueModels);
+    }
+
+    /**
+     * Method('POST')
+     * @param VenueRequestInputModel $model
+     * @Route('conferences/addvenuerequest')
+     */
+    public function addVenueRequest(VenueRequestInputModel $model)
+    {
+        if (!$model->isValid()) {
+            $this->redirect('Conferences', 'all');
+        }
+
+        $service = new ConferencesService($this->dbContext);
+        $result = $service->sendVenueRequest($model);
+        if (!$result->hasError()) {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
+        } else {
+            $this->addErrorMessage($result->getMessage());
+            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
+        }
     }
 }

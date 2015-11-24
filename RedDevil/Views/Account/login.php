@@ -26,7 +26,7 @@ $form->addPasswordField(PasswordField::create()
 $form->addSubmitButton(SubmitButton::create()
     ->setAttribute('class', 'btn btn-default')
     ->setNewLineAfter(false)
-    ->setData('Login'));
+    ->setAttribute('value', 'Login'));
 $form->addActionLink(ActionLink::create()
     ->setNewLineBefore(false)
     ->setAttribute('id', 'cancel')

@@ -3,6 +3,7 @@
 namespace RedDevil\Core;
 
 use RedDevil\Config\RoutesConfig;
+use RedDevil\Core\ParameterRoute;
 
 class RouteMapper {
 
@@ -14,7 +15,7 @@ class RouteMapper {
                     return $existingRoute;
                 }
             } else {
-                $parameterRoute = new \RedDevil\Core\ParameterRoute($existingRoute['route']);
+                $parameterRoute = new ParameterRoute($existingRoute['route']);
                 if ($parameterRoute->isMatching($route)) {
                     $existingRoute['parameters'] = $parameterRoute->parameterValues;
                     return $existingRoute;

@@ -2,6 +2,8 @@
 
 namespace RedDevil;
 
+use RedDevil\Config\AppConfig;
+
 class View {
     private $layout;
 
@@ -31,17 +33,17 @@ class View {
 
         if ($areaName == null) {
             $this->controllerName = $controllerName == null ?
-                \RedDevil\Config\AppConfig::DEFAULT_CONTROLLER : $controllerName;
+                AppConfig::DEFAULT_CONTROLLER : $controllerName;
 
             $this->actionName = $actionName != null ?
-                $actionName : \RedDevil\Config\AppConfig::$DEFAULT_ACTIONS[$this->controllerName];
+                $actionName : AppConfig::$DEFAULT_ACTIONS[$this->controllerName];
         } else {
             $this->controllerName = $controllerName == null ?
-                \RedDevil\Config\AppConfig::$DEFAULT_CONTROLLERS_FOR_AREAS[$areaName] :
+                AppConfig::$DEFAULT_CONTROLLERS_FOR_AREAS[$areaName] :
                     $controllerName;
 
             $this->actionName = $actionName == null ?
-                \RedDevil\Config\AppConfig::$DEFAULT_ACTIONS_FOR_AREA_CONTROLLERS[$this->controllerName] :
+                AppConfig::$DEFAULT_ACTIONS_FOR_AREA_CONTROLLERS[$this->controllerName] :
                 $actionName;
         }
 
@@ -59,7 +61,7 @@ class View {
     private function includeLayoutHeader()
     {
         if ($this->includeLayout()) {
-            $path = \RedDevil\Config\AppConfig::VIEW_FOLDER
+            $path = AppConfig::VIEW_FOLDER
                 . DIRECTORY_SEPARATOR
                 . 'Layouts'
                 . DIRECTORY_SEPARATOR
@@ -74,7 +76,7 @@ class View {
     private function includeLayoutFooter()
     {
         if ($this->includeLayout()) {
-            $path = \RedDevil\Config\AppConfig::VIEW_FOLDER
+            $path = AppConfig::VIEW_FOLDER
                 . DIRECTORY_SEPARATOR
                 . 'Layouts'
                 . DIRECTORY_SEPARATOR
@@ -174,12 +176,12 @@ class View {
     private function getViewFullPathAndName()
     {
         if ($this->areaName == null) {
-            $fileName = \RedDevil\Config\AppConfig::VIEW_FOLDER
+            $fileName = AppConfig::VIEW_FOLDER
                 . DIRECTORY_SEPARATOR
                 . $this->controllerName
                 . DIRECTORY_SEPARATOR
                 . $this->actionName
-                . \RedDevil\Config\AppConfig::VIEW_EXTENSION;
+                . AppConfig::VIEW_EXTENSION;
             return $fileName;
         } else {
 
@@ -192,7 +194,7 @@ class View {
                 . $this->controllerName
                 . DIRECTORY_SEPARATOR
                 . $this->actionName
-                . \RedDevil\Config\AppConfig::VIEW_EXTENSION;
+                . AppConfig::VIEW_EXTENSION;
             return $fileName;
         }
     }

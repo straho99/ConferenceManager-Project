@@ -6,7 +6,7 @@
             <h3 class="panel-title">
                 <?php
                 \RedDevil\ViewHelpers\ActionLink::create()
-                    ->setAttribute('href', '/conferences/details' . $conference->getId())
+                    ->setAttribute('href', '/conferences/details/' . $conference->getId())
                     ->setData($conference->getTitle())
                     ->render();
                 ?>
@@ -17,14 +17,12 @@
                 <div class="media-body">
                     <strong>Starts on: </strong>
                     <?php
-                    $dt = new DateTime($conference->getStartDate());
-                    echo $dt->format('d/M/Y');
+                    echo $conference->getStartDate();
                     ?>
                     <br />
                     <strong>Ends on:</strong>
                     <?php
-                    $dt = new DateTime($conference->getEndDate());
-                    echo $dt->format('d/M/Y');
+                    echo $conference->getEndDate();
                     ?>
                     <br />
                     <strong>Venue:</strong>

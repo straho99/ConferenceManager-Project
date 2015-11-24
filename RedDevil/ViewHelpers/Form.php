@@ -2,6 +2,19 @@
 
 namespace RedDevil\ViewHelpers;
 
+use RedDevil\ViewHelpers\ActionLink;
+use RedDevil\ViewHelpers\Button;
+use RedDevil\ViewHelpers\CheckBox;
+use RedDevil\ViewHelpers\CSFRToken;
+use RedDevil\ViewHelpers\DateField;
+use RedDevil\ViewHelpers\DateTimeField;
+use RedDevil\ViewHelpers\DropDown;
+use RedDevil\ViewHelpers\Label;
+use RedDevil\ViewHelpers\PasswordField;
+use RedDevil\ViewHelpers\RadioButton;
+use RedDevil\ViewHelpers\SubmitButton;
+use RedDevil\ViewHelpers\TextArea;
+
 class Form extends \RedDevil\ViewHelpers\BaseViewHelper {
     private $formId;
     private $url;
@@ -27,52 +40,57 @@ class Form extends \RedDevil\ViewHelpers\BaseViewHelper {
         $this->fields[] = $textField;
     }
 
-    public function addDateField(\RedDevil\ViewHelpers\DateField $dateField)
+    public function addDateField(DateField $dateField)
     {
         $this->fields[] = $dateField;
     }
 
-    public function addSubmitButton(\RedDevil\ViewHelpers\SubmitButton $submit)
+    public function addDateTimeField(DateTimeField $dateTimeField)
+    {
+        $this->fields[] = $dateTimeField;
+    }
+
+    public function addSubmitButton(SubmitButton $submit)
     {
         $this->fields[] = $submit;
     }
 
-    public function addActionLink(\RedDevil\ViewHelpers\ActionLink $link)
+    public function addActionLink(ActionLink $link)
     {
         $this->fields[] = $link;
     }
 
-    public function addPasswordField(\RedDevil\ViewHelpers\PasswordField $passwordField)
+    public function addPasswordField(PasswordField $passwordField)
     {
         $this->fields[] = $passwordField;
     }
 
-    public function addLabel(\RedDevil\ViewHelpers\Label $label)
+    public function addLabel(Label $label)
     {
         $this->fields[] = $label;
     }
 
-    public function addCheckbox(\RedDevil\ViewHelpers\CheckBox $checkbox)
+    public function addCheckbox(CheckBox $checkbox)
     {
         $this->fields[] = $checkbox;
     }
 
-    public function addDropDown(\RedDevil\ViewHelpers\DropDown $dropdown)
+    public function addDropDown(DropDown $dropdown)
     {
         $this->fields[] = $dropdown;
     }
 
-    public function addRadioButton(\RedDevil\ViewHelpers\RadioButton $radiobutton)
+    public function addRadioButton(RadioButton $radiobutton)
     {
         $this->fields[] = $radiobutton;
     }
 
-    public function addTextArea(\RedDevil\ViewHelpers\TextArea $textarea)
+    public function addTextArea(TextArea $textarea)
     {
         $this->fields[] = $textarea;
     }
 
-    public function addButton(\RedDevil\ViewHelpers\Button $button)
+    public function addButton(Button $button)
     {
         $this->fields[] = $button;
         if (!$button->getAttribute('id')) {
@@ -81,7 +99,7 @@ class Form extends \RedDevil\ViewHelpers\BaseViewHelper {
         $this->buttonId = $button->getAttribute('id');
     }
 
-    public function addCSRFToken(\RedDevil\ViewHelpers\CSFRToken $token)
+    public function addCSRFToken(CSFRToken $token)
     {
         $this->fields[] = $token;
     }
