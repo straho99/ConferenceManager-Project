@@ -14,7 +14,8 @@ use RedDevil\ViewModels\OwnerVenueRequestViewModel;
 use RedDevil\ViewModels\VenueDetailsViewModel;
 use RedDevil\ViewModels\VenueSummaryViewModel;
 
-class VenuesServices extends BaseService {
+class VenuesServices extends BaseService
+{
 
     public function getAllVenues()
     {
@@ -99,16 +100,44 @@ class VenuesServices extends BaseService {
         return new ServiceResponse(null, 'Hall added successfully.');
     }
 
-    public function deleteHall($hallId)
+    public function deleteHall($venueId, $hallId)
     {
         $hall = $this->dbContext->getHallsRepository()
             ->filterById(" = $hallId")
-            ->delete();
+            ->findOne();
 
+        If ($hall->getId() == null) {
+            return new ServiceResponse(404, "Hall not found");
+        }
+
+        $venue = $this->dbContext->getVenuesRepository()
+            ->filterById(" = $venueId")
+            ->findOne();
+        If ($venue->getId() == null) {
+            return new ServiceResponse(404, "Venue not found");
+        }
+
+        If ($hall->getVenueId() != $venueId) {
+            return new ServiceResponse(404, "Hall not found in venue .");
+        }
+
+        If (HttpContext::getInstance()->getIdentity()->getUserId() != $venue->getOwnerId()) {
+            return new ServiceResponse(401, "Unauthorised . Deleting halls only allowed for venue owners .");
+        }
+
+        $lecturesInHall = $this->dbContext->getLecturesRepository()
+            ->filterByHall_Id(" = $hallId")
+            ->findAll();
+        foreach ($lecturesInHall->getLectures() as $lecture) {
+            $lecture->setHall_Id(null);
+        }
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, 'Hall deleted successfully.');
+        $this->dbContext->getHallsRepository()
+            ->filterById(" = $hallId")
+            ->delete();
+        return new ServiceResponse(null, "Hall deleted .");
     }
-    
+
     public function replyToVenueRequest($confirm, $requestId)
     {
         $request = $this->dbContext->getVenueReservationRequestsRepository()
