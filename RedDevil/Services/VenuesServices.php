@@ -238,6 +238,58 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, null, $requests);
     }
 
+    public function deleteVenue($venueId)
+    {
+        $venue = $this->dbContext->getVenuesRepository()
+            ->filterById(" = $venueId")
+            ->findOne();
+        if ($venue->getId() == null) {
+            return new ServiceResponse(404, "Venue not found");
+        }
+
+        if (HttpContext::getInstance()->getIdentity()->getUserId() != $venue->getOwnerId()) {
+            return new ServiceResponse(401, "Unauthorised. Deleting venues only allowed for venue owners.");
+        }
+
+        $conferencesInVenue = $this->dbContext->getConferencesRepository()
+            ->filterByVenue_Id(" = $venueId")
+            ->findAll();
+
+        $conferencesInVenue->each(function ($conference) {
+            $conference->setVenue_Id(null);
+        });
+        $this->dbContext->saveChanges();
+
+        $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByVenueId(" = $venueId")
+            ->delete();
+
+        $hallIds = [];
+        $hallsInVenue = $this->dbContext->getHallsRepository()
+            ->filterByVenueId(" = $venueId")
+            ->findAll();
+        foreach ($hallsInVenue->getHalls() as $hall) {
+            $hallIds[] = $hall->getId();
+        }
+        $inClause = "(" . implode(',', $hallIds) . ")";
+        $lecturesInVenue = $this->dbContext->getLecturesRepository()
+            ->filterByHall_Id(" in $inClause")
+            ->findAll();
+        $lecturesInVenue->each(function ($lecture) {
+            $lecture->setHall_Id(null);
+        });
+        $this->dbContext->saveChanges();
+
+        $this->dbContext->getHallsRepository()
+            ->filterByVenueId(" = $venueId")
+            ->delete();
+
+        $this->dbContext->getVenuesRepository()
+            ->filterById(" = $venueId")
+            ->delete();
+        return new ServiceResponse(null, "Venue deleted.");
+    }
+
     const CHECK_VENUE_AVAILABILITY = <<<TAG
 select LectureId
 from `lectures`
