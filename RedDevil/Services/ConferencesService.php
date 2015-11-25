@@ -13,9 +13,11 @@ use RedDevil\ViewModels\ConferenceDetailsViewModel;
 use RedDevil\ViewModels\ConferenceSummaryViewModel;
 use RedDevil\ViewModels\LectureViewModel;
 
-class ConferencesService extends BaseService {
+class ConferencesService extends BaseService
+{
 
-    public function getAllConferences() {
+    public function getAllConferences()
+    {
         $conferenceModels = [];
         $conferences = $this->dbContext->getConferencesRepository()
             ->orderByDescending('StartDate')
@@ -110,7 +112,7 @@ class ConferencesService extends BaseService {
             $hall = $this->dbContext->getHallsRepository()
                 ->filterById(" = $hallId")
                 ->findOne();
-            $lectureModel->setHallTitle($hall->getTitle() == null ? "(to be decided)": $hall->getTitle());
+            $lectureModel->setHallTitle($hall->getTitle() == null ? "(to be decided)" : $hall->getTitle());
 
             $speakerId = $lectureModel->getSpeakerId();
             $speaker = $this->dbContext->getUsersRepository()
@@ -163,7 +165,7 @@ class ConferencesService extends BaseService {
 
         return $conferenceModels;
     }
-    
+
     public function sendVenueRequest(VenueRequestInputModel $model)
     {
         $conferenceId = $model->getConferenceId();
@@ -208,5 +210,51 @@ class ConferencesService extends BaseService {
         $this->dbContext->saveChanges();
 
         return new ServiceResponse(null, "Venue request sent successfully.");
+    }
+
+    public function deleteConference($conferenceId)
+    {
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+        if ($conference->getId() == null) {
+            return new ServiceResponse(404, "Conference not found.");
+        }
+
+        If (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+            Return new ServiceResponse(401, "Unauthorised. Deleting conferences only allowed for conference owners.");
+        }
+
+        $venueRequest = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->delete();
+
+        $conferenceLectures = $this->dbContext->getLecturesRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->findAll();
+
+        $context = $this->dbContext;
+        $conferenceLectures->each(function ($lecture) use ($context) {
+            $lectureId = $lecture->getId();
+
+            $context->getSpeakerInvitationsRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->delete();
+            $context->getLectureBreaksRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->delete();
+            $context->getLecturesParticipantsRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->delete();
+        });
+
+        $conferenceLectures = $this->dbContext->getLecturesRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->delete();
+
+        $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->delete();
+        return new ServiceResponse(null, "Conference deleted.");
     }
 }
