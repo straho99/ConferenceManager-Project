@@ -13,8 +13,9 @@ use RedDevil\Models\LectureBreak;
 use RedDevil\Models\LecturesParticipant;
 use RedDevil\Models\SpeakerInvitation;
 
-class LecturesService extends BaseService {
-    
+class LecturesService extends BaseService
+{
+
     public function addLecture(LectureInputModel $model)
     {
         $lecture = new Lecture(
@@ -38,18 +39,37 @@ class LecturesService extends BaseService {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->findOne();
-
-        if ($lecture->getId() == null) {
-            return new ServiceResponse(404, "Lecture not found.");
+        If ($lecture->getId() == null) {
+            Return new ServiceResponse(404, "Lecture not found");
         }
+
+        $conferenceId = $lecture->getConferenceId();
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+               ->findOne();
+
+        If(HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+            return new ServiceResponse(401, "Unauthorised. Deleting lectures only allowed for conference owners.");
+        }
+
+        $this->dbContext->getSpeakerInvitationsRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->delete();
+
+        $this->dbContext->getLectureBreaksRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->delete();
+
+        $this->dbContext->getLecturesParticipantsRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->delete();
 
         $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
-            ->delete();
-
-        return new ServiceResponse(null, "Lecture deleted successfully.");
+           ->delete();
+        return new ServiceResponse(null, "Lecture deleted.");
     }
-    
+
     public function inviteSpeaker(SpeakerInvitationInputModel $model)
     {
         $lectureId = $model->getLectureId();
@@ -93,7 +113,7 @@ class LecturesService extends BaseService {
             ->delete();
 
         $speakerInvitation = new SpeakerInvitation(
-          $lectureId,
+            $lectureId,
             $speakerId,
             0
         );
@@ -104,7 +124,7 @@ class LecturesService extends BaseService {
 
         return new ServiceResponse(null, "Invitation sent.");
     }
-    
+
     public function removeSpeaker($lectureId, $speakerId)
     {
         $lecture = $this->dbContext->getLecturesRepository()
@@ -136,7 +156,7 @@ class LecturesService extends BaseService {
 
         return new ServiceResponse(null, "Invitation deleted.");
     }
-    
+
     public function addHall($lectureId, $hallId)
     {
         $lecture = $this->dbContext->getLecturesRepository()
@@ -172,7 +192,7 @@ class LecturesService extends BaseService {
 
         $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
         $statement = $db->prepare($this::CHECK_HALL_AVAILABILITY);
-        
+
         $statement->execute(
             [$hallId, $lectureStartDate, $lectureStartDate, $lectureEndDate, $lectureEndDate]);
         if ($statement->rowCount() > 0) {
@@ -199,7 +219,7 @@ class LecturesService extends BaseService {
 
         return new ServiceResponse(null, "Hall removed from lecture.");
     }
-    
+
     public function addBreak($lectureId, BreakInputModel $model)
     {
         $lecture = $this->dbContext->getLecturesRepository()
