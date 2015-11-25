@@ -93,6 +93,13 @@ class ConferencesService extends BaseService {
         $model->setVenue($venue);
         $model->setOwnerUsername($owner);
 
+        $venueStatus = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->filterByVenueId(" = $venueId")
+            ->findOne()
+            ->getStatus();
+        $model->setVenueRequestStatus($venueStatus);
+
         $lectures = $this->dbContext->getLecturesRepository()
             ->filterByConferenceId(" = $conferenceId")
             ->findAll(" = $conferenceId");
@@ -105,12 +112,18 @@ class ConferencesService extends BaseService {
                 ->findOne();
             $lectureModel->setHallTitle($hall->getTitle() == null ? "(to be decided)": $hall->getTitle());
 
-            $speakerId = $lectureModel->getSpeakerId() == null ? 0 : $lectureModel->getSpeakerId();
+            $speakerId = $lectureModel->getSpeakerId();
             $speaker = $this->dbContext->getUsersRepository()
                 ->filterById(" = $speakerId")
                 ->findOne();
-            $lectureModel->setSpeakerUsername(
-                $speaker->getUsername() == null ? "(to be decided)" : $speaker->getUsername());
+            $lectureModel->setSpeakerUsername($speaker->getUsername());
+
+            $lectureId = $lecture->getId();
+            $speakerRequest = $this->dbContext->getSpeakerInvitationsRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->filterBySpeakerId(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerRequestStatus($speakerRequest->getStatus());
 
             $lectureId = $lectureModel->getId();
             $statement->execute([$lectureId]);
@@ -170,6 +183,10 @@ class ConferencesService extends BaseService {
             return new ServiceResponse(404, "Venue not found.");
         }
 
+        if (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+            return new ServiceResponse(401, 'Only conference owners are allowed to send venue requests.');
+        }
+
         $testRequest = $this->dbContext->getVenueReservationRequestsRepository()
             ->filterByConferenceId(" = $conferenceId")
             ->filterByVenueId(" = $venueId")
@@ -182,7 +199,7 @@ class ConferencesService extends BaseService {
             ->filterByConferenceId(" = $conferenceId")
             ->delete();
 
-        $conference->setVenue_Id(null);
+        $conference->setVenue_Id($model->getVenueId());
         $this->dbContext->saveChanges();
 
         $venueRequest = new VenueReservationRequest($venueId, $conferenceId, 0);

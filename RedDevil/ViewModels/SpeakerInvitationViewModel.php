@@ -2,18 +2,24 @@
 
 namespace RedDevil\ViewModels;
 
+use RedDevil\Models\SpeakerInvitation;
+
 class SpeakerInvitationViewModel {
+    private $id;
     private $speakerId;
     private $lectureId;
     private $conferenceId;
-    private $speakerUserName;
+    private $lectureTitle;
+    private $startDate;
+    private $endDate;
+    private $conferenceTitle;
+    private $speakerUsername;
 
-    function __construct($speakerId, $lectureId, $conferenceId, $speakerUserName)
+    function __construct(SpeakerInvitation $invitation)
     {
-        $this->speakerId = $speakerId;
-        $this->lectureId = $lectureId;
-        $this->speakerUserName = $speakerUserName;
-        $this->conferenceId = $conferenceId;
+        $this->id = $invitation->getId();
+        $this->speakerId = $invitation->getSpeakerId();
+        $this->lectureId = $invitation->getLectureId();
     }
 
     /**
@@ -51,22 +57,6 @@ class SpeakerInvitationViewModel {
     /**
      * @return mixed
      */
-    public function getSpeakerUserName()
-    {
-        return $this->speakerUserName;
-    }
-
-    /**
-     * @param mixed $speakerUserName
-     */
-    public function setSpeakerUserName($speakerUserName)
-    {
-        $this->speakerUserName = $speakerUserName;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getConferenceId()
     {
         return $this->conferenceId;
@@ -78,5 +68,101 @@ class SpeakerInvitationViewModel {
     public function setConferenceId($conferenceId)
     {
         $this->conferenceId = $conferenceId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLectureTitle()
+    {
+        return $this->lectureTitle;
+    }
+
+    /**
+     * @param mixed $lectureTitle
+     */
+    public function setLectureTitle($lectureTitle)
+    {
+        $this->lectureTitle = $lectureTitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConferenceTitle()
+    {
+        return $this->conferenceTitle;
+    }
+
+    /**
+     * @param mixed $conferenceTitle
+     */
+    public function setConferenceTitle($conferenceTitle)
+    {
+        $this->conferenceTitle = $conferenceTitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param mixed $endDate
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSpeakerUsername()
+    {
+        return $this->speakerUsername;
+    }
+
+    /**
+     * @param mixed $speakerUsername
+     */
+    public function setSpeakerUsername($speakerUsername)
+    {
+        $this->speakerUsername = $speakerUsername;
     }
 }

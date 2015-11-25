@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-24 18:22:11';
+	 public static $dateOfLastCheck = '2015-11-25 12:07:35';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -122,10 +122,36 @@ class RoutesConfig {
 		 [ 
 			 'controller' => 'RedDevil\Controllers\UsersController',
 			 'action' => 'users',
-			 'route' => 'users/{string $username}',
+			 'route' => 'users/{string $username}/info',
 			 'annotations' => [
 				'method' => 'get',
-				'route' => 'users/{string $username}',
+				'route' => 'users/{string $username}/info',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'invitations',
+			 'route' => 'users/invitations',
+			 'annotations' => [
+				'route' => 'users/invitations',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'approveInvitation',
+			 'route' => 'users/approveinvitation/{integer $invitationId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/approveinvitation/{integer $invitationid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'rejectInvitation',
+			 'route' => 'users/rejectinvitation/{integer $invitationId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/rejectinvitation/{integer $invitationid}',
 			 ]
 		 ], 
 		 [ 
@@ -160,6 +186,24 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'get',
 				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'approveRequest',
+			 'route' => 'venues/approverequest/{integer $requestId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/approverequest/{integer $requestid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'rejectRequest',
+			 'route' => 'venues/rejectrequest/{integer $requestId}',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/rejectrequest/{integer $requestid}',
 			 ]
 		 ], 
 		 [ 
@@ -351,7 +395,33 @@ class RoutesConfig {
 			 'route' => 'users/users',
 			 'annotations' => [
 				'method' => 'get',
-				'route' => 'users/{string $username}',
+				'route' => 'users/{string $username}/info',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'invitations',
+			 'route' => 'users/invitations',
+			 'annotations' => [
+				'route' => 'users/invitations',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'approveInvitation',
+			 'route' => 'users/approveInvitation',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/approveinvitation/{integer $invitationid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\UsersController',
+			 'action' => 'rejectInvitation',
+			 'route' => 'users/rejectInvitation',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'users/rejectinvitation/{integer $invitationid}',
 			 ]
 		 ], 
 		 [ 
@@ -400,6 +470,31 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'get',
 				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'requests',
+			 'route' => 'venues/requests',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'approveRequest',
+			 'route' => 'venues/approveRequest',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/approverequest/{integer $requestid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'rejectRequest',
+			 'route' => 'venues/rejectRequest',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'venues/rejectrequest/{integer $requestid}',
 			 ]
 		 ], 
 	 ]; 

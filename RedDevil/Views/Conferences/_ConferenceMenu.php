@@ -16,8 +16,8 @@
         ->setData('Book Venue')
         ->render();
     ActionLink::create()
-        ->setAttribute('href', '/conferences/delete/' . $model->getId())
-        ->setAttribute('class', 'btn btn-default')
+        ->setAttribute('href', '/conferences/' . $model->getId() . '/delete/confirm')
+        ->setAttribute('class', 'btn btn-danger')
         ->setNewLineAfter(false)
         ->setData('Delete Conference')
         ->render();

@@ -21,7 +21,7 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         <strong>Owner: </strong>
         <?php
         ActionLink::create()
-            ->setAttribute('href', '/users/' . $model->getOwnerUsername())
+            ->setAttribute('href', '/users/' . $model->getOwnerUsername() . '/info')
             ->setData($model->getOwnerUsername())
             ->render();
         ?>

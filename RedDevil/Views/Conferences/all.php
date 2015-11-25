@@ -44,7 +44,7 @@
                     <strong>Organizer:</strong>
                     <?php
                     \RedDevil\ViewHelpers\ActionLink::create()
-                        ->setAttribute('href', '/users/' . $conference->getOwnerUsername())
+                        ->setAttribute('href', '/users/' . $conference->getOwnerUsername() . '/info')
                         ->setData($conference->getOwnerUsername())
                         ->render();
                     ?>

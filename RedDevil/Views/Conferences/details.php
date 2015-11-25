@@ -24,7 +24,7 @@ use RedDevil\ViewHelpers\ActionLink; ?>
             <strong>Organizer: </strong>
             <?php
             ActionLink::create()
-                ->setAttribute('href', '/users/' . $model->getOwnerUsername())
+                ->setAttribute('href', '/users/' . $model->getOwnerUsername() . '/info')
                 ->setData($model->getOwnerUsername())
                 ->render();
             ?>
@@ -32,18 +32,22 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         <p>
             <strong>Venue: </strong>
             <?php
-            $venue = $model->getVenue() == null ? '(not available)' :
-                $model->getVenue();
-            if ($model->getVenue() == null) {
-                \RedDevil\ViewHelpers\ActionLink::create()
-                    ->setAttribute('href', '#')
-                    ->setData($venue)
-                    ->render();
-            } else {
+            if ($model->getVenueId() != null && $model->getVenueRequestStatus() == 1) {
                 \RedDevil\ViewHelpers\ActionLink::create()
                     ->setAttribute('href', '/venues/details/' . $model->getVenueId())
-                    ->setData($venue)
+                    ->setNewLineAfter(false)
+                    ->setData($model->getVenue())
                     ->render();
+                echo " <span class='label label-success'>confirmed</span>";
+            } else if ($model->getVenueId() != null && $model->getVenueRequestStatus() == 0) {
+                \RedDevil\ViewHelpers\ActionLink::create()
+                    ->setAttribute('href', '/venues/details/' . $model->getVenueId())
+                    ->setNewLineAfter(false)
+                    ->setData($model->getVenue())
+                    ->render();
+                echo " <span class='label label-warning'>not confirmed</span>";
+            } else {
+                echo '(not available)';
             }
             ?>
         </p>
@@ -57,7 +61,7 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         Lectures
     </h3>
     <?php foreach ($model->getLectures() as $lecture) : ?>
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <?php
@@ -70,16 +74,25 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                     <div class="media-body">
                         <strong>Speaker: </strong>
                         <?php
-                        if ($lecture->getSpeakerId() == '') {
-                            echo $lecture->getSpeakerUsername();
-                            echo "<br/>";
-                        } else {
-                            ActionLink::create()
-                                ->setAttribute('href', '/users/' . $lecture->getSpeakerId())
+                        if ($lecture->getSpeakerId() != null && $lecture->getSpeakerRequestStatus() == 1) {
+                            \RedDevil\ViewHelpers\ActionLink::create()
+                                ->setAttribute('href', '/users/' . $lecture->getSpeakerUsername() . '/info')
+                                ->setNewLineAfter(false)
                                 ->setData($lecture->getSpeakerUsername())
                                 ->render();
+                            echo " <span class='label label-success'>confirmed</span>";
+                        } else if ($lecture->getSpeakerId() != null && $lecture->getSpeakerRequestStatus() == 0) {
+                            \RedDevil\ViewHelpers\ActionLink::create()
+                                ->setAttribute('href', '/users/' . $lecture->getSpeakerUsername() . '/info')
+                                ->setNewLineAfter(false)
+                                ->setData($lecture->getSpeakerUsername())
+                                ->render();
+                            echo " <span class='label label-warning'>not confirmed</span>";
+                        } else {
+                            echo '(not available)';
                         }
                         ?>
+                        <br/>
                         <strong>At hall: </strong>
                         <?php
                         echo $lecture->getHallTitle();

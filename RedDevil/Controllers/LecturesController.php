@@ -7,6 +7,7 @@ use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
 use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
 use RedDevil\Models\LectureBreak;
+use RedDevil\Models\SpeakerInvitation;
 use RedDevil\Services\LecturesService;
 use RedDevil\View;
 use RedDevil\ViewModels\SpeakerInvitationViewModel;
@@ -79,13 +80,16 @@ class LecturesController extends BaseController {
             ->getUsers();
         $invitationModels = [];
         foreach ($users as $user) {
-            $model = new SpeakerInvitationViewModel(
-                $user->getId(),
+            $model = new SpeakerInvitation(
                 $lectureId,
-                $conferenceId,
-                $user->getUsername()
+                $user->getId(),
+                0
             );
-            $invitationModels[] = $model;
+            $viewModel = new SpeakerInvitationViewModel($model);
+            $viewModel->setConferenceId($conferenceId);
+            $viewModel->setSpeakerUsername($user->getUsername());
+
+            $invitationModels[] = $viewModel;
         }
 
         return new View('lectures', 'invite', $invitationModels);
@@ -104,13 +108,8 @@ class LecturesController extends BaseController {
 
         $service = new LecturesService($this->dbContext);
         $result = $service->inviteSpeaker($model);
-        if (!$result->hasError()) {
-            $this->addInfoMessage($result->getMessage());
-            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
-        } else {
-            $this->addErrorMessage($result->getMessage());
-            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
-        }
+        $this->processResponse($result);
+        $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
     }
 
     /**

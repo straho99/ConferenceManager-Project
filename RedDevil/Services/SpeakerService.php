@@ -2,6 +2,8 @@
 
 namespace RedDevil\Services;
 
+use RedDevil\Core\DatabaseData;
+
 class SpeakerService extends BaseService {
 
     /**
@@ -35,14 +37,32 @@ class SpeakerService extends BaseService {
             return new ServiceResponse(404, "Invitation not found.");
         }
 
+        $lectureStartDate = $lecture->getStartDate();
+        $lectureEndDate = $lecture->getEndDate();
+        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
+        $statement = $db->prepare($this::CHECK_SPEAKER_AVAILABILITY);
+
+        $statement->execute(
+            [$speakerId, $lectureStartDate, $lectureStartDate, $lectureEndDate, $lectureEndDate]);
+        if ($statement->rowCount() > 0) {
+            return new ServiceResponse(1, "The hall is busy at this time. Request is denied.");
+        }
+
         if ($confirm) {
             $invitation->setStatus(1);
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Invitation was confirmed.");
         } else {
             $invitation->setStatus(2);
+            $lecture->setSpeaker_Id(null);
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Invitation was rejected.");
         }
     }
+
+    const CHECK_SPEAKER_AVAILABILITY = <<<TAG
+select StartDate, EndDate
+from lectures
+where Speaker_Id = ? and ((? >= StartDate and ? <= EndDate) or (? >= StartDate and ? <= EndDate))
+TAG;
 }

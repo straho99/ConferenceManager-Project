@@ -4,6 +4,7 @@ namespace RedDevil\Services;
 
 use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
+use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
 use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
@@ -53,6 +54,7 @@ class LecturesService extends BaseService {
     {
         $lectureId = $model->getLectureId();
         $speakerId = $model->getSpeakerId();
+        $conferenceId = $model->getConferenceId();
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->findOne();
@@ -67,6 +69,17 @@ class LecturesService extends BaseService {
             return new ServiceResponse(404, "Speaker not found.");
         }
 
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+        if ($conference->getId() == null) {
+            return new ServiceResponse(404, 'Conference not found.');
+        }
+
+        if (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+            return new ServiceResponse(401, 'Only conference owners can invite speakers.');
+        }
+
         $invitation = $this->dbContext->getSpeakerInvitationsRepository()
             ->filterByLectureId(" = $lectureId")
             ->filterBySpeakerId(" = $speakerId")
@@ -75,6 +88,10 @@ class LecturesService extends BaseService {
             return new ServiceResponse(409, "Speaker is already invited.");
         }
 
+        $this->dbContext->getSpeakerInvitationsRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->delete();
+
         $speakerInvitation = new SpeakerInvitation(
           $lectureId,
             $speakerId,
@@ -82,6 +99,7 @@ class LecturesService extends BaseService {
         );
         $this->dbContext->getSpeakerInvitationsRepository()
             ->add($speakerInvitation);
+        $lecture->setSpeaker_Id($speakerId);
         $this->dbContext->saveChanges();
 
         return new ServiceResponse(null, "Invitation sent.");

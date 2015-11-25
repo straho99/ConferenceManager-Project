@@ -24,7 +24,7 @@
                         <strong>Owner:</strong>
                         <?php
                         \RedDevil\ViewHelpers\ActionLink::create()
-                            ->setAttribute('href', '/users/' . $venue->getOwnerUsername())
+                            ->setAttribute('href', '/users/' . $venue->getOwnerUsername() . '/info')
                             ->setData($venue->getOwnerUsername())
                             ->render();
                         ?>

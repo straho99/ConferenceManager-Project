@@ -10,6 +10,7 @@ use RedDevil\InputModels\Venue\VenueInputModel;
 use RedDevil\Models\Hall;
 use RedDevil\Models\Venue;
 use RedDevil\ViewModels\HallViewModel;
+use RedDevil\ViewModels\OwnerVenueRequestViewModel;
 use RedDevil\ViewModels\VenueDetailsViewModel;
 use RedDevil\ViewModels\VenueSummaryViewModel;
 
@@ -108,8 +109,15 @@ class VenuesServices extends BaseService {
         return new ServiceResponse(null, 'Hall deleted successfully.');
     }
     
-    public function replyToVenueRequest($confirm, $venueId, $conferenceId)
+    public function replyToVenueRequest($confirm, $requestId)
     {
+        $request = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterById(" = $requestId")
+            ->findOne();
+
+        $venueId = $request->getVenueId();
+        $conferenceId = $request->getConferenceId();
+
         $venue = $this->dbContext->getVenuesRepository()
             ->filterById(" = $venueId")
             ->findOne();
@@ -125,12 +133,12 @@ class VenuesServices extends BaseService {
             return new ServiceResponse(404, "Conference not found.");
         }
 
-        $request = $this->dbContext->getVenueReservationRequestsRepository()
-            ->filterByVenueId(" = $venueId")
-            ->filterByConferenceId(" = $conferenceId")
-            ->findOne();
         if ($request->getId() == null) {
             return new ServiceResponse(404, "Venue request not found.");
+        }
+
+        if (HttpContext::getInstance()->getIdentity()->getUserId() != $venue->getOwnerId()) {
+            return new ServiceResponse(401, 'Replying to venue request only allowed for venue owner.');
         }
 
         $conferenceStartDate = $conference->getStartDate();
@@ -149,6 +157,7 @@ class VenuesServices extends BaseService {
 
         if ($confirm) {
             $request->setStatus(1);
+            $conference->setVenue_Id(null);
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Venue request was confirmed.");
         } else {
@@ -158,9 +167,57 @@ class VenuesServices extends BaseService {
         }
     }
 
+    public function getVenueRequestsForUser()
+    {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
+        $userVenues = $this->dbContext->getVenuesRepository()
+            ->filterByOwnerId(" = $userId")
+            ->findAll();
+        $ids = [];
+        foreach ($userVenues->getVenues() as $venue) {
+            $ids[] = $venue->getId();
+        }
+        $inClause = '(' . implode(',', $ids) . ')';
+        $userRequests = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByVenueId(" in $inClause")
+            ->filterByStatus(" = 0")
+            ->findAll();
+
+        $requests = [];
+
+        foreach ($userRequests->getVenueReservationRequests() as $request) {
+            $venueId = $request->getVenueId();
+            $model = new OwnerVenueRequestViewModel($request);
+
+            $venue = $this->dbContext->getVenuesRepository()
+                ->filterById(" = $venueId")
+                ->findOne();
+            $model->setVenueName($venue->getTitle());
+
+            $conferenceId = $request->getConferenceId();
+            $conference = $this->dbContext->getConferencesRepository()
+                ->filterById(" = $conferenceId")
+                ->findOne();
+            $model->setConferenceId($conferenceId);
+            $model->setConferenceTitle($conference->getTitle());
+            $model->setStartDate($conference->getStartDate());
+            $model->setEndDate($conference->getEndDate());
+
+            $requests[] = $model;
+        }
+
+        return new ServiceResponse(null, null, $requests);
+    }
+
     const CHECK_VENUE_AVAILABILITY = <<<TAG
 select LectureId
 from `lectures`
 where venueId = ? and ((? >= StartDate and ? <= EndDate) or (? >= StartDate and ? <= EndDate))
+TAG;
+
+    const GET_USER_VENUE_REQUESTS = <<<TAG
+select id
+from venueReservationRequests
+where VenueId in ?
 TAG;
 }

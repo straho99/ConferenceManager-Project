@@ -36,6 +36,7 @@
         <div class="navbar-collapse collapse">
             <?php use RedDevil\Core\HttpContext;
             use RedDevil\Services\NotificationsService;
+            use RedDevil\View;
 
             if (HttpContext::getInstance()->getIdentity()->isAuthorised()): ?>
                 <ul class="nav navbar-nav">
@@ -76,12 +77,14 @@
             <li role="presentation" class="disabled"><a href="#"><h4>Menu</h4></a></li>
             <li role="presentation"><a href="/conferences/all">Conferences</a></li>
             <li role="presentation"><a href="/venues/all">Venues</a></li>
-            <li role="presentation" class="disabled"><a href="#"><h4>My menu</h4></a></li>
-            <li role="presentation"><a href="/conferences/own">Own conferences</a></li>
-            <li role="presentation"><a href="/venues/own">Own venues</a></li>
-            <li role="presentation"><a href="/lectures/own">Own lectures</a></li>
-            <li role="presentation"><a href="/lectures/mustvisit">My schedule</a></li>
-            <li role="presentation"><a href="/conferences/add">Add conference</a></li>
-            <li role="presentation"><a href="/venues/add">Add venue</a></li>
+            <?php
+            new View("Users", "_UserMenu", null, null);
+            ?>
+            <?php
+            new View("Conferences", "_ConferenceOwnerMenu", null, null);
+            ?>
+            <?php
+            new View("Venues", "_VenueOwnerMenu", null, null);
+            ?>
         </ul>
     </div>

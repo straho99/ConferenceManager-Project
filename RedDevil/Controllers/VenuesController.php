@@ -111,4 +111,37 @@ class VenuesController extends BaseController {
             $this->redirectToUrl('/venues/details/' . $venueId);
         }
     }
+    
+    public function requests()
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->getVenueRequestsForUser();
+        return new View("Venues", "requests", $response->getModel());
+    }
+
+    /**
+     * @param $requestId
+     * @Method('GET')
+     * @Route('venues/approverequest/{integer $requestId}')
+     */
+    public function approveRequest($requestId)
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->replyToVenueRequest(true, $requestId);
+        $this->processResponse($response);
+        $this->redirect("Home", "Index");
+    }
+
+    /**
+     * @param $requestId
+     * @Method('GET')
+     * @Route('venues/rejectrequest/{integer $requestId}')
+     */
+    public function rejectRequest($requestId)
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->replyToVenueRequest(false, $requestId);
+        $this->processResponse($response);
+        $this->redirect("Home", "Index");
+    }
 }

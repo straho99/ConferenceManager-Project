@@ -18,6 +18,7 @@ class LectureViewModel {
 
     private $speakerId;
     private $speakerUsername;
+    private $speakerRequestStatus;
 
     private $participantsCount;
 
@@ -209,5 +210,21 @@ class LectureViewModel {
     public function setParticipantsCount($participantsCount)
     {
         $this->participantsCount = $participantsCount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSpeakerRequestStatus()
+    {
+        return $this->speakerRequestStatus;
+    }
+
+    /**
+     * @param mixed $speakerRequestStatus
+     */
+    public function setSpeakerRequestStatus($speakerRequestStatus)
+    {
+        $this->speakerRequestStatus = $speakerRequestStatus;
     }
 }
