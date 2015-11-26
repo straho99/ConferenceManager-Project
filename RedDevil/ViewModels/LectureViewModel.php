@@ -3,8 +3,9 @@
 namespace RedDevil\ViewModels;
 
 use RedDevil\Models\Lecture;
+use RedDevil\Services\IDateTimeInterval;
 
-class LectureViewModel {
+class LectureViewModel implements IDateTimeInterval {
     private $id;
     private $title;
     private $description;
@@ -226,22 +227,5 @@ class LectureViewModel {
     public function setSpeakerRequestStatus($speakerRequestStatus)
     {
         $this->speakerRequestStatus = $speakerRequestStatus;
-    }
-
-    public function compareTo(LectureViewModel $other)
-    {
-        $lectureStartDate = strtotime($this->startDate);
-        $lectureEndDate = strtotime($this->endDate);
-
-        $otherStartDate = strtotime($other->getStartDate());
-        $otherEndDate = strtotime($other->getEndDate());
-
-        if ($lectureEndDate < $otherStartDate) {
-            return -1;
-        } else if($lectureStartDate > $otherEndDate) {
-            return 1;
-        } else {
-            return 0;
-        }
     }
 }

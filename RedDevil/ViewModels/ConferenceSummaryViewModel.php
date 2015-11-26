@@ -3,8 +3,9 @@
 namespace RedDevil\ViewModels;
 
 use RedDevil\Models\Conference;
+use RedDevil\Services\IDateTimeInterval;
 
-class ConferenceSummaryViewModel {
+class ConferenceSummaryViewModel implements IDateTimeInterval {
     private $id;
     private $title;
     private $startDate;

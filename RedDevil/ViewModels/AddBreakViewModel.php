@@ -3,8 +3,9 @@
 namespace RedDevil\ViewModels;
 
 use RedDevil\Models\LectureBreak;
+use RedDevil\Services\IDateTimeInterval;
 
-class AddBreakViewModel {
+class AddBreakViewModel implements IDateTimeInterval {
     private $title;
     private $description;
     private $startDate;

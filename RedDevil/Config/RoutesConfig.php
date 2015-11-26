@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-26 17:52:23';
+	 public static $dateOfLastCheck = '2015-11-26 18:36:14';
 
 	 public static $ROUTES = [ 
 		 [ 

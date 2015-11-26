@@ -4,8 +4,9 @@ namespace RedDevil\InputModels\Lecture;
 
 use RedDevil\InputModels\BaseInputModel;
 use RedDevil\Models\Lecture;
+use RedDevil\Services\IDateTimeInterval;
 
-class LectureInputModel extends BaseInputModel {
+class LectureInputModel extends BaseInputModel implements IDateTimeInterval {
     private $title;
     private $description;
     private $startDate;

@@ -3,8 +3,9 @@
 namespace RedDevil\ViewModels;
 
 use RedDevil\Models\SpeakerInvitation;
+use RedDevil\Services\IDateTimeInterval;
 
-class SpeakerInvitationViewModel {
+class SpeakerInvitationViewModel implements IDateTimeInterval {
     private $id;
     private $speakerId;
     private $lectureId;

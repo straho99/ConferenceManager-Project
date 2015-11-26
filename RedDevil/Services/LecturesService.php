@@ -13,7 +13,9 @@ use RedDevil\Models\Lecture;
 use RedDevil\Models\LectureBreak;
 use RedDevil\Models\LecturesParticipant;
 use RedDevil\Models\SpeakerInvitation;
+use RedDevil\ViewModels\AddBreakViewModel;
 use RedDevil\ViewModels\AddHallViewModel;
+use RedDevil\ViewModels\LectureViewModel;
 
 class LecturesService extends BaseService
 {
@@ -244,16 +246,12 @@ class LecturesService extends BaseService
         $breakStartDate = strtotime($model->getStartDate());
         $breakEndDate = strtotime($model->getEndDate());
 
-        $lectureStartDate = strtotime($lecture->getStartDate());
-        $lectureEndDate = strtotime($lecture->getEndDate());
-
         if ($breakStartDate >= $breakEndDate) {
-            return new ServiceResponse(1, "Lecture not found.");
+            return new ServiceResponse(1, "Start date/time cannot be later than End date/time.", $model->getConferenceId());
         }
 
-        if ($breakStartDate <= $lectureStartDate || $breakStartDate >= $lectureEndDate ||
-            $breakEndDate <= $lectureStartDate || $breakEndDate >= $lectureEndDate
-        ) {
+        $lectureModel = new LectureViewModel($lecture);
+        if (!$this->contains($lectureModel, $model)) {
             return new ServiceResponse(1, "Break failed to add. Time is outside lecture time.", $model->getConferenceId());
         }
 
@@ -262,16 +260,12 @@ class LecturesService extends BaseService
             ->findAll();
 
         $conferenceId = $model->getConferenceId();
-        $lectureBreaks->each(function ($break) use ($breakStartDate, $breakEndDate, $conferenceId) {
-            $otherStartDate = strtotime($break->getStartDate());
-            $otherEndDate = strtotime($break->getEndDate());
-
-            if (($breakStartDate >= $otherStartDate && $breakStartDate <= $otherEndDate) ||
-                ($breakEndDate >= $otherStartDate || $breakEndDate <= $otherEndDate)
-            ) {
-                return new ServiceResponse(1, "Break failed to add. Timing conflicts with another break.", $conferenceId);
+        foreach ($lectureBreaks->getLectureBreaks() as $break) {
+            $otherBreakModel = new AddBreakViewModel($break);
+            if ($this->compareTo($model, $otherBreakModel) == 0) {
+                return new ServiceResponse(1, "Break failed to add. Timing conflicts with another break.", $model->getConferenceId());
             }
-        });
+        }
 
         $break = new LectureBreak(
             $model->getTitle(),

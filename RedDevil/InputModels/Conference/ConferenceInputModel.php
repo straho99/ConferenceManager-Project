@@ -3,8 +3,9 @@
 namespace RedDevil\InputModels\Conference;
 
 use RedDevil\InputModels\BaseInputModel;
+use RedDevil\Services\IDateTimeInterval;
 
-class ConferenceInputModel extends BaseInputModel {
+class ConferenceInputModel extends BaseInputModel implements IDateTimeInterval {
     private $title;
     private $startDate;
     private $endDate;
