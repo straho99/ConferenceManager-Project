@@ -227,4 +227,21 @@ class LectureViewModel {
     {
         $this->speakerRequestStatus = $speakerRequestStatus;
     }
+
+    public function compareTo(LectureViewModel $other)
+    {
+        $lectureStartDate = strtotime($this->startDate);
+        $lectureEndDate = strtotime($this->endDate);
+
+        $otherStartDate = strtotime($other->getStartDate());
+        $otherEndDate = strtotime($other->getEndDate());
+
+        if ($lectureEndDate < $otherStartDate) {
+            return -1;
+        } else if($lectureStartDate > $otherEndDate) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

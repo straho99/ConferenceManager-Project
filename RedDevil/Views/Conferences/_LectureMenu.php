@@ -16,7 +16,7 @@
         ->setData('Select Hall')
         ->render();
     ActionLink::create()
-        ->setAttribute('href', '/lectures/addbreak')
+        ->setAttribute('href', '/lectures/' . $model->getId() . '/addbreak')
         ->setAttribute('class', 'btn btn-default')
         ->setNewLineAfter(false)
         ->setData('Add Break')

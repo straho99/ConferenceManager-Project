@@ -11,6 +11,7 @@ use RedDevil\Models\LectureBreak;
 use RedDevil\Models\SpeakerInvitation;
 use RedDevil\Services\LecturesService;
 use RedDevil\View;
+use RedDevil\ViewModels\AddBreakViewModel;
 use RedDevil\ViewModels\SpeakerInvitationViewModel;
 
 class LecturesController extends BaseController {
@@ -174,27 +175,40 @@ class LecturesController extends BaseController {
     }
 
     /**
+     * @param $lectureId
+     * @param BreakInputModel $model
+     * @return View
      * @throws \Exception
-     * @internal param $lectureId
-     * @Method('POST')
+     * @Method('GET', 'POST')
      * @Route('lectures/{integer $lectureId}/addbreak')
      */
-    public function createBreak()
+    public function addBreak(BreakInputModel $model, $lectureId)
     {
-        $break = new LectureBreak(
-            "Title",
-            "Description",
-            1,
-            "2015-01-01 18:17:02",
-            "2015-01-01 18:25:02"
-        );
-
-        $model = new BreakInputModel($break);
-
         $service = new LecturesService($this->dbContext);
-        $result = $service->addBreak(11, $model);
-        $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+        if (HttpContext::getInstance()->isPost()) {
+            $response = $service->addBreak($model);
+            if ($response->hasError()) {
+                if ($response->getErrorCode() > 1) {
+                    throw new \Exception($response->getMessage(), $response->getErrorCode());
+                } else {
+                    $this->addErrorMessage($response->getMessage());
+                    $this->redirectToUrl('/conferences/details/' . $response->getModel());
+                }
+            } else {
+                $this->addInfoMessage($response->getMessage());
+                $this->redirectToUrl('/conferences/details/' . $response->getModel());
+            }
+        } else {
+            $conferenceId = $this->dbContext->getLecturesRepository()
+                ->filterById(" = $lectureId")
+                ->findOne()
+                ->getConferenceId();
+            $breakModel = new BreakInputModel();
+            $breakModel->setLectureId($lectureId);
+            $breakModel->setConferenceId($conferenceId);
+
+            return new View('Lectures', 'addbreak', $breakModel);
+        }
     }
 
     /**

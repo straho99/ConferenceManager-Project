@@ -48,9 +48,9 @@ class LecturesService extends BaseService
         $conferenceId = $lecture->getConferenceId();
         $conference = $this->dbContext->getConferencesRepository()
             ->filterById(" = $conferenceId")
-               ->findOne();
+            ->findOne();
 
-        If(HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+        If (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
             return new ServiceResponse(401, "Unauthorised. Deleting lectures only allowed for conference owners.");
         }
 
@@ -68,7 +68,7 @@ class LecturesService extends BaseService
 
         $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
-           ->delete();
+            ->delete();
         return new ServiceResponse(null, "Lecture deleted.");
     }
 
@@ -230,8 +230,9 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Hall removed from lecture.");
     }
 
-    public function addBreak($lectureId, BreakInputModel $model)
+    public function addBreak(BreakInputModel $model)
     {
+        $lectureId = $model->getLectureId();
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->findOne();
@@ -240,33 +241,50 @@ class LecturesService extends BaseService
             return new ServiceResponse(404, "Lecture not found.");
         }
 
-        $breakStart = strtotime($model->getStartDate());
-        $breakEnd = strtotime($model->getEndDate());
+        $breakStartDate = strtotime($model->getStartDate());
+        $breakEndDate = strtotime($model->getEndDate());
 
-        $lectureStart = strtotime($lecture->getStartDate());
-        $lectureEnd = strtotime($lecture->getEndDate());
+        $lectureStartDate = strtotime($lecture->getStartDate());
+        $lectureEndDate = strtotime($lecture->getEndDate());
 
-        if ($breakStart < $lectureStart || $breakStart > $lectureEnd) {
-            return new ServiceResponse(1, "Break is outside of lecture time interval.");
+        if ($breakStartDate >= $breakEndDate) {
+            return new ServiceResponse(1, "Lecture not found.");
         }
 
-        if ($breakEnd < $lectureStart || $breakEnd > $lectureEnd) {
-            return new ServiceResponse(1, "Break is outside of lecture time interval.");
+        if ($breakStartDate <= $lectureStartDate || $breakStartDate >= $lectureEndDate ||
+            $breakEndDate <= $lectureStartDate || $breakEndDate >= $lectureEndDate
+        ) {
+            return new ServiceResponse(1, "Break failed to add. Time is outside lecture time.", $model->getConferenceId());
         }
+
+        $lectureBreaks = $this->dbContext->getLectureBreaksRepository()
+            ->filterByLectureId(" = $lectureId")
+            ->findAll();
+
+        $conferenceId = $model->getConferenceId();
+        $lectureBreaks->each(function ($break) use ($breakStartDate, $breakEndDate, $conferenceId) {
+            $otherStartDate = strtotime($break->getStartDate());
+            $otherEndDate = strtotime($break->getEndDate());
+
+            if (($breakStartDate >= $otherStartDate && $breakStartDate <= $otherEndDate) ||
+                ($breakEndDate >= $otherStartDate || $breakEndDate <= $otherEndDate)
+            ) {
+                return new ServiceResponse(1, "Break failed to add. Timing conflicts with another break.", $conferenceId);
+            }
+        });
 
         $break = new LectureBreak(
             $model->getTitle(),
             $model->getDescription(),
-            $lectureId,
+            $model->getLectureId(),
             $model->getStartDate(),
-            $model->getEndDate(),
-            null
+            $model->getEndDate()
         );
 
         $this->dbContext->getLectureBreaksRepository()
             ->add($break);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, "Break added.");
+        return new ServiceResponse(null, null, $model->getConferenceId());
     }
 
     public function addParticipant($lectureId, $participantId)

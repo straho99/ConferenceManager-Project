@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-26 06:31:43';
+	 public static $dateOfLastCheck = '2015-11-26 17:52:23';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -94,19 +94,10 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'deleteHall',
-			 'route' => 'lectures/{integer $lectureId}/deletehall/{integer $hallId}',
-			 'annotations' => [
-				'method' => 'post',
-				'route' => 'lectures/{integer $lectureid}/deletehall/{integer $hallid}',
-			 ]
-		 ], 
-		 [ 
-			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'createBreak',
+			 'action' => 'addBreak',
 			 'route' => 'lectures/{integer $lectureId}/addbreak',
 			 'annotations' => [
-				'method' => 'post',
+				'method' => ['get', 'post'],
 				'route' => 'lectures/{integer $lectureid}/addbreak',
 			 ]
 		 ], 
@@ -359,19 +350,10 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'deleteHall',
-			 'route' => 'lectures/deleteHall',
+			 'action' => 'addBreak',
+			 'route' => 'lectures/addBreak',
 			 'annotations' => [
-				'method' => 'post',
-				'route' => 'lectures/{integer $lectureid}/deletehall/{integer $hallid}',
-			 ]
-		 ], 
-		 [ 
-			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'createBreak',
-			 'route' => 'lectures/createBreak',
-			 'annotations' => [
-				'method' => 'post',
+				'method' => ['get', 'post'],
 				'route' => 'lectures/{integer $lectureid}/addbreak',
 			 ]
 		 ], 

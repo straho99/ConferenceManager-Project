@@ -1,11 +1,10 @@
 <?php
 
-namespace RedDevil\InputModels\Lecture;
+namespace RedDevil\ViewModels;
 
-use RedDevil\InputModels\BaseInputModel;
 use RedDevil\Models\LectureBreak;
 
-class BreakInputModel extends BaseInputModel {
+class AddBreakViewModel {
     private $title;
     private $description;
     private $startDate;
@@ -13,9 +12,13 @@ class BreakInputModel extends BaseInputModel {
     private $lectureId;
     private $conferenceId;
 
-    function __construct()
+    function __construct(LectureBreak $break)
     {
-        parent::__construct();
+        $this->title = $break->getTitle();
+        $this->description = $break->getDescription();
+        $this->startDate = $break->getStartDate();
+        $this->endDate = $break->getEndDate();
+        $this->lectureId = $break->getLectureId();
     }
 
     /**
@@ -112,31 +115,5 @@ class BreakInputModel extends BaseInputModel {
     public function setConferenceId($conferenceId)
     {
         $this->conferenceId = $conferenceId;
-    }
-
-    public function validate()
-    {
-        $this->validator->setRule('required', $this->title, null,
-            'title | Title is required.');
-
-        $this->validator->setRule('required', $this->lectureId, null,
-            'conferenceId | ConferenceId is required.');
-
-        $this->validator->setRule('minlength', $this->title, 3,
-            'title | Title must be at least 3 characters long.');
-
-        $this->validator->setRule('required', $this->startDate, null,
-            'startDate | Start Date is required.');
-
-        $this->validator->setRule('required', $this->endDate, null,
-            'endDate | End Date is required.');
-
-        $this->validator->setRule('gt', new \DateTime(), $this->startDate,
-            'startDate | Start Date must be a future date.');
-
-        $this->validator->setRule('gt', new \DateTime(), $this->endDate,
-            'endDate | End Date must be a future date.');
-
-        parent::validate();
     }
 }
