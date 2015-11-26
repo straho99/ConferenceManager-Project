@@ -11,6 +11,7 @@ class BreakInputModel extends BaseInputModel {
     private $startDate;
     private $endDate;
     private $lectureId;
+    private $conferenceId;
 
     function __construct(LectureBreak $break)
     {
@@ -99,6 +100,22 @@ class BreakInputModel extends BaseInputModel {
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConferenceId()
+    {
+        return $this->conferenceId;
+    }
+
+    /**
+     * @param mixed $conferenceId
+     */
+    public function setConferenceId($conferenceId)
+    {
+        $this->conferenceId = $conferenceId;
     }
 
     public function validate()

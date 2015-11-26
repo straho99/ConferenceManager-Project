@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-25 18:21:20';
+	 public static $dateOfLastCheck = '2015-11-26 06:31:43';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -76,11 +76,20 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'addHall',
-			 'route' => 'lectures/{integer $lectureId}/addhall/{integer $hallId}',
+			 'action' => 'halls',
+			 'route' => 'lectures/{integer $lectureId}/halls',
 			 'annotations' => [
-				'method' => ['post', 'get'],
-				'route' => 'lectures/{integer $lectureid}/addhall/{integer $hallid}',
+				'method' => 'get',
+				'route' => 'lectures/{integer $lectureid}/halls',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'addHall',
+			 'route' => 'lectures/addhall',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'lectures/addhall',
 			 ]
 		 ], 
 		 [ 
@@ -332,11 +341,20 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'halls',
+			 'route' => 'lectures/halls',
+			 'annotations' => [
+				'method' => 'get',
+				'route' => 'lectures/{integer $lectureid}/halls',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
 			 'action' => 'addHall',
 			 'route' => 'lectures/addHall',
 			 'annotations' => [
-				'method' => ['post', 'get'],
-				'route' => 'lectures/{integer $lectureid}/addhall/{integer $hallid}',
+				'method' => 'post',
+				'route' => 'lectures/addhall',
 			 ]
 		 ], 
 		 [ 

@@ -5,6 +5,7 @@ namespace RedDevil\Services;
 use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Lecture\AddHallInputModel;
 use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
 use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
@@ -12,6 +13,7 @@ use RedDevil\Models\Lecture;
 use RedDevil\Models\LectureBreak;
 use RedDevil\Models\LecturesParticipant;
 use RedDevil\Models\SpeakerInvitation;
+use RedDevil\ViewModels\AddHallViewModel;
 
 class LecturesService extends BaseService
 {
@@ -157,8 +159,12 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Invitation deleted.");
     }
 
-    public function addHall($lectureId, $hallId)
+    public function addHall(AddHallInputModel $model)
     {
+        $lectureId = $model->getLectureId();
+        $hallId = $model->getHallId();
+        $conferenceId = $model->getConferenceId();
+
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->findOne();
@@ -174,10 +180,14 @@ class LecturesService extends BaseService
             return new ServiceResponse(404, "Hall not found.");
         }
 
-        $conferenceId = $lecture->getConferenceId();
         $conference = $this->dbContext->getConferencesRepository()
             ->filterById(" = $conferenceId")
             ->findOne();
+
+        if (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
+            return new ServiceResponse(401, "Unauthorised. You must be conference owner.");
+        }
+
         $venueId = $conference->getVenue_Id();
         $testHall = $this->dbContext->getHallsRepository()
             ->filterById(" = $hallId")
@@ -196,12 +206,12 @@ class LecturesService extends BaseService
         $statement->execute(
             [$hallId, $lectureStartDate, $lectureStartDate, $lectureEndDate, $lectureEndDate]);
         if ($statement->rowCount() > 0) {
-            return new ServiceResponse(1, "The hall is busy at this time. Request is denied.");
+            return new ServiceResponse(1, "The hall is busy at this time. Request is denied.", $conferenceId);
         }
 
         $lecture->setHall_Id($hallId);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, "Hall added to lecture.");
+        return new ServiceResponse(null, "Hall added to lecture.", $conferenceId);
     }
 
     public function deleteHall($lectureId)
@@ -330,6 +340,45 @@ class LecturesService extends BaseService
             ->filterByParticipantId(" = $participantId")
             ->delete();
         return new ServiceResponse(null, "Participant removed from lecture.");
+    }
+
+    public function getHallsForLecture($lectureId)
+    {
+        $lecture = $this->dbContext->getLecturesRepository()
+            ->filterById(" = $lectureId")
+            ->findOne();
+        if ($lecture->getId() == null) {
+            return new ServiceResponse(404, 'Lecture not found.');
+        }
+
+        $conferenceId = $lecture->getConferenceId();
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+        $venueId = $conference->getVenue_Id();
+        if ($venueId == null) {
+            return new ServiceResponse(1, 'Conference venue must be selected first.');
+        }
+        $venueRequest = $this->dbContext->getVenueReservationRequestsRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->filterByVenueId(" = $venueId")
+            ->findOne();
+        if ($venueRequest->getStatus() == 0) {
+            return new ServiceResponse(1, 'Conference venue is not yet confirmed.');
+        }
+
+        $halls = $this->dbContext->getHallsRepository()
+            ->filterByVenueId(" = $venueId")
+            ->findAll();
+        $models = [];
+        foreach ($halls->getHalls() as $hall) {
+            $model = new AddHallViewModel($hall);
+            $model->setLectureId($lectureId);
+            $model->setConferenceId($conferenceId);
+            $models[] = $model;
+        }
+
+        return new ServiceResponse(null, null, $models);
     }
 
     const CHECK_HALL_AVAILABILITY = <<<TAG

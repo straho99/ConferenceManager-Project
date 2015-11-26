@@ -10,7 +10,7 @@
         ->setData('Invite Speaker')
         ->render();
     ActionLink::create()
-        ->setAttribute('href', '/lectures/' . $model->getId() . '/halls/' )
+        ->setAttribute('href', '/lectures/' . $model->getId() . '/halls' )
         ->setAttribute('class', 'btn btn-default')
         ->setNewLineAfter(false)
         ->setData('Select Hall')

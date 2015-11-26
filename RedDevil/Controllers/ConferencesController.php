@@ -100,12 +100,7 @@ class ConferencesController extends BaseController {
 
         $service = new ConferencesService($this->dbContext);
         $result = $service->sendVenueRequest($model);
-        if (!$result->hasError()) {
-            $this->addInfoMessage($result->getMessage());
-            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
-        } else {
-            $this->addErrorMessage($result->getMessage());
-            $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
-        }
+        $this->processResponse($result);
+        $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
     }
 }

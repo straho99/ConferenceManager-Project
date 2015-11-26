@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Lecture\AddHallInputModel;
 use RedDevil\InputModels\Lecture\BreakInputModel;
 use RedDevil\InputModels\Lecture\LectureInputModel;
 use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
@@ -128,32 +129,48 @@ class LecturesController extends BaseController {
 
     /**
      * @param $lectureId
-     * @param $hallId
-     * @Method('POST', 'GET')
-     * @Route('lectures/{integer $lectureId}/addhall/{integer $hallId}')
+     * @Method('GET')
+     * @Route('lectures/{integer $lectureId}/halls')
+     * @return View
      * @throws \Exception
      */
-    public function addHall($lectureId, $hallId)
+    public function halls($lectureId)
     {
         $service = new LecturesService($this->dbContext);
-        $result = $service->addHall($lectureId, $hallId);
-        $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+        $result = $service->getHallsForLecture($lectureId);
+        if ($result->hasError()) {
+            if ($result->getErrorCode() > 1) {
+                throw new \Exception($result->getMessage(), $result->getErrorCode());
+            } else {
+                $this->addErrorMessage($result->getMessage());
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            return new View('Lectures', 'selecthall', $result->getModel());
+        }
     }
 
     /**
-     * @param $lectureId
-     * @param $hallId
+     * @param AddHallInputModel $model
      * @Method('POST')
-     * @Route('lectures/{integer $lectureId}/deletehall/{integer $hallId}')
+     * @Route('lectures/addhall')
      * @throws \Exception
      */
-    public function deleteHall($lectureId, $hallId)
+    public function addHall(AddHallInputModel $model)
     {
         $service = new LecturesService($this->dbContext);
-        $result = $service->deleteHall($lectureId, $hallId);
-        $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+        $result = $service->addHall($model);
+        if ($result->hasError()) {
+            if ($result->getErrorCode() > 1) {
+                throw new \Exception($result->getMessage(), $result->getErrorCode());
+            } else {
+                $this->addErrorMessage($result->getMessage());
+                $this->redirectToUrl('/conferences/details/' . $result->getModel());
+            }
+        } else {
+            $this->addInfoMessage($result->getMessage());
+            $this->redirectToUrl('/conferences/details/' . $result->getModel());
+        }
     }
 
     /**
