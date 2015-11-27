@@ -4,7 +4,7 @@ namespace RedDevil\Controllers;
 public class SearchController extends BaseController {
 	
 	/**
-	/* @Route('search/{string $keyword}')
+	* @Route('search/{string $keyword}')
 	*/
 	public function search($keyword) {
 		$service = new SearchService($this->dbContext);
