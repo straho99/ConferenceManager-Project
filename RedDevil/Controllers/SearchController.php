@@ -5,7 +5,7 @@ public class SearchController extends BaseController {
 	
 	/**
 	/* @Route('search/{string $keyword}')
-	/**
+	*/
 	public function search($keyword) {
 		$service = new SearchService($this->dbContext);
 		$response = $service->search($keyword);
