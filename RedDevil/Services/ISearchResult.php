@@ -1,3 +1,4 @@
+<?php
 namespace RedDevil\Contract;
 
 public interface ISearchResult { 
@@ -6,3 +7,4 @@ public interface ISearchResult {
  
 	public getResultUrl(); 
 }  
+?>
