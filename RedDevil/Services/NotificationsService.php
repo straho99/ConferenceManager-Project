@@ -118,6 +118,18 @@ class NotificationsService extends BaseService {
         return new ServiceResponse();
 
     }
+    
+    public function postToAll($message) {
+    	$users = $this->dbContext->getUsersRepository()
+    			->findAll();
+    	$users->each(function($user) use ($message) {
+    		$notification = New Notification($message, $user->getId(), $today);	
+    		$this->dbContext->getUsersRepository()
+    			->add(notification);
+    	});
+    	$this->dbContext->saveChanges();
+	    return true;
+    }
 
     static $GET_UNREAD_COUNT = <<<TAG
 select count(id) as 'count'
