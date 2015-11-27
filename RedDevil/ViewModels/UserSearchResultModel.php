@@ -1,3 +1,4 @@
+<?php
 public class UserSearchResultModel implements ISearchResult { 
 	private $id;
  
@@ -45,3 +46,4 @@ public class UserSearchResultModel implements ISearchResult {
 		return string.Format("/users/" . $this->username . '/info');
 	}       
 } 
+?>
