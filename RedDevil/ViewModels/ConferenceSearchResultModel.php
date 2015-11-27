@@ -1,3 +1,4 @@
+<?php
 public class ConferenceSearchResultModel implements ISearchResult { 
 	private $id;
  
@@ -59,3 +60,4 @@ public class ConferenceSearchResultModel implements ISearchResult {
 		return string.Format("/conferences/details/" . $this->Id);
 	}       
 } 
+?>
