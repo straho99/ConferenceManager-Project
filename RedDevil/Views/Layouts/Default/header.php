@@ -50,7 +50,7 @@
                 </ul>
             <?php endif; ?>
 
-            <form class="navbar-form navbar-left" role="search" action="/search/index">
+            <form class="navbar-form navbar-left" role="search" action="/search/find">
                 <div class="form-group">
                     <input type="text" name="keyword" class="form-control" placeholder="Search">
                 </div>
