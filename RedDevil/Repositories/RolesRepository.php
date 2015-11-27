@@ -220,6 +220,8 @@ $entityInfo['id']);
             self::insert($entity);
         }
 
+        self::$insertObjectPool = [];
+
         return true;
     }
 

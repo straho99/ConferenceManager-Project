@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-27 18:22:30';
+	 public static $dateOfLastCheck = '2015-11-27 19:56:18';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -177,15 +177,6 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'post',
 				'route' => 'venues/createhall',
-			 ]
-		 ], 
-		 [ 
-			 'controller' => 'RedDevil\Controllers\VenuesController',
-			 'action' => 'deleteHall',
-			 'route' => 'venues/{integer $venueId}/deletehall/{integer $hallId}',
-			 'annotations' => [
-				'method' => 'get',
-				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
 			 ]
 		 ], 
 		 [ 
@@ -505,15 +496,6 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'post',
 				'route' => 'venues/createhall',
-			 ]
-		 ], 
-		 [ 
-			 'controller' => 'RedDevil\Controllers\VenuesController',
-			 'action' => 'deleteHall',
-			 'route' => 'venues/deleteHall',
-			 'annotations' => [
-				'method' => 'get',
-				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
 			 ]
 		 ], 
 		 [ 

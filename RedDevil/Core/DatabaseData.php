@@ -4,6 +4,7 @@ namespace RedDevil\Core;
 
 use PDO;
 use PDOStatement;
+use RedDevil\Core\DriverFactory;
 
 class DatabaseData {
     private static $instances;
@@ -27,7 +28,7 @@ class DatabaseData {
     }
 
     public static function setInstance($instanceName, $driver, $user, $pass, $dbName, $host = null) {
-        $driver = \RedDevil\Core\DriverFactory::create($driver, $user, $pass, $dbName, $host);
+        $driver = DriverFactory::create($driver, $user, $pass, $dbName, $host);
 
         $pdo = new \PDO($driver->getDsn(), $user, $pass);
 

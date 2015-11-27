@@ -25,11 +25,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NotificationsService.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VenuesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/VenuesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.615385" vertical-offset="392" max-vertical-offset="1298">
+              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+              <folding>
+                <element signature="e#277#308#0#PHP" expanded="false" />
+                <element signature="e#313#504#0#PHP" expanded="false" />
+                <element signature="e#510#615#0#PHP" expanded="false" />
+                <element signature="e#620#840#0#PHP" expanded="false" />
+                <element signature="e#846#914#0#PHP" expanded="false" />
+                <element signature="e#1635#1740#0#PHP" expanded="false" />
+                <element signature="e#1745#1846#0#PHP" expanded="false" />
+                <element signature="e#1852#1977#0#PHP" expanded="false" />
+                <element signature="e#1982#2596#0#PHP" expanded="false" />
+                <element signature="e#2046#2153#0#PHP" expanded="false" />
+                <element signature="e#2265#2590#0#PHP" expanded="false" />
+                <element signature="e#2438#2590#0#PHP" expanded="false" />
+                <element signature="e#2606#2828#0#PHP" expanded="false" />
+                <element signature="e#2834#2952#0#PHP" expanded="false" />
+                <element signature="e#2957#3222#0#PHP" expanded="false" />
+                <element signature="e#3228#3345#0#PHP" expanded="false" />
+                <element signature="e#3350#3615#0#PHP" expanded="false" />
+                <element signature="e#3621#3697#0#PHP" expanded="false" />
+                <element signature="e#3702#3948#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotificationsService.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Services/NotificationsService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.923077" vertical-offset="398" max-vertical-offset="1078">
-              <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.40729" vertical-offset="447" max-vertical-offset="1078">
+              <caret line="131" column="11" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="11" />
               <folding>
                 <element signature="e#241#328#0#PHP" expanded="false" />
                 <element signature="e#333#913#0#PHP" expanded="false" />
@@ -60,28 +90,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrmConfig.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
+      <file leaf-file-name="DatabaseContext.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="330">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+            <state vertical-scroll-proportion="-142.23077" vertical-offset="2968" max-vertical-offset="7150">
+              <caret line="303" column="37" selection-start-line="303" selection-start-column="37" selection-end-line="303" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationsRepository.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Repositories/NotificationsRepository.php">
+      <file leaf-file-name="UsersRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Repositories/UsersRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17799352" vertical-offset="6072" max-vertical-offset="6798">
-              <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
+            <state vertical-scroll-proportion="-155.5" vertical-offset="1809" max-vertical-offset="7172">
+              <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
               <folding>
-                <marker date="1448644939000" expanded="true" signature="3970:3997" placeholder="SELECT * FRO..notifications$..." />
-                <marker date="1448644939000" expanded="true" signature="4775:4845" placeholder="SELECT * FRO..notifications$..." />
-                <marker date="1448644939000" expanded="true" signature="5455:5480" placeholder="DELETE FROM ..." />
-                <marker date="1448644939000" expanded="true" signature="6290:6404" placeholder="UPDATE notif..." />
-                <marker date="1448644939000" expanded="true" signature="6872:6979" placeholder="INSERT INTO ..." />
+                <marker date="1448650519000" expanded="true" signature="4172:4191" placeholder="SELECT * FRO..users$..." />
+                <marker date="1448650519000" expanded="true" signature="4972:5034" placeholder="SELECT * FRO..users$..." />
+                <marker date="1448650519000" expanded="true" signature="5663:5680" placeholder="DELETE FROM ..." />
+                <marker date="1448650519000" expanded="true" signature="6513:6644" placeholder="UPDATE users..." />
+                <marker date="1448650519000" expanded="true" signature="7146:7269" placeholder="INSERT INTO ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Repositories.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.307693" vertical-offset="5298" max-vertical-offset="6732">
+              <caret line="253" column="9" selection-start-line="253" selection-start-column="9" selection-end-line="253" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,8 +129,8 @@
       <file leaf-file-name="VenuesServices.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Services/VenuesServices.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3846154" vertical-offset="498" max-vertical-offset="5060">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state vertical-scroll-proportion="-13.538462" vertical-offset="638" max-vertical-offset="5060">
+              <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
               <folding>
                 <element signature="e#552#1184#0#PHP" expanded="false" />
                 <element signature="e#634#714#0#PHP" expanded="false" />
@@ -102,8 +142,6 @@
                 <element signature="e#1740#1823#0#PHP" expanded="false" />
                 <element signature="e#1883#2023#0#PHP" expanded="false" />
                 <element signature="e#2098#2203#0#PHP" expanded="false" />
-                <element signature="e#2481#2546#0#PHP" expanded="false" />
-                <element signature="e#3173#3236#0#PHP" expanded="false" />
                 <element signature="e#3428#3505#0#PHP" expanded="false" />
                 <element signature="e#3540#3642#0#PHP" expanded="false" />
                 <element signature="e#3661#3740#0#PHP" expanded="false" />
@@ -136,22 +174,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConferencesService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
+      <file leaf-file-name="NotificationsRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Repositories/NotificationsRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.115385" vertical-offset="331" max-vertical-offset="6776">
-              <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
+            <state vertical-scroll-proportion="-2.8867924" vertical-offset="5325" max-vertical-offset="6842">
+              <caret line="251" column="31" selection-start-line="251" selection-start-column="27" selection-end-line="251" selection-end-column="31" />
               <folding>
-                <element signature="e#559#1509#0#PHP" expanded="false" />
-                <element signature="e#656#745#0#PHP" expanded="false" />
-                <element signature="e#780#1468#0#PHP" expanded="false" />
-                <element signature="e#910#993#0#PHP" expanded="false" />
-                <element signature="e#1123#1205#0#PHP" expanded="false" />
-                <element signature="e#1515#1625#0#PHP" expanded="false" />
-                <element signature="e#1703#1869#0#PHP" expanded="false" />
-                <element signature="e#2115#2190#0#PHP" expanded="false" />
-                <marker date="1448644092000" expanded="true" signature="2794:2874" placeholder="select count..." />
-                <marker date="1448644092000" expanded="true" signature="5328:5408" placeholder="select count..." />
+                <marker date="1448650519000" expanded="true" signature="3970:3997" placeholder="SELECT * FRO..notifications$..." />
+                <marker date="1448650519000" expanded="true" signature="4775:4845" placeholder="SELECT * FRO..notifications$..." />
+                <marker date="1448650519000" expanded="true" signature="5455:5480" placeholder="DELETE FROM ..." />
+                <marker date="1448650519000" expanded="true" signature="6329:6443" placeholder="UPDATE notif..." />
+                <marker date="1448650519000" expanded="true" signature="6911:7018" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -162,10 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ViewModels/OwnerVenueRequestViewModel.php" />
-        <option value="$PROJECT_DIR$/Views/Venues/requests.php" />
-        <option value="$PROJECT_DIR$/Views/Users/invitations.php" />
-        <option value="$PROJECT_DIR$/Views/Conferences/_ConferenceOwnerMenu.php" />
         <option value="$PROJECT_DIR$/Views/Layouts/Default/header.php" />
         <option value="$PROJECT_DIR$/Views/Conferences/all.php" />
         <option value="$PROJECT_DIR$/Views/Home/index.php" />
@@ -200,7 +229,6 @@
         <option value="$PROJECT_DIR$/Views/Conferences/own.php" />
         <option value="$PROJECT_DIR$/Views/Venues/_VenueOwnerMenu.php" />
         <option value="$PROJECT_DIR$/Controllers/ConferencesController.php" />
-        <option value="$PROJECT_DIR$/Controllers/VenuesController.php" />
         <option value="$PROJECT_DIR$/Views/Venues/own.php" />
         <option value="$PROJECT_DIR$/Services/SearchService.php" />
         <option value="$PROJECT_DIR$/Services/ISearchResult.php" />
@@ -211,8 +239,13 @@
         <option value="$PROJECT_DIR$/Services/ConferencesService.php" />
         <option value="$PROJECT_DIR$/Controllers/SearchController.php" />
         <option value="$PROJECT_DIR$/Services/VenuesServices.php" />
-        <option value="$PROJECT_DIR$/Services/NotificationsService.php" />
+        <option value="$PROJECT_DIR$/Core/DatabaseData.php" />
+        <option value="$PROJECT_DIR$/Config/OrmConfig.php" />
         <option value="$PROJECT_DIR$/Repositories/NotificationsRepository.php" />
+        <option value="$PROJECT_DIR$/Controllers/VenuesController.php" />
+        <option value="$PROJECT_DIR$/ORM/EntityManager.php" />
+        <option value="$PROJECT_DIR$/ORM/Repositories.php" />
+        <option value="$PROJECT_DIR$/Services/NotificationsService.php" />
       </list>
     </option>
   </component>
@@ -281,7 +314,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
+              <option name="myItemId" value="ORM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -295,7 +328,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
+              <option name="myItemId" value="EntityManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,7 +347,7 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="notirepo&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Repositories/NotificationsRepository.php&#10;sea&#9;null&#9;null&#10;conser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;searchse&#9;null&#9;null&#10;confe&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;venser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;vense&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Venues/_VenueOwnerMenu.php&#10;vencon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;coser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;leco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;cocon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;lectco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;confeser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;usese&#9;null&#9;null&#10;uc&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/UsersController.php&#10;lvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;lectser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;lecserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;baseco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/BaseController.php&#10;valida&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Validation.php&#10;breain&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Lecture/BreakInputModel.php&#10;bre&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Lecture/BreakInputModel.php&#10;vali&#9;null&#9;null&#10;base&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;para&#9;null&#9;null&#10;servres&#9;null&#9;null&#10;lese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;venueco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;vese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;venue&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;lecser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;venserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;speim&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/SpeakerInvitationViewModel.php&#10;heade&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;veco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;lectvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;vri&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Venue/VenueRequestInputModel.php&#10;View&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/MessageViewModel.php&#10;cdvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceDetailsViewModel.php&#10;csvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceSummaryViewModel.php&#10;cvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceDetailsViewModel.php&#10;lectuvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;appc&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Config/AppConfig.php&#10;Vi&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/View.php&#10;cs&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;Vie&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/View.php&#10;app&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Application.php&#10;view&#9;null&#9;null&#10;ppl&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Application.php&#10;htt&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="vencon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;venuserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;notirepo&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Repositories/NotificationsRepository.php&#10;sea&#9;null&#9;null&#10;conser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;searchse&#9;null&#9;null&#10;confe&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;venser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;vense&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Venues/_VenueOwnerMenu.php&#10;coser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;leco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;cocon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;lectco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;confeser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;usese&#9;null&#9;null&#10;uc&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/UsersController.php&#10;lvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;lectser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;lecserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;baseco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/BaseController.php&#10;valida&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Validation.php&#10;breain&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Lecture/BreakInputModel.php&#10;bre&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Lecture/BreakInputModel.php&#10;vali&#9;null&#9;null&#10;base&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;para&#9;null&#9;null&#10;servres&#9;null&#9;null&#10;lese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;venueco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;vese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;venue&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;lecser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;venserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;speim&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/SpeakerInvitationViewModel.php&#10;heade&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;veco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;lectvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;vri&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/InputModels/Venue/VenueRequestInputModel.php&#10;View&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/MessageViewModel.php&#10;cdvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceDetailsViewModel.php&#10;csvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceSummaryViewModel.php&#10;cvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceDetailsViewModel.php&#10;lectuvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;appc&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Config/AppConfig.php&#10;Vi&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/View.php&#10;cs&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;Vie&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/View.php&#10;app&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Application.php&#10;view&#9;null&#9;null&#10;ppl&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Application.php" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -456,7 +489,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="308" />
+      <option name="time" value="314" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -465,63 +498,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ViewModels/ConferenceDetailsViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20919175" vertical-offset="22" max-vertical-offset="4334">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
-          <folding>
-            <element signature="e#39#70#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/ConferenceSummaryViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20919175" vertical-offset="22" max-vertical-offset="3168">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
-          <folding>
-            <element signature="e#39#70#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/MessageViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1958">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/OwnerVenueRequestViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.985737" vertical-offset="0" max-vertical-offset="3432">
-          <caret line="143" column="7" selection-start-line="143" selection-start-column="7" selection-end-line="143" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/SpeakerInvitationViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20919175" vertical-offset="22" max-vertical-offset="3828">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/VenueDetailsViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.06973059" vertical-offset="44" max-vertical-offset="2728">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ViewModels/VenueRequestViewModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48811412" vertical-offset="0" max-vertical-offset="1518">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ViewModels/VenueSummaryViewModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1936">
@@ -852,14 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.076923" vertical-offset="6820" max-vertical-offset="7150">
-          <caret line="316" column="0" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Services/ISearchResult.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24405706" vertical-offset="0" max-vertical-offset="631">
@@ -916,42 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/VenuesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58161646" vertical-offset="469" max-vertical-offset="1166">
-          <caret line="151" column="7" selection-start-line="151" selection-start-column="7" selection-end-line="151" selection-end-column="7" />
-          <folding>
-            <element signature="e#277#308#0#PHP" expanded="false" />
-            <element signature="e#313#504#0#PHP" expanded="false" />
-            <element signature="e#510#615#0#PHP" expanded="false" />
-            <element signature="e#620#840#0#PHP" expanded="false" />
-            <element signature="e#846#914#0#PHP" expanded="false" />
-            <element signature="e#919#1629#0#PHP" expanded="false" />
-            <element signature="e#977#1066#0#PHP" expanded="false" />
-            <element signature="e#1134#1623#0#PHP" expanded="false" />
-            <element signature="e#1240#1527#0#PHP" expanded="false" />
-            <element signature="e#1394#1527#0#PHP" expanded="false" />
-            <element signature="e#1538#1623#0#PHP" expanded="false" />
-            <element signature="e#1635#1740#0#PHP" expanded="false" />
-            <element signature="e#1745#1846#0#PHP" expanded="false" />
-            <element signature="e#1852#1977#0#PHP" expanded="false" />
-            <element signature="e#1982#2596#0#PHP" expanded="false" />
-            <element signature="e#2046#2153#0#PHP" expanded="false" />
-            <element signature="e#2265#2590#0#PHP" expanded="false" />
-            <element signature="e#2438#2590#0#PHP" expanded="false" />
-            <element signature="e#2602#2752#0#PHP" expanded="false" />
-            <element signature="e#2757#3230#0#PHP" expanded="false" />
-            <element signature="e#2923#3224#0#PHP" expanded="false" />
-            <element signature="e#3084#3224#0#PHP" expanded="false" />
-            <element signature="e#3240#3462#0#PHP" expanded="false" />
-            <element signature="e#3468#3586#0#PHP" expanded="false" />
-            <element signature="e#3591#3856#0#PHP" expanded="false" />
-            <element signature="e#3862#3979#0#PHP" expanded="false" />
-            <element signature="e#3984#4249#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38351822" vertical-offset="0" max-vertical-offset="631">
@@ -964,7 +896,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.115385" vertical-offset="331" max-vertical-offset="6776">
+        <state vertical-scroll-proportion="0.42556635" vertical-offset="331" max-vertical-offset="6776">
           <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
           <folding>
             <element signature="e#559#1509#0#PHP" expanded="false" />
@@ -975,16 +907,60 @@
             <element signature="e#1515#1625#0#PHP" expanded="false" />
             <element signature="e#1703#1869#0#PHP" expanded="false" />
             <element signature="e#2115#2190#0#PHP" expanded="false" />
-            <marker date="1448644092000" expanded="true" signature="2794:2874" placeholder="select count..." />
-            <marker date="1448644092000" expanded="true" signature="5328:5408" placeholder="select count..." />
+            <marker date="1448644092000" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1448644092000" expanded="true" signature="-1:-1" placeholder="select count..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/Identity/Statements/TableCrudOps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3080">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10459588" vertical-offset="0" max-vertical-offset="631">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/VenuesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.615385" vertical-offset="392" max-vertical-offset="1298">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding>
+            <element signature="e#277#308#0#PHP" expanded="false" />
+            <element signature="e#313#504#0#PHP" expanded="false" />
+            <element signature="e#510#615#0#PHP" expanded="false" />
+            <element signature="e#620#840#0#PHP" expanded="false" />
+            <element signature="e#846#914#0#PHP" expanded="false" />
+            <element signature="e#1635#1740#0#PHP" expanded="false" />
+            <element signature="e#1745#1846#0#PHP" expanded="false" />
+            <element signature="e#1852#1977#0#PHP" expanded="false" />
+            <element signature="e#1982#2596#0#PHP" expanded="false" />
+            <element signature="e#2046#2153#0#PHP" expanded="false" />
+            <element signature="e#2265#2590#0#PHP" expanded="false" />
+            <element signature="e#2438#2590#0#PHP" expanded="false" />
+            <element signature="e#2606#2828#0#PHP" expanded="false" />
+            <element signature="e#2834#2952#0#PHP" expanded="false" />
+            <element signature="e#2957#3222#0#PHP" expanded="false" />
+            <element signature="e#3228#3345#0#PHP" expanded="false" />
+            <element signature="e#3350#3615#0#PHP" expanded="false" />
+            <element signature="e#3621#3697#0#PHP" expanded="false" />
+            <element signature="e#3702#3948#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/VenuesServices.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3846154" vertical-offset="498" max-vertical-offset="5060">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state vertical-scroll-proportion="-13.538462" vertical-offset="638" max-vertical-offset="5060">
+          <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
           <folding>
             <element signature="e#552#1184#0#PHP" expanded="false" />
             <element signature="e#634#714#0#PHP" expanded="false" />
@@ -996,8 +972,6 @@
             <element signature="e#1740#1823#0#PHP" expanded="false" />
             <element signature="e#1883#2023#0#PHP" expanded="false" />
             <element signature="e#2098#2203#0#PHP" expanded="false" />
-            <element signature="e#2481#2546#0#PHP" expanded="false" />
-            <element signature="e#3173#3236#0#PHP" expanded="false" />
             <element signature="e#3428#3505#0#PHP" expanded="false" />
             <element signature="e#3540#3642#0#PHP" expanded="false" />
             <element signature="e#3661#3740#0#PHP" expanded="false" />
@@ -1029,18 +1003,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/OrmConfig.php">
+    <entry file="file://$PROJECT_DIR$/EntityManager/DatabaseContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.923077" vertical-offset="0" max-vertical-offset="330">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        <state vertical-scroll-proportion="-142.23077" vertical-offset="2968" max-vertical-offset="7150">
+          <caret line="303" column="37" selection-start-line="303" selection-start-column="37" selection-end-line="303" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/OrmManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.1229773" vertical-offset="3166" max-vertical-offset="3784">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EntityManager/Templates/DatabaseContextTemplate.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5460318" vertical-offset="206" max-vertical-offset="836">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/EntityManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39158577" vertical-offset="154" max-vertical-offset="2552">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ORM/Repositories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.307693" vertical-offset="5298" max-vertical-offset="6732">
+          <caret line="253" column="9" selection-start-line="253" selection-start-column="9" selection-end-line="253" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/UsersRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-155.5" vertical-offset="1809" max-vertical-offset="7172">
+          <caret line="268" column="5" selection-start-line="268" selection-start-column="5" selection-end-line="268" selection-end-column="5" />
+          <folding>
+            <marker date="1448650519000" expanded="true" signature="4172:4191" placeholder="SELECT * FRO..users$..." />
+            <marker date="1448650519000" expanded="true" signature="4972:5034" placeholder="SELECT * FRO..users$..." />
+            <marker date="1448650519000" expanded="true" signature="5663:5680" placeholder="DELETE FROM ..." />
+            <marker date="1448650519000" expanded="true" signature="6513:6644" placeholder="UPDATE users..." />
+            <marker date="1448650519000" expanded="true" signature="7146:7269" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/DatabaseData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.035598706" vertical-offset="550" max-vertical-offset="2068">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/NotificationsRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8867924" vertical-offset="5325" max-vertical-offset="6842">
+          <caret line="251" column="31" selection-start-line="251" selection-start-column="27" selection-end-line="251" selection-end-column="31" />
+          <folding>
+            <marker date="1448650519000" expanded="true" signature="3970:3997" placeholder="SELECT * FRO..notifications$..." />
+            <marker date="1448650519000" expanded="true" signature="4775:4845" placeholder="SELECT * FRO..notifications$..." />
+            <marker date="1448650519000" expanded="true" signature="5455:5480" placeholder="DELETE FROM ..." />
+            <marker date="1448650519000" expanded="true" signature="6329:6443" placeholder="UPDATE notif..." />
+            <marker date="1448650519000" expanded="true" signature="6911:7018" placeholder="INSERT INTO ..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/NotificationsService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.923077" vertical-offset="398" max-vertical-offset="1078">
-          <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.40729" vertical-offset="447" max-vertical-offset="1078">
+          <caret line="131" column="11" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="11" />
           <folding>
             <element signature="e#241#328#0#PHP" expanded="false" />
             <element signature="e#333#913#0#PHP" expanded="false" />
@@ -1066,20 +1108,6 @@
             <element signature="e#3171#3270#0#PHP" expanded="false" />
             <element signature="e#3305#3404#0#PHP" expanded="false" />
             <element signature="e#3326#3403#2#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Repositories/NotificationsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17799352" vertical-offset="6072" max-vertical-offset="6798">
-          <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          <folding>
-            <marker date="1448644939000" expanded="true" signature="3970:3997" placeholder="SELECT * FRO..notifications$..." />
-            <marker date="1448644939000" expanded="true" signature="4775:4845" placeholder="SELECT * FRO..notifications$..." />
-            <marker date="1448644939000" expanded="true" signature="5455:5480" placeholder="DELETE FROM ..." />
-            <marker date="1448644939000" expanded="true" signature="6290:6404" placeholder="UPDATE notif..." />
-            <marker date="1448644939000" expanded="true" signature="6872:6979" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>

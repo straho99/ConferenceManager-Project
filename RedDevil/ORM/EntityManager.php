@@ -14,17 +14,9 @@ class EntityManager {
         $privateRepositoryFields = rtrim($privateRepositoryFields, "\n");
 
         $docConstructorParameters = '';
-//        foreach ($repositoryNames as $name) {
-//            $docConstructorParameters .= "\t* @param $" . $name . "\n";
-//        }
-//        $docConstructorParameters = ltrim($docConstructorParameters, "\t");
-//        $docConstructorParameters = rtrim($docConstructorParameters, "\n");
+
 
         $constructorParametersList = '';
-//        foreach ($repositoryNames as $name) {
-//            $constructorParametersList .= "$$name" . ", ";
-//        }
-//        $constructorParametersList = rtrim($constructorParametersList, ", ");
 
         $settingPrivateRepositoryFields = '';
         foreach ($repositoryNames as $name) {

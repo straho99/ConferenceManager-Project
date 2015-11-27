@@ -253,6 +253,8 @@ $columnFilters
             self::insert(\$entity);
         }
 
+        self::\$insertObjectPool = [];
+
         return true;
     }
 

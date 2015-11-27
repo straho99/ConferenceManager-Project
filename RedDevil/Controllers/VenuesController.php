@@ -92,25 +92,6 @@ class VenuesController extends BaseController {
             $this->redirectToUrl('/venues/details/' . $model->getVenueId());
         }
     }
-
-    /**
-     * @param $venueId
-     * @param $hallId
-     * @Method('GET')
-     * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}')
-     */
-    public function deleteHall($venueId, $hallId)
-    {
-        $service = new VenuesServices($this->dbContext);
-        $result = $service->deleteHall($hallId);
-        if (!$result->hasError()) {
-            $this->addInfoMessage($result->getMessage());
-            $this->redirectToUrl('/venues/details/' . $venueId);
-        } else {
-            $this->addErrorMessage($result->getMessage());
-            $this->redirectToUrl('/venues/details/' . $venueId);
-        }
-    }
     
     public function requests()
     {
