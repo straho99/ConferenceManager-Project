@@ -1,10 +1,11 @@
 <?php
 namespace RedDevil\Contract;
 
-public interface ISearchResult { 
+interface ISearchResult
+{
+    public function getResultText();
 
-	public  getResultText();
- 
-	public getResultUrl(); 
-}  
+    public function getResultUrl();
+}
+
 ?>

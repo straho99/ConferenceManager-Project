@@ -86,23 +86,12 @@ class VenuesServices extends BaseService
             ->add($venue);
         $this->dbContext->saveChanges();
 
-        $users = $this->dbContext->getUsersRepository()
-            ->findAll();
         $title = $model->getTitle();
         $owner = HttpContext::getInstance()->getIdentity()->getUsername();
-        $users->each(function ($user) use ($title, $owner) {
-            $todayDate = new \DateTime('now');
-            $today = $todayDate->format('Y-m-d H:i:s');
-            $notification = new Notification(
-                "New venue titled $title was added by user $owner.",
-                false,
-                $user->getId(),
-                $today
-            );
-            $this->dbContext->getNotificationsRepository()
-                ->add($notification);
-        });
-        $this->dbContext->saveChanges();
+
+        $message = "New conference titled '$title' was added by user $owner.";
+        $notyService = new NotificationsService($this->dbContext);
+        $notyService->postToAll($message);
 
         return new ServiceResponse(null, 'Venue added successfully.');
     }

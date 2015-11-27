@@ -1,5 +1,8 @@
 <?php
-public class UserSearchResultModel implements ISearchResult { 
+use RedDevil\Contract\ISearchResult;
+use RedDevil\Models\User;
+
+class UserSearchResultModel implements ISearchResult {
 	private $id;
  
 	private $fullName;
@@ -9,7 +12,7 @@ public class UserSearchResultModel implements ISearchResult {
 	public function __construct(User $model) {
 		$this->id = $model->getId();
 		$this->fullName = $model->getFullName();
-		$this->username = $model->username();
+		$this->username = $model->getUsername();
 	}
 	
 	public function getId() {
@@ -17,7 +20,7 @@ public class UserSearchResultModel implements ISearchResult {
 	}
 
 	public function setId($id) {
-		return $this->id;
+		$this->id = $id;
 	}
 
 	public function setFullName($fullName) {
@@ -43,7 +46,6 @@ public class UserSearchResultModel implements ISearchResult {
  
 	public function getResultUrl() 
 	{ 
-		return string.Format("/users/" . $this->username . '/info');
+		return "/users/" . $this->username . '/info';
 	}       
-} 
-?>
+}

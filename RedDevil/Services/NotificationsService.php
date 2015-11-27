@@ -47,7 +47,7 @@ class NotificationsService extends BaseService {
         }
 
         $notifications = $this->dbContext->getNotificationsRepository()
-            ->filterByRecipientId(" = $userId")
+            ->filterByUserId(" = $userId")
             ->orderByDescending("CreatedOn")
             ->findAll();
 
@@ -122,10 +122,13 @@ class NotificationsService extends BaseService {
     public function postToAll($message) {
     	$users = $this->dbContext->getUsersRepository()
     			->findAll();
-    	$users->each(function($user) use ($message) {
-    		$notification = New Notification($message, $user->getId(), $today, 0);	
-    		$this->dbContext->getUsersRepository()
-    			->add(notification);
+
+        $todayDate = new \DateTime('now');
+        $today = $todayDate->format('Y-m-d H:i:s');
+    	$users->each(function($user) use ($message, $today) {
+    		$notification = New Notification($message, $user->getId(), 0, $today);
+    		$this->dbContext->getNotificationsRepository()
+    			->add($notification);
     	});
     	$this->dbContext->saveChanges();
 	    return true;
@@ -134,6 +137,6 @@ class NotificationsService extends BaseService {
     static $GET_UNREAD_COUNT = <<<TAG
 select count(id) as 'count'
 from notifications
-where RecipientId = 1 and IsRead = 0
+where UserId = 1 and IsRead = 0
 TAG;
 }

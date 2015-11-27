@@ -1,8 +1,11 @@
 <?php
-public class VenueSearchResultModel implements ISearchResult { 
+use RedDevil\Contract\ISearchResult;
+use RedDevil\Models\Venue;
+
+class VenueSearchResultModel implements ISearchResult {
 	private $id;
  
-	private $title
+	private $title;
  
 	private $owner;
 
@@ -19,7 +22,7 @@ public class VenueSearchResultModel implements ISearchResult {
 	}
 
 	public function setId($id) {
-		return $this->id;
+		$this->id = $id;
 	}
 
 	public function setTitle($title) {
@@ -31,7 +34,7 @@ public class VenueSearchResultModel implements ISearchResult {
 	}
 
 	public function getAddress() {
-		return $this-Address
+		return $this->address;
 	}
 
 	public function setAddress($address) {
@@ -45,7 +48,6 @@ public class VenueSearchResultModel implements ISearchResult {
  
 	public function getResultUrl() 
 	{ 
-		return string.Format("/venues/details/" . $this->id);
+		return "/venues/details/" . $this->id;
 	}       
-} 
-?>
+}

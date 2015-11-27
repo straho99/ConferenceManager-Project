@@ -6,22 +6,22 @@ class Notification
 {
 	const COL_ID = 'id';
 	const COL_CONTENT = 'Content';
+	const COL_USERID = 'UserId';
 	const COL_ISREAD = 'IsRead';
-	const COL_RECIPIENTID = 'RecipientId';
 	const COL_CREATEDON = 'CreatedOn';
 
 	private $id;
 	private $Content;
+	private $UserId;
 	private $IsRead;
-	private $RecipientId;
 	private $CreatedOn;
 
-	public function __construct($Content, $IsRead, $RecipientId, $CreatedOn, $id = null)
+	public function __construct($Content, $UserId, $IsRead, $CreatedOn, $id = null)
 	{
 		$this->setId($id);
 		$this->setContent($Content);
+		$this->setUserId($UserId);
 		$this->setIsRead($IsRead);
-		$this->setRecipientId($RecipientId);
 		$this->setCreatedOn($CreatedOn);
 	}
 
@@ -68,6 +68,26 @@ class Notification
 	/**
 	* @return mixed
 	*/
+	public function getUserId()
+	{
+		return $this->UserId;
+	}
+
+	/**
+	* @param $UserId
+	* @return $this
+	*/
+	public function setUserId($UserId)
+	{
+		$this->UserId = $UserId;
+		
+		return $this;
+	}
+
+
+	/**
+	* @return mixed
+	*/
 	public function getIsRead()
 	{
 		return $this->IsRead;
@@ -80,26 +100,6 @@ class Notification
 	public function setIsRead($IsRead)
 	{
 		$this->IsRead = $IsRead;
-		
-		return $this;
-	}
-
-
-	/**
-	* @return mixed
-	*/
-	public function getRecipientId()
-	{
-		return $this->RecipientId;
-	}
-
-	/**
-	* @param $RecipientId
-	* @return $this
-	*/
-	public function setRecipientId($RecipientId)
-	{
-		$this->RecipientId = $RecipientId;
 		
 		return $this;
 	}

@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-27 06:49:46';
+	 public static $dateOfLastCheck = '2015-11-27 18:22:30';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -238,6 +238,21 @@ class RoutesConfig {
 			 ]
 		 ], 
 		 [ 
+			 'controller' => 'RedDevil\Controllers\AdminController',
+			 'action' => 'manageRoles',
+			 'route' => 'admin/manageRoles',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\AdminController',
+			 'action' => 'addRole',
+			 'route' => 'admin/addRole',
+			 'annotations' => [
+				'method' => 'post',
+			 ]
+		 ], 
+		 [ 
 			 'controller' => 'RedDevil\Controllers\ConferencesController',
 			 'action' => 'all',
 			 'route' => 'conferences/all',
@@ -408,6 +423,14 @@ class RoutesConfig {
 			 'action' => 'all',
 			 'route' => 'notifications/all',
 			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\SearchController',
+			 'action' => 'find',
+			 'route' => 'search/find',
+			 'annotations' => [
+				'method' => 'post',
 			 ]
 		 ], 
 		 [ 

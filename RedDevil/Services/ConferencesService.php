@@ -64,25 +64,14 @@ class ConferencesService extends BaseService
         );
         $this->dbContext->getConferencesRepository()
             ->add($conference);
+        $this->dbContext->saveChanges();
 
-        $users = $this->dbContext->getUsersRepository()
-            ->findAll();
         $title = $model->getTitle();
         $organiser = HttpContext::getInstance()->getIdentity()->getUsername();
-        $users->each(function ($user) use ($title, $organiser) {
-            $todayDate = new \DateTime('now');
-            $today = $todayDate->format('Y-m-d H:i:s');
-            $notification = new Notification(
-                "New conference titled $title was added by user $organiser.",
-                false,
-                $user->getId(),
-                $today
-            );
-            $this->dbContext->getNotificationsRepository()
-                ->add($notification);
-        });
+        $message = "New conference titled '$title' was added by user $organiser.";
+        $notyService = new NotificationsService($this->dbContext);
+        $notyService->postToAll($message);
 
-        $this->dbContext->saveChanges();
         return new ServiceResponse(null, 'Conference added successfully.');
     }
 

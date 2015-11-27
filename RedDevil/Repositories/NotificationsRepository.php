@@ -60,6 +60,17 @@ class NotificationsRepository
         return $this;
     }
     /**
+     * @param $UserId
+     * @return $this
+     */
+    public function filterByUserId($UserId)
+    {
+        $this->where .= " AND UserId $UserId";
+        $this->placeholders[] = $UserId;
+
+        return $this;
+    }
+    /**
      * @param $IsRead
      * @return $this
      */
@@ -67,17 +78,6 @@ class NotificationsRepository
     {
         $this->where .= " AND IsRead $IsRead";
         $this->placeholders[] = $IsRead;
-
-        return $this;
-    }
-    /**
-     * @param $RecipientId
-     * @return $this
-     */
-    public function filterByRecipientId($RecipientId)
-    {
-        $this->where .= " AND RecipientId $RecipientId";
-        $this->placeholders[] = $RecipientId;
 
         return $this;
     }
@@ -188,8 +188,8 @@ class NotificationsRepository
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
             $entity = new Notification($entityInfo['Content'],
+$entityInfo['UserId'],
 $entityInfo['IsRead'],
-$entityInfo['RecipientId'],
 $entityInfo['CreatedOn'],
 $entityInfo['id']);
 
@@ -214,8 +214,8 @@ $entityInfo['id']);
         $result->execute([]);
         $entityInfo = $result->fetch();
         $entity = new Notification($entityInfo['Content'],
+$entityInfo['UserId'],
 $entityInfo['IsRead'],
-$entityInfo['RecipientId'],
 $entityInfo['CreatedOn'],
 $entityInfo['id']);
 
@@ -266,14 +266,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE notifications SET Content= :Content, IsRead= :IsRead, RecipientId= :RecipientId, CreatedOn= :CreatedOn WHERE id = :id";
+        $query = "UPDATE notifications SET Content= :Content, UserId= :UserId, IsRead= :IsRead, CreatedOn= :CreatedOn WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':id' => $model->getId(),
 ':Content' => $model->getContent(),
+':UserId' => $model->getUserId(),
 ':IsRead' => $model->getIsRead(),
-':RecipientId' => $model->getRecipientId(),
 ':CreatedOn' => $model->getCreatedOn()
             ]
         );
@@ -283,13 +283,13 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO notifications (Content,IsRead,RecipientId,CreatedOn) VALUES (:Content, :IsRead, :RecipientId, :CreatedOn);";
+        $query = "INSERT INTO notifications (Content,UserId,IsRead,CreatedOn) VALUES (:Content, :UserId, :IsRead, :CreatedOn);";
         $result = $db->prepare($query);
         $result->execute(
             [
                 ':Content' => $model->getContent(),
+':UserId' => $model->getUserId(),
 ':IsRead' => $model->getIsRead(),
-':RecipientId' => $model->getRecipientId(),
 ':CreatedOn' => $model->getCreatedOn()
             ]
         );
