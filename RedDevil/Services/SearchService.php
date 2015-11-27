@@ -5,14 +5,14 @@ namespace RedDevil\Services;
 public class SearchServices extends BaseService {
 	
 	public function search($keyword) {
-		$searchResults = [];
+		$searchResults = new SearchResultsModel();
 
 		$users = $this->dbContext->getUsersRepository()
 			->filterByUsername(" like '$keyword'")
 			->findAll();
 		foreach($users->getUsers() as $user) {
 			$model = new UserSearchResult($user);
-			$searchResults [] = $model;
+			$searchResults->addresult($model);
 		}
 
 		$venues = $this->dbContext->getVenuesRepository()
@@ -20,7 +20,7 @@ public class SearchServices extends BaseService {
 			->findAll();
 		foreach($venues->getVenues() as $venue) {
 			$model = new VenueSearchResult($model);
-			$searchResults [] = $model;
+			$searchResults->addresult($model);
 		}
 
 		$conferences = $this->dbContext->getConferencesRepository()
@@ -28,7 +28,7 @@ public class SearchServices extends BaseService {
 			->findAll();
 		foreach($conferences->getConferences() as $conference) {
 			$model = new ConferenceSearchResult($model);
-			$searchResults [] = $model;
+			$searchResults->addresult($model);
 		}
 		
 		return new ServiceRessponse(null, null, $searchResults);
