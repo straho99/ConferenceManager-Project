@@ -1,3 +1,5 @@
+<?php
+
 namespace RedDevil\Services;
 
 public class SearchServices extends BaseService {
@@ -32,3 +34,4 @@ public class SearchServices extends BaseService {
 		return new ServiceRessponse(null, null, $searchResults);
 	}
 }
+?>
