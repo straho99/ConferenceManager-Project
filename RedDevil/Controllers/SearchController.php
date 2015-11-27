@@ -4,11 +4,11 @@ namespace RedDevil\Controllers;
 public class SearchController extends BaseController {
 	
 	/**
-	* @Route('search/{string $keyword}')
+	* @Method('POST')
 	*/
-	public function search($keyword) {
+	public function find(SeearchInputModel $model) {
 		$service = new SearchService($this->dbContext);
-		$response = $service->search($keyword);
+		$response = $service->search($model->getKeyword());
 		$return new View('Search', 'results', $response->getModel());
 	}
 }
