@@ -5,7 +5,7 @@ public class UserSearchResultModel implements ISearchResult {
  
 	private $username;
 
-	public function __construct(Conference $model) {
+	public function __construct(User $model) {
 		$this->id = $model->getId();
 		$this->fullName = $model->getFullName();
 		$this->username = $model->username();
