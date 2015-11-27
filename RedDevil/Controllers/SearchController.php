@@ -1,3 +1,4 @@
+<?php
 namespace RedDevil\Controllers;
 
 public class SearchController extends BaseController {
@@ -11,3 +12,4 @@ public class SearchController extends BaseController {
 		$return new View('Search', 'results', $response->getModel());
 	}
 }
+?>
