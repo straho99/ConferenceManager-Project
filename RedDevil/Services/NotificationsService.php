@@ -123,7 +123,7 @@ class NotificationsService extends BaseService {
     	$users = $this->dbContext->getUsersRepository()
     			->findAll();
     	$users->each(function($user) use ($message) {
-    		$notification = New Notification($message, $user->getId(), $today);	
+    		$notification = New Notification($message, $user->getId(), $today, 0);	
     		$this->dbContext->getUsersRepository()
     			->add(notification);
     	});
