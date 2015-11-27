@@ -1,3 +1,4 @@
+<?php
 public class VenueSearchResultModel implements ISearchResult { 
 	private $id;
  
@@ -47,3 +48,4 @@ public class VenueSearchResultModel implements ISearchResult {
 		return string.Format("/venues/details/" . $this->id);
 	}       
 } 
+?>
