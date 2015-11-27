@@ -103,4 +103,18 @@ class ConferencesController extends BaseController {
         $this->processResponse($result);
         $this->redirectToUrl('/conferences/details/' . $model->getConferenceId());
     }
+
+    /**
+     * Authorize()
+     * @return View
+     * @throws \Exception
+     */
+    public function own()
+    {
+        $service = new ConferencesService($this->dbContext);
+        $response = $service->getUserConferences();
+        $this->processResponse($response);
+
+        return new View('Conferences', 'own', $response->getModel());
+    }
 }

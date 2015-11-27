@@ -10,6 +10,7 @@ use RedDevil\InputModels\Lecture\SpeakerInvitationInputModel;
 use RedDevil\Models\LectureBreak;
 use RedDevil\Models\SpeakerInvitation;
 use RedDevil\Services\LecturesService;
+use RedDevil\Services\UsersServices;
 use RedDevil\View;
 use RedDevil\ViewModels\AddBreakViewModel;
 use RedDevil\ViewModels\SpeakerInvitationViewModel;
@@ -184,6 +185,10 @@ class LecturesController extends BaseController {
      */
     public function addBreak(BreakInputModel $model, $lectureId)
     {
+        if (!$model->isValid()) {
+            return new View('Lectures', 'addbreak', $model);
+        }
+
         $service = new LecturesService($this->dbContext);
         if (HttpContext::getInstance()->isPost()) {
             $response = $service->addBreak($model);
@@ -203,8 +208,14 @@ class LecturesController extends BaseController {
                 ->filterById(" = $lectureId")
                 ->findOne()
                 ->getConferenceId();
+            $lecture = $this->dbContext->getLecturesRepository()
+                ->filterById(" = $lectureId")
+                ->findOne();
+
             $breakModel = new BreakInputModel();
             $breakModel->setLectureId($lectureId);
+            $breakModel->setStartDate($lecture->getStartDate());
+            $breakModel->setEndDate($lecture->getEndDate());
             $breakModel->setConferenceId($conferenceId);
 
             return new View('Lectures', 'addbreak', $breakModel);
@@ -213,17 +224,17 @@ class LecturesController extends BaseController {
 
     /**
      * @param $lectureId
-     * @param $participantId
-     * @Method('POST', 'GET')
-     * @Route('lectures/{integer $lectureId}/addparticipant/{integer $participantId}')
      * @throws \Exception
+     * @Method('POST', 'GET')
+     * @Route('lectures/{integer $lectureId}/participate')
      */
-    public function addParticipant($lectureId, $participantId)
+    public function participate($lectureId)
     {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         $service = new LecturesService($this->dbContext);
-        $result = $service->addParticipant($lectureId, $participantId);
+        $result = $service->addParticipant($lectureId, $userId);
         $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+        $this->redirectToUrl('/conferences/details/' . $result->getModel());
     }
 
     /**
@@ -239,5 +250,33 @@ class LecturesController extends BaseController {
         $result = $service->deleteParticipant($lectureId, $participantId);
         $this->processResponse($result);
         $this->redirect('conferences', 'own');
+    }
+
+    /**
+     * Authorize()
+     * @return View
+     * @throws \Exception
+     */
+    public function joined()
+    {
+        $service = new UsersServices($this->dbContext);
+        $response = $service->getUsersSchedule();
+        $this->processResponse($response);
+
+        return new View('Lectures', 'joined', $response->getModel());
+    }
+
+    /**
+     * Authorize()
+     * @return View
+     * @throws \Exception
+     */
+    public function own()
+    {
+        $service = new UsersServices($this->dbContext);
+        $response = $service->getSpeakerSchedule();
+        $this->processResponse($response);
+
+        return new View('Lectures', 'own', $response->getModel());
     }
 }

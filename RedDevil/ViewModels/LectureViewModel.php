@@ -21,6 +21,9 @@ class LectureViewModel implements IDateTimeInterval {
     private $speakerUsername;
     private $speakerRequestStatus;
 
+    private $isParticipating;
+    private $canParticipate;
+
     private $participantsCount;
 
     function __construct(Lecture $lecture)
@@ -227,5 +230,37 @@ class LectureViewModel implements IDateTimeInterval {
     public function setSpeakerRequestStatus($speakerRequestStatus)
     {
         $this->speakerRequestStatus = $speakerRequestStatus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsParticipating()
+    {
+        return $this->isParticipating;
+    }
+
+    /**
+     * @param mixed $isParticipating
+     */
+    public function setIsParticipating($isParticipating)
+    {
+        $this->isParticipating = $isParticipating;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCanParticipate()
+    {
+        return $this->canParticipate;
+    }
+
+    /**
+     * @param mixed $canParticipate
+     */
+    public function setCanParticipate($canParticipate)
+    {
+        $this->canParticipate = $canParticipate;
     }
 }

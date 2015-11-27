@@ -278,7 +278,7 @@ class LecturesService extends BaseService
         $this->dbContext->getLectureBreaksRepository()
             ->add($break);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, null, $model->getConferenceId());
+        return new ServiceResponse(null, "Break added.", $model->getConferenceId());
     }
 
     public function addParticipant($lectureId, $participantId)
@@ -307,20 +307,20 @@ class LecturesService extends BaseService
         $participantsCount = $statement->fetch()['count'];
         $capacity = $hall->getCapacity();
         if ($capacity <= $participantsCount) {
-            return new ServiceResponse(404, "No more places are available for this lecture.");
+            return new ServiceResponse(1, "No more places are available for this lecture.", $lecture->getConferenceId());
         }
 
         $isParticipatingStatement = $db->prepare($this::IS_USER_A_PARTICIPANT_IN_LECTURE);
         $isParticipatingStatement->execute([$participantId, $lectureId]);
         if ($isParticipatingStatement->rowCount() > 0) {
-            return new ServiceResponse(404, "User is already a participant this lecture.");
+            return new ServiceResponse(409, "User is already a participant in this lecture.");
         }
 
         $participant = new LecturesParticipant($lectureId, $participantId);
         $this->dbContext->getLecturesParticipantsRepository()
             ->add($participant);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, "Participant added.");
+        return new ServiceResponse(null, "Successfuly joined lecture.", $lecture->getConferenceId());
     }
 
     public function deleteParticipant($lectureId, $participantId)

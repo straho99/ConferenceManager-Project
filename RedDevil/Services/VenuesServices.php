@@ -8,6 +8,7 @@ use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Venue\HallInputModel;
 use RedDevil\InputModels\Venue\VenueInputModel;
 use RedDevil\Models\Hall;
+use RedDevil\Models\Notification;
 use RedDevil\Models\Venue;
 use RedDevil\ViewModels\HallViewModel;
 use RedDevil\ViewModels\OwnerVenueRequestViewModel;
@@ -84,6 +85,25 @@ class VenuesServices extends BaseService
         $this->dbContext->getVenuesRepository()
             ->add($venue);
         $this->dbContext->saveChanges();
+
+        $users = $this->dbContext->getUsersRepository()
+            ->findAll();
+        $title = $model->getTitle();
+        $owner = HttpContext::getInstance()->getIdentity()->getUsername();
+        $users->each(function ($user) use ($title, $owner) {
+            $todayDate = new \DateTime('now');
+            $today = $todayDate->format('Y-m-d H:i:s');
+            $notification = new Notification(
+                "New venue titled $title was added by user $owner.",
+                false,
+                $user->getId(),
+                $today
+            );
+            $this->dbContext->getNotificationsRepository()
+                ->add($notification);
+        });
+        $this->dbContext->saveChanges();
+
         return new ServiceResponse(null, 'Venue added successfully.');
     }
 
@@ -288,6 +308,32 @@ class VenuesServices extends BaseService
             ->filterById(" = $venueId")
             ->delete();
         return new ServiceResponse(null, "Venue deleted.");
+    }
+
+    public function getUserVenues()
+    {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
+        if ($userId == null) {
+            return new ServiceResponse(401, "Unauthorised. Only logged-in users can view their conferences.");
+        }
+
+        $venueModels = [];
+        $venues = $this->dbContext->getVenuesRepository()
+            ->orderByDescending('Title')
+            ->filterByOwnerId(" = $userId")
+            ->findAll();
+        foreach ($venues->getVenues() as $venue) {
+            $model = new VenueSummaryViewModel($venue);
+            $venueModels[] = $model;
+            $ownerId = $venue->getOwnerId();
+            $owner = $this->dbContext->getUsersRepository()
+                ->filterById(" = $ownerId")
+                ->findOne()
+                ->getUsername();
+            $model->setOwnerUsername($owner);
+        }
+
+        return new ServiceResponse(null, null, $venueModels);
     }
 
     const CHECK_VENUE_AVAILABILITY = <<<TAG

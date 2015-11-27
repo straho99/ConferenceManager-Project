@@ -41,11 +41,13 @@ use RedDevil\ViewHelpers\TextField;
     $form->addDateTimeField(DateTimeField::create()
         ->setAttribute('class', 'form-control')
         ->setAttribute('id', 'startDate')
+        ->setAttribute('value', $model->getStartDate())
         ->addLabel('Start date', true)
         ->setAttribute('name', 'startDate'));
     $form->addDateTimeField(DateTimeField::create()
         ->setAttribute('class', 'form-control')
         ->setAttribute('id', 'endDate')
+        ->setAttribute('value', $model->getEndDate())
         ->addLabel('End date', true)
         ->setAttribute('name', 'endDate'));
     $form->addTextField(TextField::create()

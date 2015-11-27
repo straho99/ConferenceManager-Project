@@ -5,6 +5,7 @@ namespace RedDevil\Services;
 use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
+use RedDevil\ViewModels\LectureViewModel;
 use RedDevil\ViewModels\SpeakerInvitationViewModel;
 
 class UsersServices extends BaseService {
@@ -99,6 +100,150 @@ class UsersServices extends BaseService {
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Speaker invitation was rejected.");
         }
+    }
+    
+    public function getUsersSchedule()
+    {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
+        if ($userId == null) {
+            return new ServiceResponse(401, 'Unauthorised. Only logged users can get their schedule.');
+        }
+
+        $participations = $this->dbContext->getLecturesParticipantsRepository()
+            ->filterByParticipantId(" = $userId")
+            ->findAll();
+
+        $lectureIds = [];
+        foreach ($participations->getLecturesParticipants() as $participation) {
+            $lectureIds[] = $participation->getLectureId();
+        }
+        $inList = "(" . implode(',', $lectureIds) . ")";
+
+        $todayDate = new \DateTime('now');
+        $today = $todayDate->format('Y-m-d H:i:s');
+        $lectures = $this->dbContext->getLecturesRepository()
+            ->orderBy("StartDate")
+            ->filterById(" in $inList")
+            ->filterByStartDate(" >= '$today'")
+            ->findAll();
+
+        $lecturesModels = [];
+        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
+
+        foreach ($lectures->getLectures() as $lecture) {
+            $lectureModel = new LectureViewModel($lecture);
+            $hallId = $lectureModel->getHallId() == null ? 0 : $lectureModel->getHallId();
+            $hall = $this->dbContext->getHallsRepository()
+                ->filterById(" = $hallId")
+                ->findOne();
+            $lectureModel->setHallTitle($hall->getTitle() == null ? "(to be decided)" : $hall->getTitle());
+
+            $speakerId = $lectureModel->getSpeakerId();
+            $speaker = $this->dbContext->getUsersRepository()
+                ->filterById(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerUsername($speaker->getUsername());
+
+            $lectureId = $lecture->getId();
+            $speakerRequest = $this->dbContext->getSpeakerInvitationsRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->filterBySpeakerId(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerRequestStatus($speakerRequest->getStatus());
+
+            $lectureId = $lectureModel->getId();
+            $statement = $db->prepare("select count(LectureId) as 'count' from lecturesParticipants where LectureId = ?");
+            $statement->execute([$lectureId]);
+            $participants = $statement->fetch()['count'];
+            $lectureModel->setParticipantsCount($participants);
+
+            $participantId = HttpContext::getInstance()->getIdentity()->getUserId();
+            if ($participantId == null) {
+                $lectureModel->setIsParticipating(false);
+                $lectureModel->setCanParticipate(false);
+            } else {
+                $participantsInLecture = $this->dbContext->getLecturesParticipantsRepository()
+                    ->filterByLectureId(" = $lectureId")
+                    ->filterByParticipantId(" = $participantId")
+                    ->findOne();
+                if ($participantsInLecture->getId() != null) {
+                    $lectureModel->setIsParticipating(true);
+                } else {
+                    $lectureModel->setIsParticipating(false);
+                }
+            }
+
+            $lecturesModels[] = $lectureModel;
+        }
+
+        return new ServiceResponse(null, null, $lecturesModels);
+    }
+
+    public function getSpeakerSchedule()
+    {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
+        if ($userId == null) {
+            return new ServiceResponse(401, "Unauthorised. Only logged users can get their speaker's schedule.");
+        }
+
+        $todayDate = new \DateTime('now');
+        $today = $todayDate->format('Y-m-d H:i:s');
+        $lectures = $this->dbContext->getLecturesRepository()
+            ->orderBy("StartDate")
+            ->filterBySpeaker_Id(" = $userId")
+            ->filterByStartDate(" >= '$today'")
+            ->findAll();
+
+        $lecturesModels = [];
+        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
+
+        foreach ($lectures->getLectures() as $lecture) {
+            $lectureModel = new LectureViewModel($lecture);
+            $hallId = $lectureModel->getHallId() == null ? 0 : $lectureModel->getHallId();
+            $hall = $this->dbContext->getHallsRepository()
+                ->filterById(" = $hallId")
+                ->findOne();
+            $lectureModel->setHallTitle($hall->getTitle() == null ? "(to be decided)" : $hall->getTitle());
+
+            $speakerId = $lectureModel->getSpeakerId();
+            $speaker = $this->dbContext->getUsersRepository()
+                ->filterById(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerUsername($speaker->getUsername());
+
+            $lectureId = $lecture->getId();
+            $speakerRequest = $this->dbContext->getSpeakerInvitationsRepository()
+                ->filterByLectureId(" = $lectureId")
+                ->filterBySpeakerId(" = $speakerId")
+                ->findOne();
+            $lectureModel->setSpeakerRequestStatus($speakerRequest->getStatus());
+
+            $lectureId = $lectureModel->getId();
+            $statement = $db->prepare("select count(LectureId) as 'count' from lecturesParticipants where LectureId = ?");
+            $statement->execute([$lectureId]);
+            $participants = $statement->fetch()['count'];
+            $lectureModel->setParticipantsCount($participants);
+
+            $participantId = HttpContext::getInstance()->getIdentity()->getUserId();
+            if ($participantId == null) {
+                $lectureModel->setIsParticipating(false);
+                $lectureModel->setCanParticipate(false);
+            } else {
+                $participantsInLecture = $this->dbContext->getLecturesParticipantsRepository()
+                    ->filterByLectureId(" = $lectureId")
+                    ->filterByParticipantId(" = $participantId")
+                    ->findOne();
+                if ($participantsInLecture->getId() != null) {
+                    $lectureModel->setIsParticipating(true);
+                } else {
+                    $lectureModel->setIsParticipating(false);
+                }
+            }
+
+            $lecturesModels[] = $lectureModel;
+        }
+
+        return new ServiceResponse(null, null, $lecturesModels);
     }
 
     const CHECK_SPEAKER_AVAILABILITY = <<<TAG

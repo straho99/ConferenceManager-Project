@@ -116,6 +116,20 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                         <?php
                         new View("Conferences", "_LectureMenu", $lecture, null);
                         ?>
+                        <?php
+                        if ($lecture->getHallId() !== '') {
+                            if ($lecture->getIsParticipating() == false && $lecture->getCanParticipate() == true) {
+                                ActionLink::create()
+                                    ->setAttribute('href', '/lectures/' . $lecture->getId() . '/participate')
+                                    ->setAttribute('class', 'btn btn-success pull-right')
+                                    ->setNewLineAfter(false)
+                                    ->setData('Join')
+                                    ->render();
+                            } else {
+                                echo "<a class='btn btn-success pull-right' disabled>Join</a>";
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

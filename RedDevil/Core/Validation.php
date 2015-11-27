@@ -1,6 +1,7 @@
 <?php
 
 namespace RedDevil\Core;
+use DateTime;
 
 /**
  * @Credits: the class is developed by Ivan Vankov - a.k.a. 'gatakka' -  and is
@@ -122,6 +123,11 @@ class Validation {
 
     public static function ip($val1) {
         return filter_var($val1, FILTER_VALIDATE_IP) !== false;
+    }
+
+    function date($val1)
+    {
+        return new DateTime($val1);
     }
 
     public static function regexp($val1, $val2) {

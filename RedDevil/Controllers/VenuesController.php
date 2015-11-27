@@ -144,4 +144,18 @@ class VenuesController extends BaseController {
         $this->processResponse($response);
         $this->redirect("Home", "Index");
     }
+
+    /**
+     * Authorize()
+     * @return View
+     * @throws \Exception
+     */
+    public function own()
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->getUserVenues();
+        $this->processResponse($response);
+
+        return new View('Venues', 'own', $response->getModel());
+    }
 }

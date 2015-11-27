@@ -74,6 +74,12 @@ class ConferenceInputModel extends BaseInputModel implements IDateTimeInterval {
         $this->validator->setRule('required', $this->endDate, null,
             'endDate | End Date is required.');
 
+        $this->validator->setRule('date', $this->startDate, null,
+            'startDate | Start Date is not a valid date.');
+
+        $this->validator->setRule('date', $this->endDate, null,
+            'endDate | End Date is not a valid date.');
+
         $this->validator->setRule('minlength', $this->title, 3,
             'title | Title must be at least 3 characters long.');
 

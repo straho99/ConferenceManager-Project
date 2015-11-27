@@ -2,6 +2,7 @@
 
 namespace RedDevil\Controllers;
 
+use RedDevil\Services\LecturesService;
 use RedDevil\Services\UsersServices;
 use RedDevil\View;
 use RedDevil\ViewModels\UserInfoModel;

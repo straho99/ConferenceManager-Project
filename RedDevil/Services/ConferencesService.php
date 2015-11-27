@@ -8,6 +8,7 @@ use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
 use RedDevil\InputModels\Venue\VenueRequestInputModel;
 use RedDevil\Models\Conference;
+use RedDevil\Models\Notification;
 use RedDevil\Models\VenueReservationRequest;
 use RedDevil\ViewModels\ConferenceDetailsViewModel;
 use RedDevil\ViewModels\ConferenceSummaryViewModel;
@@ -63,6 +64,24 @@ class ConferencesService extends BaseService
         );
         $this->dbContext->getConferencesRepository()
             ->add($conference);
+
+        $users = $this->dbContext->getUsersRepository()
+            ->findAll();
+        $title = $model->getTitle();
+        $organiser = HttpContext::getInstance()->getIdentity()->getUsername();
+        $users->each(function ($user) use ($title, $organiser) {
+            $todayDate = new \DateTime('now');
+            $today = $todayDate->format('Y-m-d H:i:s');
+            $notification = new Notification(
+                "New conference titled $title was added by user $organiser.",
+                false,
+                $user->getId(),
+                $today
+            );
+            $this->dbContext->getNotificationsRepository()
+                ->add($notification);
+        });
+
         $this->dbContext->saveChanges();
         return new ServiceResponse(null, 'Conference added successfully.');
     }
@@ -128,9 +147,44 @@ class ConferencesService extends BaseService
             $lectureModel->setSpeakerRequestStatus($speakerRequest->getStatus());
 
             $lectureId = $lectureModel->getId();
+            $statement = $db->prepare("select count(LectureId) as 'count' from lecturesParticipants where LectureId = ?");
             $statement->execute([$lectureId]);
             $participants = $statement->fetch()['count'];
             $lectureModel->setParticipantsCount($participants);
+
+            $participantId = HttpContext::getInstance()->getIdentity()->getUserId();
+            if ($participantId == null) {
+                $lectureModel->setIsParticipating(false);
+                $lectureModel->setCanParticipate(false);
+            } else {
+                $participantsInLecture = $this->dbContext->getLecturesParticipantsRepository()
+                    ->filterByLectureId(" = $lectureId")
+                    ->filterByParticipantId(" = $participantId")
+                    ->findOne();
+                if ($participantsInLecture->getId() != null) {
+                    $lectureModel->setIsParticipating(true);
+                } else {
+                    $lectureModel->setIsParticipating(false);
+                }
+
+                $statement = $db->prepare(self::CHECK_USER_CAN_PARTICIPATE);
+                $statement->execute(
+                    [
+                        $participantId,
+                        $lecture->getStartDate(),
+                        $lecture->getStartDate(),
+                        $lecture->getEndDate(),
+                        $lecture->getEndDate()
+                    ]);
+                if ($statement->rowCount() > 0) {
+                    $lectureModel->setCanParticipate(false);
+                } else {
+                    $lectureModel->setCanParticipate(true);
+                }
+
+            }
+
+
             $lecturesModels[] = $lectureModel;
         }
 
@@ -257,4 +311,45 @@ class ConferencesService extends BaseService
             ->delete();
         return new ServiceResponse(null, "Conference deleted.");
     }
+
+    public function getUserConferences()
+    {
+        $userId = HttpContext::getInstance()->getIdentity()->getUserId();
+        if ($userId == null) {
+            return new ServiceResponse(401, "Unauthorised. Only logged-in users can view their conferences.");
+        }
+
+        $conferences = $this->dbContext->getConferencesRepository()
+            ->filterByOwnerId(" = $userId")
+            ->findAll();
+
+        $conferenceModels = [];
+        foreach ($conferences->getConferences() as $conference) {
+            $venueId = $conference->getVenue_Id();
+            $venue = $this->dbContext->getVenuesRepository()
+                ->filterById(" = $venueId")
+                ->findOne()
+                ->getTitle();
+            $ownerId = $conference->getOwnerId();
+            $owner = $this->dbContext->getUsersRepository()
+                ->filterById(" = $ownerId")
+                ->findOne()
+                ->getUsername();
+            $model = new ConferenceSummaryViewModel($conference);
+            $model->setVenue($venue);
+            $model->setOwnerUsername($owner);
+            $conferenceModels[] = $model;
+        }
+
+        return new ServiceResponse(null, null, $conferenceModels);
+    }
+
+    const CHECK_USER_CAN_PARTICIPATE = <<<TAG
+select lectures.id
+from lectures
+join lecturesParticipants on lectures.id = lecturesParticipants.LectureId
+	where lecturesParticipants.ParticipantId = ? and
+		((? >= lectures.startDate and ? <= lectures.endDate) or
+			(? >= lectures.startDate and ? <= lectures.endDate))
+TAG;
 }

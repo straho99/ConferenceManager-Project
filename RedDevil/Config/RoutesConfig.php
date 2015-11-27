@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-26 18:36:14';
+	 public static $dateOfLastCheck = '2015-11-27 06:49:46';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -103,11 +103,11 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'addParticipant',
-			 'route' => 'lectures/{integer $lectureId}/addparticipant/{integer $participantId}',
+			 'action' => 'participate',
+			 'route' => 'lectures/{integer $lectureId}/participate',
 			 'annotations' => [
 				'method' => ['post', 'get'],
-				'route' => 'lectures/{integer $lectureid}/addparticipant/{integer $participantid}',
+				'route' => 'lectures/{integer $lectureid}/participate',
 			 ]
 		 ], 
 		 [ 
@@ -279,6 +279,13 @@ class RoutesConfig {
 			 ]
 		 ], 
 		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'own',
+			 'route' => 'conferences/own',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
 			 'controller' => 'RedDevil\Controllers\HomeController',
 			 'action' => 'index',
 			 'route' => 'home/index',
@@ -359,11 +366,11 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
-			 'action' => 'addParticipant',
-			 'route' => 'lectures/addParticipant',
+			 'action' => 'participate',
+			 'route' => 'lectures/participate',
 			 'annotations' => [
 				'method' => ['post', 'get'],
-				'route' => 'lectures/{integer $lectureid}/addparticipant/{integer $participantid}',
+				'route' => 'lectures/{integer $lectureid}/participate',
 			 ]
 		 ], 
 		 [ 
@@ -373,6 +380,20 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => ['post', 'get'],
 				'route' => 'lectures/{integer $lectureid}/deleteparticipant/{integer $participantid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'joined',
+			 'route' => 'lectures/joined',
+			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'own',
+			 'route' => 'lectures/own',
+			 'annotations' => [
 			 ]
 		 ], 
 		 [ 
@@ -495,6 +516,13 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'get',
 				'route' => 'venues/rejectrequest/{integer $requestid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'own',
+			 'route' => 'venues/own',
+			 'annotations' => [
 			 ]
 		 ], 
 	 ]; 
