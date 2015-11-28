@@ -271,8 +271,9 @@ class ConferencesService extends BaseService
             return new ServiceResponse(404, "Conference not found.");
         }
 
-        If (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId()) {
-            Return new ServiceResponse(401, "Unauthorised. Deleting conferences only allowed for conference owners.");
+        If (HttpContext::getInstance()->getIdentity()->getUserId() != $conference->getOwnerId() &&
+            !HttpContext::getInstance()->getIdentity()->isInRole('admin')) {
+            Return new ServiceResponse(401, "Unauthorised. Deleting conferences only allowed for conference owners and admins.");
         }
 
         $venueRequest = $this->dbContext->getVenueReservationRequestsRepository()
@@ -283,20 +284,19 @@ class ConferencesService extends BaseService
             ->filterByConferenceId(" = $conferenceId")
             ->findAll();
 
-        $context = $this->dbContext;
-        $conferenceLectures->each(function ($lecture) use ($context) {
+        foreach ($conferenceLectures->getLectures() as $lecture) {
             $lectureId = $lecture->getId();
-
-            $context->getSpeakerInvitationsRepository()
+            $this->dbContext->getSpeakerInvitationsRepository()
                 ->filterByLectureId(" = $lectureId")
                 ->delete();
-            $context->getLectureBreaksRepository()
+            $this->dbContext->getLectureBreaksRepository()
                 ->filterByLectureId(" = $lectureId")
                 ->delete();
-            $context->getLecturesParticipantsRepository()
+            $this->dbContext->getLecturesParticipantsRepository()
                 ->filterByLectureId(" = $lectureId")
                 ->delete();
-        });
+            $lecture->setHall_Id(null);
+        }
 
         $conferenceLectures = $this->dbContext->getLecturesRepository()
             ->filterByConferenceId(" = $conferenceId")
@@ -351,6 +351,7 @@ class ConferencesService extends BaseService
 
         $lectures = $this->dbContext->getLecturesRepository()
             ->filterByConferenceId(" = $conferenceId")
+            ->orderBy("StartDate")
             ->findAll()
             ->getLectures();
 
@@ -360,6 +361,10 @@ class ConferencesService extends BaseService
             $lectureViewModels[] = $model;
         }
 
+        $testArray = [1,1,1,1,2,3,4,1];
+
+        $result = LongestLecturesSequence::getSequence($lectureViewModels);
+        return new ServiceResponse(null, null, $result);
 
     }
 

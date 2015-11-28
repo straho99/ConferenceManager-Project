@@ -92,7 +92,7 @@ class LectureViewModel implements IDateTimeInterval {
     public function getStartDate()
     {
         $date = new \DateTime($this->startDate);
-        return $date->format('d F Y H:i');
+        return $date->format('Y-m-d H:i');
     }
 
     /**
@@ -109,7 +109,7 @@ class LectureViewModel implements IDateTimeInterval {
     public function getEndDate()
     {
         $date = new \DateTime($this->endDate);
-        return $date->format('d F Y H:i');
+        return $date->format('Y-m-d H:i');
     }
 
     /**

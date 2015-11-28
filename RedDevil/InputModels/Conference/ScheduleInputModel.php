@@ -62,7 +62,7 @@ class ScheduleInputModel extends BaseInputModel {
     {
         $this->lectureTitle = $lectureTitle;
     }
-    
+
     public function validate()
     {
         parent::validate();

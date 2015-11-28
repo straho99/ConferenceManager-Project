@@ -54,4 +54,9 @@
             </div>
         </div>
     <?php endforeach; ?>
+    <?php
+    if (count($model) == 0) {
+        echo "<p>There are no conferences at the moment.</p>";
+    }
+    ?>
 </div>

@@ -24,8 +24,9 @@
     ActionLink::create()
         ->setAttribute('href', '/lectures/' . $model->getId() . '/delete/confirm')
         ->setAttribute('class', 'btn btn-danger')
-        ->setNewLineAfter(false)
+        ->setNewLineAfter(true)
         ->setData('Delete Lecture')
         ->render();
     ?>
+    <br/>
 </div>

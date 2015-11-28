@@ -70,7 +70,7 @@ class LecturesService extends BaseService
         $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
             ->delete();
-        return new ServiceResponse(null, "Lecture deleted.");
+        return new ServiceResponse(null, "Lecture deleted.", $conferenceId);
     }
 
     public function inviteSpeaker(SpeakerInvitationInputModel $model)
@@ -204,18 +204,24 @@ class LecturesService extends BaseService
             return new ServiceResponse(409, "No such hall in the conference venue.");
         }
 
-        $lectureStartDate = $lecture->getStartDate();
-        $lectureEndDate = $lecture->getEndDate();
+        $otherLecturesInSameHall = $this->dbContext->getLecturesRepository()
+            ->filterByHall_Id(" = $hallId")
+            ->findAll();
 
-        $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
-        $statement = $db->prepare($this::CHECK_HALL_AVAILABILITY);
-
-        $statement->execute(
-            [$hallId, $lectureStartDate, $lectureStartDate, $lectureEndDate, $lectureEndDate]);
-        if ($statement->rowCount() > 0) {
-            return new ServiceResponse(1, "The hall is busy at this time. Request is denied.", $conferenceId);
+        $baseLectureViewModel = new LectureViewModel($lecture);
+        foreach ($otherLecturesInSameHall->getLectures() as $currentlecture) {
+            if ($currentlecture->getId() == $baseLectureViewModel->getId()) {
+                continue;
+            }
+            $lectureViewModel = new LectureViewModel($currentlecture);
+            if ($this->compareTo($baseLectureViewModel, $lectureViewModel) == 0) {
+                return new ServiceResponse(1, "The hall is busy at this time. Request is denied.", $conferenceId);
+            }
         }
 
+        $lecture = $this->dbContext->getLecturesRepository()
+            ->filterById(" = $lectureId")
+            ->findOne();
         $lecture->setHall_Id($hallId);
         $this->dbContext->saveChanges();
         return new ServiceResponse(null, "Hall added to lecture.", $conferenceId);

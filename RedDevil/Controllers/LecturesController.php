@@ -62,7 +62,7 @@ class LecturesController extends BaseController {
         $service = new LecturesService($this->dbContext);
         $result = $service->deleteLecture($lectureId);
         $this->processResponse($result);
-        $this->redirectToUrl('conferences/details/' . $result->getModel());
+        $this->redirectToUrl('/conferences/details/' . $result->getModel());
     }
 
     /**

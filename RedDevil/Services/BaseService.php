@@ -2,6 +2,8 @@
 
 namespace RedDevil\Services;
 
+use DateTime;
+use DateTimeZone;
 use RedDevil\EntityManager\DatabaseContext;
 
 class BaseService {
@@ -14,11 +16,12 @@ class BaseService {
 
     public function compareTo(IDateTimeInterval $first, IDateTimeInterval $second)
     {
-        $firstStartDate = strtotime($first->getStartDate());
-        $firstEndDate = strtotime($first->getEndDate());
+        $test = $first->getStartDate();
+        $firstStartDate = (new DateTime($first->getStartDate()))->getTimestamp();
+        $firstEndDate = (new DateTime($first->getEndDate()))->getTimestamp();
 
-        $secondStartDate = strtotime($second->getStartDate());
-        $secondEndDate = strtotime($second->getEndDate());
+        $secondStartDate = (new DateTime($second->getStartDate()))->getTimestamp();
+        $secondEndDate = (new DateTime($second->getEndDate()))->getTimestamp();
 
         if ($firstEndDate < $secondStartDate) {
             return -1;

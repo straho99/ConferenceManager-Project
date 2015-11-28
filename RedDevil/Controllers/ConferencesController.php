@@ -142,4 +142,12 @@ class ConferencesController extends BaseController {
         $this->processResponse($result);
         $this->redirectToUrl('conferences/own');
     }
+
+    public function autoSchedule()
+    {
+        $service = new ConferencesService($this->dbContext);
+
+        $response = $service->autoSchedule(7);
+        var_dump($response->getModel());
+    }
 }
