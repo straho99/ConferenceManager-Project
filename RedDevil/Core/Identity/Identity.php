@@ -61,7 +61,7 @@ class Identity {
         }
 
         $query = <<<TAG
-select title
+select name
 from roles
 join users_roles
 on roles.`id` = users_roles.`role_id`
@@ -69,9 +69,14 @@ where users_roles.`user_id` = ?
 TAG;
 
         $statement = $this->db->prepare($query);
-        $statement->execute($this->getUserId());
+        $statement->execute([$this->getUserId()]);
         $userRoles = $statement->fetchAll();
-        return array_key_exists($role, $userRoles);
+        foreach ($userRoles as $dbRole) {
+            if ($dbRole['name'] == $role) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

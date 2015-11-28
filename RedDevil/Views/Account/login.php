@@ -1,5 +1,12 @@
 <div class="col-md-9">
     <h2>Login</h2>
+    <ul>
+        <?php foreach($model->getErrors() as $error) :?>
+            <li>
+                <?php echo $error->getMessage(); ?>
+            </li>
+        <?php  endforeach;  ?>
+    </ul>
     <div class="form-group">
 <?php
 use RedDevil\ViewHelpers\ActionLink;

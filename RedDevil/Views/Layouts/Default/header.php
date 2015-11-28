@@ -47,12 +47,23 @@
                                 ?>
                             </span></a></li>
                     <li><a href="/messages/index">Messages <span class="badge">11</span></a></li>
-                    <li><a href="/admin/manageRoles">Admin </a></li>
+                    <?php
+                    if (HttpContext::getInstance()->getIdentity()->isInRole('admin')) {
+                        echo "<li><a href=\"/admin/manageRoles\">Admin </a></li>";
+                    }
+                    ?>
                 </ul>
 
             <?php endif; ?>
 
             <form class="navbar-form navbar-left" role="search" action="/search/find" method="post">
+                <?php
+                \RedDevil\ViewHelpers\CSFRToken::create()
+                    ->setAttribute('name', 'ValidationToken')
+                    ->setNewLineAfter(false)
+                    ->setNewLineBefore(false)
+                    ->render();
+                ?>
                 <div class="form-group">
                     <input type="text" name="keyword" class="form-control" placeholder="Search">
                 </div>
@@ -80,13 +91,21 @@
             <li role="presentation"><a href="/conferences/all">Conferences</a></li>
             <li role="presentation"><a href="/venues/all">Venues</a></li>
             <?php
-            new View("Users", "_UserMenu", null, null);
+            if (HttpContext::getInstance()->getIdentity()->isAuthorised()) {
+                new View("Users", "_UserMenu", null, null);
+            }
             ?>
             <?php
-            new View("Conferences", "_ConferenceOwnerMenu", null, null);
+            if (HttpContext::getInstance()->getIdentity()->isInRole('conferenceOwner') ||
+                HttpContext::getInstance()->getIdentity()->isInRole('admin')) {
+                new View("Conferences", "_ConferenceOwnerMenu", null, null);
+            }
             ?>
             <?php
-            new View("Venues", "_VenueOwnerMenu", null, null);
+            if (HttpContext::getInstance()->getIdentity()->isInRole('venueOwner') ||
+                HttpContext::getInstance()->getIdentity()->isInRole('admin')) {
+                new View("Venues", "_VenueOwnerMenu", null, null);
+            }
             ?>
         </ul>
     </div>

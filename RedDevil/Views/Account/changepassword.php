@@ -8,7 +8,6 @@
         use RedDevil\ViewHelpers\Form;
         use RedDevil\ViewHelpers\PasswordField;
         use RedDevil\ViewHelpers\SubmitButton;
-        use RedDevil\ViewHelpers\TextField;
 
         $form = new Form('change-password-form', 'account/changePassword');
         $form->setAttribute('method', 'post');
@@ -32,7 +31,7 @@
         $form->addSubmitButton(SubmitButton::create()
             ->setAttribute('class', 'btn btn-default')
             ->setNewLineAfter(false)
-            ->setData('Login'));
+            ->setAttribute('value', 'Save'));
         $form->addActionLink(ActionLink::create()
             ->setNewLineBefore(false)
             ->setAttribute('id', 'cancel')

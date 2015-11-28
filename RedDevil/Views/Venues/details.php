@@ -1,4 +1,5 @@
 <?php /** @var \RedDevil\ViewModels\VenueDetailsViewModel $model */
+use RedDevil\Core\HttpContext;
 use RedDevil\ViewHelpers\ActionLink; ?>
 <div class="col-md-9">
     <div class="jumbotron">
@@ -28,24 +29,36 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                 ->setNewLineAfter(false)
                 ->setData($model->getOwnerUsername())
                 ->render();
-
-            ActionLink::create()
-                ->setAttribute('href', '/venues/' . $model->getId() . '/delete/confirm')
-                ->setAttribute('class', 'btn btn-danger pull-right')
-                ->setNewLineAfter(false)
-                ->setData('Delete')
-                ->render();
+            if ($model->getOwnerUsername() == HttpContext::getInstance()->getIdentity()->getUsername()) {
+                ActionLink::create()
+                    ->setAttribute('href', '/venues/' . $model->getId() . '/delete/confirm')
+                    ->setAttribute('class', 'btn btn-danger pull-right')
+                    ->setNewLineAfter(false)
+                    ->setData('Delete')
+                    ->render();
+            }
+            if (HttpContext::getInstance()->getIdentity()->isInRole('admin') &&
+                $model->getOwnerUsername() != HttpContext::getInstance()->getIdentity()->getUsername()) {
+                ActionLink::create()
+                    ->setAttribute('href', '/conferences/' . $model->getId() . '/delete/confirm')
+                    ->setAttribute('class', 'btn btn-danger pull-right')
+                    ->setNewLineBefore(false)
+                    ->setData('Delete Venue')
+                    ->render();
+            }
             ?>
         </p>
     </div>
     <h3>
         Halls
         <?php
-        ActionLink::create()
-            ->setAttribute('href', '/venues/' . $model->getId() . '/addhall')
-            ->setAttribute('class', 'btn btn-success')
-            ->setData('Add Hall')
-            ->render();
+        if ($model->getOwnerUsername() == HttpContext::getInstance()->getIdentity()->getUsername()) {
+            ActionLink::create()
+                ->setAttribute('href', '/venues/' . $model->getId() . '/addhall')
+                ->setAttribute('class', 'btn btn-success')
+                ->setData('Add Hall')
+                ->render();
+        }
         ?>
     </h3>
     <?php foreach ($model->getHalls() as $hall) : ?>
@@ -63,11 +76,13 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                         <strong>Capacity: </strong>
                         <?php
                         echo $hall->getCapacity();
-                        ActionLink::create()
-                            ->setAttribute('href', '/venues/' . $model->getId() . '/deletehall/' . $hall->getId() . '/confirm')
-                            ->setAttribute('class', 'btn btn-danger pull-right')
-                            ->setData('Delete')
-                            ->render();
+                        if ($model->getOwnerUsername() == HttpContext::getInstance()->getIdentity()->getUsername()) {
+                            ActionLink::create()
+                                ->setAttribute('href', '/venues/' . $model->getId() . '/deletehall/' . $hall->getId() . '/confirm')
+                                ->setAttribute('class', 'btn btn-danger pull-right')
+                                ->setData('Delete')
+                                ->render();
+                        }
                         ?>
                     </div>
                 </div>

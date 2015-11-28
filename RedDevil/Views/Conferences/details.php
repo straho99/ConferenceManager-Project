@@ -1,4 +1,5 @@
 <?php /** @var \RedDevil\ViewModels\ConferenceDetailsViewModel $model */
+use RedDevil\Core\HttpContext;
 use RedDevil\View;
 use RedDevil\ViewHelpers\ActionLink; ?>
 <div class="col-md-9">
@@ -53,7 +54,18 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         </p>
 
         <?php
-        new View("Conferences", "_ConferenceMenu", $model, null);
+        if ($model->getOwnerId() == HttpContext::getInstance()->getIdentity()->getUserId()) {
+            new View("Conferences", "_ConferenceMenu", $model, null);
+        }
+        if (HttpContext::getInstance()->getIdentity()->isInRole('admin') &&
+            $model->getOwnerId() != HttpContext::getInstance()->getIdentity()->getUserId()) {
+            ActionLink::create()
+                ->setAttribute('href', '/conferences/' . $model->getId() . '/delete/confirm')
+                ->setAttribute('class', 'btn btn-danger')
+                ->setNewLineAfter(false)
+                ->setData('Delete Conference')
+                ->render();
+        }
         ?>
 
     </div>
@@ -114,7 +126,9 @@ use RedDevil\ViewHelpers\ActionLink; ?>
                         ?>
                         <br/>
                         <?php
-                        new View("Conferences", "_LectureMenu", $lecture, null);
+                        if ($model->getOwnerId() == HttpContext::getInstance()->getIdentity()->getUserId()) {
+                            new View("Conferences", "_LectureMenu", $lecture, null);
+                        }
                         ?>
                         <?php
                         if ($lecture->getHallId() !== '') {

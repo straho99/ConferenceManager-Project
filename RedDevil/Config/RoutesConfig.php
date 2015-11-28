@@ -1,9 +1,18 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-28 09:19:13';
+	 public static $dateOfLastCheck = '2015-11-28 10:57:42';
 
 	 public static $ROUTES = [ 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\AdminController',
+			 'action' => 'manageRoles',
+			 'route' => 'admin/manageroles',
+			 'annotations' => [
+				'role' => 'admin',
+				'route' => 'admin/manageroles',
+			 ]
+		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\ConferencesController',
 			 'action' => 'details',
@@ -29,6 +38,24 @@ class RoutesConfig {
 			 'annotations' => [
 				'validatetoken' => 'token',
 				'route' => 'conferences/addvenuerequest',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'confirmDeleteConference',
+			 'route' => 'conferences/{integer $conferenceId}/delete/confirm',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'conferences/{integer $conferenceid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'delete',
+			 'route' => 'conferences/{integer $$conferenceId}/delete',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'conferences/{integer $$conferenceid}/delete',
 			 ]
 		 ], 
 		 [ 
@@ -287,6 +314,8 @@ class RoutesConfig {
 			 'action' => 'manageRoles',
 			 'route' => 'admin/manageRoles',
 			 'annotations' => [
+				'role' => 'admin',
+				'route' => 'admin/manageroles',
 			 ]
 		 ], 
 		 [ 
@@ -295,6 +324,7 @@ class RoutesConfig {
 			 'route' => 'admin/addRole',
 			 'annotations' => [
 				'method' => 'post',
+				'role' => 'admin',
 				'validatetoken' => 'token',
 			 ]
 		 ], 
@@ -346,6 +376,24 @@ class RoutesConfig {
 			 'action' => 'own',
 			 'route' => 'conferences/own',
 			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'confirmDeleteConference',
+			 'route' => 'conferences/confirmDeleteConference',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'conferences/{integer $conferenceid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'delete',
+			 'route' => 'conferences/delete',
+			 'annotations' => [
+				'method' => 'post',
+				'route' => 'conferences/{integer $$conferenceid}/delete',
 			 ]
 		 ], 
 		 [ 

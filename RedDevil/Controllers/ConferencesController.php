@@ -119,4 +119,27 @@ class ConferencesController extends BaseController {
 
         return new View('Conferences', 'own', $response->getModel());
     }
+
+    /**
+     * @ValidateToken('token')
+     * @Route('conferences/{integer $conferenceId}/delete/confirm')
+     * @return View
+     */
+    public function confirmDeleteConference($conferenceId)
+    {
+        return new View('Conferences', 'confirmDeleteConference', $conferenceId);
+    }
+
+    /**
+     * @param $conferenceId
+     * @Method('POST')
+     * @Route('conferences/{integer $$conferenceId}/delete')
+     */
+    public function delete($conferenceId)
+    {
+        $service = new ConferencesService($this->dbContext);
+        $result = $service->deleteConference($conferenceId);
+        $this->processResponse($result);
+        $this->redirectToUrl('conferences/own');
+    }
 }

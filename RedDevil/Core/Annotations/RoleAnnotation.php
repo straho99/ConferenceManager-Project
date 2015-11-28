@@ -20,10 +20,8 @@ class RoleAnnotation extends Annotation {
             throw new \Exception("Unauthorized", 401);
         }
 
-        if (false) {
-            if (!$context->getIdentity()->isInRole($this->role)) {
-                throw new \Exception("Unauthorized", 401);
-            }
+        if (!$context->getIdentity()->isInRole($this->role)) {
+            throw new \Exception("Unauthorized", 401);
         }
     }
 

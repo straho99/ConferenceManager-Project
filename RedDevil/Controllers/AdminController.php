@@ -11,7 +11,8 @@ class AdminController extends BaseController
 {
 
     /**
-     * Route('admin/manageroles')
+     * @Role('admin')
+     * @Route('admin/manageroles')
      * @return View
      */
     public function manageRoles()
@@ -40,6 +41,7 @@ class AdminController extends BaseController
 
     /**
      * @Method('POST')
+     * @Role('admin')
      * @Validatetoken('token')
      * @param AddRoleInputModel $model
      * @return View

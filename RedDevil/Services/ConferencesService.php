@@ -340,6 +340,29 @@ class ConferencesService extends BaseService
         return new ServiceResponse(null, null, $conferenceModels);
     }
 
+    public function autoSchedule($conferenceId)
+    {
+        $conference = $this->dbContext->getConferencesRepository()
+            ->filterById(" = $conferenceId")
+            ->findOne();
+        if ($conference->getId() == null) {
+            return new ServiceResponse(404, 'Conference not found.');
+        }
+
+        $lectures = $this->dbContext->getLecturesRepository()
+            ->filterByConferenceId(" = $conferenceId")
+            ->findAll()
+            ->getLectures();
+
+        $lectureViewModels = [];
+        foreach ($lectures as $lecture) {
+            $model = new LectureViewModel($lecture);
+            $lectureViewModels[] = $model;
+        }
+
+
+    }
+
     const CHECK_USER_CAN_PARTICIPATE = <<<TAG
 select lectures.id
 from lectures
