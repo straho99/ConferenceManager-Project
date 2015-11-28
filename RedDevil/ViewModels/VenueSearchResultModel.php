@@ -1,8 +1,11 @@
 <?php
-use RedDevil\Contract\ISearchResult;
-use RedDevil\Models\Venue;
 
-class VenueSearchResultModel implements ISearchResult {
+namespace RedDevil\ViewModels;
+
+use RedDevil\Models\Venue;
+use RedDevil\Services\SearchResult;
+
+class VenueSearchResultModel extends SearchResult {
 	private $id;
  
 	private $title;

@@ -144,7 +144,7 @@ class VenuesServices extends BaseService
         $this->dbContext->getHallsRepository()
             ->filterById(" = $hallId")
             ->delete();
-        return new ServiceResponse(null, "Hall deleted .");
+        return new ServiceResponse(null, "Hall deleted .", $venueId);
     }
 
     public function replyToVenueRequest($confirm, $requestId)
@@ -195,11 +195,11 @@ class VenuesServices extends BaseService
 
         if ($confirm) {
             $request->setStatus(1);
-            $conference->setVenue_Id(null);
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Venue request was confirmed.");
         } else {
             $request->setStatus(2);
+            $conference->setVenue_Id(null);
             $this->dbContext->saveChanges();
             return new ServiceResponse(null, "Venue request was rejected.");
         }

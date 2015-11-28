@@ -13,6 +13,7 @@ class AccountController extends BaseController {
     /**
      * @param RegisterInputModel $model
      * @return mixed
+     * @Validatetoken('token')
      * @Method('GET', 'POST')
      */
     public function register(RegisterInputModel $model)
@@ -40,6 +41,7 @@ class AccountController extends BaseController {
      * @param LoginInputModel $model
      * @return mixed
      * @Method('GET', 'POST')
+     * @Validatetoken('token')
      */
     public function login(LoginInputModel $model)
     {
@@ -73,6 +75,7 @@ class AccountController extends BaseController {
 
     /**
      * @param ChangePasswordInputModel $model
+     * @Validatetoken('token')
      * @return mixed
      * @throws \Exception
      */

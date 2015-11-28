@@ -5,25 +5,51 @@ namespace RedDevil\Controllers;
 use RedDevil\Services\AdminServices;
 use RedDevil\View;
 use RedDevil\InputModels\Admin\AddRoleInputModel;
+use RedDevil\ViewModels\UsersRolesPageViewModel;
 
-class AdminController extends BaseController {
+class AdminController extends BaseController
+{
 
+    /**
+     * Route('admin/manageroles')
+     * @return View
+     */
     public function manageRoles()
     {
         $service = new AdminServices($this->dbContext);
         $response = $service->getUsersRoles();
         $this->processResponse($response);
-        return new View('Admin', 'usersroles', $response->getModel());
+
+        $model = new UsersRolesPageViewModel();
+        $model->setUsersRoles($response->getModel());
+
+        $rolesTitles = [];
+
+        $roles = $this->dbContext->getRolesRepository()
+            ->findAll();
+        foreach ($roles->getRoles() as $role) {
+            $rolesTitles[] = [
+                'title' => $role->getName(),
+                'roleId' => $role->getId()
+            ];
+        }
+        $model->setRoleTitles($rolesTitles);
+
+        return new View('Admin', 'usersroles', $model);
     }
-    
+
     /**
-    * @Method('POST')
-    */
+     * @Method('POST')
+     * @Validatetoken('token')
+     * @param AddRoleInputModel $model
+     * @return View
+     * @throws \Exception
+     */
     public function addRole(AddRoleInputModel $model)
     {
         $service = new AdminServices($this->dbContext);
         $response = $service->addRoleToUser($model);
         $this->processResponse($response);
-        return new View('Admin', 'usersroles', $response->getModel());
+        $this->redirect('admin', 'manageRoles');
     }
 }

@@ -19,7 +19,6 @@ use RedDevil\ViewModels\LectureViewModel;
 
 class LecturesService extends BaseService
 {
-
     public function addLecture(LectureInputModel $model)
     {
         $lecture = new Lecture(
@@ -124,6 +123,12 @@ class LecturesService extends BaseService
         $this->dbContext->getSpeakerInvitationsRepository()
             ->add($speakerInvitation);
         $lecture->setSpeaker_Id($speakerId);
+
+        $title = $lecture->getTitle();
+        $message = "You received Speaker invitation for the lecture '$title'.";
+        $notyService = new NotificationsService($this->dbContext);
+        $notyService->sendNotification($speakerId, $message);
+
         $this->dbContext->saveChanges();
 
         return new ServiceResponse(null, "Invitation sent.");

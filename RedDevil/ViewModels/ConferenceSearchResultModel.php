@@ -1,8 +1,11 @@
 <?php
-use RedDevil\Contract\ISearchResult;
-use RedDevil\Models\Conference;
 
-class ConferenceSearchResultModel implements ISearchResult
+namespace RedDevil\ViewModels;
+
+use RedDevil\Models\Conference;
+use RedDevil\Services\SearchResult;
+
+class ConferenceSearchResultModel extends SearchResult
 {
     private $id;
 
@@ -69,6 +72,6 @@ class ConferenceSearchResultModel implements ISearchResult
 
     public function getResultUrl()
     {
-        return "/conferences/details/" . $this->Id;
+        return "/conferences/details/" . $this->id;
     }
 }

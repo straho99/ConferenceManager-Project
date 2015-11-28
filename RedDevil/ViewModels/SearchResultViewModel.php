@@ -2,10 +2,10 @@
 
 namespace RedDevil\ViewModels;
 
-public class SearchResultViewModel {
+class SearchResultViewModel {
   private $results = [];
   
-  public function addResult(ISearchResult $result) {
+  public function addResult($result) {
     $this->results[] = $result;
   }
   
@@ -13,5 +13,3 @@ public class SearchResultViewModel {
     return $this->results;
   }
 }
-
-?>

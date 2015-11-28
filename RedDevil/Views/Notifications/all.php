@@ -1,7 +1,16 @@
-<?php /** @var \RedDevil\ViewModels\NotificationViewModel[] $model */?>
+<?php /** @var \RedDevil\ViewModels\NotificationViewModel[] $model */
+use RedDevil\ViewHelpers\ActionLink; ?>
 
 <div class="col-md-9">
     <h2>Notifications</h2>
+        <?php
+        ActionLink::create()
+            ->setAttribute('href', '/notifications/markAllAsRead')
+            ->setAttribute('class', 'btn btn-warning')
+            ->setData('Mark all as read')
+            ->render();
+        ?>
+    <br/>
     <?php foreach ($model as $notification) : ?>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -18,7 +27,7 @@
     <?php endforeach; ?>
     <?php
     if (count($model) == 0) {
-        echo "<p>You don't have notifications at the moment.</p>";
+        echo "<p>You don't have any unread notifications at the moment.</p>";
     }
     ?>
 </div>

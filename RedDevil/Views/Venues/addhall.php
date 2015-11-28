@@ -7,6 +7,7 @@ use RedDevil\ViewHelpers\TextField;
 ?>
 <div class="col-md-9">
     <h2>Add hall</h2>
+
     <?php
     $form = new Form('add-hall-form', '/venues/createhall');
     $form->setAttribute('method', 'post');
@@ -34,7 +35,7 @@ use RedDevil\ViewHelpers\TextField;
     $form->addActionLink(ActionLink::create()
         ->setNewLineBefore(false)
         ->setAttribute('id', 'cancel')
-        ->setAttribute('href', '/conferences/own')
+        ->setAttribute('href', '/venues/own')
         ->setData('Cancel')
         ->setAttribute('class', 'btn btn btn-primary'));
     $form->addCSRFToken(CSFRToken::create()

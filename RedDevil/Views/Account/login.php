@@ -34,7 +34,7 @@ $form->addActionLink(ActionLink::create()
     ->setData('Cancel')
     ->setAttribute('class', 'btn btn btn-primary'));
 $form->addCSRFToken(CSFRToken::create()
-    ->setAttribute('name', 'validation-token'));
+    ->setAttribute('name', 'ValidationToken'));
 
 $form->render();
 ?>

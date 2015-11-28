@@ -250,6 +250,13 @@ class ConferencesService extends BaseService
         $venueRequest = new VenueReservationRequest($venueId, $conferenceId, 0);
         $this->dbContext->getVenueReservationRequestsRepository()
             ->add($venueRequest);
+
+        $conferenceTitle = $conference->getTitle();
+        $venueTitle = $venue->getTitle();
+        $message = "You received venue reservation request for venue '$venueTitle' by conference '$conferenceTitle'.";
+        $notyService = new NotificationsService($this->dbContext);
+        $notyService->sendNotification($venue->getOwnerId(), $message);
+
         $this->dbContext->saveChanges();
 
         return new ServiceResponse(null, "Venue request sent successfully.");

@@ -42,7 +42,7 @@ class AddRoleInputModel extends BaseInputModel {
      */
     public function setRoleId($roleId)
     {
-        $this->userId = $roleId;
+        $this->roleId = $roleId;
     }
 
     public function validate()

@@ -17,7 +17,7 @@ class SearchInputModel extends BaseInputModel {
      */
     public function getKeyword()
     {
-        return $this->lectureId;
+        return $this->keyword;
     }
 
     /**

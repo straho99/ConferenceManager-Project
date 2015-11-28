@@ -1,8 +1,11 @@
 <?php
-use RedDevil\Contract\ISearchResult;
-use RedDevil\Models\User;
 
-class UserSearchResultModel implements ISearchResult {
+namespace RedDevil\ViewModels;
+
+use RedDevil\Models\User;
+use RedDevil\Services\SearchResult;
+
+class UserSearchResultModel extends SearchResult {
 	private $id;
  
 	private $fullName;

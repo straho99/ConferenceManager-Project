@@ -47,10 +47,12 @@
                                 ?>
                             </span></a></li>
                     <li><a href="/messages/index">Messages <span class="badge">11</span></a></li>
+                    <li><a href="/admin/manageRoles">Admin </a></li>
                 </ul>
+
             <?php endif; ?>
 
-            <form class="navbar-form navbar-left" role="search" action="/search/find">
+            <form class="navbar-form navbar-left" role="search" action="/search/find" method="post">
                 <div class="form-group">
                     <input type="text" name="keyword" class="form-control" placeholder="Search">
                 </div>

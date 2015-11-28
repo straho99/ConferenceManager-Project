@@ -6,14 +6,22 @@ use RedDevil\Services\SearchServices;
 use RedDevil\View;
 
 class SearchController extends BaseController {
-	
-	/**
-	* @Method('POST')
-	*/
+
+    /**
+     * @Validatetoken('token')
+     * @Method('POST')
+     * @param SearchInputModel $model
+     * @return View
+     */
 	public function find(SearchInputModel $model) {
 		$service = new SearchServices($this->dbContext);
 		$response = $service->search($model->getKeyword());
-		return new View('Search', 'results', $response->getModel());
+        if (!$response->hasError()) {
+            return new View('Search', 'result', $response->getModel());
+        } else {
+            $this->addErrorMessage($response->getMessage());
+            $this->redirectToUrl('/home.index');
+        }
+
 	}
 }
-?>

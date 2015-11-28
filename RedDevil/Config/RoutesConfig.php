@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-27 19:56:18';
+	 public static $dateOfLastCheck = '2015-11-28 09:19:13';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -27,6 +27,7 @@ class RoutesConfig {
 			 'action' => 'addVenueRequest',
 			 'route' => 'conferences/addvenuerequest',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'conferences/addvenuerequest',
 			 ]
 		 ], 
@@ -50,6 +51,15 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'confirmDeleteLecture',
+			 'route' => 'lectures/{integer $lectureId}/delete/confirm',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'lectures/{integer $lectureid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
 			 'action' => 'invite',
 			 'route' => 'conferences/{integer $conferenceId}/lectures/{integer $lectureId}/invite',
 			 'annotations' => [
@@ -62,6 +72,7 @@ class RoutesConfig {
 			 'action' => 'sendInvitation',
 			 'route' => 'lectures/sendinvitation',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'lectures/sendinvitation',
 			 ]
 		 ], 
@@ -88,6 +99,7 @@ class RoutesConfig {
 			 'action' => 'addHall',
 			 'route' => 'lectures/addhall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => 'post',
 				'route' => 'lectures/addhall',
 			 ]
@@ -97,6 +109,7 @@ class RoutesConfig {
 			 'action' => 'addBreak',
 			 'route' => 'lectures/{integer $lectureId}/addbreak',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => ['get', 'post'],
 				'route' => 'lectures/{integer $lectureid}/addbreak',
 			 ]
@@ -167,6 +180,7 @@ class RoutesConfig {
 			 'action' => 'addHall',
 			 'route' => 'venues/{integer $venueId}/addhall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'venues/{integer $venueid}/addhall',
 			 ]
 		 ], 
@@ -175,6 +189,7 @@ class RoutesConfig {
 			 'action' => 'createHall',
 			 'route' => 'venues/createhall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => 'post',
 				'route' => 'venues/createhall',
 			 ]
@@ -198,10 +213,47 @@ class RoutesConfig {
 			 ]
 		 ], 
 		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'deleteHall',
+			 'route' => 'venues/{integer $venueId}/deletehall/{integer $hallId}',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
+				'method' => 'post',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'confirmDeleteHall',
+			 'route' => 'venues/{integer $venueId}/deletehall/{integer $hallId}/confirm',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'confirmDeleteVenue',
+			 'route' => 'venues/{integer $venueId}/delete/confirm',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'venues/{integer $venueid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'delete',
+			 'route' => 'venues/{integer $venueId}/delete',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/delete',
+				'method' => 'post',
+			 ]
+		 ], 
+		 [ 
 			 'controller' => 'RedDevil\Controllers\AccountController',
 			 'action' => 'register',
 			 'route' => 'account/register',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => ['get', 'post'],
 			 ]
 		 ], 
@@ -211,6 +263,7 @@ class RoutesConfig {
 			 'route' => 'account/login',
 			 'annotations' => [
 				'method' => ['get', 'post'],
+				'validatetoken' => 'token',
 			 ]
 		 ], 
 		 [ 
@@ -226,6 +279,7 @@ class RoutesConfig {
 			 'action' => 'changePassword',
 			 'route' => 'account/changePassword',
 			 'annotations' => [
+				'validatetoken' => 'token',
 			 ]
 		 ], 
 		 [ 
@@ -241,6 +295,7 @@ class RoutesConfig {
 			 'route' => 'admin/addRole',
 			 'annotations' => [
 				'method' => 'post',
+				'validatetoken' => 'token',
 			 ]
 		 ], 
 		 [ 
@@ -256,6 +311,7 @@ class RoutesConfig {
 			 'route' => 'conferences/add',
 			 'annotations' => [
 				'method' => ['get', 'post'],
+				'validatetoken' => 'token',
 			 ]
 		 ], 
 		 [ 
@@ -281,6 +337,7 @@ class RoutesConfig {
 			 'action' => 'addVenueRequest',
 			 'route' => 'conferences/addVenueRequest',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'conferences/addvenuerequest',
 			 ]
 		 ], 
@@ -319,6 +376,15 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\LecturesController',
+			 'action' => 'confirmDeleteLecture',
+			 'route' => 'lectures/confirmDeleteLecture',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'lectures/{integer $lectureid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\LecturesController',
 			 'action' => 'invite',
 			 'route' => 'lectures/invite',
 			 'annotations' => [
@@ -331,6 +397,7 @@ class RoutesConfig {
 			 'action' => 'sendInvitation',
 			 'route' => 'lectures/sendInvitation',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'lectures/sendinvitation',
 			 ]
 		 ], 
@@ -357,6 +424,7 @@ class RoutesConfig {
 			 'action' => 'addHall',
 			 'route' => 'lectures/addHall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => 'post',
 				'route' => 'lectures/addhall',
 			 ]
@@ -366,6 +434,7 @@ class RoutesConfig {
 			 'action' => 'addBreak',
 			 'route' => 'lectures/addBreak',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => ['get', 'post'],
 				'route' => 'lectures/{integer $lectureid}/addbreak',
 			 ]
@@ -404,8 +473,8 @@ class RoutesConfig {
 		 ], 
 		 [ 
 			 'controller' => 'RedDevil\Controllers\NotificationsController',
-			 'action' => 'send',
-			 'route' => 'notifications/send',
+			 'action' => 'markAllAsRead',
+			 'route' => 'notifications/markAllAsRead',
 			 'annotations' => [
 			 ]
 		 ], 
@@ -421,6 +490,7 @@ class RoutesConfig {
 			 'action' => 'find',
 			 'route' => 'search/find',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => 'post',
 			 ]
 		 ], 
@@ -479,6 +549,7 @@ class RoutesConfig {
 			 'action' => 'add',
 			 'route' => 'venues/add',
 			 'annotations' => [
+				'validatetoken' => 'token',
 			 ]
 		 ], 
 		 [ 
@@ -486,6 +557,7 @@ class RoutesConfig {
 			 'action' => 'addHall',
 			 'route' => 'venues/addHall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'route' => 'venues/{integer $venueid}/addhall',
 			 ]
 		 ], 
@@ -494,6 +566,7 @@ class RoutesConfig {
 			 'action' => 'createHall',
 			 'route' => 'venues/createHall',
 			 'annotations' => [
+				'validatetoken' => 'token',
 				'method' => 'post',
 				'route' => 'venues/createhall',
 			 ]
@@ -528,6 +601,42 @@ class RoutesConfig {
 			 'action' => 'own',
 			 'route' => 'venues/own',
 			 'annotations' => [
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'deleteHall',
+			 'route' => 'venues/deleteHall',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}',
+				'method' => 'post',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'confirmDeleteHall',
+			 'route' => 'venues/confirmDeleteHall',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'venues/{integer $venueid}/deletehall/{integer $hallid}/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'confirmDeleteVenue',
+			 'route' => 'venues/confirmDeleteVenue',
+			 'annotations' => [
+				'validatetoken' => 'token',
+				'route' => 'venues/{integer $venueid}/delete/confirm',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\VenuesController',
+			 'action' => 'delete',
+			 'route' => 'venues/delete',
+			 'annotations' => [
+				'route' => 'venues/{integer $venueid}/delete',
+				'method' => 'post',
 			 ]
 		 ], 
 	 ]; 

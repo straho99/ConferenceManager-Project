@@ -24,11 +24,13 @@ class NotificationsService extends BaseService {
             return new ServiceResponse(404, "User not found.");
         }
 
-        $notification = new Notification($content, false, $userId, new \DateTime('now'));
+        $todayDate = new \DateTime('now');
+        $today = $todayDate->format('Y-m-d H:i:s');
+        $notification = new Notification($content, $user->getId(), 0, $today);
         $this->dbContext->getNotificationsRepository()
             ->add($notification);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, "Notification sent.");
+        return new ServiceResponse(null, null);
     }
 
     /**
@@ -48,6 +50,7 @@ class NotificationsService extends BaseService {
 
         $notifications = $this->dbContext->getNotificationsRepository()
             ->filterByUserId(" = $userId")
+            ->filterByIsRead(" = 0")
             ->orderByDescending("CreatedOn")
             ->findAll();
 
@@ -108,15 +111,14 @@ class NotificationsService extends BaseService {
         }
 
         $notifications = $this->dbContext->getNotificationsRepository()
-            ->filterByRecipientId(" = $recipientId")
+            ->filterByUserId(" = $recipientId")
             ->findAll();
 
-        $notifications->each(function ($notification) {
+        foreach ($notifications->getNotifications() as $notification) {
             $notification->setIsRead(1);
-        });
+        }
         $this->dbContext->saveChanges();
-        return new ServiceResponse();
-
+        return new ServiceResponse(null, null);
     }
     
     public function postToAll($message) {
@@ -125,12 +127,14 @@ class NotificationsService extends BaseService {
 
         $todayDate = new \DateTime('now');
         $today = $todayDate->format('Y-m-d H:i:s');
-    	$users->each(function($user) use ($message, $today) {
-    		$notification = New Notification($message, $user->getId(), 0, $today);
-    		$this->dbContext->getNotificationsRepository()
-    			->add($notification);
-    	});
-    	$this->dbContext->saveChanges();
+
+        foreach ($users->getUsers() as $user) {
+            $notification = new Notification($message, $user->getId(), 0, $today);
+            $this->dbContext->getNotificationsRepository()
+                ->add($notification);
+            $this->dbContext->saveChanges();
+        }
+
 	    return true;
     }
 

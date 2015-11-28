@@ -23,6 +23,7 @@ class ConferencesController extends BaseController {
     /**
      * @param ConferenceInputModel $model
      * @Method('GET', 'POST')
+     * @Validatetoken('token')
      * @return View
      */
     public function add(ConferenceInputModel $model)
@@ -89,6 +90,7 @@ class ConferencesController extends BaseController {
 
     /**
      * Method('POST')
+     * @Validatetoken('token')
      * @param VenueRequestInputModel $model
      * @Route('conferences/addvenuerequest')
      */

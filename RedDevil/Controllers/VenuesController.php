@@ -36,6 +36,7 @@ class VenuesController extends BaseController {
 
     /**
      * @param VenueInputModel $model
+     * @Validatetoken('token')
      * @return View
      */
     public function add(VenueInputModel $model)
@@ -63,6 +64,7 @@ class VenuesController extends BaseController {
     /**
      * @param $venueId
      * @return View
+     * @Validatetoken('token')
      * @Route('venues/{integer $venueId}/addhall')
      */
     public function addHall($venueId)
@@ -73,6 +75,7 @@ class VenuesController extends BaseController {
     /**
      * @param HallInputModel $model
      * @return View
+     * @Validatetoken('token')
      * @Method('POST')
      * @Route('venues/createhall')
      */
@@ -139,4 +142,65 @@ class VenuesController extends BaseController {
 
         return new View('Venues', 'own', $response->getModel());
     }
+
+    /**
+     * @param $venueId
+     * @param $hallId
+     * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}')
+     * @Method('POST')
+     */
+    public function deleteHall($venueId, $hallId)
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->deleteHall($venueId, $hallId);
+        $this->processResponse($response);
+
+        $this->redirectToUrl('/venues/details/' . $response->getModel());
+    }
+
+    /**
+     * @param $venueId
+     * @param $hallId
+     * @ValidateToken('token')
+     * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}/confirm')
+     * @return View
+     */
+    public function confirmDeleteHall($venueId, $hallId)
+    {
+        if (HttpContext::getInstance()->isPost()) {
+            $this->redirectToUrl('/venues/' . $venueId . '/deletehall/' . $hallId);
+        } else {
+            return new View('Venues', 'confirmDeleteHall', ['venueId' => $venueId, 'hallId' => $hallId]);
+        }
+    }
+
+    /**
+     * @param $venueId
+     * @ValidateToken('token')
+     * @Route('venues/{integer $venueId}/delete/confirm')
+     * @return View
+     */
+    public function confirmDeleteVenue($venueId)
+    {
+        if (HttpContext::getInstance()->isPost()) {
+            $this->redirectToUrl('/venues/' . $venueId . '/delete');
+        } else {
+            return new View('Venues', 'confirmDeleteVenue', $venueId);
+        }
+    }
+
+    /**
+     * @param $venueId
+     * @Route('venues/{integer $venueId}/delete')
+     * @Method('POST')
+     */
+    public function delete($venueId)
+    {
+        $service = new VenuesServices($this->dbContext);
+        $response = $service->deleteVenue($venueId);
+        $this->processResponse($response);
+
+        $this->redirectToUrl('/venues/own');
+    }
+
 }

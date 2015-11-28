@@ -46,8 +46,8 @@
             ->setAttribute('name', 'confirmPassword'));
         $form->addSubmitButton(SubmitButton::create()
             ->setAttribute('class', 'btn btn-default')
-            ->setNewLineAfter(false)
-            ->setData('Login'));
+            ->setAttribute('value', 'Register')
+            ->setNewLineAfter(false));
         $form->addActionLink(ActionLink::create()
             ->setNewLineBefore(false)
             ->setAttribute('id', 'cancel')

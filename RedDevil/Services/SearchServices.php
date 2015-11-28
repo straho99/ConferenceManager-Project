@@ -2,18 +2,24 @@
 
 namespace RedDevil\Services;
 
-use ConferenceSearchResultModel;
+use RedDevil\ViewModels\ConferenceSearchResultModel;
 use RedDevil\ViewModels\SearchResultViewModel;
-use UserSearchResultModel;
-use VenueSearchResultModel;
+use RedDevil\ViewModels\UserSearchResultModel;
+use RedDevil\ViewModels\VenueSearchResultModel;
 
 class SearchServices extends BaseService {
 	
 	public function search($keyword) {
+
+        if ($keyword == '') {
+            return new ServiceResponse(1, "Search keyword cannot be empty.");
+        }
+
 		$searchResults = new SearchResultViewModel();
+        $searchExpression = "%" . $keyword . "%";
 
 		$users = $this->dbContext->getUsersRepository()
-			->filterByUsername(" like '$keyword'")
+			->filterByUsername(" like '$searchExpression'")
 			->findAll();
 		foreach($users->getUsers() as $user) {
 			$model = new UserSearchResultModel($user);
@@ -21,7 +27,7 @@ class SearchServices extends BaseService {
 		}
 
 		$venues = $this->dbContext->getVenuesRepository()
-			->filterByTitle(" like '$keyword'")
+			->filterByTitle(" like '$searchExpression'")
 			->findAll();
 		foreach($venues->getVenues() as $venue) {
 			$model = new VenueSearchResultModel($venue);
@@ -29,7 +35,7 @@ class SearchServices extends BaseService {
 		}
 
 		$conferences = $this->dbContext->getConferencesRepository()
-			->filterByTitle(" like '$keyword'")
+			->filterByTitle(" like '$searchExpression'")
 			->findAll();
 		foreach($conferences->getConferences() as $conference) {
 			$model = new ConferenceSearchResultModel($conference);

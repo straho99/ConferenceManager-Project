@@ -62,7 +62,23 @@ class LecturesController extends BaseController {
         $service = new LecturesService($this->dbContext);
         $result = $service->deleteLecture($lectureId);
         $this->processResponse($result);
-        $this->redirect('conferences', 'own');
+        $this->redirectToUrl('conferences/details/' . $result->getModel());
+    }
+
+    /**
+     * @ValidateToken('token')
+     * @Route('lectures/{integer $lectureId}/delete/confirm')
+     * @param $lectureId
+     * @return View
+     */
+    public function confirmDeleteLecture($lectureId)
+    {
+        $conferenceId = $this->dbContext->getLecturesRepository()
+            ->filterById(" = $lectureId")
+            ->findOne()
+            ->getConferenceId();
+
+        return new View('Lectures', 'confirmDeleteLecture', ['lectureId' => $lectureId, 'conferenceId' => $conferenceId]);
     }
 
     /**
@@ -100,6 +116,7 @@ class LecturesController extends BaseController {
 
     /**
      * Method('POST')
+     * @Validatetoken('token')
      * @Route('lectures/sendinvitation')
      * @param SpeakerInvitationInputModel $model
      */
@@ -154,6 +171,7 @@ class LecturesController extends BaseController {
 
     /**
      * @param AddHallInputModel $model
+     * @Validatetoken('token')
      * @Method('POST')
      * @Route('lectures/addhall')
      * @throws \Exception
@@ -180,6 +198,7 @@ class LecturesController extends BaseController {
      * @param BreakInputModel $model
      * @return View
      * @throws \Exception
+     * @Validatetoken('token')
      * @Method('GET', 'POST')
      * @Route('lectures/{integer $lectureId}/addbreak')
      */

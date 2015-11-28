@@ -21,8 +21,9 @@ class RoleAnnotation extends Annotation {
         }
 
         if (false) {
-            // TODO: check if Identity::getUser()->isInRole($this->role);
-            throw new \Exception("Unauthorized", 401);
+            if (!$context->getIdentity()->isInRole($this->role)) {
+                throw new \Exception("Unauthorized", 401);
+            }
         }
     }
 
