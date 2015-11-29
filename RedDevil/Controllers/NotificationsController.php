@@ -20,7 +20,7 @@ class NotificationsController extends BaseController {
      * Method('GET')
      * Authorize
      */
-    public function all()
+    public function all() : View
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
 

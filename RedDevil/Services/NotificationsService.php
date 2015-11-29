@@ -14,7 +14,7 @@ class NotificationsService extends BaseService {
      * @param $content
      * @return ServiceResponse
      */
-    public function sendNotification($userId, $content)
+    public function sendNotification(integer $userId, integer $content) : ServiceResponse
     {
         $user = $this->dbContext->getUsersRepository()
             ->filterById(" = $userId")
@@ -37,7 +37,7 @@ class NotificationsService extends BaseService {
      * @param $userId
      * @return ServiceResponse
      */
-    public function getAllNotifications($userId)
+    public function getAllNotifications(integer $userId) : ServiceResponse
     {
         $notificationModels = [];
         $user = $this->dbContext->getUsersRepository()
@@ -67,7 +67,7 @@ class NotificationsService extends BaseService {
      * @return mixed
      * @throws \Exception
      */
-    public static function getUnreadCount($userId)
+    public static function getUnreadCount(integer $userId)  : ServiceResponse
     {
         $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
         $statement = $db->prepare(self::$GET_UNREAD_COUNT);
@@ -82,7 +82,7 @@ class NotificationsService extends BaseService {
      * @param $notificationId
      * @return ServiceResponse
      */
-    public function markAsRead($recipientId, $notificationId)
+    public function markAsRead(integer $recipientId, integer $notificationId)  : ServiceResponse
     {
         $recipient = $this->dbContext->getUsersRepository()
             ->filterById(" = $recipientId")
@@ -100,7 +100,7 @@ class NotificationsService extends BaseService {
         return new ServiceResponse();
     }
 
-    public function markAllAsRead($recipientId)
+    public function markAllAsRead(integer $recipientId)  : ServiceResponse
     {
         $recipient = $this->dbContext->getUsersRepository()
             ->filterById(" = $recipientId")
@@ -121,7 +121,7 @@ class NotificationsService extends BaseService {
         return new ServiceResponse(null, null);
     }
     
-    public function postToAll($message) {
+    public function postToAll(string $message)  : ServiceResponse{
     	$users = $this->dbContext->getUsersRepository()
     			->findAll();
 

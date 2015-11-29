@@ -7,7 +7,7 @@ class ServiceResponse {
     private $errorCode;
     private $model;
 
-    function __construct($errorCode = null, $message = null, $model = null)
+    function __construct(integer $errorCode = null, string $message = null, $model = null)
     {
         $this->errorCode = $errorCode;
         $this->message = $message;
@@ -17,7 +17,7 @@ class ServiceResponse {
     /**
      * @return bool
      */
-    public function hasError()
+    public function hasError() : bool
     {
         return $this->errorCode != null;
     }
@@ -25,7 +25,7 @@ class ServiceResponse {
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage() : string
     {
         return $this->message;
     }
@@ -33,7 +33,7 @@ class ServiceResponse {
     /**
      * @param string $message
      */
-    public function setMessage($message)
+    public function setMessage(string $message)
     {
         $this->message = $message;
     }
@@ -41,7 +41,7 @@ class ServiceResponse {
     /**
      * @return null
      */
-    public function getErrorCode()
+    public function getErrorCode() : integer
     {
         return $this->errorCode;
     }
@@ -49,7 +49,7 @@ class ServiceResponse {
     /**
      * @param null $errorCode
      */
-    public function setErrorCode($errorCode)
+    public function setErrorCode(integer $errorCode)
     {
         $this->errorCode = $errorCode;
     }

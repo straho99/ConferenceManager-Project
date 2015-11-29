@@ -21,7 +21,7 @@ class HttpContext {
         $this->identity = Identity::getInstance();
     }
 
-    public function setIdentity($identity)
+    public function setIdentity(integer $identity)
     {
         $this->identity = $identity;
     }
@@ -31,52 +31,52 @@ class HttpContext {
         return $this->identity;
     }
 
-    public function setPost($ar) {
+    public function setPost(array $ar) {
         if (is_array($ar)) {
             $this->_post = $ar;
         }
     }
 
-    public function setGet($ar) {
+    public function setGet(array $ar) {
         if (is_array($ar)) {
             $this->_get = $ar;
         }
     }
 
-    public function setCookies($ar) {
+    public function setCookies(array $ar) {
         if (is_array($ar)) {
             $this->_cookies = $ar;
         }
     }
 
-    public function setSession($ar) {
+    public function setSession(array $ar) {
         if (is_array($ar)) {
             $this->_session = $ar;
         }
     }
 
-    public function setMethod($method)
+    public function setMethod(string $method)
     {
         $this->method = $method;
     }
 
-    public function hasGet($id) {
+    public function hasGet(integer $id) : bool {
         return array_key_exists($id, $this->_get);
     }
 
-    public function hasPost($name) {
+    public function hasPost(string $name) : bool {
         return array_key_exists($name, $this->_post);
     }
 
-    public function hasSession($name) {
+    public function hasSession(string $name) : bool {
         return array_key_exists($name, $this->_session);
     }
 
-    public function hasCookies($name) {
+    public function hasCookies(string $name) : bool {
         return array_key_exists($name, $this->_cookies);
     }
 
-    public function get($id, $normalize = null, $default = null) {
+    public function get(integer $id, bool $normalize = null, $default = null) {
         if ($this->hasGet($id)) {
             if ($normalize != null) {
                 return Common::normalize($this->_get[$id], $normalize);
@@ -86,7 +86,7 @@ class HttpContext {
         return $default;
     }
 
-    public function post($name, $normalize = null, $default = null) {
+    public function post(string $name, bool $normalize = null, $default = null) {
         if ($this->hasPost($name)) {
             if ($normalize != null) {
                 return Common::normalize($this->_post[$name], $normalize);
@@ -96,7 +96,7 @@ class HttpContext {
         return $default;
     }
 
-    public function cookies($name, $normalize = null, $default = null) {
+    public function cookies(string $name, bool $normalize = null, $default = null) {
         if ($this->hasCookies($name)) {
             if ($normalize != null) {
                 return Common::normalize($this->_cookies[$name], $normalize);
@@ -106,7 +106,7 @@ class HttpContext {
         return $default;
     }
 
-    public function session($name, $normalize = null, $default = null) {
+    public function session(string $name, bool $normalize = null, $default = null) {
         if ($this->hasSession($name)) {
             if ($normalize != null) {
                 return Common::normalize($this->_session[$name], $normalize);
@@ -116,7 +116,7 @@ class HttpContext {
         return $default;
     }
 
-    public function getMethod()
+    public function getMethod() : string
     {
         return $this->method;
     }
@@ -125,7 +125,7 @@ class HttpContext {
      *
      * @return bool
      */
-    public function isGet()
+    public function isGet() : bool
     {
         return $this->method == 'get';
     }
@@ -134,7 +134,7 @@ class HttpContext {
      *
      * @return bool
      */
-    public function isPost()
+    public function isPost() : bool
     {
         return $this->method == 'post';
     }

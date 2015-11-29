@@ -52,9 +52,10 @@ class ConferencesController extends BaseController {
     /**
      * @Method('GET')
      * @Route('conferences/details/{integer $conferenceId}')
+     * @param integer $conferenceId
      * @return View
      */
-    public function details($conferenceId)
+    public function details(integer $conferenceId)
     {
         $service = new ConferencesService($this->dbContext);
         $conference =$service->getConferenceDetails($conferenceId);
@@ -68,7 +69,7 @@ class ConferencesController extends BaseController {
      * @param $conferenceId
      * @return View
      */
-    public function requestVenue($conferenceId)
+    public function requestVenue(integer $conferenceId) : View
     {
         $service = new ConferencesService($this->dbContext);
 
@@ -112,7 +113,7 @@ class ConferencesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function own()
+    public function own() : View
     {
         $service = new ConferencesService($this->dbContext);
         $response = $service->getUserConferences();
@@ -124,9 +125,10 @@ class ConferencesController extends BaseController {
     /**
      * @ValidateToken('token')
      * @Route('conferences/{integer $conferenceId}/delete/confirm')
+     * @param integer $conferenceId
      * @return View
      */
-    public function confirmDeleteConference($conferenceId)
+    public function confirmDeleteConference(integer $conferenceId) : View
     {
         return new View('Conferences', 'confirmDeleteConference', $conferenceId);
     }
@@ -136,7 +138,7 @@ class ConferencesController extends BaseController {
      * @Method('POST')
      * @Route('conferences/{integer $$conferenceId}/delete')
      */
-    public function delete($conferenceId)
+    public function delete(integer $conferenceId)
     {
         $service = new ConferencesService($this->dbContext);
         $result = $service->deleteConference($conferenceId);
@@ -149,7 +151,7 @@ class ConferencesController extends BaseController {
      * @param $conferenceId
      * @return View
      */
-    public function autoSchedule($conferenceId)
+    public function autoSchedule(integer $conferenceId) : View
     {
         $service = new ConferencesService($this->dbContext);
 

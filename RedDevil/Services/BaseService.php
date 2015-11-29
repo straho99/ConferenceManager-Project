@@ -14,7 +14,7 @@ class BaseService {
         $this->dbContext = $dbContext;
     }
 
-    public function compareTo(IDateTimeInterval $first, IDateTimeInterval $second)
+    public function compareTo(IDateTimeInterval $first, IDateTimeInterval $second) : bool
     {
         $test = $first->getStartDate();
         $firstStartDate = (new DateTime($first->getStartDate()))->getTimestamp();
@@ -32,7 +32,7 @@ class BaseService {
         }
     }
 
-    public function contains(IDateTimeInterval $first, IDateTimeInterval $second)
+    public function contains(IDateTimeInterval $first, IDateTimeInterval $second) : bool
     {
         $firstStartDate = strtotime($first->getStartDate());
         $firstEndDate = strtotime($first->getEndDate());

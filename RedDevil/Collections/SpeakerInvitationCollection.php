@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\SpeakerInvitation;
+use RedDevil\Models\Speakerinvitation;
 
-class SpeakerInvitationCollection
+class SpeakerinvitationCollection
 {
     /**
-     * @var SpeakerInvitation[];
+     * @var Speakerinvitation[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class SpeakerInvitationCollection
     }
 
     /**
-     * @return SpeakerInvitation[]
+     * @return Speakerinvitation[]
      */
-    public function getSpeakerInvitations()
+    public function getSpeakerinvitations()
     {
         return $this->collection;
     }

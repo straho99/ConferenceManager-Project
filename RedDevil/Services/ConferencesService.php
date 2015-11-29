@@ -50,7 +50,7 @@ class ConferencesService extends BaseService
      * @return ServiceResponse
      * @throws \Exception
      */
-    public function addConference(ConferenceInputModel $model)
+    public function addConference(ConferenceInputModel $model) : ServiceResponse
     {
         if (strtotime($model->getEndDate()) <= strtotime($model->getStartDate())) {
             return new ServiceResponse(1, 'End date must be after Start date.');
@@ -76,7 +76,7 @@ class ConferencesService extends BaseService
         return new ServiceResponse(null, 'Conference added successfully.');
     }
 
-    public function getConferenceDetails($conferenceId)
+    public function getConferenceDetails(integer $conferenceId) : ServiceResponse
     {
         $db = DatabaseData::getInstance(DatabaseConfig::DB_INSTANCE);
         $statement = $db->prepare("select count(LectureId) as 'count' from lecturesParticipants where LectureId = ?");
@@ -183,7 +183,7 @@ class ConferencesService extends BaseService
         return $model;
     }
 
-    public function getConferencesForVenue($venueId)
+    public function getConferencesForVenue(integer $venueId) : ServiceResponse
     {
         $conferenceModels = [];
         $conferences = $this->dbContext->getConferencesRepository()
@@ -211,7 +211,7 @@ class ConferencesService extends BaseService
         return $conferenceModels;
     }
 
-    public function sendVenueRequest(VenueRequestInputModel $model)
+    public function sendVenueRequest(VenueRequestInputModel $model) : ServiceResponse
     {
         $conferenceId = $model->getConferenceId();
         $venueId = $model->getVenueId();
@@ -264,7 +264,7 @@ class ConferencesService extends BaseService
         return new ServiceResponse(null, "Venue request sent successfully.");
     }
 
-    public function deleteConference($conferenceId)
+    public function deleteConference(integer $conferenceId) : ServiceResponse
     {
         $conference = $this->dbContext->getConferencesRepository()
             ->filterById(" = $conferenceId")
@@ -310,7 +310,7 @@ class ConferencesService extends BaseService
         return new ServiceResponse(null, "Conference deleted.");
     }
 
-    public function getUserConferences()
+    public function getUserConferences() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         if ($userId == null) {
@@ -342,7 +342,7 @@ class ConferencesService extends BaseService
         return new ServiceResponse(null, null, $conferenceModels);
     }
 
-    public function autoSchedule($conferenceId)
+    public function autoSchedule(integer $conferenceId) : ServiceResponse
     {
         $conference = $this->dbContext->getConferencesRepository()
             ->filterById(" = $conferenceId")
@@ -368,7 +368,7 @@ class ConferencesService extends BaseService
 
     }
 
-    public function batchBook(BatchBookLectures $lectures)
+    public function batchBook(BatchBookLectures $lectures) : ServiceResponse
     {
         $lectureService = new LecturesService($this->dbContext);
 

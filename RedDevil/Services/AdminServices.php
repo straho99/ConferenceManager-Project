@@ -8,7 +8,7 @@ use RedDevil\ViewModels\UsersRolesViewModel;
 
 class AdminServices extends BaseService {
 
-    public function getUsersRoles()
+    public function getUsersRoles() : ServiceResponse
     {
         $users = $this->dbContext->getUsersRepository()
             ->orderBy("username")
@@ -42,7 +42,7 @@ class AdminServices extends BaseService {
         return new ServiceResponse(null, null, $models);
     }
     
-    public function addRoleToUser(AddRoleInputModel $model)
+    public function addRoleToUser(AddRoleInputModel $model) : ServiceResponse
     {
         $roleId = $model->getRoleId();
         $userId = $model->getUserId();

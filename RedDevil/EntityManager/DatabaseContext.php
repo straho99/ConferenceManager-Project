@@ -4,19 +4,19 @@ namespace RedDevil\EntityManager;
 
 class DatabaseContext
 {
-    private $conferencesParticipantsRepository;
+    private $conferencesparticipantsRepository;
 	private $conferencesRepository;
 	private $hallsRepository;
-	private $lectureBreaksRepository;
-	private $lecturesParticipantsRepository;
+	private $lecturebreaksRepository;
+	private $lecturesparticipantsRepository;
 	private $lecturesRepository;
 	private $messagesRepository;
 	private $notificationsRepository;
 	private $rolesRepository;
-	private $speakerInvitationsRepository;
+	private $speakerinvitationsRepository;
 	private $usersRepository;
 	private $usersRolesRepository;
-	private $venueReservationRequestsRepository;
+	private $venuereservationrequestsRepository;
 	private $venuesRepository;
 
     private $repositories = [];
@@ -27,43 +27,43 @@ class DatabaseContext
      */
     public function __construct()
     {
-        $this->conferencesParticipantsRepository = \RedDevil\Repositories\ConferencesParticipantsRepository::create();
+        $this->conferencesparticipantsRepository = \RedDevil\Repositories\ConferencesparticipantsRepository::create();
 		$this->conferencesRepository = \RedDevil\Repositories\ConferencesRepository::create();
 		$this->hallsRepository = \RedDevil\Repositories\HallsRepository::create();
-		$this->lectureBreaksRepository = \RedDevil\Repositories\LectureBreaksRepository::create();
-		$this->lecturesParticipantsRepository = \RedDevil\Repositories\LecturesParticipantsRepository::create();
+		$this->lecturebreaksRepository = \RedDevil\Repositories\LecturebreaksRepository::create();
+		$this->lecturesparticipantsRepository = \RedDevil\Repositories\LecturesparticipantsRepository::create();
 		$this->lecturesRepository = \RedDevil\Repositories\LecturesRepository::create();
 		$this->messagesRepository = \RedDevil\Repositories\MessagesRepository::create();
 		$this->notificationsRepository = \RedDevil\Repositories\NotificationsRepository::create();
 		$this->rolesRepository = \RedDevil\Repositories\RolesRepository::create();
-		$this->speakerInvitationsRepository = \RedDevil\Repositories\SpeakerInvitationsRepository::create();
+		$this->speakerinvitationsRepository = \RedDevil\Repositories\SpeakerinvitationsRepository::create();
 		$this->usersRepository = \RedDevil\Repositories\UsersRepository::create();
 		$this->usersRolesRepository = \RedDevil\Repositories\UsersRolesRepository::create();
-		$this->venueReservationRequestsRepository = \RedDevil\Repositories\VenueReservationRequestsRepository::create();
+		$this->venuereservationrequestsRepository = \RedDevil\Repositories\VenuereservationrequestsRepository::create();
 		$this->venuesRepository = \RedDevil\Repositories\VenuesRepository::create();
 
-        $this->repositories[] = $this->conferencesParticipantsRepository;
+        $this->repositories[] = $this->conferencesparticipantsRepository;
 		$this->repositories[] = $this->conferencesRepository;
 		$this->repositories[] = $this->hallsRepository;
-		$this->repositories[] = $this->lectureBreaksRepository;
-		$this->repositories[] = $this->lecturesParticipantsRepository;
+		$this->repositories[] = $this->lecturebreaksRepository;
+		$this->repositories[] = $this->lecturesparticipantsRepository;
 		$this->repositories[] = $this->lecturesRepository;
 		$this->repositories[] = $this->messagesRepository;
 		$this->repositories[] = $this->notificationsRepository;
 		$this->repositories[] = $this->rolesRepository;
-		$this->repositories[] = $this->speakerInvitationsRepository;
+		$this->repositories[] = $this->speakerinvitationsRepository;
 		$this->repositories[] = $this->usersRepository;
 		$this->repositories[] = $this->usersRolesRepository;
-		$this->repositories[] = $this->venueReservationRequestsRepository;
+		$this->repositories[] = $this->venuereservationrequestsRepository;
 		$this->repositories[] = $this->venuesRepository;
     }
 
     /**
-     * @return \RedDevil\Repositories\ConferencesParticipantsRepository
+     * @return \RedDevil\Repositories\ConferencesparticipantsRepository
      */
-    public function getConferencesParticipantsRepository()
+    public function getConferencesparticipantsRepository()
     {
-        return $this->conferencesParticipantsRepository;
+        return $this->conferencesparticipantsRepository;
     }
 
     /**
@@ -83,19 +83,19 @@ class DatabaseContext
     }
 
     /**
-     * @return \RedDevil\Repositories\LectureBreaksRepository
+     * @return \RedDevil\Repositories\LecturebreaksRepository
      */
-    public function getLectureBreaksRepository()
+    public function getLecturebreaksRepository()
     {
-        return $this->lectureBreaksRepository;
+        return $this->lecturebreaksRepository;
     }
 
     /**
-     * @return \RedDevil\Repositories\LecturesParticipantsRepository
+     * @return \RedDevil\Repositories\LecturesparticipantsRepository
      */
-    public function getLecturesParticipantsRepository()
+    public function getLecturesparticipantsRepository()
     {
-        return $this->lecturesParticipantsRepository;
+        return $this->lecturesparticipantsRepository;
     }
 
     /**
@@ -131,11 +131,11 @@ class DatabaseContext
     }
 
     /**
-     * @return \RedDevil\Repositories\SpeakerInvitationsRepository
+     * @return \RedDevil\Repositories\SpeakerinvitationsRepository
      */
-    public function getSpeakerInvitationsRepository()
+    public function getSpeakerinvitationsRepository()
     {
-        return $this->speakerInvitationsRepository;
+        return $this->speakerinvitationsRepository;
     }
 
     /**
@@ -155,11 +155,11 @@ class DatabaseContext
     }
 
     /**
-     * @return \RedDevil\Repositories\VenueReservationRequestsRepository
+     * @return \RedDevil\Repositories\VenuereservationrequestsRepository
      */
-    public function getVenueReservationRequestsRepository()
+    public function getVenuereservationrequestsRepository()
     {
-        return $this->venueReservationRequestsRepository;
+        return $this->venuereservationrequestsRepository;
     }
 
     /**
@@ -171,12 +171,12 @@ class DatabaseContext
     }
 
     /**
-     * @param mixed $conferencesParticipantsRepository
+     * @param mixed $conferencesparticipantsRepository
      * @return $this
      */
-    public function setConferencesParticipantsRepository($conferencesParticipantsRepository)
+    public function setConferencesparticipantsRepository($conferencesparticipantsRepository)
     {
-        $this->conferencesParticipantsRepository = $conferencesParticipantsRepository;
+        $this->conferencesparticipantsRepository = $conferencesparticipantsRepository;
         return $this;
     }
 
@@ -201,22 +201,22 @@ class DatabaseContext
     }
 
     /**
-     * @param mixed $lectureBreaksRepository
+     * @param mixed $lecturebreaksRepository
      * @return $this
      */
-    public function setLectureBreaksRepository($lectureBreaksRepository)
+    public function setLecturebreaksRepository($lecturebreaksRepository)
     {
-        $this->lectureBreaksRepository = $lectureBreaksRepository;
+        $this->lecturebreaksRepository = $lecturebreaksRepository;
         return $this;
     }
 
     /**
-     * @param mixed $lecturesParticipantsRepository
+     * @param mixed $lecturesparticipantsRepository
      * @return $this
      */
-    public function setLecturesParticipantsRepository($lecturesParticipantsRepository)
+    public function setLecturesparticipantsRepository($lecturesparticipantsRepository)
     {
-        $this->lecturesParticipantsRepository = $lecturesParticipantsRepository;
+        $this->lecturesparticipantsRepository = $lecturesparticipantsRepository;
         return $this;
     }
 
@@ -261,12 +261,12 @@ class DatabaseContext
     }
 
     /**
-     * @param mixed $speakerInvitationsRepository
+     * @param mixed $speakerinvitationsRepository
      * @return $this
      */
-    public function setSpeakerInvitationsRepository($speakerInvitationsRepository)
+    public function setSpeakerinvitationsRepository($speakerinvitationsRepository)
     {
-        $this->speakerInvitationsRepository = $speakerInvitationsRepository;
+        $this->speakerinvitationsRepository = $speakerinvitationsRepository;
         return $this;
     }
 
@@ -291,12 +291,12 @@ class DatabaseContext
     }
 
     /**
-     * @param mixed $venueReservationRequestsRepository
+     * @param mixed $venuereservationrequestsRepository
      * @return $this
      */
-    public function setVenueReservationRequestsRepository($venueReservationRequestsRepository)
+    public function setVenuereservationrequestsRepository($venuereservationrequestsRepository)
     {
-        $this->venueReservationRequestsRepository = $venueReservationRequestsRepository;
+        $this->venuereservationrequestsRepository = $venuereservationrequestsRepository;
         return $this;
     }
 

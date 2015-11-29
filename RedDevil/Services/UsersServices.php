@@ -10,7 +10,7 @@ use RedDevil\ViewModels\SpeakerInvitationViewModel;
 
 class UsersServices extends BaseService {
 
-    public function getSpeakerInvitationsForUser()
+    public function getSpeakerInvitationsForUser() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         $invitations = $this->dbContext->getSpeakerInvitationsRepository()
@@ -43,7 +43,7 @@ class UsersServices extends BaseService {
         return new ServiceResponse(null, null, $models);
     }
 
-    public function replyToSpeakerInvitation($confirm, $invitationId)
+    public function replyToSpeakerInvitation(bool $confirm, integer $invitationId) : ServiceResponse
     {
         $invitation = $this->dbContext->getSpeakerInvitationsRepository()
             ->filterById(" = $invitationId")
@@ -102,7 +102,7 @@ class UsersServices extends BaseService {
         }
     }
     
-    public function getUsersSchedule()
+    public function getUsersSchedule() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         if ($userId == null) {
@@ -179,7 +179,7 @@ class UsersServices extends BaseService {
         return new ServiceResponse(null, null, $lecturesModels);
     }
 
-    public function getSpeakerSchedule()
+    public function getSpeakerSchedule() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         if ($userId == null) {

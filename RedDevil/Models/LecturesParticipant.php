@@ -2,7 +2,7 @@
 
 namespace RedDevil\Models;
 
-class LecturesParticipant
+class Lecturesparticipant
 {
 	const COL_ID = 'id';
 	const COL_LECTUREID = 'LectureId';

@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\LectureBreak;
+use RedDevil\Models\Lecturebreak;
 
-class LectureBreakCollection
+class LecturebreakCollection
 {
     /**
-     * @var LectureBreak[];
+     * @var Lecturebreak[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class LectureBreakCollection
     }
 
     /**
-     * @return LectureBreak[]
+     * @return Lecturebreak[]
      */
-    public function getLectureBreaks()
+    public function getLecturebreaks()
     {
         return $this->collection;
     }

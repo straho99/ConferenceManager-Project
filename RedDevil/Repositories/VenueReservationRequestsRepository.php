@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\VenueReservationRequest;
-use RedDevil\Collections\VenueReservationRequestCollection;
+use RedDevil\Models\Venuereservationrequest;
+use RedDevil\Collections\VenuereservationrequestCollection;
 
-class VenueReservationRequestsRepository
+class VenuereservationrequestsRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class VenueReservationRequestsRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var VenueReservationRequestsRepository
+     * @var VenuereservationrequestsRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return VenueReservationRequestsRepository
+     * @return VenuereservationrequestsRepository
      */
     public static function create()
     {
@@ -163,20 +163,20 @@ class VenueReservationRequestsRepository
     }
 
     /**
-     * @return VenueReservationRequestCollection
+     * @return VenuereservationrequestCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM venueReservationRequests" . $this->where . $this->order;
+        $this->query = "SELECT * FROM venuereservationrequests" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new VenueReservationRequest($entityInfo['VenueId'],
+            $entity = new Venuereservationrequest($entityInfo['VenueId'],
 $entityInfo['ConferenceId'],
 $entityInfo['Status'],
 $entityInfo['id']);
@@ -186,22 +186,22 @@ $entityInfo['id']);
         }
 
         $this->where = substr($this->where, 0, 8);
-        return new VenueReservationRequestCollection($collection);
+        return new VenuereservationrequestCollection($collection);
     }
 
     /**
-     * @return VenueReservationRequest
+     * @return Venuereservationrequest
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM venueReservationRequests" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM venuereservationrequests" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new VenueReservationRequest($entityInfo['VenueId'],
+        $entity = new Venuereservationrequest($entityInfo['VenueId'],
 $entityInfo['ConferenceId'],
 $entityInfo['Status'],
 $entityInfo['id']);
@@ -220,14 +220,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM venueReservationRequests" . $this->where;
+        $this->query = "DELETE FROM venuereservationrequests" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(VenueReservationRequest $model)
+    public static function add(Venuereservationrequest $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -251,11 +251,11 @@ $entityInfo['id']);
         return true;
     }
 
-    private static function update(VenueReservationRequest $model)
+    private static function update(Venuereservationrequest $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE venueReservationRequests SET VenueId= :VenueId, ConferenceId= :ConferenceId, Status= :Status WHERE id = :id";
+        $query = "UPDATE venuereservationrequests SET VenueId= :VenueId, ConferenceId= :ConferenceId, Status= :Status WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -267,11 +267,11 @@ $entityInfo['id']);
         );
     }
 
-    private static function insert(VenueReservationRequest $model)
+    private static function insert(Venuereservationrequest $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO venueReservationRequests (VenueId,ConferenceId,Status) VALUES (:VenueId, :ConferenceId, :Status);";
+        $query = "INSERT INTO venuereservationrequests (VenueId,ConferenceId,Status) VALUES (:VenueId, :ConferenceId, :Status);";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -285,7 +285,7 @@ $entityInfo['id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\VenueReservationRequest');
+        $refc = new \ReflectionClass('\RedDevil\Models\Venuereservationrequest');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

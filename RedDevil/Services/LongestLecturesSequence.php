@@ -4,6 +4,7 @@ namespace RedDevil\Services;
 
 
 use DateTime;
+use RedDevil\ViewModels\LectureViewModel;
 
 class LongestLecturesSequence {
     const NO_PREVIOUS = -1;
@@ -12,7 +13,7 @@ class LongestLecturesSequence {
     private static $len = [];
     private static $prev = [];
 
-    public static function getSequence($sequence)
+    public static function getSequence($sequence) : array
     {
         self::$seq = $sequence;
 
@@ -21,7 +22,7 @@ class LongestLecturesSequence {
         return [self::printLongestIncreasingSubsequence(self::$seq, self::$prev, $bestIndex)];
     }
 
-	private static function calculateLongestIncreasingSubsequence($seq, $len)
+	private static function calculateLongestIncreasingSubsequence(array $seq, array $len) : int
 	{
         $bestLen = 0;
 		$bestIndex = 0;
@@ -46,7 +47,7 @@ class LongestLecturesSequence {
 		return $bestIndex;
 	}
 
-	private static function printLongestIncreasingSubsequence($seq, $prev, $index)
+	private static function printLongestIncreasingSubsequence(array $seq, array $prev, integer $index)
 	{
         $lis = [];
 		while ($index != self::NO_PREVIOUS)
@@ -59,7 +60,7 @@ class LongestLecturesSequence {
         return $lis;
 	}
 
-    public static function compareTo(IDateTimeInterval $first, IDateTimeInterval $second)
+    public static function compareTo(IDateTimeInterval $first, IDateTimeInterval $second) : bool
     {
         $test = $first->getStartDate();
         $firstStartDate = (new DateTime($first->getStartDate()))->getTimestamp();

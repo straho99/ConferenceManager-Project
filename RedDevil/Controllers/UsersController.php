@@ -16,7 +16,7 @@ class UsersController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function users($username)
+    public function users(string $username) : View
     {
         $user = $this->dbContext->getUsersRepository()
             ->filterByUsername(" = '$username'")

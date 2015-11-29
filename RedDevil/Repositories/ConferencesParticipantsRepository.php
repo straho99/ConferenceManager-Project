@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\ConferencesParticipant;
-use RedDevil\Collections\ConferencesParticipantCollection;
+use RedDevil\Models\Conferencesparticipant;
+use RedDevil\Collections\ConferencesparticipantCollection;
 
-class ConferencesParticipantsRepository
+class ConferencesparticipantsRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class ConferencesParticipantsRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var ConferencesParticipantsRepository
+     * @var ConferencesparticipantsRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return ConferencesParticipantsRepository
+     * @return ConferencesparticipantsRepository
      */
     public static function create()
     {
@@ -141,20 +141,20 @@ class ConferencesParticipantsRepository
     }
 
     /**
-     * @return ConferencesParticipantCollection
+     * @return ConferencesparticipantCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM conferencesParticipants" . $this->where . $this->order;
+        $this->query = "SELECT * FROM conferencesparticipants" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new ConferencesParticipant($entityInfo['ConferenceId'],
+            $entity = new Conferencesparticipant($entityInfo['ConferenceId'],
 $entityInfo['ParticipantId'],
 $entityInfo['id']);
 
@@ -163,22 +163,22 @@ $entityInfo['id']);
         }
 
         $this->where = substr($this->where, 0, 8);
-        return new ConferencesParticipantCollection($collection);
+        return new ConferencesparticipantCollection($collection);
     }
 
     /**
-     * @return ConferencesParticipant
+     * @return Conferencesparticipant
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM conferencesParticipants" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM conferencesparticipants" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new ConferencesParticipant($entityInfo['ConferenceId'],
+        $entity = new Conferencesparticipant($entityInfo['ConferenceId'],
 $entityInfo['ParticipantId'],
 $entityInfo['id']);
 
@@ -196,14 +196,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM conferencesParticipants" . $this->where;
+        $this->query = "DELETE FROM conferencesparticipants" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(ConferencesParticipant $model)
+    public static function add(Conferencesparticipant $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -227,11 +227,11 @@ $entityInfo['id']);
         return true;
     }
 
-    private static function update(ConferencesParticipant $model)
+    private static function update(Conferencesparticipant $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE conferencesParticipants SET ConferenceId= :ConferenceId, ParticipantId= :ParticipantId WHERE id = :id";
+        $query = "UPDATE conferencesparticipants SET ConferenceId= :ConferenceId, ParticipantId= :ParticipantId WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -241,11 +241,11 @@ $entityInfo['id']);
         );
     }
 
-    private static function insert(ConferencesParticipant $model)
+    private static function insert(Conferencesparticipant $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO conferencesParticipants (ConferenceId,ParticipantId) VALUES (:ConferenceId, :ParticipantId);";
+        $query = "INSERT INTO conferencesparticipants (ConferenceId,ParticipantId) VALUES (:ConferenceId, :ParticipantId);";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -258,7 +258,7 @@ $entityInfo['id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\ConferencesParticipant');
+        $refc = new \ReflectionClass('\RedDevil\Models\Conferencesparticipant');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

@@ -2,7 +2,7 @@
 
 namespace RedDevil\Models;
 
-class ConferencesParticipant
+class Conferencesparticipant
 {
 	const COL_CONFERENCEID = 'ConferenceId';
 	const COL_PARTICIPANTID = 'ParticipantId';

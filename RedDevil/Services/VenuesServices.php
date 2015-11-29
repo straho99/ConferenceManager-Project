@@ -18,7 +18,7 @@ use RedDevil\ViewModels\VenueSummaryViewModel;
 class VenuesServices extends BaseService
 {
 
-    public function getAllVenues()
+    public function getAllVenues() : ServiceResponse
     {
         $venueModels = [];
         $venues = $this->dbContext->getVenuesRepository()
@@ -38,10 +38,10 @@ class VenuesServices extends BaseService
     }
 
     /**
-     * @param $venueId
-     * @return VenueDetailsViewModel
+     * @param integer $venueId
+     * @return ServiceResponse|VenueDetailsViewModel
      */
-    public function getVenueDetails($venueId)
+    public function getVenueDetails(integer $venueId) : ServiceResponse
     {
         $venue = $this->dbContext->getVenuesRepository()
             ->filterById(" = $venueId")
@@ -74,7 +74,7 @@ class VenuesServices extends BaseService
      * @return ServiceResponse
      * @throws \Exception
      */
-    public function addVenue(VenueInputModel $model)
+    public function addVenue(VenueInputModel $model) : ServiceResponse
     {
         $venue = new Venue(
             $model->getTitle(),
@@ -96,7 +96,7 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, 'Venue added successfully.');
     }
 
-    public function addHall(HallInputModel $model)
+    public function addHall(HallInputModel $model) : ServiceResponse
     {
         $hall = new Hall(
             $model->getTitle(),
@@ -109,7 +109,7 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, 'Hall added successfully.');
     }
 
-    public function deleteHall($venueId, $hallId)
+    public function deleteHall(integer $venueId, integer $hallId) : ServiceResponse
     {
         $hall = $this->dbContext->getHallsRepository()
             ->filterById(" = $hallId")
@@ -147,7 +147,7 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, "Hall deleted .", $venueId);
     }
 
-    public function replyToVenueRequest($confirm, $requestId)
+    public function replyToVenueRequest(bool $confirm, integer $requestId) : ServiceResponse
     {
         $request = $this->dbContext->getVenueReservationRequestsRepository()
             ->filterById(" = $requestId")
@@ -205,7 +205,7 @@ class VenuesServices extends BaseService
         }
     }
 
-    public function getVenueRequestsForUser()
+    public function getVenueRequestsForUser() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         $userVenues = $this->dbContext->getVenuesRepository()
@@ -247,7 +247,7 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, null, $requests);
     }
 
-    public function deleteVenue($venueId)
+    public function deleteVenue(integer $venueId) : ServiceResponse
     {
         $venue = $this->dbContext->getVenuesRepository()
             ->filterById(" = $venueId")
@@ -299,7 +299,7 @@ class VenuesServices extends BaseService
         return new ServiceResponse(null, "Venue deleted.");
     }
 
-    public function getUserVenues()
+    public function getUserVenues() : ServiceResponse
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         if ($userId == null) {

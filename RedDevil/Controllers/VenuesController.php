@@ -5,6 +5,7 @@ namespace RedDevil\Controllers;
 use RedDevil\Core\HttpContext;
 use RedDevil\InputModels\Venue\HallInputModel;
 use RedDevil\InputModels\Venue\VenueInputModel;
+use RedDevil\Models\Venue;
 use RedDevil\Services\VenuesServices;
 use RedDevil\View;
 
@@ -13,7 +14,7 @@ class VenuesController extends BaseController {
     /**
      * @return View
      */
-    public function all()
+    public function all() : View
     {
         $service = new VenuesServices($this->dbContext);
         $allVenues =$service->getAllVenues();
@@ -26,7 +27,7 @@ class VenuesController extends BaseController {
      * @return View
      * @Route('venues/details/{integer $venueId}')
      */
-    public function details($venueId)
+    public function details(integer $venueId) : View
     {
         $service = new VenuesServices($this->dbContext);
         $venueModel =$service->getVenueDetails($venueId);
@@ -39,7 +40,7 @@ class VenuesController extends BaseController {
      * @Validatetoken('token')
      * @return View
      */
-    public function add(VenueInputModel $model)
+    public function add(VenueInputModel $model) : View
     {
         if (!$model->isValid()) {
             return new View('venues', 'add', $model);
@@ -62,12 +63,12 @@ class VenuesController extends BaseController {
     }
 
     /**
-     * @param $venueId
-     * @return View
+     * @param nteger $venueId
+     * @return Venue|View
      * @Validatetoken('token')
      * @Route('venues/{integer $venueId}/addhall')
      */
-    public function addHall($venueId)
+    public function addHall(nteger $venueId) : Venue
     {
         return new View('venues', 'addhall', $venueId);
     }
@@ -96,7 +97,7 @@ class VenuesController extends BaseController {
         }
     }
     
-    public function requests()
+    public function requests() : View
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->getVenueRequestsForUser();
@@ -108,7 +109,7 @@ class VenuesController extends BaseController {
      * @Method('GET')
      * @Route('venues/approverequest/{integer $requestId}')
      */
-    public function approveRequest($requestId)
+    public function approveRequest(integer $requestId)
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->replyToVenueRequest(true, $requestId);
@@ -121,7 +122,7 @@ class VenuesController extends BaseController {
      * @Method('GET')
      * @Route('venues/rejectrequest/{integer $requestId}')
      */
-    public function rejectRequest($requestId)
+    public function rejectRequest(integer $requestId)
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->replyToVenueRequest(false, $requestId);
@@ -134,7 +135,7 @@ class VenuesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function own()
+    public function own() : View
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->getUserVenues();
@@ -149,7 +150,7 @@ class VenuesController extends BaseController {
      * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}')
      * @Method('POST')
      */
-    public function deleteHall($venueId, $hallId)
+    public function deleteHall(integer $venueId, integer $hallId)
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->deleteHall($venueId, $hallId);
@@ -165,7 +166,7 @@ class VenuesController extends BaseController {
      * @Route('venues/{integer $venueId}/deletehall/{integer $hallId}/confirm')
      * @return View
      */
-    public function confirmDeleteHall($venueId, $hallId)
+    public function confirmDeleteHall(integer $venueId, integer $hallId) : View
     {
         if (HttpContext::getInstance()->isPost()) {
             $this->redirectToUrl('/venues/' . $venueId . '/deletehall/' . $hallId);
@@ -180,7 +181,7 @@ class VenuesController extends BaseController {
      * @Route('venues/{integer $venueId}/delete/confirm')
      * @return View
      */
-    public function confirmDeleteVenue($venueId)
+    public function confirmDeleteVenue(integer $venueId) : View
     {
         if (HttpContext::getInstance()->isPost()) {
             $this->redirectToUrl('/venues/' . $venueId . '/delete');
@@ -194,7 +195,7 @@ class VenuesController extends BaseController {
      * @Route('venues/{integer $venueId}/delete')
      * @Method('POST')
      */
-    public function delete($venueId)
+    public function delete(integer $venueId)
     {
         $service = new VenuesServices($this->dbContext);
         $response = $service->deleteVenue($venueId);

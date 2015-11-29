@@ -19,7 +19,7 @@ use RedDevil\ViewModels\LectureViewModel;
 
 class LecturesService extends BaseService
 {
-    public function addLecture(LectureInputModel $model)
+    public function addLecture(LectureInputModel $model) : ServiceResponse
     {
         $lecture = new Lecture(
             $model->getTitle(),
@@ -37,7 +37,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Lecture created successfully.");
     }
 
-    public function deleteLecture($lectureId)
+    public function deleteLecture(integer $lectureId) : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -73,7 +73,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Lecture deleted.", $conferenceId);
     }
 
-    public function inviteSpeaker(SpeakerInvitationInputModel $model)
+    public function inviteSpeaker(SpeakerInvitationInputModel $model) : ServiceResponse
     {
         $lectureId = $model->getLectureId();
         $speakerId = $model->getSpeakerId();
@@ -134,7 +134,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Invitation sent.");
     }
 
-    public function removeSpeaker($lectureId, $speakerId)
+    public function removeSpeaker(integer $lectureId, integer $speakerId) : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -166,7 +166,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Invitation deleted.");
     }
 
-    public function addHall(AddHallInputModel $model)
+    public function addHall(AddHallInputModel $model) : ServiceResponse
     {
         $lectureId = $model->getLectureId();
         $hallId = $model->getHallId();
@@ -227,7 +227,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Hall added to lecture.", $conferenceId);
     }
 
-    public function deleteHall($lectureId)
+    public function deleteHall(integer $lectureId) : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -243,7 +243,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Hall removed from lecture.");
     }
 
-    public function addBreak(BreakInputModel $model)
+    public function addBreak(BreakInputModel $model) : ServiceResponse
     {
         $lectureId = $model->getLectureId();
         $lecture = $this->dbContext->getLecturesRepository()
@@ -292,7 +292,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Break added.", $model->getConferenceId());
     }
 
-    public function addParticipant($lectureId, $participantId)
+    public function addParticipant(integer $lectureId, integer $participantId) : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -340,7 +340,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Successfully joined lecture.", $lecture->getConferenceId());
     }
 
-    public function deleteParticipant($lectureId, $participantId)
+    public function deleteParticipant(integer $lectureId, integer $participantId)  : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -371,7 +371,7 @@ class LecturesService extends BaseService
         return new ServiceResponse(null, "Participant removed from lecture.");
     }
 
-    public function getHallsForLecture($lectureId)
+    public function getHallsForLecture(integer $lectureId)  : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")

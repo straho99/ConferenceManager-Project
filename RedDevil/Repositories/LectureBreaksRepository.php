@@ -2,10 +2,10 @@
 namespace RedDevil\Repositories;
 
 use RedDevil\Core\DatabaseData;
-use RedDevil\Models\LectureBreak;
-use RedDevil\Collections\LectureBreakCollection;
+use RedDevil\Models\Lecturebreak;
+use RedDevil\Collections\LecturebreakCollection;
 
-class LectureBreaksRepository
+class LecturebreaksRepository
 {
     private $query;
 
@@ -19,14 +19,14 @@ class LectureBreaksRepository
     private static $insertObjectPool = [];
 
     /**
-     * @var LectureBreaksRepository
+     * @var LecturebreaksRepository
      */
     private static $inst = null;
 
     private function __construct() { }
 
     /**
-     * @return LectureBreaksRepository
+     * @return LecturebreaksRepository
      */
     public static function create()
     {
@@ -185,20 +185,20 @@ class LectureBreaksRepository
     }
 
     /**
-     * @return LectureBreakCollection
+     * @return LecturebreakCollection
      * @throws \Exception
      */
     public function findAll()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM lectureBreaks" . $this->where . $this->order;
+        $this->query = "SELECT * FROM lecturebreaks" . $this->where . $this->order;
         $result = $db->prepare($this->query);
         $result->execute([]);
 
         $collection = [];
         foreach ($result->fetchAll() as $entityInfo) {
-            $entity = new LectureBreak($entityInfo['Title'],
+            $entity = new Lecturebreak($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['LectureId'],
 $entityInfo['StartDate'],
@@ -210,22 +210,22 @@ $entityInfo['id']);
         }
 
         $this->where = substr($this->where, 0, 8);
-        return new LectureBreakCollection($collection);
+        return new LecturebreakCollection($collection);
     }
 
     /**
-     * @return LectureBreak
+     * @return Lecturebreak
      * @throws \Exception
      */
     public function findOne()
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "SELECT * FROM lectureBreaks" . $this->where . $this->order . " LIMIT 1";
+        $this->query = "SELECT * FROM lecturebreaks" . $this->where . $this->order . " LIMIT 1";
         $result = $db->prepare($this->query);
         $result->execute([]);
         $entityInfo = $result->fetch();
-        $entity = new LectureBreak($entityInfo['Title'],
+        $entity = new Lecturebreak($entityInfo['Title'],
 $entityInfo['Description'],
 $entityInfo['LectureId'],
 $entityInfo['StartDate'],
@@ -246,14 +246,14 @@ $entityInfo['id']);
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $this->query = "DELETE FROM lectureBreaks" . $this->where;
+        $this->query = "DELETE FROM lecturebreaks" . $this->where;
         $result = $db->prepare($this->query);
         $result->execute($this->placeholders);
 
         return $result->rowCount() > 0;
     }
 
-    public static function add(LectureBreak $model)
+    public static function add(Lecturebreak $model)
     {
         if ($model->getId()) {
             throw new \Exception('This entity is not new');
@@ -277,11 +277,11 @@ $entityInfo['id']);
         return true;
     }
 
-    private static function update(LectureBreak $model)
+    private static function update(Lecturebreak $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "UPDATE lectureBreaks SET Title= :Title, Description= :Description, LectureId= :LectureId, StartDate= :StartDate, EndDate= :EndDate WHERE id = :id";
+        $query = "UPDATE lecturebreaks SET Title= :Title, Description= :Description, LectureId= :LectureId, StartDate= :StartDate, EndDate= :EndDate WHERE id = :id";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -295,11 +295,11 @@ $entityInfo['id']);
         );
     }
 
-    private static function insert(LectureBreak $model)
+    private static function insert(Lecturebreak $model)
     {
         $db = DatabaseData::getInstance(\RedDevil\Config\DatabaseConfig::DB_INSTANCE);
 
-        $query = "INSERT INTO lectureBreaks (Title,Description,LectureId,StartDate,EndDate) VALUES (:Title, :Description, :LectureId, :StartDate, :EndDate);";
+        $query = "INSERT INTO lecturebreaks (Title,Description,LectureId,StartDate,EndDate) VALUES (:Title, :Description, :LectureId, :StartDate, :EndDate);";
         $result = $db->prepare($query);
         $result->execute(
             [
@@ -315,7 +315,7 @@ $entityInfo['id']);
 
     private function isColumnAllowed($column)
     {
-        $refc = new \ReflectionClass('\RedDevil\Models\LectureBreak');
+        $refc = new \ReflectionClass('\RedDevil\Models\Lecturebreak');
         $consts = $refc->getConstants();
 
         return in_array($column, $consts);

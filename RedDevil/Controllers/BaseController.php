@@ -52,7 +52,7 @@ abstract class BaseController {
         $this->redirectToUrl($url);
     }
 
-    public function addMessage($msg, $type) {
+    public function addMessage(string $msg, string $type) {
         if (!isset($_SESSION['messages'])) {
             $_SESSION['messages'] = array();
         };
@@ -60,14 +60,18 @@ abstract class BaseController {
             array('text' => $msg, 'type' => $type));
     }
 
-    public function addInfoMessage($msg) {
+    public function addInfoMessage(string $msg) {
         $this->addMessage($msg, 'info');
     }
 
-    public function addErrorMessage($msg) {
+    public function addErrorMessage(string $msg) {
         $this->addMessage($msg, 'error');
     }
 
+    /**
+     * @param ServiceResponse $response
+     * @throws \Exception
+     */
     public function processResponse(ServiceResponse $response)
     {
         if ($response->hasError()) {
@@ -81,7 +85,7 @@ abstract class BaseController {
         }
     }
 
-    protected function baseUrl()
+    protected function baseUrl() : string
     {
         $requestParts = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $indexBaseProjectFolder = array_search(\RedDevil\Config\AppConfig::BASE_PROJECT_FOLDER, $requestParts);

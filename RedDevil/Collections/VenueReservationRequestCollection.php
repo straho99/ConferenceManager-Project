@@ -2,12 +2,12 @@
 
 namespace RedDevil\Collections;
 
-use RedDevil\Models\VenueReservationRequest;
+use RedDevil\Models\Venuereservationrequest;
 
-class VenueReservationRequestCollection
+class VenuereservationrequestCollection
 {
     /**
-     * @var VenueReservationRequest[];
+     * @var Venuereservationrequest[];
      */
     private $collection = [];
 
@@ -17,9 +17,9 @@ class VenueReservationRequestCollection
     }
 
     /**
-     * @return VenueReservationRequest[]
+     * @return Venuereservationrequest[]
      */
-    public function getVenueReservationRequests()
+    public function getVenuereservationrequests()
     {
         return $this->collection;
     }

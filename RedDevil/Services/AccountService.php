@@ -15,7 +15,7 @@ class AccountService extends BaseService {
      * @param RegisterInputModel $model
      * @return ServiceResponse
      */
-    public function register(RegisterInputModel $model)
+    public function register(RegisterInputModel $model) : ServiceResponse
     {
         $user = new User(
             $model->getUsername(),
@@ -36,7 +36,7 @@ class AccountService extends BaseService {
      * @param LoginInputModel $model
      * @return ServiceResponse
      */
-    public function login(LoginInputModel $model)
+    public function login(LoginInputModel $model)  : ServiceResponse
     {
         $user = $this->dbContext->getUsersRepository()
             ->filterByUsername(' = "' . $model->getUsername() . '"')
@@ -54,7 +54,11 @@ class AccountService extends BaseService {
         return new ServiceResponse(1, 'Wrong password.');
     }
 
-    public function changePassword(ChangePasswordInputModel $model)
+    /**
+     * @param ChangePasswordInputModel $model
+     * @return ServiceResponse
+     */
+    public function changePassword(ChangePasswordInputModel $model)  : ServiceResponse
     {
         $user = $this->dbContext->getUsersRepository()
             ->filterByUsername(' = "' . HttpContext::getInstance()->getIdentity()->getUsername() . '"')
@@ -71,7 +75,7 @@ class AccountService extends BaseService {
     /**
      * @return ServiceResponse
      */
-    public function logout()
+    public function logout() : ServiceResponse
     {
         session_start();
         session_destroy();

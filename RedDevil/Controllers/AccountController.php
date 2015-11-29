@@ -16,7 +16,7 @@ class AccountController extends BaseController {
      * @Validatetoken('token')
      * @Method('GET', 'POST')
      */
-    public function register(RegisterInputModel $model)
+    public function register(RegisterInputModel $model) : View
     {
         if (!$model->isValid()) {
             return new View('account', 'register', $model);
@@ -79,7 +79,7 @@ class AccountController extends BaseController {
      * @return mixed
      * @throws \Exception
      */
-    public function changePassword(ChangePasswordInputModel $model)
+    public function changePassword(ChangePasswordInputModel $model) : View
     {
         if (!HttpContext::getInstance()->getIdentity()->isAuthorised()) {
             throw new \Exception('Unauthorised', 401);

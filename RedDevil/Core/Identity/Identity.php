@@ -17,7 +17,7 @@ class Identity {
     /**
      * @return mixed
      */
-    public function getUserId()
+    public function getUserId() : integer
     {
         if (array_key_exists('userId', $_SESSION)) {
             return $_SESSION['userId'];
@@ -29,7 +29,7 @@ class Identity {
     /**
      * @return mixed
      */
-    public function getUsername()
+    public function getUsername() : string
     {
         if (array_key_exists('username', $_SESSION)) {
             $result = $_SESSION['username'];
@@ -42,7 +42,7 @@ class Identity {
     /**
      * @return bool
      */
-    public function isAuthorised()
+    public function isAuthorised() : bool
     {
         if ($this->getUserId() == null) {
             return false;
@@ -54,7 +54,7 @@ class Identity {
      * @param $role
      * @return bool
      */
-    public function isInRole($role)
+    public function isInRole(string $role) : bool
     {
         if (!$this->isAuthorised()) {
             return false;

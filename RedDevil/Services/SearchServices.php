@@ -9,7 +9,7 @@ use RedDevil\ViewModels\VenueSearchResultModel;
 
 class SearchServices extends BaseService {
 	
-	public function search($keyword) {
+	public function search(string $keyword)  : ServiceResponse {
 
         if ($keyword == '') {
             return new ServiceResponse(1, "Search keyword cannot be empty.");

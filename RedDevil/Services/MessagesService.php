@@ -8,12 +8,14 @@ use RedDevil\ViewModels\MessageViewModel;
 
 class MessagesService extends BaseService {
     /**
+     * @param MessageInputModel $model
      * @param $senderId
-     * @param $recipientId
-     * @param $content
      * @return ServiceResponse
+     * @throws \Exception
+     * @internal param $recipientId
+     * @internal param $content
      */
-    public function sendMessage(MessageInputModel $model, $senderId)
+    public function sendMessage(MessageInputModel $model, integer $senderId) : ServiceResponse
     {
         $sender = $this->dbContext->getUsersRepository()
             ->filterById(" = $senderId")
@@ -38,7 +40,7 @@ class MessagesService extends BaseService {
         return new ServiceResponse(null, "Message sent.");
     }
 
-    public function getAllMessages($userId)
+    public function getAllMessages(integer $userId) : ServiceResponse
     {
         $messageModels = [];
         $user = $this->dbContext->getUsersRepository()

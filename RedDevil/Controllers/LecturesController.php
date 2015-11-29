@@ -24,7 +24,7 @@ class LecturesController extends BaseController {
      * @param $conferenceId
      * @return View
      */
-    public function add(LectureInputModel $model, $conferenceId)
+    public function add(LectureInputModel $model, integer $conferenceId)
     {
         if (!$model->isValid()) {
             return new View('lectures', 'add', $model);
@@ -57,7 +57,7 @@ class LecturesController extends BaseController {
      * @Method('POST')
      * @Route('lectures/{integer $lectureId}/delete')
      */
-    public function delete($lectureId)
+    public function delete(integer $lectureId)
     {
         $service = new LecturesService($this->dbContext);
         $result = $service->deleteLecture($lectureId);
@@ -71,7 +71,7 @@ class LecturesController extends BaseController {
      * @param $lectureId
      * @return View
      */
-    public function confirmDeleteLecture($lectureId)
+    public function confirmDeleteLecture(integer $lectureId) : View
     {
         $conferenceId = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")
@@ -89,7 +89,7 @@ class LecturesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function invite($conferenceId, $lectureId)
+    public function invite(integer $conferenceId, integer $lectureId) : View
     {
         $service = new LecturesService($this->dbContext);
 
@@ -138,7 +138,7 @@ class LecturesController extends BaseController {
      * @Route('lectures/{integer $lectureId}/cancelinvitation/{integer $speakerId}')
      * @param $speakerId
      */
-    public function cancelInvitation($lectureId, $speakerId)
+    public function cancelInvitation(integer $lectureId, integer $speakerId)
     {
         $service = new LecturesService($this->dbContext);
         $result = $service->removeSpeaker($lectureId, $speakerId);
@@ -153,7 +153,7 @@ class LecturesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function halls($lectureId)
+    public function halls(integer $lectureId) : View
     {
         $service = new LecturesService($this->dbContext);
         $result = $service->getHallsForLecture($lectureId);
@@ -202,7 +202,7 @@ class LecturesController extends BaseController {
      * @Method('GET', 'POST')
      * @Route('lectures/{integer $lectureId}/addbreak')
      */
-    public function addBreak(BreakInputModel $model, $lectureId)
+    public function addBreak(BreakInputModel $model, integer $lectureId)
     {
         if (!$model->isValid()) {
             return new View('Lectures', 'addbreak', $model);
@@ -247,7 +247,7 @@ class LecturesController extends BaseController {
      * @Method('POST', 'GET')
      * @Route('lectures/{integer $lectureId}/participate')
      */
-    public function participate($lectureId)
+    public function participate(integer $lectureId)
     {
         $userId = HttpContext::getInstance()->getIdentity()->getUserId();
         $service = new LecturesService($this->dbContext);
@@ -263,7 +263,7 @@ class LecturesController extends BaseController {
      * @Route('lectures/{integer $lectureId}/deleteparticipant/{integer $participantId}')
      * @throws \Exception
      */
-    public function deleteParticipant($lectureId, $participantId)
+    public function deleteParticipant(integer $lectureId, integer $participantId)
     {
         $service = new LecturesService($this->dbContext);
         $result = $service->deleteParticipant($lectureId, $participantId);
@@ -276,7 +276,7 @@ class LecturesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function joined()
+    public function joined() : View
     {
         $service = new UsersServices($this->dbContext);
         $response = $service->getUsersSchedule();
@@ -290,7 +290,7 @@ class LecturesController extends BaseController {
      * @return View
      * @throws \Exception
      */
-    public function own()
+    public function own() : View
     {
         $service = new UsersServices($this->dbContext);
         $response = $service->getSpeakerSchedule();

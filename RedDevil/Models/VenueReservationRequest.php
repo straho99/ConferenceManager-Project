@@ -2,7 +2,7 @@
 
 namespace RedDevil\Models;
 
-class VenueReservationRequest
+class Venuereservationrequest
 {
 	const COL_ID = 'id';
 	const COL_VENUEID = 'VenueId';

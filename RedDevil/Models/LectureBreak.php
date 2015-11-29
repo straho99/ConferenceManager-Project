@@ -2,7 +2,7 @@
 
 namespace RedDevil\Models;
 
-class LectureBreak
+class Lecturebreak
 {
 	const COL_ID = 'id';
 	const COL_TITLE = 'Title';

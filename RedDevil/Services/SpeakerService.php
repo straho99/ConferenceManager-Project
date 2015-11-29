@@ -12,7 +12,7 @@ class SpeakerService extends BaseService {
      * @param $speakerId
      * @return ServiceResponse
      */
-    public function replyToSpeakerInvitation($confirm, $lectureId, $speakerId)
+    public function replyToSpeakerInvitation(bool $confirm, integer $lectureId, integer $speakerId) : ServiceResponse
     {
         $lecture = $this->dbContext->getLecturesRepository()
             ->filterById(" = $lectureId")

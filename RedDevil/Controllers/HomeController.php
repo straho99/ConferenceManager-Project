@@ -14,7 +14,7 @@ class HomeController extends BaseController {
      * @return \RedDevil\View
      * @Method('GET')
      */
-    public function index()
+    public function index() : View
     {
         $service = new ConferencesService($this->dbContext);
         $allConferences =$service->getAllConferences();
