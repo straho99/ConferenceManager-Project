@@ -166,5 +166,20 @@ class ConferencesController extends BaseController {
     {
         $service = new ConferencesService($this->dbContext);
         $response = $service->batchBook($lectures);
+        foreach ($response->getModel() as $response) {
+            if ($response->hasError()) {
+                $this->addErrorMessage($response->getMessage());
+            } else {
+                $this->addInfoMessage($response->getMessage());
+            }
+        }
+
+        $lectureId = $lectures->getLectureIds()[0];
+        $conferenceId = $this->dbContext->getLecturesRepository()
+            ->filterById(" = $lectureId")
+            ->findOne()
+            ->getConferenceId();
+
+        $this->redirectToUrl('/conferences/details/' . $conferenceId);
     }
 }

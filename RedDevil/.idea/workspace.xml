@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConferencesService.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConferencesService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4644013" vertical-offset="21" max-vertical-offset="770">
-              <caret line="78" column="55" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
+            <state vertical-scroll-proportion="-6.8461537" vertical-offset="416" max-vertical-offset="1452">
+              <caret line="347" column="25" selection-start-line="347" selection-start-column="25" selection-end-line="347" selection-end-column="25" />
               <folding>
                 <element signature="e#614#1564#0#PHP" expanded="false" />
                 <element signature="e#711#800#0#PHP" expanded="false" />
@@ -97,14 +97,10 @@
                 <element signature="e#12670#13358#0#PHP" expanded="false" />
                 <element signature="e#12800#12883#0#PHP" expanded="false" />
                 <element signature="e#13013#13095#0#PHP" expanded="false" />
-                <element signature="e#13438#14277#0#PHP" expanded="false" />
-                <element signature="e#13510#13599#0#PHP" expanded="false" />
                 <element signature="e#13633#13748#0#PHP" expanded="false" />
                 <element signature="e#13770#13866#0#PHP" expanded="false" />
                 <element signature="e#13770#13901#0#PHP" expanded="false" />
                 <element signature="e#13997#14136#0#PHP" expanded="false" />
-                <element signature="e#14283#14736#0#PHP" expanded="false" />
-                <element signature="e#14444#14669#0#PHP" expanded="false" />
                 <element signature="e#14777#15058#0#PHP" expanded="false" />
                 <marker date="1448762289000" expanded="false" signature="2849:2929" placeholder="select count..." />
                 <marker date="1448762289000" expanded="false" signature="5418:5498" placeholder="select count..." />
@@ -113,23 +109,76 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LongestLecturesSequence.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Services/LongestLecturesSequence.php">
+      <file leaf-file-name="LecturesService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/LecturesService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.038462" vertical-offset="205" max-vertical-offset="1496">
-              <caret line="20" column="93" selection-start-line="20" selection-start-column="93" selection-end-line="20" selection-end-column="93" />
+            <state vertical-scroll-proportion="-18.884615" vertical-offset="697" max-vertical-offset="3586">
+              <caret line="326" column="91" selection-start-line="326" selection-start-column="91" selection-end-line="326" selection-end-column="91" />
               <folding>
-                <element signature="e#1380#2039#0#PHP" expanded="false" />
+                <element signature="e#671#1188#0#PHP" expanded="false" />
+                <element signature="e#996#1065#0#PHP" expanded="false" />
+                <element signature="e#1194#2502#0#PHP" expanded="false" />
+                <element signature="e#1261#1344#0#PHP" expanded="false" />
+                <element signature="e#1378#1486#0#PHP" expanded="false" />
+                <element signature="e#1563#1652#0#PHP" expanded="false" />
+                <element signature="e#1687#1903#0#PHP" expanded="false" />
+                <element signature="e#1913#2013#0#PHP" expanded="false" />
+                <element signature="e#2047#2142#0#PHP" expanded="false" />
+                <element signature="e#2176#2278#0#PHP" expanded="false" />
+                <element signature="e#2312#2395#0#PHP" expanded="false" />
+                <element signature="e#2508#4766#0#PHP" expanded="false" />
+                <element signature="e#2740#2823#0#PHP" expanded="false" />
+                <element signature="e#2868#2948#0#PHP" expanded="false" />
+                <element signature="e#2983#3092#0#PHP" expanded="false" />
+                <element signature="e#3101#3210#0#PHP" expanded="false" />
+                <element signature="e#3234#3323#0#PHP" expanded="false" />
+                <element signature="e#3357#3472#0#PHP" expanded="false" />
+                <element signature="e#3482#3674#0#PHP" expanded="false" />
+                <element signature="e#3698#3798#0#PHP" expanded="false" />
+                <element signature="e#3698#3847#0#PHP" expanded="false" />
+                <element signature="e#3881#4002#0#PHP" expanded="false" />
+                <element signature="e#4012#4112#0#PHP" expanded="false" />
+                <element signature="e#4271#4360#0#PHP" expanded="false" />
+                <element signature="e#4772#5912#0#PHP" expanded="false" />
+                <element signature="e#4851#4934#0#PHP" expanded="false" />
+                <element signature="e#4979#5059#0#PHP" expanded="false" />
+                <element signature="e#5094#5203#0#PHP" expanded="false" />
+                <element signature="e#5212#5321#0#PHP" expanded="false" />
+                <element signature="e#5345#5445#0#PHP" expanded="false" />
+                <element signature="e#5345#5494#0#PHP" expanded="false" />
+                <element signature="e#5528#5643#0#PHP" expanded="false" />
+                <element signature="e#5667#5767#0#PHP" expanded="false" />
+                <element signature="e#5667#5816#0#PHP" expanded="false" />
+                <element signature="e#5918#8282#0#PHP" expanded="false" />
+                <element signature="e#6374#6451#0#PHP" expanded="false" />
+                <element signature="e#6612#6701#0#PHP" expanded="false" />
+                <element signature="e#8288#8736#0#PHP" expanded="false" />
+                <element signature="e#8352#8435#0#PHP" expanded="false" />
+                <element signature="e#8470#8579#0#PHP" expanded="false" />
+                <element signature="e#8742#10626#0#PHP" expanded="false" />
+                <element signature="e#8861#8944#0#PHP" expanded="false" />
+                <element signature="e#8979#9088#0#PHP" expanded="false" />
+                <element signature="e#9217#9391#0#PHP" expanded="false" />
+                <element signature="e#9457#9637#0#PHP" expanded="false" />
+                <element signature="e#9664#9759#0#PHP" expanded="false" />
+                <element signature="e#9845#10189#0#PHP" expanded="false" />
+                <element signature="e#9976#10179#0#PHP" expanded="false" />
+                <element signature="e#10421#10493#0#PHP" expanded="false" />
+                <element signature="e#10716#10799#0#PHP" expanded="false" />
+                <element signature="e#10841#10925#0#PHP" expanded="false" />
+                <marker date="1448762996000" expanded="true" signature="15501:15922" placeholder="..." />
+                <marker date="1448762996000" expanded="true" signature="15692:15718" placeholder="..." />
+                <marker date="1448762996000" expanded="true" signature="15831:15922" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConferencesController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ConferencesController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/ConferencesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.84615386" vertical-offset="0" max-vertical-offset="1320">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33755943" vertical-offset="865" max-vertical-offset="1562">
+              <caret line="168" column="54" selection-start-line="168" selection-start-column="54" selection-end-line="168" selection-end-column="54" />
               <folding>
                 <element signature="e#457#672#0#PHP" expanded="false" />
                 <element signature="e#678#812#0#PHP" expanded="false" />
@@ -154,7 +203,28 @@
                 <element signature="e#3756#3904#0#PHP" expanded="false" />
                 <element signature="e#3910#4033#0#PHP" expanded="false" />
                 <element signature="e#4038#4299#0#PHP" expanded="false" />
+                <element signature="e#4305#4430#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BatchBookLectures.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/InputModels/Conference/BatchBookLectures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.576923" vertical-offset="95" max-vertical-offset="792">
+              <caret line="18" column="33" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceResponse.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/ServiceResponse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.923077" vertical-offset="44" max-vertical-offset="1694">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -218,15 +288,15 @@
         <option value="$PROJECT_DIR$/Views/Home/index.php" />
         <option value="$PROJECT_DIR$/Views/Conferences/all.php" />
         <option value="$PROJECT_DIR$/ViewHelpers/DateTimeField.php" />
-        <option value="$PROJECT_DIR$/Services/LecturesService.php" />
         <option value="$PROJECT_DIR$/Services/BaseService.php" />
         <option value="$PROJECT_DIR$/ViewModels/LectureViewModel.php" />
         <option value="$PROJECT_DIR$/Views/Conferences/details.php" />
         <option value="$PROJECT_DIR$/Services/LongestLecturesSequence.php" />
-        <option value="$PROJECT_DIR$/Controllers/ConferencesController.php" />
         <option value="$PROJECT_DIR$/Views/Conferences/autoSchedule.php" />
         <option value="$PROJECT_DIR$/InputModels/Conference/BatchBookLectures.php" />
         <option value="$PROJECT_DIR$/Services/ConferencesService.php" />
+        <option value="$PROJECT_DIR$/Services/LecturesService.php" />
+        <option value="$PROJECT_DIR$/Controllers/ConferencesController.php" />
       </list>
     </option>
   </component>
@@ -332,7 +402,7 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="lvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;basese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;base&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;concontr&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;longe&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LongestLecturesSequence.php&#10;confeserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;leccon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;lecserv&#9;null&#9;null&#10;lecmen&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Conferences/_LectureMenu.php&#10;concont&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;concon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Conferences/confirmDeleteConference.php&#10;conserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;chan&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Account/changepassword.php&#10;head&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;vali&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Annotations/ValidatetokenAnnotation.php&#10;admin&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/AdminController.php&#10;identi&#9;null&#9;null&#10;confereser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;notise&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;notiser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;valian&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Annotations/ValidatetokenAnnotation.php&#10;lectco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;add&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Venues/addhall.php&#10;ven&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;vencon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;venser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/VenueSearchResultModel.php&#10;adse&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/AdminServices.php&#10;notse&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;notcon&#9;null&#9;null&#10;con&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceSearchResultModel.php&#10;secon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/SearchController.php&#10;seser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/SearchServices.php&#10;iser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ISearchResult.php&#10;serev&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/SearchResultViewModel.php&#10;seresv&#9;null&#9;null&#10;sein&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;seacon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/SearchController.php&#10;usrol&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/UsersRolesViewModel.php&#10;admise&#9;null&#9;null&#10;admico&#9;null&#9;null&#10;usrolv&#9;null&#9;null&#10;addrol&#9;null&#9;null&#10;coser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;lectserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;venuserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;notirepo&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Repositories/NotificationsRepository.php&#10;sea&#9;null&#9;null&#10;conser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;searchse&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="serres&#9;null&#9;null&#10;lectserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LecturesService.php&#10;lvm&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/LectureViewModel.php&#10;basese&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;base&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/BaseService.php&#10;concontr&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;longe&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/LongestLecturesSequence.php&#10;confeserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;leccon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;lecserv&#9;null&#9;null&#10;lecmen&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Conferences/_LectureMenu.php&#10;concont&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/ConferencesController.php&#10;concon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Conferences/confirmDeleteConference.php&#10;conserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;chan&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Account/changepassword.php&#10;head&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;vali&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Annotations/ValidatetokenAnnotation.php&#10;admin&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/AdminController.php&#10;identi&#9;null&#9;null&#10;confereser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;notise&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;notiser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;valian&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Core/Annotations/ValidatetokenAnnotation.php&#10;lectco&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/LecturesController.php&#10;add&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Venues/addhall.php&#10;ven&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;vencon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/VenuesController.php&#10;venser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/VenueSearchResultModel.php&#10;adse&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/AdminServices.php&#10;notse&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/NotificationsService.php&#10;notcon&#9;null&#9;null&#10;con&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/ConferenceSearchResultModel.php&#10;secon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/SearchController.php&#10;seser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/SearchServices.php&#10;iser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ISearchResult.php&#10;serev&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/SearchResultViewModel.php&#10;seresv&#9;null&#9;null&#10;sein&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Views/Layouts/Default/header.php&#10;seacon&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Controllers/SearchController.php&#10;usrol&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/ViewModels/UsersRolesViewModel.php&#10;admise&#9;null&#9;null&#10;admico&#9;null&#9;null&#10;usrolv&#9;null&#9;null&#10;addrol&#9;null&#9;null&#10;coser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php&#10;venuserv&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/VenuesServices.php&#10;notirepo&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Repositories/NotificationsRepository.php&#10;sea&#9;null&#9;null&#10;conser&#9;FILE&#9;file:///Users/Strahil/Desktop/ConferenceManager Project/ConferenceManager-Project/RedDevil/Services/ConferencesService.php" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -474,7 +544,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="373" />
+      <option name="time" value="374" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -827,14 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/ServiceResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31378764" vertical-offset="0" max-vertical-offset="1694">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Conferences/confirmDeleteConference.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24919094" vertical-offset="0" max-vertical-offset="618">
@@ -920,11 +982,11 @@
         <state vertical-scroll-proportion="-4.230769" vertical-offset="6490" max-vertical-offset="7832">
           <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
           <folding>
-            <marker date="1448762294000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..lectures$..." />
-            <marker date="1448762294000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..lectures$..." />
-            <marker date="1448762294000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1448762294000" expanded="true" signature="-1:-1" placeholder="UPDATE lectu..." />
-            <marker date="1448762294000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1448762641000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..lectures$..." />
+            <marker date="1448762641000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..lectures$..." />
+            <marker date="1448762641000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1448762641000" expanded="true" signature="-1:-1" placeholder="UPDATE lectu..." />
+            <marker date="1448762641000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -993,93 +1055,6 @@
         <state vertical-scroll-proportion="0.24405706" vertical-offset="0" max-vertical-offset="631">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/LecturesService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8867314" vertical-offset="0" max-vertical-offset="2156">
-          <caret line="205" column="0" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-          <folding>
-            <element signature="e#671#1188#0#PHP" expanded="false" />
-            <element signature="e#996#1065#0#PHP" expanded="false" />
-            <element signature="e#1194#2502#0#PHP" expanded="false" />
-            <element signature="e#1261#1344#0#PHP" expanded="false" />
-            <element signature="e#1378#1486#0#PHP" expanded="false" />
-            <element signature="e#1563#1652#0#PHP" expanded="false" />
-            <element signature="e#1687#1903#0#PHP" expanded="false" />
-            <element signature="e#1913#2013#0#PHP" expanded="false" />
-            <element signature="e#2047#2142#0#PHP" expanded="false" />
-            <element signature="e#2176#2278#0#PHP" expanded="false" />
-            <element signature="e#2312#2395#0#PHP" expanded="false" />
-            <element signature="e#2508#4766#0#PHP" expanded="false" />
-            <element signature="e#2740#2823#0#PHP" expanded="false" />
-            <element signature="e#2868#2948#0#PHP" expanded="false" />
-            <element signature="e#2983#3092#0#PHP" expanded="false" />
-            <element signature="e#3101#3210#0#PHP" expanded="false" />
-            <element signature="e#3234#3323#0#PHP" expanded="false" />
-            <element signature="e#3357#3472#0#PHP" expanded="false" />
-            <element signature="e#3482#3674#0#PHP" expanded="false" />
-            <element signature="e#3698#3798#0#PHP" expanded="false" />
-            <element signature="e#3698#3847#0#PHP" expanded="false" />
-            <element signature="e#3881#4002#0#PHP" expanded="false" />
-            <element signature="e#4012#4112#0#PHP" expanded="false" />
-            <element signature="e#4271#4360#0#PHP" expanded="false" />
-            <element signature="e#4772#5912#0#PHP" expanded="false" />
-            <element signature="e#4851#4934#0#PHP" expanded="false" />
-            <element signature="e#4979#5059#0#PHP" expanded="false" />
-            <element signature="e#5094#5203#0#PHP" expanded="false" />
-            <element signature="e#5212#5321#0#PHP" expanded="false" />
-            <element signature="e#5345#5445#0#PHP" expanded="false" />
-            <element signature="e#5345#5494#0#PHP" expanded="false" />
-            <element signature="e#5528#5643#0#PHP" expanded="false" />
-            <element signature="e#5667#5767#0#PHP" expanded="false" />
-            <element signature="e#5667#5816#0#PHP" expanded="false" />
-            <element signature="e#6374#6451#0#PHP" expanded="false" />
-            <element signature="e#6612#6701#0#PHP" expanded="false" />
-            <element signature="e#8288#8736#0#PHP" expanded="false" />
-            <element signature="e#8352#8435#0#PHP" expanded="false" />
-            <element signature="e#8470#8579#0#PHP" expanded="false" />
-            <element signature="e#8742#10626#0#PHP" expanded="false" />
-            <element signature="e#8861#8944#0#PHP" expanded="false" />
-            <element signature="e#8979#9088#0#PHP" expanded="false" />
-            <element signature="e#9217#9391#0#PHP" expanded="false" />
-            <element signature="e#9457#9637#0#PHP" expanded="false" />
-            <element signature="e#9664#9759#0#PHP" expanded="false" />
-            <element signature="e#9845#10189#0#PHP" expanded="false" />
-            <element signature="e#9976#10179#0#PHP" expanded="false" />
-            <element signature="e#10421#10493#0#PHP" expanded="false" />
-            <element signature="e#10632#12459#0#PHP" expanded="false" />
-            <element signature="e#10716#10799#0#PHP" expanded="false" />
-            <element signature="e#10841#10925#0#PHP" expanded="false" />
-            <element signature="e#10960#11069#0#PHP" expanded="false" />
-            <element signature="e#11078#11181#0#PHP" expanded="false" />
-            <element signature="e#11241#11318#0#PHP" expanded="false" />
-            <element signature="e#11640#11810#0#PHP" expanded="false" />
-            <element signature="e#11985#12138#0#PHP" expanded="false" />
-            <element signature="e#12224#12309#0#PHP" expanded="false" />
-            <element signature="e#12465#13773#0#PHP" expanded="false" />
-            <element signature="e#12552#12635#0#PHP" expanded="false" />
-            <element signature="e#12677#12761#0#PHP" expanded="false" />
-            <element signature="e#12796#12905#0#PHP" expanded="false" />
-            <element signature="e#12914#13017#0#PHP" expanded="false" />
-            <element signature="e#13262#13412#0#PHP" expanded="false" />
-            <element signature="e#13505#13607#0#PHP" expanded="false" />
-            <element signature="e#13505#13664#0#PHP" expanded="false" />
-            <element signature="e#13779#15244#0#PHP" expanded="false" />
-            <element signature="e#13851#13934#0#PHP" expanded="false" />
-            <element signature="e#13968#14077#0#PHP" expanded="false" />
-            <element signature="e#14154#14243#0#PHP" expanded="false" />
-            <element signature="e#14324#14444#0#PHP" expanded="false" />
-            <element signature="e#14469#14581#0#PHP" expanded="false" />
-            <element signature="e#14469#14626#0#PHP" expanded="false" />
-            <element signature="e#14660#14793#0#PHP" expanded="false" />
-            <element signature="e#14812#14895#0#PHP" expanded="false" />
-            <element signature="e#14951#15180#0#PHP" expanded="false" />
-            <element signature="e#15282#15427#0#PHP" expanded="false" />
-            <element signature="e#15473#15564#0#PHP" expanded="false" />
-            <element signature="e#15612#15707#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,14 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InputModels/Conference/BatchBookLectures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23296355" vertical-offset="95" max-vertical-offset="792">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Conferences/autoSchedule.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.0" vertical-offset="0" max-vertical-offset="1320">
@@ -1173,42 +1140,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/ConferencesController.php">
+    <entry file="file://$PROJECT_DIR$/Services/LecturesService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.84615386" vertical-offset="0" max-vertical-offset="1320">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="-18.884615" vertical-offset="697" max-vertical-offset="3586">
+          <caret line="326" column="91" selection-start-line="326" selection-start-column="91" selection-end-line="326" selection-end-column="91" />
           <folding>
-            <element signature="e#457#672#0#PHP" expanded="false" />
-            <element signature="e#678#812#0#PHP" expanded="false" />
-            <element signature="e#817#1566#0#PHP" expanded="false" />
-            <element signature="e#880#974#0#PHP" expanded="false" />
-            <element signature="e#1046#1560#0#PHP" expanded="false" />
-            <element signature="e#1157#1454#0#PHP" expanded="false" />
-            <element signature="e#1316#1454#0#PHP" expanded="false" />
-            <element signature="e#1465#1560#0#PHP" expanded="false" />
-            <element signature="e#1572#1686#0#PHP" expanded="false" />
-            <element signature="e#1691#1935#0#PHP" expanded="false" />
-            <element signature="e#1941#2088#0#PHP" expanded="false" />
-            <element signature="e#2093#2695#0#PHP" expanded="false" />
-            <element signature="e#2223#2293#0#PHP" expanded="false" />
-            <element signature="e#2380#2618#0#PHP" expanded="false" />
-            <element signature="e#2701#2854#0#PHP" expanded="false" />
-            <element signature="e#2859#3268#0#PHP" expanded="false" />
-            <element signature="e#2936#3022#0#PHP" expanded="false" />
-            <element signature="e#3274#3350#0#PHP" expanded="false" />
-            <element signature="e#3355#3615#0#PHP" expanded="false" />
-            <element signature="e#3621#3751#0#PHP" expanded="false" />
-            <element signature="e#3756#3904#0#PHP" expanded="false" />
-            <element signature="e#3910#4033#0#PHP" expanded="false" />
-            <element signature="e#4038#4299#0#PHP" expanded="false" />
+            <element signature="e#671#1188#0#PHP" expanded="false" />
+            <element signature="e#996#1065#0#PHP" expanded="false" />
+            <element signature="e#1194#2502#0#PHP" expanded="false" />
+            <element signature="e#1261#1344#0#PHP" expanded="false" />
+            <element signature="e#1378#1486#0#PHP" expanded="false" />
+            <element signature="e#1563#1652#0#PHP" expanded="false" />
+            <element signature="e#1687#1903#0#PHP" expanded="false" />
+            <element signature="e#1913#2013#0#PHP" expanded="false" />
+            <element signature="e#2047#2142#0#PHP" expanded="false" />
+            <element signature="e#2176#2278#0#PHP" expanded="false" />
+            <element signature="e#2312#2395#0#PHP" expanded="false" />
+            <element signature="e#2508#4766#0#PHP" expanded="false" />
+            <element signature="e#2740#2823#0#PHP" expanded="false" />
+            <element signature="e#2868#2948#0#PHP" expanded="false" />
+            <element signature="e#2983#3092#0#PHP" expanded="false" />
+            <element signature="e#3101#3210#0#PHP" expanded="false" />
+            <element signature="e#3234#3323#0#PHP" expanded="false" />
+            <element signature="e#3357#3472#0#PHP" expanded="false" />
+            <element signature="e#3482#3674#0#PHP" expanded="false" />
+            <element signature="e#3698#3798#0#PHP" expanded="false" />
+            <element signature="e#3698#3847#0#PHP" expanded="false" />
+            <element signature="e#3881#4002#0#PHP" expanded="false" />
+            <element signature="e#4012#4112#0#PHP" expanded="false" />
+            <element signature="e#4271#4360#0#PHP" expanded="false" />
+            <element signature="e#4772#5912#0#PHP" expanded="false" />
+            <element signature="e#4851#4934#0#PHP" expanded="false" />
+            <element signature="e#4979#5059#0#PHP" expanded="false" />
+            <element signature="e#5094#5203#0#PHP" expanded="false" />
+            <element signature="e#5212#5321#0#PHP" expanded="false" />
+            <element signature="e#5345#5445#0#PHP" expanded="false" />
+            <element signature="e#5345#5494#0#PHP" expanded="false" />
+            <element signature="e#5528#5643#0#PHP" expanded="false" />
+            <element signature="e#5667#5767#0#PHP" expanded="false" />
+            <element signature="e#5667#5816#0#PHP" expanded="false" />
+            <element signature="e#5918#8282#0#PHP" expanded="false" />
+            <element signature="e#6374#6451#0#PHP" expanded="false" />
+            <element signature="e#6612#6701#0#PHP" expanded="false" />
+            <element signature="e#8288#8736#0#PHP" expanded="false" />
+            <element signature="e#8352#8435#0#PHP" expanded="false" />
+            <element signature="e#8470#8579#0#PHP" expanded="false" />
+            <element signature="e#8742#10626#0#PHP" expanded="false" />
+            <element signature="e#8861#8944#0#PHP" expanded="false" />
+            <element signature="e#8979#9088#0#PHP" expanded="false" />
+            <element signature="e#9217#9391#0#PHP" expanded="false" />
+            <element signature="e#9457#9637#0#PHP" expanded="false" />
+            <element signature="e#9664#9759#0#PHP" expanded="false" />
+            <element signature="e#9845#10189#0#PHP" expanded="false" />
+            <element signature="e#9976#10179#0#PHP" expanded="false" />
+            <element signature="e#10421#10493#0#PHP" expanded="false" />
+            <element signature="e#10716#10799#0#PHP" expanded="false" />
+            <element signature="e#10841#10925#0#PHP" expanded="false" />
+            <marker date="1448762996000" expanded="true" signature="15501:15922" placeholder="..." />
+            <marker date="1448762996000" expanded="true" signature="15692:15718" placeholder="..." />
+            <marker date="1448762996000" expanded="true" signature="15831:15922" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/ServiceResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.923077" vertical-offset="44" max-vertical-offset="1694">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/ConferencesService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4644013" vertical-offset="21" max-vertical-offset="770">
-          <caret line="78" column="55" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
+        <state vertical-scroll-proportion="-6.8461537" vertical-offset="416" max-vertical-offset="1452">
+          <caret line="347" column="25" selection-start-line="347" selection-start-column="25" selection-end-line="347" selection-end-column="25" />
           <folding>
             <element signature="e#614#1564#0#PHP" expanded="false" />
             <element signature="e#711#800#0#PHP" expanded="false" />
@@ -1276,17 +1282,54 @@
             <element signature="e#12670#13358#0#PHP" expanded="false" />
             <element signature="e#12800#12883#0#PHP" expanded="false" />
             <element signature="e#13013#13095#0#PHP" expanded="false" />
-            <element signature="e#13438#14277#0#PHP" expanded="false" />
-            <element signature="e#13510#13599#0#PHP" expanded="false" />
             <element signature="e#13633#13748#0#PHP" expanded="false" />
             <element signature="e#13770#13866#0#PHP" expanded="false" />
             <element signature="e#13770#13901#0#PHP" expanded="false" />
             <element signature="e#13997#14136#0#PHP" expanded="false" />
-            <element signature="e#14283#14736#0#PHP" expanded="false" />
-            <element signature="e#14444#14669#0#PHP" expanded="false" />
             <element signature="e#14777#15058#0#PHP" expanded="false" />
             <marker date="1448762289000" expanded="false" signature="2849:2929" placeholder="select count..." />
             <marker date="1448762289000" expanded="false" signature="5418:5498" placeholder="select count..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InputModels/Conference/BatchBookLectures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.576923" vertical-offset="95" max-vertical-offset="792">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/ConferencesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33755943" vertical-offset="865" max-vertical-offset="1562">
+          <caret line="168" column="54" selection-start-line="168" selection-start-column="54" selection-end-line="168" selection-end-column="54" />
+          <folding>
+            <element signature="e#457#672#0#PHP" expanded="false" />
+            <element signature="e#678#812#0#PHP" expanded="false" />
+            <element signature="e#817#1566#0#PHP" expanded="false" />
+            <element signature="e#880#974#0#PHP" expanded="false" />
+            <element signature="e#1046#1560#0#PHP" expanded="false" />
+            <element signature="e#1157#1454#0#PHP" expanded="false" />
+            <element signature="e#1316#1454#0#PHP" expanded="false" />
+            <element signature="e#1465#1560#0#PHP" expanded="false" />
+            <element signature="e#1572#1686#0#PHP" expanded="false" />
+            <element signature="e#1691#1935#0#PHP" expanded="false" />
+            <element signature="e#1941#2088#0#PHP" expanded="false" />
+            <element signature="e#2093#2695#0#PHP" expanded="false" />
+            <element signature="e#2223#2293#0#PHP" expanded="false" />
+            <element signature="e#2380#2618#0#PHP" expanded="false" />
+            <element signature="e#2701#2854#0#PHP" expanded="false" />
+            <element signature="e#2859#3268#0#PHP" expanded="false" />
+            <element signature="e#2936#3022#0#PHP" expanded="false" />
+            <element signature="e#3274#3350#0#PHP" expanded="false" />
+            <element signature="e#3355#3615#0#PHP" expanded="false" />
+            <element signature="e#3621#3751#0#PHP" expanded="false" />
+            <element signature="e#3756#3904#0#PHP" expanded="false" />
+            <element signature="e#3910#4033#0#PHP" expanded="false" />
+            <element signature="e#4038#4299#0#PHP" expanded="false" />
+            <element signature="e#4305#4430#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

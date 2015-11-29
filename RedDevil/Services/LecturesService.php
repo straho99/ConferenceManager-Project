@@ -309,6 +309,12 @@ class LecturesService extends BaseService
         }
 
         $hallId = $lecture->getHall_Id();
+
+        $lectureTitle = $lecture->getTitle();
+        if ($hallId == null) {
+            return new ServiceResponse(1, "No hall has been selected for '$lectureTitle'. Please, try to join later.");
+        }
+
         $hall = $this->dbContext->getHallsRepository()
             ->filterById(" = $hallId")
             ->findOne();
@@ -318,7 +324,7 @@ class LecturesService extends BaseService
         $participantsCount = $statement->fetch()['count'];
         $capacity = $hall->getCapacity();
         if ($capacity <= $participantsCount) {
-            return new ServiceResponse(1, "No more places are available for this lecture.", $lecture->getConferenceId());
+            return new ServiceResponse(1, "No more places are available for '$lectureTitle'.", $lecture->getConferenceId());
         }
 
         $isParticipatingStatement = $db->prepare($this::IS_USER_A_PARTICIPANT_IN_LECTURE);
@@ -331,7 +337,7 @@ class LecturesService extends BaseService
         $this->dbContext->getLecturesParticipantsRepository()
             ->add($participant);
         $this->dbContext->saveChanges();
-        return new ServiceResponse(null, "Successfuly joined lecture.", $lecture->getConferenceId());
+        return new ServiceResponse(null, "Successfully joined lecture.", $lecture->getConferenceId());
     }
 
     public function deleteParticipant($lectureId, $participantId)
