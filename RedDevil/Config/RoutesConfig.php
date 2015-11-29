@@ -1,7 +1,7 @@
 <?php 
 namespace RedDevil\Config; 
 class RoutesConfig { 
-	 public static $dateOfLastCheck = '2015-11-28 18:25:03';
+	 public static $dateOfLastCheck = '2015-11-29 02:58:14';
 
 	 public static $ROUTES = [ 
 		 [ 
@@ -56,6 +56,22 @@ class RoutesConfig {
 			 'annotations' => [
 				'method' => 'post',
 				'route' => 'conferences/{integer $$conferenceid}/delete',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'autoSchedule',
+			 'route' => 'conferences/autoSchedule/{integer $conferenceId}',
+			 'annotations' => [
+				'route' => 'conferences/autoschedule/{integer $conferenceid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'batchBook',
+			 'route' => 'conferences/batchBook',
+			 'annotations' => [
+				'route' => 'conferences/batchbook',
 			 ]
 		 ], 
 		 [ 
@@ -401,6 +417,15 @@ class RoutesConfig {
 			 'action' => 'autoSchedule',
 			 'route' => 'conferences/autoSchedule',
 			 'annotations' => [
+				'route' => 'conferences/autoschedule/{integer $conferenceid}',
+			 ]
+		 ], 
+		 [ 
+			 'controller' => 'RedDevil\Controllers\ConferencesController',
+			 'action' => 'batchBook',
+			 'route' => 'conferences/batchBook',
+			 'annotations' => [
+				'route' => 'conferences/batchbook',
 			 ]
 		 ], 
 		 [ 

@@ -5,6 +5,7 @@ namespace RedDevil\Services;
 use RedDevil\Config\DatabaseConfig;
 use RedDevil\Core\DatabaseData;
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Conference\BatchBookLectures;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
 use RedDevil\InputModels\Venue\VenueRequestInputModel;
 use RedDevil\Models\Conference;
@@ -112,6 +113,7 @@ class ConferencesService extends BaseService
 
         $lectures = $this->dbContext->getLecturesRepository()
             ->filterByConferenceId(" = $conferenceId")
+            ->orderBy("StartDate")
             ->findAll(" = $conferenceId");
         $lecturesModels = [];
         foreach ($lectures->getLectures() as $lecture) {
@@ -361,11 +363,23 @@ class ConferencesService extends BaseService
             $lectureViewModels[] = $model;
         }
 
-        $testArray = [1,1,1,1,2,3,4,1];
-
         $result = LongestLecturesSequence::getSequence($lectureViewModels);
         return new ServiceResponse(null, null, $result);
 
+    }
+
+    public function batchBook(BatchBookLectures $lectures)
+    {
+        $lectureService = new LecturesService($this->dbContext);
+
+        $responses = [];
+
+        foreach ($lectures->getLectureIds() as $lectureId) {
+            $response = $lectureService->addParticipant($lectureId, HttpContext::getInstance()->getIdentity()->getUserId());
+            $responses[] = $response;
+        }
+
+        return new ServiceResponse(null, null, $responses);
     }
 
     const CHECK_USER_CAN_PARTICIPATE = <<<TAG

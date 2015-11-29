@@ -3,6 +3,7 @@
 namespace RedDevil\Controllers;
 
 use RedDevil\Core\HttpContext;
+use RedDevil\InputModels\Conference\BatchBookLectures;
 use RedDevil\InputModels\Conference\ConferenceInputModel;
 use RedDevil\InputModels\Venue\VenueRequestInputModel;
 use RedDevil\Services\ConferencesService;
@@ -143,11 +144,27 @@ class ConferencesController extends BaseController {
         $this->redirectToUrl('conferences/own');
     }
 
-    public function autoSchedule()
+    /**
+     * @Route('conferences/autoSchedule/{integer $conferenceId}')
+     * @param $conferenceId
+     * @return View
+     */
+    public function autoSchedule($conferenceId)
     {
         $service = new ConferencesService($this->dbContext);
 
-        $response = $service->autoSchedule(7);
-        var_dump($response->getModel());
+        $response = $service->autoSchedule($conferenceId);
+        return new View('Conferences', 'autoSchedule', $response->getModel());
+    }
+
+    /**
+     * @param BatchBookLectures $lectures
+     * @ Method('POST')
+     * @Route('conferences/batchBook')
+     */
+    public function batchBook(BatchBookLectures $lectures)
+    {
+        $service = new ConferencesService($this->dbContext);
+        $response = $service->batchBook($lectures);
     }
 }

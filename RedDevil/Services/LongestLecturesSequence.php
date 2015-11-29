@@ -3,6 +3,8 @@
 namespace RedDevil\Services;
 
 
+use DateTime;
+
 class LongestLecturesSequence {
     const NO_PREVIOUS = -1;
 
@@ -16,7 +18,7 @@ class LongestLecturesSequence {
 
         $bestIndex = self::calculateLongestIncreasingSubsequence(self::$seq, self::$len);
 
-        return self::printLongestIncreasingSubsequence(self::$seq, self::$prev, $bestIndex);
+        return [self::printLongestIncreasingSubsequence(self::$seq, self::$prev, $bestIndex)];
     }
 
 	private static function calculateLongestIncreasingSubsequence($seq, $len)
@@ -29,7 +31,7 @@ class LongestLecturesSequence {
             self::$prev[$x] = self::NO_PREVIOUS;
 			for ($i = 0; $i <= $x - 1; $i++)
 			{
-                if ($seq[$i] < $seq[$x] && 1 + $len[$i] > $len[$x])
+                if (self::compareTo($seq[$i], $seq[$x]) < 0 && 1 + $len[$i] > $len[$x])
 				{
                     $len[$x] = 1 + $len[$i];
                     self::$prev[$x] = $i;
@@ -53,7 +55,25 @@ class LongestLecturesSequence {
 			$index = $prev[$index];
 		}
 
-        array_reverse($lis);
+        $lis = array_reverse($lis);
         return $lis;
 	}
+
+    public static function compareTo(IDateTimeInterval $first, IDateTimeInterval $second)
+    {
+        $test = $first->getStartDate();
+        $firstStartDate = (new DateTime($first->getStartDate()))->getTimestamp();
+        $firstEndDate = (new DateTime($first->getEndDate()))->getTimestamp();
+
+        $secondStartDate = (new DateTime($second->getStartDate()))->getTimestamp();
+        $secondEndDate = (new DateTime($second->getEndDate()))->getTimestamp();
+
+        if ($firstEndDate < $secondStartDate) {
+            return -1;
+        } else if($firstStartDate > $secondEndDate) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

@@ -57,6 +57,12 @@ use RedDevil\ViewHelpers\ActionLink; ?>
         if ($model->getOwnerId() == HttpContext::getInstance()->getIdentity()->getUserId()) {
             new View("Conferences", "_ConferenceMenu", $model, null);
         }
+        ActionLink::create()
+            ->setAttribute('href', '/conferences/autoSchedule/' . $model->getId())
+            ->setAttribute('class', 'btn btn-info pull-right')
+            ->setNewLineAfter(false)
+            ->setData('Auto Schedule')
+            ->render();
         if (HttpContext::getInstance()->getIdentity()->isInRole('admin') &&
             $model->getOwnerId() != HttpContext::getInstance()->getIdentity()->getUserId()) {
             ActionLink::create()
